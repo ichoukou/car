@@ -1,0 +1,165 @@
+<!--<div class="bg2_menu" onclick="$('#bg2').fadeOut();$('#bg').fadeOut();$('#bg1').fadeIn();"><img src="<?php echo OSS_URL; ?>assets/images/tm1_03.png" width="102" height="50" /></div>-->
+<div class="bg2_menu" ><img src="<?php echo OSS_URL; ?>assets/images/tm1_03.png" width="102" height="50" /></div>
+<script>
+  $(document).ready(function(){
+      $(".bg2_menu").off('click').on('click', function(){
+          $(".bg2_tc1").fadeIn();
+      })
+  });
+</script>
+<table width="640" border="0" cellspacing="0" cellpadding="0" class="bg2_bt">
+  <tr>
+    <td height="77" align="center"><?php echo $rounds->row['title']; ?></td>
+  </tr>
+</table>
+<div class="bg2_main">
+  <?php if(!empty($infos->rows)): ?>
+  <form id="form_info">
+      <?php foreach($infos->rows as $k=>$v): ?>
+          <div class="bg2_main_xx">
+            <table width="490" border="0" cellspacing="0" cellpadding="0" class="bg2_bt1">
+              <tr>
+                <td height="54" align="left"><?php echo $v['title']; ?></td>
+              </tr>
+            </table>
+            <table width="490" border="0" cellspacing="0" cellpadding="0" class="bg2_nr">
+              <tr>
+                <td width="125" height="57">综合打分： </td>
+                <td width="365">
+                  <input type="hidden" name="infos[<?php echo $v['info_id']; ?>][score]" value="">
+                  <div class="zzsc">
+                    <a href='javascript:'></a>
+                    <a href='javascript:'></a>
+                    <a href='javascript:'></a>
+                    <a href='javascript:'></a>
+                    <a href='javascript:'></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td height="50" colspan="2">特点：</td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <input type="hidden" name="infos[<?php echo $v['info_id']; ?>][likes]" value="">
+                  <div class="zzsc1">
+                      <?php if(!empty($likes)): ?>
+                          <?php foreach($likes as $like): ?>
+                              <a href='javascript:' data-like="<?php echo $like['option_id']; ?>"><?php echo $like['title']; ?></a>
+                          <?php endforeach; ?>
+                      <?php endif; ?>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td height="50" colspan="2">缺陷：</td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <input type="hidden" name="infos[<?php echo $v['info_id']; ?>][hates]" value="">
+                  <div class="zzsc2">
+                    <?php if(!empty($hates)): ?>
+                        <?php foreach($hates as $hate): ?>
+                            <a href='javascript:' data-hate="<?php echo $hate['option_id']; ?>"><?php echo $hate['title']; ?></a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td height="50" colspan="2">其他评价：</td>
+              </tr>
+              <tr>
+                <td colspan="2"><div class="liuyan">
+                  <textarea name="infos[<?php echo $v['info_id']; ?>][content]" cols="" rows="" placeholder="请输入其他评价，100字以内。"></textarea>
+                </div></td>
+              </tr>
+            </table>
+          </div>
+      <?php endforeach; ?>
+    <!--<div class="tijiao" onclick="submit_info()">提交 </div>-->
+    <div class="tijiao" onclick="$('.bg2_tc2').fadeIn();" style=" position:relative; z-index:99999">提交 </div>
+  </form>
+  <?php endif; ?>
+</div>
+<script>
+    $(document).ready(function(){
+        $(".zzsc").find('a').off('click').on('click', function(){
+            $(this).parent('.zzsc').children().removeClass('thisclass');
+            $(this).siblings("a:lt("+$(this).index()+")").addClass('thisclass');
+            $(this).addClass('thisclass');
+            $(this).parent().prev().attr('value', $(this).index() + 1);
+        });
+
+        $(".zzsc1").find('a').off('click').on('click', function(){
+            var have_likes = $(this).parent().prev().attr('value');
+            var this_like = $(this).data('like');
+
+            if ($(this).attr('class') == 'thisclass1') {
+                var have_likes_arr = have_likes.split(',');
+                have_likes_arr.splice($.inArray(this_like.toString(), have_likes_arr), 1);
+                $(this).parent().prev().attr('value', have_likes_arr.join(','))
+                $(this).removeClass('thisclass1');
+            } else {
+                if (!!have_likes) {
+                    $(this).parent().prev().attr('value', have_likes+','+this_like)
+                } else {
+                    $(this).parent().prev().attr('value', this_like)
+                }
+                $(this).addClass('thisclass1');
+            }
+        });
+
+        $(".zzsc2").find('a').off('click').on('click', function(){
+            var have_hates = $(this).parent().prev().attr('value');
+            var this_hate = $(this).data('hate');
+
+            if ($(this).attr('class') == 'thisclass2') {
+                var have_hates_arr = have_hates.split(',');
+                have_hates_arr.splice($.inArray(this_hate.toString(), have_hates_arr), 1);
+                $(this).parent().prev().attr('value', have_hates_arr.join(','))
+                $(this).removeClass('thisclass2');
+            } else {
+                if (!!have_hates) {
+                    $(this).parent().prev().attr('value', have_hates+','+this_hate)
+                } else {
+                    $(this).parent().prev().attr('value', this_hate)
+                }
+                $(this).addClass('thisclass2');
+            }
+        });
+    });
+
+    var isClick = true;
+    function submit_info() {
+        if (!isClick)
+             return false;
+
+        isClick = false;
+
+        st.post('add_info.php', $("#form_info").serializeArray(), function(data){
+            isClick = true;
+            if (data.status == -1) {
+                alert(data.result);
+            } else {
+                var r = parseInt('<?php echo $round_id; ?>');
+                var nr = parseInt('<?php echo $next_rounds->row[round_id]; ?>');
+
+                $('.bg2_tc2').fadeOut();
+
+                $("#rounds_" + r).attr('class', 'bg1_lb_xx2');
+                $("#rounds_" + r).removeAttr('onclick');
+                $("#rounds_" + r).off('click').on('click', function(){
+                    $(".bg1_tc2").fadeIn();
+                });
+
+                $("#rounds_" + r).next().attr('class', 'bg1_lb_xx1');
+                $("#rounds_" + r).next().off('click').on('click', function(){
+                    show_table(nr)
+                });
+                $("#bg2").fadeOut();
+            }
+        });
+    }
+</script>
+<div class="bg1_bq"><img src="<?php echo OSS_URL; ?>assets/images/bg1_db.png" width="640" height="197" /></div>

@@ -1,0 +1,179 @@
+<main class="main">
+    <article class="page">
+        <header class="page-header">
+            <div class="btn-toolbar pull-right row">
+                <!--
+                <button class="btn btn-link" type="button"><i class="nc-icon-outline ui-1_settings-gear-64"></i></button>
+                <button class="btn btn-link" type="button"><i class="nc-icon-outline ui-1_simple-add"></i></button>
+                -->
+                <!--<div class="btn-group static">
+                    <button class="btn btn-link" data-toggle="collapse" href="#collapseExample" type="button" title="搜索"><i class="nc-icon-outline ui-1_zoom"></i></button>
+                    <div class="collapse" id="collapseExample" style="position:absolute;left:0;right:0;top:50px;background-color:#fff;border-bottom:1px solid #ddd;">
+                        <form id="search_info">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">标题</span>
+                                            <input type="text" name="filter_title" value="<?php echo $param['filter_title']; ?>" maxlength="30" class="form-control" placeholder="标题">
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td class="text-center" colspan="3">
+                                        <button type="button" id="button-filter" class="btn btn-primary float-none"><i class="nc-icon-outline ui-1_zoom"></i> 确定</button>
+                                        <button type="button" class="btn btn-default float-none"><i class="nc-icon-outline arrows-1_refresh-69"></i> 取消</button>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+                </div>-->
+                <button class="btn btn-link" data-toggle="modal" data-target="#myModalLogout" type="button" title="安全退出"><i class="nc-icon-outline arrows-4_logout"></i></button>
+            </div>
+            <ol class="breadcrumb">
+                <li><a href="javascript:void(0)">首页</a></li>
+                <li class="active"><a href="groups.php?<?php echo $url; ?>">用户组列表</a></li>
+            </ol>
+        </header>
+        <div class="page-body">
+            <div class="container">
+                <section class="panel panel-default">
+                    <header class="panel-heading">
+                        <div class="btn-toolbar pull-right">
+                            <!--
+                            <button class="btn btn-default" type="button">Action</button>
+                            <button class="btn btn-default" type="button">Action</button>
+                            -->
+                            <button class="btn btn-primary" type="button" onclick="window.location.href='groups_add.php?<?php echo $url; ?>'">新增</button>
+                        </div>
+                        <h4 class="panel-title">用户组列表</h4>
+                    </header>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>初赛 OR 决赛</th>
+                            <th>标题</th>
+                            <th class="text-right">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php if(!empty($list->rows)): ?>
+                                <?php foreach($list->rows as $key=>$row): ?>
+                                    <tr>
+                                        <td><?php echo $key + 1; ?></td>
+                                        <td><?php echo $group_types[$row['group_type']]; ?></td>
+                                        <td><?php echo $row['title']; ?></td>
+                                        <td class="text-right">
+                                            <a href="user.php?group_id=<?php echo $row['group_id'] ; ?>" class="btn btn-link">用户管理</a>
+                                            <a href="groups_edit.php?<?php echo $url; ?>&group_id=<?php echo $row['group_id']; ?>" class="btn btn-link">编辑</a>
+                                            <a href="#" class="btn btn-link" data-toggle="modal" data-target="#myModalRemove" data-remove_id="<?php echo $row['group_id']; ?>" data-remove_title="<?php echo $row['title']; ?>">删除</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                    <footer class="panel-footer">
+                        <nav class="pull-right"><?php echo $pagination; ?></nav>
+                        <div class="pull-left help-block"><?php echo $pagination_results; ?></div>
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </article>
+</main>
+<script>
+    $(document).ready(function(){
+        $('#myModalRemove').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var remove_id = button.data('remove_id');
+            var remove_title = button.data('remove_title');
+
+            var modal = $(this);
+            modal.find('.modal-body').text('确定要删除 "' + remove_title + '" ?');
+
+            modal.find('.btn-primary').off('click').on('click', function(e){
+                window.location.href='groups_remove.php?<?php echo $url; ?>&group_id='+remove_id
+            });
+        });
+
+        var action_return_title = '<?php echo $action_return[title]; ?>';
+        var action_return_info = '<?php echo $action_return[info]; ?>';
+
+        if (!!action_return_title) {
+            $('#myRemoveInfo').on('show.bs.modal', function (event) {
+                var modal = $(this);
+                modal.find('.modal-title').text(action_return_title)
+                modal.find('.modal-body').text(action_return_info);
+            });
+
+            $("#myRemoveInfo").modal('show');
+        }
+
+        <!-- 过滤 -->
+        document.onkeydown = function(e){
+            var ev = document.all ? window.event : e;
+            if (ev.keyCode==13) {
+                $('#button-filter').trigger('click');
+            }
+        }
+
+        $('#button-filter').on('click', function() {
+            event.preventDefault();
+            var search_param = $("#search_info").serializeArray();
+            var search_url = '<?php echo $search_url; ?>';
+
+            if (!!search_param) {
+                $.each(search_param, function(i, v){
+                    if (!!v.value) search_url += '&' + v.name + '=' + v.value;
+                });
+            }
+
+            window.location.href = search_url;
+        });
+    });
+
+</script>
+<!-- 确认删除提示 start-->
+<div class="modal fade bs-example-modal-sm" id="myModalRemove">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="pull-right" data-dismiss="modal"><i class="nc-icon-outline ui-1_simple-remove"></i></a>
+                <h4 class="modal-title">删除</h4>
+            </div>
+            <div class="modal-body">
+                确定要删除？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 确认删除提示 end-->
+
+<!-- 删除成功或失败提示 start-->
+<div class="modal fade bs-example-modal-sm" id="myRemoveInfo">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="pull-right" data-dismiss="modal"><i class="nc-icon-outline ui-1_simple-remove"></i></a>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 删除成功或失败提示 end-->

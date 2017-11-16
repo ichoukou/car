@@ -1,0 +1,101 @@
+
+<main class="main">
+    <article class="page">
+        <header class="page-header">
+            <div class="btn-toolbar pull-right row">
+                <button class="btn btn-link" data-toggle="modal" data-target="#myModalLogout" type="button"><i class="nc-icon-outline arrows-4_logout"></i></button>
+            </div>
+            <ol class="breadcrumb">
+                <li><a href="javascript:void(0)">首页</a></li>
+                <li><a href="groups.php?<?php echo $url; ?>">用户组列表</a></li>
+                <li class="active"><a href="groups_edit.php?<?php echo $url; ?>&group_id=<?php echo $group_id; ?>">编辑用户组信息</a></li>
+            </ol>
+        </header>
+        <div class="page-body">
+            <div class="container">
+                <section class="panel panel-default">
+                    <header class="panel-heading">
+                        <div class="btn-toolbar pull-right">
+                            <button class="btn btn-primary" type="button" onclick="submit_info()">保存</button>
+                            <button class="btn btn-default" type="button" onclick="window.location.href='groups.php?<?php echo $url; ?>'">返回</button>
+                        </div>
+                        <h4 class="panel-title">编辑用户组</h4>
+                    </header>
+                    <div class="panel-body">
+                        <form id="form_info" class="form-horizontal" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="group_id" value="<?php echo $info['group_id']; ?>"/>
+                            <div class="form-group">
+                                <label class="col-xs-2 control-label">组</label>
+                                <div class="col-xs-8">
+                                    <input type="text" name="title" value="<?php echo $group_types[$info['group_type']]; ?>" class="form-control" readonly>
+                                    <p class="help-block" style="color:red;"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-2 control-label" style="color:red;">*标题</label>
+                                <div class="col-xs-8">
+                                    <input type="text" name="title" value="<?php echo $info['title']; ?>" class="form-control" placeholder="标题" maxlength="30">
+                                    <p class="help-block" style="color:red;"></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </article>
+</main>
+<script>
+    $(document).ready(function(){
+    });
+
+    function submit_info () {
+        if (!$("input[name=title]").val()) {
+            show_error_dom('编辑数据失败', '请填写必填项');
+            return false;
+        }
+
+        st.post('groups_edit.php', $("#form_info").serializeArray(), function(data){
+            if (data.status != 1) {
+                show_error_dom('编辑数据失败', data.result);
+            } else {
+                show_error_dom('编辑数据成功', data.result, function(modal){
+                    //.ui-1_simple-remove
+                    modal.find('.btn-primary,.ui-1_simple-remove').off('click').on('click', function(e){
+                        window.location.href='groups.php?<?php echo $url; ?>'
+                    });
+                });
+            }
+        });
+    }
+
+    function show_error_dom (title, desc, func) {
+        $('#myRemoveInfo').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            modal.find('.modal-title').text(title)
+            modal.find('.modal-body').text(desc);
+
+            if ($.type(func) == 'function')
+                func(modal);
+        });
+
+        $("#myRemoveInfo").modal('show');
+    }
+</script>
+<!-- 删除成功或失败提示 start-->
+<div class="modal fade bs-example-modal-sm" id="myRemoveInfo">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="pull-right" data-dismiss="modal"><i class="nc-icon-outline ui-1_simple-remove"></i></a>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 删除成功或失败提示 end-->

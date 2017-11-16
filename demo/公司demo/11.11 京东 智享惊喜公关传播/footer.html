@@ -1,0 +1,93 @@
+</body>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    //jQuery.noConflict();
+    $(document).ready(function(){
+        wx_share('', '', '');
+    });
+
+    function wx_share(text,img,id){
+        if (!!text) {
+            var tl_title = text;
+            var app_title = text;
+            var app_desc = text;
+        } else {
+            var tl_title = '海尔11.11智享京喜';
+            var app_title = '海尔11.11智享京喜';
+            var app_desc = '海尔11.11智享京喜';
+        }
+
+        if (!!img) {
+            var http_image = '';
+        } else {
+            var http_image = "<?php echo OSS_URL; ?>assets/img/fx.png";
+        }
+
+        if (!!id) {
+            var http = "<?php echo HTTP_URL; ?>index.php?info_id=" + id;
+        } else {
+            var http = "<?php echo HTTP_URL; ?>index.php";
+        }
+
+        $.ajax({
+            url: 'share_interface.php?action=wx_get_share_param',
+            data: {signature_url: location.href.split('#')[0]},
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                if (data.status == -1) {
+                    alert(data.result);
+                } else {
+                    st.wxshare(data.result, ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage']);
+                    wx_ready(text);
+                }
+            }
+        });
+
+        function wx_ready(text) {
+            wx.ready(function () {
+                wx.checkJsApi({
+                    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+                    success: function(res) {
+                        console.log(res);
+                        // 以键值对的形式返回，可用的api值true，不可用为false
+                        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+                    }
+                });
+
+                wx.onMenuShareTimeline({
+                    title: tl_title, // 分享标题
+                    link: http, // 分享链接
+                    imgUrl: http_image, // 分享图标
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+
+                wx.onMenuShareAppMessage({
+                    title: app_title, // 分享标题
+                    desc: app_desc, // 分享描述
+                    link: http, // 分享链接
+                    imgUrl: http_image, // 分享图标
+                    type: '', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+
+
+            });
+        }
+    }
+</script>
+<span style="display: none;">
+<a href="//www.51.la/?19320343" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="//img.users.51.la/19320343.asp" style="border:none" /></a>
+</span>
+</html>
