@@ -1,0 +1,299 @@
+<?php echo $header_page; ?>
+<?php echo $left_page; ?>
+<div id="content">
+	<div class="page-header">
+		<div class="container-fluid">
+            <div class="pull-right">
+                <button type="button" data-toggle="tooltip" title="保存" class="btn btn-primary" onclick="submit_info()">
+                    <i class="fa fa-save"></i>
+                </button>
+                <a href="<?php echo $entrance; ?>route=Admin/User/Baby<?php echo $url; ?>" data-toggle="tooltip" title="取消" class="btn btn-default">
+                    <i class="fa fa-reply"></i>
+                </a>
+            </div>
+			<h1>首页</h1>
+			<ul class="breadcrumb">
+                <li><a href="<?php echo $entrance; ?>route=Admin/User/User">会员</a></li>
+				<li><a href="<?php echo $entrance; ?>route=Admin/User/Baby<?php echo $url; ?>">会员、Baby</a></li>
+                <li><a href="<?php echo $entrance; ?>route=Admin/User/Baby/add_baby<?php echo $url; ?>">新增Baby</a></li>
+			</ul>
+		</div>
+	</div>
+    <div class="container-fluid">
+        <div class="alert alert-success" style="display: none;">
+            <i class="fa fa-check-circle"></i>
+            <span id="alert-success"></span>
+            <button type="button" class="close" data-dismiss="alert">
+                &times;
+            </button>
+        </div>
+
+        <div class="alert alert-danger" style="display: none;">
+            <i class="fa fa-exclamation-circle"></i>
+            <span id="alert-danger"></span>
+            <button type="button" class="close" data-dismiss="alert">
+                &times;
+            </button>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-pencil"></i>
+                    新增Baby
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form enctype="multipart/form-data" id="form_info" class="form-horizontal">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tab-general" data-toggle="tab">常规</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-general">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <ul class="nav nav-pills nav-stacked" id="default">
+                                        <li class="active">
+                                            <a href="#tab-customer" data-toggle="tab">常规</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-10">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab-customer">
+                                            <input type="hidden" name="user_id" value="<?php echo $user_info['user_id']; ?>" readonly/>
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label" for="input-name">
+                                                    宝宝姓名
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="name" value="" placeholder="宝宝姓名" id="input-name" class="form-control" maxlength="20"/>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label" for="input-age">
+                                                    <span data-toggle="tooltip" title="" data-original-title="1~10位数字">
+                                                        宝宝年龄
+                                                    </span>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="age" value="" placeholder="宝宝年龄" id="input-age" class="form-control" maxlength="11"/>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label" for="input-sex">
+                                                    <?php echo $settings['setting_userbaby_sex']['title']; ?>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <select name="sex" id="input-sex" class="form-control">
+                                                        <option value>请选择</option>
+                                                        <?php foreach ($settings['setting_userbaby_sex']['infos'] as $userbaby_sex) : ?>
+                                                            <option value="<?php echo $userbaby_sex['setting_id']; ?>"><?php echo $userbaby_sex['value']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input-body_height">
+                                                     <span data-toggle="tooltip" title="" data-original-title="高度单位 厘米,1~10位浮点数,小数点保留后2位">
+                                                        宝宝身高
+                                                    </span>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="body_height" value="" placeholder="宝宝身高" id="input-body_height" class="form-control" maxlength="10"/>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input-body_weight">
+                                                    <span data-toggle="tooltip" title="" data-original-title="重量单位 斤,1~10位浮点数,小数点保留后2位">
+                                                        宝宝体重
+                                                    </span>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="body_weight" value="" placeholder="宝宝体重" id="input-body_weight" class="form-control" maxlength="10"/>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label" for="input-birthday">
+                                                    出生年月
+                                                </label>
+                                                <div class="col-sm-3">
+                                                    <div class="input-group date">
+                                                        <input type="text" name="birthday" value="" placeholder="出生年月" data-date-format="YYYY-MM-DD" id="input-birthday" class="form-control" />
+                                                        <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                                                        </span>
+                                                    </div>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input-zodiac">
+                                                    <?php echo $settings['setting_userbaby_zodiac']['title']; ?>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <select name="zodiac" id="input-zodiac" class="form-control">
+                                                        <option value>请选择</option>
+                                                        <?php foreach ($settings['setting_userbaby_zodiac']['infos'] as $userbaby_zodiac) : ?>
+                                                            <option value="<?php echo $userbaby_zodiac['setting_id']; ?>"><?php echo $userbaby_zodiac['value']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input-constellation">
+                                                    <?php echo $settings['setting_userbaby_constellation']['title']; ?>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <select name="constellation" id="input-constellation" class="form-control">
+                                                        <option value>请选择</option>
+                                                        <?php foreach ($settings['setting_userbaby_constellation']['infos'] as $userbaby_constellation) : ?>
+                                                            <option value="<?php echo $userbaby_constellation['setting_id']; ?>"><?php echo $userbaby_constellation['value']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input-blood_type">
+                                                    <?php echo $settings['setting_userbaby_blood']['title']; ?>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <select name="blood_type" id="input-blood_type" class="form-control">
+                                                        <option value>请选择</option>
+                                                        <?php foreach ($settings['setting_userbaby_blood']['infos'] as $userbaby_blood) : ?>
+                                                            <option value="<?php echo $userbaby_blood['setting_id']; ?>"><?php echo $userbaby_blood['value']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input-family_situation">
+                                                    <?php echo $settings['setting_userbaby_family_situation']['title']; ?>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <select name="family_situation" id="input-family_situation" class="form-control">
+                                                        <option value>请选择</option>
+                                                        <?php foreach ($settings['setting_userbaby_family_situation']['infos'] as $userbaby_family_situation) : ?>
+                                                            <option value="<?php echo $userbaby_family_situation['setting_id']; ?>"><?php echo $userbaby_family_situation['value']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input-filter-baby_character">
+                                                    <span data-toggle="tooltip" title="请填写宝宝性格标题,自动匹配到相关的信息,然后选择">
+                                                        <?php echo $settings['setting_userbaby_baby_character']['title']; ?>
+                                                    </span>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="baby_character" value="" placeholder="宝宝性格" id="input-filter-baby_character" class="form-control" />
+                                                    <div id="teaching-baby-character-filter" class="well well-sm" style="height: 150px; overflow: auto;">
+                                                    </div>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input-breakfast">
+                                                    宝宝日常作息规律
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="breakfast" value="" placeholder="早饭" id="input-breakfast" class="form-control" maxlength="100"/>
+                                                    <input type="text" name="lunch" value="" placeholder="午饭" id="input-lunch" class="form-control" maxlength="100"/>
+                                                    <input type="text" name="dinner" value="" placeholder="晚饭" id="input-living_habit2" class="form-control" maxlength="100"/>
+                                                    <input type="text" name="sleeping_time" value="" placeholder="睡眠时间" id="input-living_habit3" class="form-control" maxlength="100" x/>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function submit_info()
+    {
+        st.post('<?php echo $entrance; ?>route=Admin/User/Baby/do_add_baby', $('#form_info').serializeArray(), function(data){
+            $('.text-danger').html('');
+            $('.text-danger').fadeOut();
+            $('#tab-customer').find('div').removeClass('has-error');
+
+            if (data.status == -1) {
+                var other_error = '';
+                $.each(data.result, function(i, e){
+                    if (i == 'other_error') {
+                        other_error = ',' + e;
+                    } else if(i == 'birthday'){
+                        $('[name='+i+']').parent().next().html(e);
+                        $('[name='+i+']').parent().next().fadeIn();
+                        $('[name='+i+']').parent().parent().parent().addClass('has-error');
+                    } else {
+                        $('[name='+i+']').next().html(e);
+                        $('[name='+i+']').next().fadeIn();
+                        $('[name='+i+']').parent().parent().addClass('has-error');
+                    }
+                });
+
+                $("#alert-danger").html('新增会员Baby失败,请查看错误信息'+other_error);
+                $("#alert-danger").parent().fadeIn();
+            } else {
+                window.location.href = "<?php echo $entrance; ?>route=Admin/User/Baby<?php echo $url; ?>";
+            }
+        });
+    }
+</script>
+<script>
+    $('input[name=\'baby_character\']').autocomplete({
+        'source': function(request, response) {
+            $.ajax({
+                url: '<?php echo $entrance; ?>route=Admin/User/Baby/autocomplete_baby_character&filter_param=' + request,
+                dataType: 'json',
+                success: function(json) {
+                    response($.map(json.result, function(item) {
+                        return {
+                            label: item['value'],
+                            value: item['setting_id']
+                        }
+                    }));
+                }
+            });
+        },
+        'select': function(item) {
+            $('input[name=\'baby_character\']').val('');
+
+            $('#teaching-baby-character-filter' + item['value']).remove();
+            $('#teaching-baby-character-filter').append('<div id="teaching-baby-character-filter' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="baby_character_setting_id[]" value="' + item['value'] + '" /></div>');
+        }
+    });
+
+    $('#teaching-baby-character-filter').delegate('.fa-minus-circle', 'click', function() {
+        $(this).parent().remove();
+    });
+</script>
+<style>
+    .text-danger {
+        display: none;
+    }
+</style>
+<script type="text/javascript">
+    $('.date').datetimepicker({
+        pickTime: false
+    });
+</script>
+<?php echo $footer_page; ?>

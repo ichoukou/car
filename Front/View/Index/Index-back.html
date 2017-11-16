@@ -1,0 +1,66 @@
+<?php echo $header_page; ?>
+
+<div id="return_msg"></div>
+<input type="text" name="message">
+<input type="submit" value="发送数据" onclick="send_message()">
+
+<script>
+    var wsServer = 'ws://127.0.0.1:9502';
+    //调用websocket对象建立连接：
+    //参数：ws/wss(加密)：//ip:port （字符串）
+    var websocket = new WebSocket(wsServer);
+
+    /**
+     * 监听连接打开
+     */
+    websocket.onopen = function (event) {
+        /*
+         websocket.readyState 属性：
+
+         CONNECTING    0    The connection is not yet open.
+         OPEN    1    The connection is open and ready to communicate.
+         CLOSING    2    The connection is in the process of closing.
+         CLOSED    3    The connection is closed or couldn't be opened.
+         */
+        if (websocket.readyState == 1) {
+            var remsg = '连接成功';
+        } else if (websocket.readyState == 2) {
+            var remsg = '会话已关闭';
+        } else {
+            var remsg = '连接失败';
+        }
+
+        $("#return_msg").append(remsg + '</br>');
+    };
+
+    /**
+     * 给服务器发送数据
+     */
+    function send_message(){
+        var text = $("input[name=message]").val();
+        $("input[name=message]").attr('value','');
+        websocket.send(text);
+    }
+
+    /**
+     * 监听服务器数据推送
+     */
+    websocket.onmessage = function (event) {
+        $("#return_msg").append(event.data);
+    };
+
+    /**
+     * 监听连接关闭
+     */
+    websocket.onclose = function (event) {
+        $("#return_msg").append('连接关闭');
+    };
+
+    /**
+     * 监听连接错误信息
+     */
+    websocket.onerror = function (event, e) {
+      console.log('连接错误信息: ' + event.data);
+    };
+</script>
+<?php echo $footer_page; ?>

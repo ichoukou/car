@@ -1,0 +1,184 @@
+#查看远程分支、本地分支、创建分支、把分支推到远程repository、删除本地分支
+http://zengrong.net/post/1746.htm
+#git book
+https://git-scm.com/book/zh/v1/
+
+
+
+一、配置git
+#git库初始化
+git init
+
+#git配置文件，带--global是公共的，不带则是属于单个项目的
+git config --global user.name = '';
+git config --global user.email = '';
+
+#查看所有配置信息
+git config --list
+
+#simple只推送当前分支到远程关联的同名分支，matching将推送和远程同名的所有本地分支
+git config --global push.default = simple
+
+#链接新远程库
+git remote add <project name> <url>; 
+
+#查看远程仓库的信息
+git remote show <project name>
+
+#重命名远程仓库
+git remote rename <old name> <new name>
+
+#删除远程仓库
+git remote rm <project name>
+
+#记住密码，不用重复输入账号密码
+git config –global credential.helper cache　#记住15分钟
+git config credential.helper ‘cache –timeout=3600’　#自定义时间(秒)
+git config –global credential.helper store #长期记住，修改完了以后，到%HOME%目录下找到.gitconfig,里面多了一条
+helper = store　(ubuntu14.04这里是/root/.gitconfig)
+
+
+
+二、操作git (https://git-scm.com/book/zh/v1/Git-基础-记录每次更新到仓库)
+#如果远程没有master分支，使用来创建远程分支
+git push --set-upstream <project name> <branch name>
+
+#他会监控工作区的状态树，使用它会把工作时的所有变化提交到暂存区
+git add 
+
+#添加所有文件到本地缓存，也可替换-a改为单个文件或文件夹名称
+git add --a
+
+#提交缓存到本地库，-m可替换为-am或者-a -m，相当于git add -a + git commit -m 其中string name是随便起个名字
+git commit -m <string name> 
+
+#修改最后一次提交的说明
+git commit --amend (https://git-scm.com/book/zh/v1/Git-基础-撤消操作)
+
+#把本地分支提交到远程分支，<project name>是 git remote add 时起的别名
+git push <project name> <remote branch name>
+
+#查看所有本地分支，前面带*号的代表你当前工作目录所处的分支
+git branch
+
+#查看所有本地和远程分支，前面带*号的代表你当前工作目录所处的分支
+git branch -a 
+
+#创建分支
+git branch <branch name>	
+
+#删除本地分支，大写D为强制删除
+git branch -d <branch name>
+
+#也可以直接删除远程分支，可配合git pull同步到本地分支
+git branch -r -d <project name>/<branch name>
+
+#筛选出与当期分之已合并（--merged）和未合并的分之(--no-merged)
+git branch --merged，git branch --no-merged
+
+#切换分支，配合 git branch 或 git branch -a 来使用
+git checkout <branch name>
+
+#等价于 git branch <branch name>，git checkout <branch name>
+git checkout -b <branch name>
+
+#重命名远程分支，就是先删除远程分支，修改本地分支名称，提交本地分支，如果要删除或改名的分支是默认分支，
+#进入 github 中该项目的 Settings 页面，设置 Default Branch 为其他的分支(例如 master)，重新执行删除远程分支命令
+1、删除远程分支 
+2、重命名本地分支 git branch -m <old branch name> <new branch name>
+3、提交本地分支 push
+
+
+
+三、查看本地文件变化或暂存区文件变化和删除暂存区文件 (https://git-scm.com/book/zh/v1/Git-基础-记录每次更新到仓库)
+#查看哪些文件发生变化，哪些文件修改过，但是没有在线上
+git status 
+
+#显示当前未暂存的文件(本地文件)和上次暂存文件之间的区别
+git diff
+
+#显示这次暂存文件和之前暂存文件的区别
+git diff --cached或--staged(git版本>=1.6.1)
+
+#删除git暂存区的文件，但不删除文件本身，如果去掉--cached，则同时删掉文件本身，可加 -f 表示强制删除
+git rm --cached <file name>
+
+
+
+四、日志 (https://git-scm.com/book/zh/v1/Git-基础-查看提交历史)
+#可以查看所有分支的所有操作记录，包括commit和reset的操作
+git reflog
+
+#查看所有log日志,可加参数 -2，代表只显示几条，数字随便改，按时间最新的排序(还有其他参数见官方文档)
+#--no-merges 过滤掉所有merge操作的记录
+git log 
+
+#查看所有log日志，并且显示所有修改记录
+git log -p 
+
+#显示统计的修改行数
+git log --stat
+
+#不同显示格式,oneline(一行显示),shore,full,fuller,format(定制显示，具体看官方文档)等
+git log --pretty=oneline
+
+
+
+五、git撤销操作
+#最后的^，可配合git reflog，替换为~1、~2...等（查看HEAD＠{版本号}），或替换为文件编码名称（例如：fbfa1cc）
+#来回退到哪个提交的版本，效果一样
+git reset --mixed HEAD^ #此为默认方式，只回复add和commit的操作
+git reset --soft HEAD^
+git reset --hard HEAD^	#回复add和commit的操作，同时还原文件
+
+
+
+六、git tag相关
+#查看所有以存在的标签，可加参数 -l 'tag name*'，.这个搜索参数如果带有*是模糊匹配
+git tag -l '1.1.*'
+
+#创建标签，-a 标签名称，-m 标签描述
+git tag -a <tag name> -m <tag description>
+
+#提交单一标签到远程服务器
+git push <project name> <tag name>
+
+#提交所有标签到远程服务器
+git push <project name> --tags
+
+
+
+七、git fetch，merge和rebase，pull（https://git-scm.com/book/zh/v1/Git-分支-分支的新建与合并）
+#fetch 把远程库的代码，更新到本地库（本地镜像，所有的与线上操作，都是操作镜像），但是不更新本地暂存区和工作区
+git fetch <remote name> <branch name> #更新单个本地库
+git fetch <remote name> #更新所有本地库
+
+#merge和rebase 把某个本地分之或本地库（本地镜像）分之，合并到当前的分之，作用到工作区，如果是本地分之，一定要先切换到这个分之，执
+#行更新操作，防止冲突 
+#两者的区别可看下面3个地址的解释
+#https://git-scm.com/book/zh/v1/Git-分支-分支的衍合
+#http://www.cnblogs.com/xueweihan/p/5743327.html 
+#http://blog.csdn.net/wh_19910525/article/details/7554489
+#把<branch name> 合并到当前的分之，可能会出现冲突，任何包含未解决冲突的文件都会以未合并（unmerged）的状态列出，
+#冲突起始位置以<<<<开始，以>>>>结束，其中====为分界线，分界线上面的为当前branch的内容，
+#下面的为要合并进当前文件的内容，冲突文件会
+git merge <branch name> 
+git merge remotes/<remote name>/<branch name> #本地库(本地镜像分之)合并到当前分之
+git rebase <branch name> 
+git rebase remotes/<remote name>/<branch name> #本地库(本地镜像分之)合并到当前分之
+
+#pull 相当于git fetch + merge，作用到工作区
+git pull <remote name> <branch name>
+
+#rebase 变基操作，就是改变一条分支的「基点」，
+#具体看说明（http://www.jianshu.com/p/4abb2f92a967和https://git-scm.com/book/zh/v1/Git-分支-分支的衍合）
+git rebase --onto master branch1 branch2 #如果是子分之下的子分之（或者更多）要合并到master，需要用到--onto参数
+git rebase [主分支] [特性分支] #不下雨要切换分之合并
+#使用上述两个命令，rebase合并完以后，切换到主分之
+git rebase [特性分之]　#等同于merge，只是合并记录干净，不需要再切换分之merge
+
+
+
+
+
+

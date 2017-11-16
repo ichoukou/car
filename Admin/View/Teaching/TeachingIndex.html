@@ -1,0 +1,398 @@
+<?php echo $header_page; ?>
+<?php echo $left_page; ?>
+<div id="content">
+	<div class="page-header">
+		<div class="container-fluid">
+            <div class="pull-right">
+                <a href="<?php echo $entrance; ?>route=Admin/Teaching/Teaching/add_teaching<?php echo $url; ?>" data-toggle="tooltip" title="新增" class="btn btn-primary">
+                    <i class="fa fa-plus"></i>
+                </a>
+                <button type="button" data-toggle="tooltip" title="删除" class="btn btn-danger" onclick="confirm('确定要删除吗？') ? remove_some() : false;">
+                    <i class="fa fa-trash-o"></i>
+                </button>
+            </div>
+			<h1>首页</h1>
+			<ul class="breadcrumb">
+				<li><a href="<?php echo $entrance; ?>route=Admin/Teaching/Teaching">会员上课</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container-fluid">
+
+		<div class="alert alert-danger" style="display: none;">
+			<i class="fa fa-exclamation-circle"></i>
+			<span id="error_info"></span>
+			<button type="button" class="close" data-dismiss="alert">
+				&times;
+			</button>
+		</div>
+
+        <div class="alert alert-success" style="display: none;">
+            <i class="fa fa-check-circle"></i>
+            <span id="success_info"></span>
+            <button type="button" class="close" data-dismiss="alert">
+                &times;
+            </button>
+        </div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<i class="fa fa-list"></i>
+                    会员上课
+				</h3>
+			</div>
+			<div class="panel-body">
+				<div class="well">
+					<div class="row">
+                        <form id="search_info">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="input-parent_name">
+                                        <span data-toggle="tooltip" title="请填写会员信息,自动匹配到相关的信息,然后选择">
+                                            会员信息
+                                        </span>
+                                    </label>
+                                    <input type="text" name="filter_parent_name" value="<?php echo $filter_parent_name; ?>" placeholder="会员信息" id="input-parent_name" class="form-control" />
+                                    <input type="hidden" name="filter_user_id" value="<?php echo $filter_user_id; ?>"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="input-baby_name">
+                                        <span data-toggle="tooltip" title="请填写宝宝姓名,自动匹配到相关的信息,然后选择">
+                                            宝宝姓名
+                                        </span>
+                                    </label>
+                                    <input type="text" name="filter_baby_name" value="<?php echo $filter_baby_name; ?>" placeholder="宝宝姓名" id="input-baby_name" class="form-control" />
+                                    <input type="hidden" name="filter_baby_id" value="<?php echo $filter_baby_id; ?>"/>
+                                </div>
+                                <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> 筛选 </button>
+                            </div>
+                            <!--<div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="input-tel">
+                                        <span data-toggle="tooltip" title="请填写完整的会员卡号,精确匹配">
+                                            会员卡号
+                                        </span>
+                                    </label>
+                                    <input type="text" name="filter_card_number" value="<?php echo $filter_card_number; ?>" placeholder="会员卡号" id="input-tel" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="input-title">课程名称</label>
+                                    <input type="text" name="filter_title" value="<?php echo $filter_title; ?>" placeholder="课程名称" id="input-title" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="input-teaching_tools">
+                                        <span data-toggle="tooltip" title="请填写教具名称,自动匹配到相关的信息,然后选择">
+                                            教具名称
+                                        </span>
+                                    </label>
+                                    <input type="text" name="filter_teaching_tools" value="<?php echo $filter_teaching_tools; ?>" placeholder="教具名称" id="input-teaching_tools" class="form-control" />
+                                    <input type="hidden" name="filter_teaching_tools_id" value="<?php echo $filter_teaching_tools_id; ?>"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="input-sensitive_period">
+                                        <span data-toggle="tooltip" title="请填写敏感期名称,自动匹配到相关的信息,然后选择">
+                                            敏感期
+                                        </span>
+                                    </label>
+                                    <input type="text" name="filter_sensitive_period" value="<?php echo $filter_sensitive_period; ?>" placeholder="敏感期" id="input-sensitive_period" class="form-control" />
+                                    <input type="hidden" name="filter_sensitive_period_id" value="<?php echo $filter_sensitive_period_id; ?>"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="input-date-teaching_date">
+                                        <span data-toggle="tooltip" title="请选择上课日期,精确匹配">
+                                            上课日期
+                                        </span>
+                                    </label>
+                                    <div class="input-group date">
+                                        <input type="text" name="filter_teaching_date" value="<?php echo $filter_teaching_date; ?>" placeholder="添加日期" data-date-format="YYYY-MM-DD" id="input-date-teaching_date" class="form-control" />
+                                        <span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="input-date-added">添加日期</label>
+                                    <div class="input-group date">
+                                        <input type="text" name="filter_create_time" value="<?php echo $filter_create_time; ?>" placeholder="添加日期" data-date-format="YYYY-MM-DD" id="input-date-added" class="form-control" />
+                                        <span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </form>
+					</div>
+				</div>
+				<form method="post" enctype="multipart/form-data" id="form_info">
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover">
+							<thead>
+                                <tr>
+                                    <td style="width: 1px;" class="text-center">
+                                        <input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" />
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="javascript:void(0)">会员信息</a>
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="javascript:void(0)">会员卡号</a>
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="javascript:void(0)">宝宝姓名</a>
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="javascript:void(0)">课程名称</a>
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="javascript:void(0)">上课时间</a>
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="javascript:void(0)"><?php echo $settings['setting_teaching_aids']['title']; ?></a>
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="javascript:void(0)"><?php echo $settings['setting_current_sensitive_period']['title']; ?></a>
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="javascript:void(0)">添加日期</a>
+                                    </td>
+                                    <td class="text-right">操作</td>
+                                </tr>
+							</thead>
+							<tbody>
+							<?php if ($teachings) : ?>
+                                <?php foreach ($teachings as $teaching) : ?>
+                                    <tr>
+                                        <td class="text-center">
+                                            <input type="checkbox" name="selected" value="<?php echo $teaching['teaching_id']; ?>"/>
+                                        </td>
+                                        <td class="text-left">
+                                            <a href="<?php echo $entrance; ?>route=Admin/User/User/edit_user&user_id=<?php echo $teaching['user_id']; ?>">
+                                                <i class="fa fa-user"></i>&nbsp;<?php echo $teaching['parent_name']; ?>&nbsp;&nbsp;&nbsp;
+                                                <i class="fa fa-phone"></i>&nbsp;<?php echo $teaching['tel']; ?>
+                                            </a>
+                                        </td>
+                                        <td class="text-left">
+                                            <a href="<?php echo $entrance; ?>route=Admin/User/Card&filter_card_number=<?php echo $teaching['card_number']; ?>">
+                                                <?php echo $teaching['card_number']; ?>
+                                            </a>
+                                        </td>
+                                        <td class="text-left"><?php echo $teaching['name']; ?></td>
+                                        <td class="text-left"><?php echo $teaching['title']; ?></td>
+                                        <td class="text-left">
+                                            <i class="fa fa-clock-o"></i>&nbsp;<?php echo $teaching['teaching_date']; ?>&nbsp;<?php echo $teaching['teaching_start_time']; ?>~<?php echo $teaching['teaching_end_time']; ?>
+                                        </td>
+                                        <td class="text-left">
+                                            <?php if(!empty($teaching['teaching_tools'])): ?>
+                                                <?php foreach ($teaching['teaching_tools'] as $tool) : ?>
+                                                    <i class="fa fa-magic"></i>&nbsp; <?php echo $tool['value']; ?>&nbsp;
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="text-left">
+                                            <i class="fa fa-exclamation-circle"></i>&nbsp;<?php echo $teaching['value']; ?> &nbsp;<?php echo $teaching['times']; ?>课时
+                                        </td>
+                                        <td class="text-left"><?php echo $teaching['create_time']; ?></td>
+                                        <td class="text-right">
+                                            <a href="<?php echo $entrance; ?>route=Admin/Teaching/Teaching/edit_teaching&teaching_id=<?php echo $teaching['teaching_id']; ?><?php echo $url; ?>" data-toggle="tooltip" title="编辑" class="btn btn-primary">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a href="javascript:void(0)" data-toggle="tooltip" title="删除" class="btn btn-danger" onclick="confirm('确定要删除吗？') ? remove_one('<?php echo $teaching[teaching_id]; ?>') : false;">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+							<?php else: ?>
+                                <tr>
+                                    <td class="text-center" colspan="10">没有符合条件的结果！</td>
+                                </tr>
+							<?php endif; ?>
+							</tbody>
+						</table>
+					</div>
+				</form>
+				<div class="row">
+					<div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
+					<div class="col-sm-6 text-right"><?php echo $results; ?></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    var find_parent_result = [];
+    $('input[name=\'filter_parent_name\']').autocomplete({
+        'source': function(request, response) {
+            $.ajax({
+                url: '<?php echo $entrance; ?>route=Admin/Teaching/Teaching/autocomplete_user&filter_param=' + request,
+                dataType: 'json',
+                success: function(json) {
+                    find_parent_result = json.result;
+                    $('input[name=\'filter_user_id\']').attr('value', '');
+                    response($.map(json.result, function(item) {
+                        return {
+                            label: '<i class="fa fa-user"></i>&nbsp;'+item['parent_name']+'&nbsp;&nbsp;&nbsp;<i class="fa fa-phone"></i>&nbsp;' + item['tel'],
+                            value: item['user_id']
+                        }
+                    }));
+                }
+            });
+        },
+        'select': function(item) {
+            $('input[name=\'filter_parent_name\']').val(find_parent_result[item['value']]['parent_name']);
+            $('input[name=\'filter_user_id\']').val(item['value']);
+        }
+    });
+</script>
+<script>
+    var find_baby_result = [];
+    $('input[name=\'filter_baby_name\']').autocomplete({
+        'source': function(request, response) {
+            $.ajax({
+                url: '<?php echo $entrance; ?>route=Admin/Teaching/Teaching/autocomplete_baby&filter_param=' + request,
+                dataType: 'json',
+                success: function(json) {
+                    find_baby_result = json.result;
+                    $('input[name=\'filter_baby_id\']').attr('value', '');
+                    response($.map(json.result, function(item) {
+                        return {
+                            label: '<i class="fa fa-child"></i>&nbsp;'+item['name'],
+                            value: item['baby_id']
+                        }
+                    }));
+                }
+            });
+        },
+        'select': function(item) {
+            $('input[name=\'filter_baby_name\']').val(find_baby_result[item['value']]['name']);
+            $('input[name=\'filter_baby_id\']').val(item['value']);
+        }
+    });
+</script>
+<script>
+    var find_tools_result = [];
+    $('input[name=\'filter_teaching_tools\']').autocomplete({
+        'source': function(request, response) {
+            $.ajax({
+                url: '<?php echo $entrance; ?>route=Admin/Teaching/Teaching/autocomplete_teaching_tools&filter_param=' + request,
+                dataType: 'json',
+                success: function(json) {
+                    find_tools_result = json.result;
+                    $('input[name=\'filter_teaching_tools_id\']').attr('value', '');
+                    response($.map(json.result, function(item) {
+                        return {
+                            label: '<i class="fa fa-magic"></i>&nbsp;'+item['value'],
+                            value: item['setting_id']
+                        }
+                    }));
+                }
+            });
+        },
+        'select': function(item) {
+            $('input[name=\'filter_teaching_tools\']').val(find_tools_result[item['value']]['value']);
+            $('input[name=\'filter_teaching_tools_id\']').val(item['value']);
+        }
+    });
+</script>
+<script>
+    var find_sensitive_period_result = [];
+    $('input[name=\'filter_sensitive_period\']').autocomplete({
+        'source': function(request, response) {
+            $.ajax({
+                url: '<?php echo $entrance; ?>route=Admin/Teaching/Teaching/autocomplete_sensitive_period&filter_param=' + request,
+                dataType: 'json',
+                success: function(json) {
+                    find_sensitive_period_result = json.result;
+                    $('input[name=\'filter_sensitive_period_id\']').attr('value', '');
+                    response($.map(json.result, function(item) {
+                        return {
+                            label: '<i class="fa fa-exclamation-circle"></i>&nbsp;'+item['value'],
+                            value: item['setting_id']
+                        }
+                    }));
+                }
+            });
+        },
+        'select': function(item) {
+            $('input[name=\'filter_sensitive_period\']').val(find_sensitive_period_result[item['value']]['value']);
+            $('input[name=\'filter_sensitive_period_id\']').val(item['value']);
+        }
+    });
+</script>
+<script>
+    $(document).ready(function(data)
+        {
+            var success_info = '<?php echo $success_info; ?>';
+            var error_info = '<?php echo $error_info; ?>';
+
+            if (!!success_info) {
+                show_success_dom(success_info);
+            }
+
+            if (!!error_info) {
+                show_error_dom(error_info);
+            }
+        }
+    );
+
+    var remove_one_click = true;
+    function remove_one(teaching_id)
+    {
+        if (!teaching_id) {
+            show_error_dom('请选择要删除的数据！');
+            return false;
+        }
+
+        if (!remove_one_click)
+            return false;
+
+        remove_one_click = false;
+
+        st.post('<?php echo $entrance; ?>route=Admin/Teaching/Teaching/remove_one', {teaching_id:teaching_id}, function(data){
+            if (data.status == -1) {
+                show_error_dom(data.result);
+                remove_one_click = true;
+            } else {
+                window.location.href = '<?php echo $entrance; ?>route=Admin/Teaching/Teaching<?php echo $url; ?>';
+            }
+        });
+    }
+
+    var remove_some_click = true;
+    function remove_some()
+    {
+        var checked = [];
+        $.each($("input:checkbox[name=selected]:checked"), function(i, e){
+            checked.push(parseInt($(e).val()));
+        });
+
+        if (checked.length <= 0) {
+            show_error_dom('请选择要删除的数据！');
+            return false;
+        }
+
+        if (!remove_some_click)
+            return false;
+
+        remove_some_click = false;
+
+        st.post('<?php echo $entrance; ?>route=Admin/Teaching/Teaching/remove_some', {teaching_ids:checked}, function(data){
+            if (data.status == -1) {
+                show_error_dom(data.result);
+                remove_some_click = true;
+            } else {
+                window.location.href = '<?php echo $entrance; ?>route=Admin/Teaching/Teaching<?php echo $url; ?>';
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    $('.date').datetimepicker({
+        pickTime: false
+    });
+</script>
+
+<?php echo $footer_page; ?>
