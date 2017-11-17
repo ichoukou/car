@@ -1,0 +1,332 @@
+<?php echo $header_page; ?>
+<?php echo $left_page; ?>
+<div id="content">
+	<div class="page-header">
+		<div class="container-fluid">
+            <div class="pull-right">
+                <button type="button" data-toggle="tooltip" title="保存" class="btn btn-primary" onclick="submit_info()">
+                    <i class="fa fa-save"></i>
+                </button>
+                <a href="<?php echo $entrance; ?>route=Admin/User/ContinuedCard<?php echo $url; ?>" data-toggle="tooltip" title="取消" class="btn btn-default">
+                    <i class="fa fa-reply"></i>
+                </a>
+            </div>
+			<h1>首页</h1>
+			<ul class="breadcrumb">
+                <li><a href="<?php echo $entrance; ?>route=Admin/User/Card">会员卡种</a></li>
+				<li><a href="<?php echo $entrance; ?>route=Admin/User/ContinuedCard<?php echo $url; ?>">会员续卡</a></li>
+                <li><a href="<?php echo $entrance; ?>route=Admin/User/ContinuedCard/add_continued_card<?php echo $url; ?>">新增会员续卡</a></li>
+			</ul>
+		</div>
+	</div>
+    <div class="container-fluid">
+        <div class="alert alert-success" style="display: none;">
+            <i class="fa fa-check-circle"></i>
+            <span id="alert-success"></span>
+            <button type="button" class="close" data-dismiss="alert">
+                &times;
+            </button>
+        </div>
+
+        <div class="alert alert-danger" style="display: none;">
+            <i class="fa fa-exclamation-circle"></i>
+            <span id="alert-danger"></span>
+            <button type="button" class="close" data-dismiss="alert">
+                &times;
+            </button>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-pencil"></i>
+                    新增会员续卡
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form enctype="multipart/form-data" id="form_info" class="form-horizontal">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tab-general" data-toggle="tab">常规</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-general">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <ul class="nav nav-pills nav-stacked" id="default">
+                                        <li class="active">
+                                            <a href="#tab-customer" data-toggle="tab">常规</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-10">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab-customer">
+                                            <input type="hidden" name="user_card_id" value="<?php echo $user_card_info['user_card_id']; ?>" class="form-control" readonly/>
+                                             <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    续卡信息
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <div id="user-filter" class="well well-sm" style="height: 35px; overflow: auto;">
+                                                        <i class="fa fa-credit-card"></i>&nbsp;<?php echo $user_card_info['value']; ?>&nbsp;&nbsp;&nbsp;
+                                                        <i class="fa fa-user"></i>&nbsp;<?php echo $user_card_info['parent_name']; ?>&nbsp;&nbsp;&nbsp;
+                                                        <i class="fa fa-phone"></i>&nbsp;<?php echo $user_card_info['tel']; ?>
+                                                    </div>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    <?php echo $settings['setting_user_card_type']['title']; ?>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <?php foreach ($settings['setting_user_card_type']['infos'] as $user_card_type) : ?>
+                                                        <?php if($user_card_type['setting_id'] == $user_card_info['setting_id']): ?>
+                                                            <input type="text" value="<?php echo $user_card_type['value']; ?>" class="form-control" disabled/>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    办卡时间
+                                                </label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" value="<?php echo $user_card_info['card_start_time']; ?>" class="form-control" disabled/>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    到期时间
+                                                </label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" value="<?php echo $user_card_info['card_end_time']; ?>" class="form-control" disabled/>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    卡种剩余次数
+                                                </label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" value="<?php echo $user_card_info['remaining_times']; ?>" class="form-control" disabled/>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label" for="input-setting_id">
+                                                    续卡<?php echo $settings['setting_user_card_type_valid_period']['title']; ?>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <select name="valid_period_setting_id" id="input-setting_id" class="form-control" onchange="find_card_valid_period_info(this.value)">
+                                                        <option value>请选择</option>
+                                                        <?php foreach ($settings['setting_user_card_type_valid_period']['infos'] as $valid_period) : ?>
+                                                            <option value="<?php echo $valid_period['setting_id']; ?>"><?php echo $valid_period['value']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label" for="input-card_end_time">
+                                                    <span data-toggle="tooltip" title="格式必须为 YYYY-MM-DD">
+                                                        续卡到期时间
+                                                    </span>
+                                                </label>
+                                                <div class="col-sm-3">
+                                                    <div class="input-group date" id="card_end_time">
+                                                        <input type="text" name="card_end_time" value="" placeholder="续卡到期时间" data-date-format="YYYY-MM-DD" id="input-card_end_time" class="form-control" />
+                                                        <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                                                        </span>
+                                                    </div>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input-remaining_times">
+                                                    新增可用次数
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="remaining_times" value="0" placeholder="新增可用次数" id="input-remaining_times" class="form-control" maxlength="20"/>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label" for="input-money">
+                                                    <span data-toggle="tooltip" title="请填写1~10位纯数字,可存在小数点后2位,如果不填默认为0">
+                                                        续卡费用
+                                                    </span>
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="money" value="0" placeholder="续卡费用" id="input-money" class="form-control" maxlength="20"/>
+                                                    <div class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function submit_info()
+    {
+        st.post('<?php echo $entrance; ?>route=Admin/User/ContinuedCard/do_add_continued_card', $('#form_info').serializeArray(), function(data){
+            $('.text-danger').html('');
+            $('.text-danger').fadeOut();
+            $('#tab-customer').find('div').removeClass('has-error');
+
+            if (data.status == -1) {
+                var other_error = '';
+                $.each(data.result, function(i, e){
+                    if (i == 'other_error') {
+                        other_error = ',' + e;
+                    } else if(i == 'card_end_time'){
+                        $('[name='+i+']').parent().next().html(e);
+                        $('[name='+i+']').parent().next().fadeIn();
+                        $('[name='+i+']').parent().parent().parent().addClass('has-error');
+                    } else {
+                        $('[name='+i+']').next().html(e);
+                        $('[name='+i+']').next().fadeIn();
+                        $('[name='+i+']').parent().parent().addClass('has-error');
+                    }
+                });
+
+                $("#alert-danger").html('新增会员续卡信息失败,请查看错误信息'+other_error);
+                $("#alert-danger").parent().fadeIn();
+            } else {
+                window.location.href = "<?php echo $entrance; ?>route=Admin/User/ContinuedCard<?php echo $url; ?>";
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    var card_end_time = $('#card_end_time').datetimepicker({
+        pickTime: false
+    })
+</script>
+<script>
+    var months;
+    function find_card_valid_period_info(setting_id)
+    {
+        var setting_id = setting_id;
+        if (!setting_id) {
+            months = '';
+            computing_time();
+            return false;
+        }
+
+        st.get('<?php echo $entrance; ?>route=Admin/User/ContinuedCard/find_card_valid_period_info', {setting_id:setting_id}, function(data){
+            months = parseInt(data.result.months);
+            computing_time();
+        });
+    }
+
+    function computing_time() {
+        var start = "<?php echo $user_card_info['card_end_time']; ?>";
+        if (RQcheck(start) && months) {
+            var date     = new   Date(start);
+            var newDate  = DateAdd("m ", months, date);
+            var newYear  = newDate.getFullYear();
+            var newMonth = newDate.getMonth() + 1;
+            var newDay   = newDate.getDate();
+            newMonth = newMonth < 10 ? '0' + newMonth : newMonth;
+            newDay = newDay < 10 ? '0' + newDay : newDay;
+            var endDate  = newYear + '-' + newMonth + '-' + newDay;
+            $('input[name=card_end_time]').prop('value', endDate);
+        } else {
+            $('input[name=card_end_time]').prop('value', '');
+        }
+    }
+
+    function RQcheck(RQ) {
+        var date = RQ;
+        var result = date.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
+
+        if (result == null)
+            return false;
+
+        var d = new Date(result[1], result[3] - 1, result[4]);
+
+        return (d.getFullYear() == result[1] && (d.getMonth() + 1) == result[3] && d.getDate() == result[4]);
+
+    }
+
+    function   DateAdd(interval,number,date)
+    {
+        /*
+         *   功能:实现VBScript的DateAdd功能.
+         *   参数:interval,字符串表达式，表示要添加的时间间隔.
+         *   参数:number,数值表达式，表示要添加的时间间隔的个数.
+         *   参数:date,时间对象.
+         *   返回:新的时间对象.
+         *   var   now   =   new   Date();
+         *   var   newDate   =   DateAdd( "d ",5,now);
+         *---------------   DateAdd(interval,number,date)   -----------------
+         */
+        switch(interval)
+        {
+            case   "y "   :   {
+                date.setFullYear(date.getFullYear()+number);
+                return   date;
+                break;
+            }
+            case   "q "   :   {
+                date.setMonth(date.getMonth()+number*3);
+                return   date;
+                break;
+            }
+            case   "m "   :   {
+                date.setMonth(date.getMonth()+number);
+                return   date;
+                break;
+            }
+            case   "w "   :   {
+                date.setDate(date.getDate()+number*7);
+                return   date;
+                break;
+            }
+            case   "d "   :   {
+                date.setDate(date.getDate()+number);
+                return   date;
+                break;
+            }
+            case   "h "   :   {
+                date.setHours(date.getHours()+number);
+                return   date;
+                break;
+            }
+            case   "m "   :   {
+                date.setMinutes(date.getMinutes()+number);
+                return   date;
+                break;
+            }
+            case   "s "   :   {
+                date.setSeconds(date.getSeconds()+number);
+                return   date;
+                break;
+            }
+            default   :   {
+                date.setDate(d.getDate()+number);
+                return   date;
+                break;
+            }
+        }
+    }
+</script>
+<style>
+    .text-danger {
+        display: none;
+    }
+</style>
+<?php echo $footer_page; ?>

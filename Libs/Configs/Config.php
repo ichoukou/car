@@ -26,7 +26,7 @@ $_config['DB'] = [
     'true' => [
         'db_type'     => 'PdoMySQL',
         'db_host'     => '127.0.0.1',
-        'db_name'     => 'jy',
+        'db_name'     => 'car',
         'db_username' => 'root',
         'db_password' => 'root',
         'db_port'     => '3306',
@@ -68,7 +68,7 @@ $_config['log'] = [
  * user_type: 用于判断用户是前台登录还是后台登录
  */
 $_config['session'] = [
-    'save_type'       => 2,
+    'save_type'       => 1,
     'expiration_time' => 1800,
     'session_name'    => 'MY_PHPSESSID',
     'user_type'       => 'front',

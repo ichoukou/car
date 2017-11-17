@@ -19,6 +19,16 @@ class ValidateLogin
         }
     }
 
+    public function is_verder_login($config)
+    {
+        if (empty($_SESSION['vender_id'])) {
+            return false;
+        } else {
+            $db = new SessionDbModel($config);
+            return $db->validate_vender_login($_SESSION['vender_id']);
+        }
+    }
+
     public function is_admin_login($config)
     {
         if (empty($_SESSION['admin_id'])) {

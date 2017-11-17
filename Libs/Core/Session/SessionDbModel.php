@@ -58,6 +58,8 @@ class SessionDbModel extends DbFactory
 
         if ($this->config['user_type'] == 'admin') {
             $uid = $arr_data['admin_id'] ?: 0;
+        } elseif($this->config['user_type'] == 'vender'){
+            $uid = $arr_data['vender_id'] ?: 0;
         } else {
             $uid = $arr_data['uid'] ?: 0;
         }
@@ -123,6 +125,37 @@ class SessionDbModel extends DbFactory
 
                 if (!empty($session_info['session_id'])) {
                     return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function validate_vender_login($vender)
+    {
+        $get_vender_sql = "SELECT vender_id FROM " . self::$dp . "vender WHERE `vender_id` = :vender_id";
+
+        $vender_info = self::$db->get_one($get_vender_sql, ['vender_id'=>$vender]);
+
+        if (!empty($vender_info['vender_id'])) {
+            if ($this->config['save_type'] == 2) {
+                $get_session_sql = " SELECT session_id,expiration_time FROM " . self::$dp . "session_info WHERE `session_id` = :session_id AND `uid` = :uid";
+
+                $session_info = self::$db->get_one($get_session_sql, ['uid'=>$vender, 'session_id'=>session_id()]);
+
+                if (!empty($session_info['session_id'])) {
+                    if (strtotime($session_info['expiration_time']) + $this->expiration_time > time()) {
+                        return true;
+                    } else {
+//                        $del_sql = " DELETE FROM " . self::$dp . "session_info WHERE `session_id` = :session_id AND `uid` = :uid";
+//                        self::$db->delete($del_sql, ['uid'=>$admin, 'session_id'=>session_id()]);
+                        return false;
+                    }
                 } else {
                     return false;
                 }

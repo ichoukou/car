@@ -5,9 +5,12 @@
 
 require_once 'AipOcr.php';
 
-const APP_ID = '10370055';
-const API_KEY = 'iOGc3jS4CPyq64BVss27Uuq3';
-const SECRET_KEY = '3ljHcuWmw56h7qIk7kEHKFILXV68BtnH';
+//const APP_ID = '10370055';
+//const API_KEY = 'iOGc3jS4CPyq64BVss27Uuq3';
+//const SECRET_KEY = '3ljHcuWmw56h7qIk7kEHKFILXV68BtnH';
+const APP_ID = '10376062';
+const API_KEY = 'aKPVvLlnx1uiPtGQ4oUd7RV3';
+const SECRET_KEY = 'jVscvETAswCo7KSoUiaiPHMS6Bz0PKFZ';
 
 $aipOcr = new AipOcr(APP_ID, API_KEY, SECRET_KEY);
 

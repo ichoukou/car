@@ -1,53 +1,5 @@
-其他:
-http://rango.swoole.com/?s=mysql rango的微博 搜strace看各种调试方法
+百度：
+https://login.bce.baidu.com/
+13361076388 / jinanchina5200
 
 
-http://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316692.html strace命令
-
-
-http://www.cnblogs.com/JohnABC/p/5680470.html strace使用心得
-
-
-
-
-
-
-swoole相关：
-http://www.tuicool.com/articles/Y3QZV3A swoole使用mysql
-
-
-https://github.com/swoole/framework/blob/master/libs/Swoole/Database/MySQLi.php swoole framework地址
-
-
-http://wiki.swoole.com/wiki/page/350.html MySQL的连接池、异步、断线重连
-
-
-http://wiki.swoole.com/wiki/page/325.html 是否可以共用1个redis或mysql连接
-
-
-http://rango.swoole.com/archives/288 异步mysql学习
-
-
-http://wiki.swoole.com/wiki/page/517.html 官网异步mysql
-
-
-
-mysql-wordbench
-http://blog.csdn.net/jgirl_333/article/details/48575281
-https://zhidao.baidu.com/question/920019256372991739.html
-
-
-http://gold.hexun.com/hjxh/
-http://www.dyhjw.com/dyhjw/etf.html
-
-flv.js
-
-
-图标地址：
-http://www.thinkcmf.com/font/icons#web-application
-
-日期插件：
-http://www.bootcss.com/p/bootstrap-datetimepicker/
-
-日期插件 3.1.3说明：
-http://www.jb51.net/article/99896.htm

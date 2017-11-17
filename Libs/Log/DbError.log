@@ -1,0 +1,24 @@
+
+[2017-11-17 03:09:05] ERROR File:/var/www/car/Libs/Core/DbFactory.php
+[2017-11-17 03:09:05] ERROR Line:31
+[2017-11-17 03:09:05] ERROR Func:__construct
+[2017-11-17 03:09:05] ERROR Sql :Array
+[2017-11-17 03:09:05] ERROR Mess:SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+
+[2017-11-17 03:09:06] ERROR File:/var/www/car/Libs/Core/DbFactory.php
+[2017-11-17 03:09:06] ERROR Line:31
+[2017-11-17 03:09:06] ERROR Func:__construct
+[2017-11-17 03:09:06] ERROR Sql :Array
+[2017-11-17 03:09:06] ERROR Mess:SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+
+[2017-11-17 03:09:07] ERROR File:/var/www/car/Libs/Core/DbFactory.php
+[2017-11-17 03:09:07] ERROR Line:31
+[2017-11-17 03:09:07] ERROR Func:__construct
+[2017-11-17 03:09:07] ERROR Sql :Array
+[2017-11-17 03:09:07] ERROR Mess:SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+
+[2017-11-17 03:09:07] ERROR File:/var/www/car/Libs/Core/DbFactory.php
+[2017-11-17 03:09:07] ERROR Line:31
+[2017-11-17 03:09:07] ERROR Func:__construct
+[2017-11-17 03:09:07] ERROR Sql :Array
+[2017-11-17 03:09:07] ERROR Mess:SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)

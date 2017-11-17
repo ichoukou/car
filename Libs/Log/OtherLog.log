@@ -1,0 +1,52 @@
+
+[2017-11-17 03:09:05] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>31</b>
+
+[2017-11-17 03:09:06] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>31</b>
+
+[2017-11-17 03:09:07] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>31</b>
+
+[2017-11-17 03:09:07] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>31</b>
+
+[2017-11-17 03:09:52] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:09:52] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:09:52] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:09:52] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:09:53] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:09:53] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:10:35] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:10:35] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:10:35] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:10:35] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:10:35] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:10:35] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:10:35] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:10:35] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:43:11] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:43:11] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:43:11] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:43:11] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:43:11] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:43:11] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:43:12] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 03:43:12] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>

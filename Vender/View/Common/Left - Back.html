@@ -1,0 +1,414 @@
+<nav id="column-left">
+    <div id="profile">
+        <div>
+            <i class="fa fa-opencart"></i>
+        </div>
+        <div>
+            <h4><?php echo $session_info['admin_name']; ?></h4>
+            <small>超级管理员群组</small></div>
+    </div>
+    <ul id="menu">
+        <li id="menu-dashboard">
+            <a href="<?php echo $entrance; ?>route=Admin/Home/Home"><i class="fa fa-dashboard fw"></i> <span>首页</span></a>
+        </li>
+        <li id="menu-catalog">
+            <a class="parent"><i class="fa fa-tags fw"></i> <span>商品目录</span></a>
+            <ul class="">
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=catalog/category&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">商品分类</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=catalog/product&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">商品管理</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=catalog/recurring&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">分期付款</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=catalog/filter&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">筛选</a>
+                </li>
+                <li>
+                    <a class="parent">属性</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=catalog/attribute&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">属性</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=catalog/attribute_group&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">属性组</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=catalog/option&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">选项</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=catalog/manufacturer&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">制造商/品牌</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=catalog/download&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">下载文件管理</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=catalog/review&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">评论</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=catalog/information&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">文章管理</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=catalog/url_alias&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">SEO URL 管理</a>
+                </li>
+            </ul>
+        </li>
+        <li id="menu-cms">
+            <a class="parent"><i class="fa fa-newspaper-o fw"></i> <span>内容管理</span></a>
+            <ul class="">
+                <li>
+                    <a class="parent">新闻</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=cms/press_category&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">新闻分类</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=cms/press&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">新闻</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=cms/press_config&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">新闻设置</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="parent">博客</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=cms/blog_category&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">博客分类</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=cms/blog&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">博客</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=cms/blog_comment&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">博客评论</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=cms/blog_config&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">博客设置</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="parent">常见问题与解答</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=cms/faq_category&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">常见问题分类</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=cms/faq&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">常见问题与解答</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=cms/faq_config&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">常见问题设置</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li id="menu-extension">
+            <a class="parent"><i class="fa fa-puzzle-piece fw"></i> <span>扩展功能</span></a>
+            <ul class="">
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=extension/installer&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">安装扩展功能</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=extension/extension&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">扩展功能</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=extension/modification&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">代码调整</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=extension/event&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">事件</a>
+                </li>
+            </ul>
+        </li>
+        <li id="menu-design">
+            <a class="parent"><i class="fa fa-television fw"></i> <span>规划设计</span></a>
+            <ul class="">
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=design/layout&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">布局排版</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=design/banner&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">横幅广告</a>
+                </li>
+            </ul>
+        </li>
+        <li id="menu-sale">
+            <a class="parent"><i class="fa fa-shopping-cart fw"></i> <span>销售管理</span></a>
+            <ul class="">
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=sale/order&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">订单管理</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=sale/recurring&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">分期付款</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=sale/return&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">商品退换</a>
+                </li>
+                <li>
+                    <a class="parent">礼品券</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=sale/voucher&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">礼品券</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=sale/voucher_theme&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">礼品券主题</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li id="menu-customer">
+            <a class="parent"><i class="fa fa-user fw"></i> <span>会员</span></a>
+            <ul class="">
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=customer/customer&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">会员</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=customer/customer_group&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">会员等级</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=customer/custom_field&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">自定义字段</a>
+                </li>
+            </ul>
+        </li>
+        <li id="menu-marketing">
+            <a class="parent"><i class="fa fa-share-alt fw"></i> <span>市场推广</span></a>
+            <ul class="">
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=marketing/marketing&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">市场推广</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=marketing/affiliate&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">推广会员</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=marketing/coupon&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">折扣券</a>
+                </li>
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=marketing/contact&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">邮件通知</a>
+                </li>
+            </ul>
+        </li>
+        <li id="menu-baidu">
+            <a class="parent"><i class="fa fa-search fw"></i> <span>百度推广</span></a>
+            <ul class="">
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=baidu/pushurl&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">百度URL提交</a>
+                </li>
+            </ul>
+        </li>
+        <li id="menu-system">
+            <a class="parent"><i class="fa fa-cog fw"></i> <span>系统设置</span></a>
+            <ul class="">
+                <li>
+                    <a href="http://local.cncart.com/admin/index.php?route=setting/store&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">网店设置</a>
+                </li>
+                <li>
+                    <a class="parent">管理员管理</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=user/user&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">管理员管理</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=user/user_permission&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">管理员群组</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=user/api&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">API 接口</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="parent">参数设置</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/location&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">线下商店</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/language&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">语言设置</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/currency&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">货币</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/stock_status&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">库存状态</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/order_status&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">订单状态</a>
+                        </li>
+                        <li>
+                            <a class="parent">商品退换</a>
+                            <ul class="collapse">
+                                <li><a href="http://local.cncart.com/admin/index.php?route=localisation/return_status&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">退换状态</a></li>
+                                <li><a href="http://local.cncart.com/admin/index.php?route=localisation/return_action&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">退换操作</a></li>
+                                <li><a href="http://local.cncart.com/admin/index.php?route=localisation/return_reason&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">退换原因</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/country&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">国家</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/zone&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">州/省/地区设置</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/city&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">城市</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/district&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">区县</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/geo_zone&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">区域群组</a>
+                        </li>
+                        <li>
+                            <a class="parent">商品税种</a>
+                            <ul class="collapse">
+                                <li><a href="http://local.cncart.com/admin/index.php?route=localisation/tax_class&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">稅率类別</a></li>
+                                <li><a href="http://local.cncart.com/admin/index.php?route=localisation/tax_rate&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">税率</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/length_class&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">尺寸单位</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=localisation/weight_class&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">重量单位</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="parent">工具</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=tool/upload&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">上传文件</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=tool/backup&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">备份 / 恢复</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=tool/log&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">错误日志</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=tool/excelexportimport&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">Excel导入导出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li id="menu-report">
+            <a class="parent"><i class="fa fa-bar-chart-o fw"></i> <span>报告</span></a>
+            <ul class="">
+                <li>
+                    <a class="parent">销售</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/sale_order&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">销售订单</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/sale_tax&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">税种统计</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/sale_shipping&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">配送报告</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/sale_return&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">退货报告</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/sale_coupon&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">折扣券报告</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="parent">商品</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/product_viewed&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">商品浏览统计</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/product_purchased&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">商品购买统计</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="parent">会员</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/customer_online&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">在线会员</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/customer_activity&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">会员活动</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/customer_search&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">会员检索</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/customer_order&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">会员订单统计</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/customer_reward&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">奖励积分统计</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/customer_credit&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">账户余额</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="parent">市场推广统计</a>
+                    <ul class="collapse">
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/marketing&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">市场推广统计</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/affiliate&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">加盟佣金统计</a>
+                        </li>
+                        <li>
+                            <a href="http://local.cncart.com/admin/index.php?route=report/affiliate_activity&amp;token=WhIaiiMIL7TArmwSm4TRsa7ADxN9yRQC">加盟会员活动</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div id="stats">
+        <ul>
+            <li>
+                <div>
+                    已完成订单
+                    <span class="pull-right">
+                        0%
+                    </span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $complete_status; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $complete_status; ?>%">
+                        <span class="sr-only">0%</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    处理中订单
+                    <span class="pull-right">
+                        0%
+                    </span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<?php echo $processing_status; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $processing_status; ?>%">
+                        <span class="sr-only">0%</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    其他状态
+                    <span class="pull-right">
+                        0%
+                    </span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?php echo $other_status; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $other_status; ?>%">
+                        <span class="sr-only">0%</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

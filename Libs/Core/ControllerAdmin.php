@@ -60,8 +60,8 @@ class ControllerAdmin
         $this->data['entrance'] = $this->config['DEFAULT_ROUTE']['entrance'];
         $this->data['session_info'] = $_SESSION;
         $website = new WebsiteInfo();
-        $this->data['website_info'] = $website->get_website_info();
-        $this->data['statistics'] = $website->get_head_information_statistics();
+        $this->data['website_info'] = $website->get_admin_website_info();
+        #$this->data['statistics'] = $website->get_admin_head_information_statistics();
     }
 
     /**

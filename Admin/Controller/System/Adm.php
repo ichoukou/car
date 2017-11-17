@@ -78,7 +78,6 @@ class Adm extends Controller
                 exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
             }
         }
-        var_dump('aaa');
     }
 
     public function edit_adm()
