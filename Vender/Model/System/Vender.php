@@ -102,7 +102,6 @@ class Vender extends DbFactory
             $conditions['password'] = $password;
         }
 
-
         $update_sql = " UPDATE " . self::$dp . "vender SET `tel` = :tel, email = :email {$conditions_sql} WHERE `vender_id` = :vender_id";
 
         self::$db->update($update_sql, $conditions);

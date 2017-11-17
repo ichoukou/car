@@ -50,3 +50,5 @@
 [2017-11-17 03:43:12] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
 
 [2017-11-17 03:43:12] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-17 08:43:51] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>169</b>

@@ -196,6 +196,10 @@ class Vender extends Controller
             $post = C::hsc($_POST);
             $errors = [];
 
+            if (empty($post['vender_id'])) {
+                $errors ['other_error'] = '缺少管理员标识';
+            }
+
             #如果是超级管理员,选择的权限组不能为空
             if ($_SESSION['group'] == 1 and empty($post['group'])) {
                 $errors ['group'] = '请选择权限组';
