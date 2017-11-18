@@ -2,9 +2,9 @@
 /**
  * 公共方法类
  */
-namespace Front\Controller\Common;
+namespace Vender\Controller\Common;
 
-use Libs\Core\Controller AS Controller;
+use Libs\Core\ControllerVender AS Controller;
 use Libs\Core\Model as M;
 use Libs\ExtendsClass\ShareInterface AS Share;
 use Libs\ExtendsClass\WxCommon AS Wx;

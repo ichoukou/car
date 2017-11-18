@@ -12,7 +12,7 @@ use Libs\Core\Session;
 final class init
 {
     #初始化
-    public function __construct($_config)
+    public function __construct($_config, $entrance)
     {
         #错误处理
         set_error_handler(array($this,'_error_handler'));
@@ -38,7 +38,7 @@ final class init
 
         #路由器
         $route = new Route();
-        $route->controller($_config);
+        $route->controller($_config, $entrance);
     }
 
     #自动加载

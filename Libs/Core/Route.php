@@ -15,7 +15,7 @@ class Route
      *
      * @return Null
      */
-    public function controller($config)
+    public function controller($config, $entrance)
     {
         #如果没有路由参数，找配置文件对应的目录下的默认控制器，否则根据参数匹配控制器
         if (empty($_GET['route']) or strpos($_SERVER["QUERY_STRING"],'/') === false) {
@@ -52,8 +52,12 @@ class Route
             $controller = ucfirst($controller);
             $method = lcfirst($method) ?: $config['DEFAULT_ROUTE']['method'];
 
-            $path = $directory.DIRECTORY_SEPARATOR.'Controller'.DIRECTORY_SEPARATOR.$controller_directory.DIRECTORY_SEPARATOR.$controller;
+            if ($directory != $entrance) {
+                print('URL地址错误，正在处理，请稍等...<br>');
+                exit(header("refresh:3;url={$entrance}.php"));
+            }
 
+            $path = $directory.DIRECTORY_SEPARATOR.'Controller'.DIRECTORY_SEPARATOR.$controller_directory.DIRECTORY_SEPARATOR.$controller;
             if (is_file(ROOT_PATH.$path.'.php')) {
                 $path = str_replace('/','\\',$path);
                 $cls = new $path($config);

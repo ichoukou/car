@@ -28,15 +28,15 @@
 
 						<form action="" method="post" enctype="multipart/form-data" id="form_info">
 							<div class="form-group">
-								<label for="input-username"><?php echo $entry_username; ?></label>
+								<label for="input-tel">手机号</label>
 								<div class="input-group"><span class="input-group-addon"><i class="fa fa-user"></i></span>
-									<input type="text" name="username" value="" placeholder="用户名" id="input-username" class="form-control" />
+									<input type="text" name="tel" value="" placeholder="手机号" id="input-tel" class="form-control" maxlength="15"/>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="input-password"><?php echo $entry_password; ?></label>
+								<label for="input-password">密码</label>
 								<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock"></i></span>
-									<input type="password" name="password" value="" placeholder="密码" id="input-password" class="form-control" />
+									<input type="password" name="password" value="" placeholder="密码" id="input-password" class="form-control" maxlength="15"/>
 								</div>
 
 								<span class="help-block" style="display: none;"><a href="">忘记密码?</a></span>
@@ -74,15 +74,15 @@
 
 	var is_click = false;
 	function submit_info () {
-
 		if (is_click) return false;
 		is_click = true;
 
         var password = st.sha1($("input[name=password]").val());
 
-        st.get('<?php echo $entrance; ?>route=Vender/Account/Account/do_login', {username:$("input[name=username]").val(),password:password}, function(data){
+        st.get('<?php echo $entrance; ?>route=Vender/Account/Account/do_login', {tel:$("input[name=tel]").val(),password:password}, function(data){
             if (data.status == -1) {
 				$('.alert-danger').fadeIn();
+				$('.alert-success').fadeOut();
 				$('.help-block').fadeIn();
 				$('#error_info').html(data.result);
 				is_click = false;

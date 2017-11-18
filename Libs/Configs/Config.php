@@ -12,11 +12,16 @@ define('HTTP_SERVER', "http://{$_SERVER['HTTP_HOST']}/");
 define('ROOT_PATH', dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR);
 define('ASSETS_SERVER', HTTP_SERVER."Libs" . DIRECTORY_SEPARATOR."Assets" . DIRECTORY_SEPARATOR);
 define('DIR_IMAGE', ROOT_PATH."Image" . DIRECTORY_SEPARATOR);
+define('URL_IMAGE', HTTP_SERVER . 'Image' . DIRECTORY_SEPARATOR);
+define('URL_IMAGE_CACHE', HTTP_SERVER . 'Image' . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR);
+define('URL_IMAGE_CACHE_WITH', 100);
+define('URL_IMAGE_CACHE_HEIGHT', 100);
+define('NO_IMAGE', HTTP_SERVER . 'image/cache/no_image-100x100.png');
 
 $_config = [];
 
 $_config['DEFAULT_ROUTE'] = [
-    'path'   => 'Front\Index\Home',
+    'path'   => 'Front\Home\Home',
     'method' => 'index',
     'entrance' => 'index.php?'
 ];
@@ -30,16 +35,16 @@ $_config['DB'] = [
         'db_username' => 'root',
         'db_password' => 'root',
         'db_port'     => '3306',
-        'db_prefix'   => 'jy_',
+        'db_prefix'   => 'website_',
     ],
     'false' => [
         'db_type'     => 'MySQLi',
         'db_host'     => '127.0.0.1',
-        'db_name'     => 'jy',
+        'db_name'     => 'bb',
         'db_username' => 'root',
         'db_password' => 'root',
         'db_port'     => '3306',
-        'db_prefix'   => 'jy_',
+        'db_prefix'   => 'website_',
     ]
 ];
 
@@ -62,7 +67,7 @@ $_config['log'] = [
 /**
  * session配置
  *
- * save_type: session存储类型,目前支持　1、原生存储方式(请修改配置文件　session.save_handler = User) 2、数据库存储方式(请修改配置文件　session.save_handler = files)
+ * save_type: session存储类型,目前支持　1、原生存储方式(请修改配置文件　session.save_handler = Files) 2、数据库存储方式(请修改配置文件　session.save_handler = User)
  * expiration_time: session过期时间,单位秒
  * session_name: 保存在客户端cookie的名称,如果是默认的存储方式,必须与php.ini配置文件的session.name相同
  * user_type: 用于判断用户是前台登录还是后台登录
@@ -70,6 +75,6 @@ $_config['log'] = [
 $_config['session'] = [
     'save_type'       => 1,
     'expiration_time' => 1800,
-    'session_name'    => 'MY_PHPSESSID',
-    'user_type'       => 'front',
+    'session_name'    => 'MY_USER_PHPSESSID',
+    'user_type'       => 'user',
 ];

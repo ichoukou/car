@@ -40,7 +40,7 @@ class Common extends DbFactory
             }
         }
 
-        $result = '';
+        $result = [];
         if (!empty($setting_category)) {
             foreach ($setting_category as $setting_category_id=>$category) {
                 $setting_sql = "SELECT * FROM ".self::$dp."setting WHERE `setting_category_id` = :setting_category_id AND `deleted` = 1 ORDER BY sort DESC ";

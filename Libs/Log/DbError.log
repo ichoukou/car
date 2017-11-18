@@ -28,3 +28,9 @@
 [2017-11-17 08:43:51] ERROR Func:update
 [2017-11-17 08:43:51] ERROR Sql : UPDATE website_company SET  numbering = :numbering, name = :name, type = :type, address = :address,  legal_person = :legal_person, registered_capital = :registered_capital,  date_time = :date_time, operating_period = :operating_period   WHERE `company_id` = :company_id
 [2017-11-17 08:43:51] ERROR Mess:SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+
+[2017-11-18 15:04:49] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Admin\Model\Teaching\Teaching.php
+[2017-11-18 15:04:49] ERROR Line:209
+[2017-11-18 15:04:49] ERROR Func:get_all
+[2017-11-18 15:04:49] ERROR Sql :SELECT t.*,u.parent_name,u.tel,uc.card_number,b.name,s.value,s.times FROM website_teaching AS t   LEFT JOIN website_user AS u ON t.user_id = u.user_id  LEFT JOIN website_user_baby AS b ON t.baby_id = b.baby_id  LEFT JOIN website_user_card AS uc ON t.user_card_id = uc.user_card_id  LEFT JOIN website_setting AS s ON t.setting_id = s.setting_id  WHERE t.`deleted` = 1  ORDER BY t.teaching_id DESC LIMIT :start,:limit 
+[2017-11-18 15:04:49] ERROR Mess:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_user_baby' doesn't exist

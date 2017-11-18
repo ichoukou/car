@@ -19,13 +19,23 @@ class ValidateLogin
         }
     }
 
-    public function is_verder_login($config)
+    public function is_company_login($config)
     {
-        if (empty($_SESSION['vender_id'])) {
+        if (empty($_SESSION['company_id'])) {
             return false;
         } else {
             $db = new SessionDbModel($config);
-            return $db->validate_vender_login($_SESSION['vender_id']);
+            return $db->validate_company_login($_SESSION['company_id']);
+        }
+    }
+
+    public function is_front_login($config)
+    {
+        if (empty($_SESSION['user_id'])) {
+            return false;
+        } else {
+            $db = new SessionDbModel($config);
+            return $db->validate_user_login($_SESSION['user_id']);
         }
     }
 

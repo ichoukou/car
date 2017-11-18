@@ -52,3 +52,93 @@
 [2017-11-17 03:43:12] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\System\Website' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
 
 [2017-11-17 08:43:51] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>169</b>
+
+[2017-11-18 09:39:04] ERROR Mess:<b>Warning</b>: Illegal string offset 'setting_user_group' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Common\Common.php</b> on line <b>51</b>
+
+[2017-11-18 09:41:21] ERROR Mess:<b>Warning</b>: Illegal string offset 'setting_user_group' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Common\Common.php</b> on line <b>51</b>
+
+[2017-11-18 09:42:33] ERROR Mess:<b>Warning</b>: Illegal string offset 'setting_user_group' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Common\Common.php</b> on line <b>51</b>
+
+[2017-11-18 09:42:34] ERROR Mess:<b>Warning</b>: Illegal string offset 'setting_user_group' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Common\Common.php</b> on line <b>51</b>
+
+[2017-11-18 09:42:34] ERROR Mess:<b>Warning</b>: Illegal string offset 'setting_user_group' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Common\Common.php</b> on line <b>51</b>
+
+[2017-11-18 09:48:04] ERROR Mess:<b>Warning</b>: Illegal string offset 'setting_user_group' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Common\Common.php</b> on line <b>49</b>
+
+[2017-11-18 09:48:08] ERROR Mess:<b>Warning</b>: Illegal string offset 'setting_user_group' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Common\Common.php</b> on line <b>49</b>
+
+[2017-11-18 09:48:18] ERROR Mess:<b>Warning</b>: Illegal string offset 'setting_user_group' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Common\Common.php</b> on line <b>49</b>
+
+[2017-11-18 09:48:19] ERROR Mess:<b>Warning</b>: Illegal string offset 'setting_user_group' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Common\Common.php</b> on line <b>49</b>
+
+[2017-11-18 09:48:46] ERROR Mess:<b>Warning</b>: Illegal string offset 'setting_user_group' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Common\Common.php</b> on line <b>49</b>
+
+[2017-11-18 10:37:33] ERROR Mess:<b>Warning</b>: in_array() expects parameter 2 to be array, string given in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\ExtendsClass\Common.php</b> on line <b>406</b>
+
+[2017-11-18 10:37:33] ERROR Mess:<b>Warning</b>: in_array() expects parameter 2 to be array, string given in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\ExtendsClass\Common.php</b> on line <b>406</b>
+
+[2017-11-18 10:37:34] ERROR Mess:<b>Warning</b>: in_array() expects parameter 2 to be array, string given in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\ExtendsClass\Common.php</b> on line <b>406</b>
+
+[2017-11-18 10:37:34] ERROR Mess:<b>Warning</b>: in_array() expects parameter 2 to be array, string given in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\ExtendsClass\Common.php</b> on line <b>406</b>
+
+[2017-11-18 11:12:36] ERROR Mess:<b>Warning</b>: Error: The 'resister' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>62</b>
+
+[2017-11-18 11:41:44] ERROR Mess:<b>Warning</b>: Error: The 'index' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>62</b>
+
+[2017-11-18 14:04:25] ERROR Mess:<b>Warning</b>: strpos() expects parameter 1 to be string, array given in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\Model\Account\Account.php</b> on line <b>29</b>
+
+[2017-11-18 14:20:14] ERROR Mess:<b>Warning</b>: Error: The 'resister' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>62</b>
+
+[2017-11-18 14:41:32] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender/Controller/Account/AipOcr.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-18 14:41:33] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender/Controller/Account/AipOcr.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-18 14:41:58] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/ExtendsClass/BaiduOcr/AipBase.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-18 14:41:58] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/ExtendsClass/BaiduOcr/AipBase.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-18 14:41:59] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/ExtendsClass/BaiduOcr/AipBase.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-18 14:41:59] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/ExtendsClass/BaiduOcr/AipBase.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-18 14:41:59] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/ExtendsClass/BaiduOcr/AipBase.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-18 14:44:14] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender/Controller/Account/AipOcr.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-18 14:44:15] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender/Controller/Account/AipOcr.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-18 14:44:15] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender/Controller/Account/AipOcr.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-18 15:04:49] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_user_baby' doesn't exist in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-18 15:22:38] ERROR Mess:<b>Warning</b>: Error: The 'aaa' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>67</b>
+
+[2017-11-18 15:24:40] ERROR Mess:<b>Warning</b>: Error: The 'index' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>67</b>
+
+[2017-11-18 15:24:42] ERROR Mess:<b>Warning</b>: Error: The 'index' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>67</b>
+
+[2017-11-18 15:24:43] ERROR Mess:<b>Warning</b>: Error: The 'index' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>67</b>
+
+[2017-11-18 15:24:44] ERROR Mess:<b>Warning</b>: Error: The 'index' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>67</b>
+
+[2017-11-18 15:55:54] ERROR Mess:<b>Warning</b>: Error: Default Class Not Found in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>33</b>
+
+[2017-11-18 15:55:55] ERROR Mess:<b>Warning</b>: Error: Default Class Not Found in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>33</b>
+
+[2017-11-18 15:55:55] ERROR Mess:<b>Warning</b>: Error: Default Class Not Found in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>33</b>
+
+[2017-11-18 15:55:55] ERROR Mess:<b>Warning</b>: Error: Default Class Not Found in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>33</b>
+
+[2017-11-18 15:57:09] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-18 15:57:10] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-18 15:57:10] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-18 15:57:56] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-18 15:57:56] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-18 15:57:57] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-18 15:58:01] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>

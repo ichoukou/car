@@ -71,7 +71,7 @@ class ControllerVender
     {
         $validate_login = new ValidateLogin();
 
-        $bool = $validate_login->is_verder_login($this->config['session']);
+        $bool = $validate_login->is_company_login($this->config['session']);
 
         if (!$bool) {
             if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) and strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {

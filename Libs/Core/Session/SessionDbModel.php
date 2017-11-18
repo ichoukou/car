@@ -136,17 +136,48 @@ class SessionDbModel extends DbFactory
         }
     }
 
-    public function validate_vender_login($vender)
+    public function validate_user_login($user)
     {
-        $get_vender_sql = "SELECT vender_id FROM " . self::$dp . "vender WHERE `vender_id` = :vender_id";
+        $get_user_sql = "SELECT user_id FROM " . self::$dp . "user WHERE `user_id` = :user_id";
 
-        $vender_info = self::$db->get_one($get_vender_sql, ['vender_id'=>$vender]);
+        $user_info = self::$db->get_one($get_user_sql, ['user_id'=>$user]);
 
-        if (!empty($vender_info['vender_id'])) {
+        if (!empty($user_info['user_id'])) {
             if ($this->config['save_type'] == 2) {
                 $get_session_sql = " SELECT session_id,expiration_time FROM " . self::$dp . "session_info WHERE `session_id` = :session_id AND `uid` = :uid";
 
-                $session_info = self::$db->get_one($get_session_sql, ['uid'=>$vender, 'session_id'=>session_id()]);
+                $session_info = self::$db->get_one($get_session_sql, ['uid'=>$user_info, 'session_id'=>session_id()]);
+
+                if (!empty($session_info['session_id'])) {
+                    if (strtotime($session_info['expiration_time']) + $this->expiration_time > time()) {
+                        return true;
+                    } else {
+//                        $del_sql = " DELETE FROM " . self::$dp . "session_info WHERE `session_id` = :session_id AND `uid` = :uid";
+//                        self::$db->delete($del_sql, ['uid'=>$admin, 'session_id'=>session_id()]);
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function validate_company_login($company)
+    {
+        $get_company_sql = "SELECT company_id FROM " . self::$dp . "company WHERE `company_id` = :company_id";
+
+        $company_info = self::$db->get_one($get_company_sql, ['company_id'=>$company]);
+
+        if (!empty($company_info['company_id'])) {
+            if ($this->config['save_type'] == 2) {
+                $get_session_sql = " SELECT session_id,expiration_time FROM " . self::$dp . "session_info WHERE `session_id` = :session_id AND `uid` = :uid";
+
+                $session_info = self::$db->get_one($get_session_sql, ['uid'=>$company_info, 'session_id'=>session_id()]);
 
                 if (!empty($session_info['session_id'])) {
                     if (strtotime($session_info['expiration_time']) + $this->expiration_time > time()) {
