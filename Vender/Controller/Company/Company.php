@@ -13,7 +13,7 @@ class Company extends Controller
     {
         $this->is_login();
 
-        $this->data['settings'] = M::Vender('Common\\Common', 'getSettings', ['module'=>'user']);
+        #$this->data['settings'] = M::Vender('Common\\Common', 'getSettings', ['module'=>'user']);
         $page_config = M::Vender('Common\\Common', 'getConfigs', ['module'=>'page']);
         $this->data['company_info'] = M::Vender('Company\\Company', 'findCompanyBySession');
 
@@ -44,7 +44,7 @@ class Company extends Controller
         setcookie('success_info', '', -1);
 
         $this->data['error_info'] = $_COOKIE['error_info'];
-        setcookie('error_inVender/Controller/Company/Company.phpfo', '', -1);
+        setcookie('error_info', '', -1);
 
         $this->data['search_url'] = "{$this->data['entrance']}route=Vender/Company/Company";
 
@@ -64,7 +64,7 @@ class Company extends Controller
         if ($company_info['pid'] != 0)
             exit(header("location:{$this->data['entrance']}route=Vender/Company/Company{$this->data['url']}"));
 
-        $this->data['settings'] = M::Vender('Common\\Common', 'getSettings', ['module'=>'user']);
+        #$this->data['settings'] = M::Vender('Common\\Common', 'getSettings', ['module'=>'user']);
 
         $this->create_page();
 
@@ -108,7 +108,7 @@ class Company extends Controller
             exit(header("location:{$this->data['entrance']}route=Vender/Company/Company{$this->data['url']}"));
         }
 
-        $this->data['settings'] = M::Vender('Common\\Common', 'getSettings', ['module'=>'user']);
+        #$this->data['settings'] = M::Vender('Common\\Common', 'getSettings', ['module'=>'user']);
 
         $this->data['company_info'] = $info;
 
@@ -180,6 +180,8 @@ class Company extends Controller
 
     public function validate_default()
     {
+        $this->is_login();
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $post = C::hsc($_POST);
             $errors = [];
@@ -251,6 +253,8 @@ class Company extends Controller
 
     public function validate_edit()
     {
+        $this->is_login();
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $post = C::hsc($_POST);
             $errors = [];

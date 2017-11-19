@@ -11,7 +11,7 @@
  Target Server Version : 100128
  File Encoding         : 65001
 
- Date: 18/11/2017 23:37:42
+ Date: 19/11/2017 23:03:54
 */
 
 SET NAMES utf8mb4;
@@ -40,7 +40,7 @@ CREATE TABLE `website_admin`  (
 -- ----------------------------
 -- Records of website_admin
 -- ----------------------------
-INSERT INTO `website_admin` VALUES (1, 'superadmin', 'db1c91a1dec1865c9c3e519c1de442afaa4fa778', 'vQ5N4kMrlS', 1, '13656480135', '403520515@qq.com', '2017-11-18 15:13:36', 1, '2017-04-28 16:01:32');
+INSERT INTO `website_admin` VALUES (1, 'superadmin', 'db1c91a1dec1865c9c3e519c1de442afaa4fa778', 'vQ5N4kMrlS', 1, '13656480135', '403520515@qq.com', '2017-11-19 15:38:55', 1, '2017-04-28 16:01:32');
 INSERT INTO `website_admin` VALUES (2, 'admin', 'c5937201355066b46610a18838425036e4f2ef52', 'gGSBezIQAI', 2, '18866830116', 'long83116@qq.com', '2017-05-24 16:18:08', 1, '2017-04-28 16:04:36');
 
 -- ----------------------------
@@ -348,7 +348,9 @@ CREATE TABLE `website_company`  (
   `operating_period` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '营业期限',
   `image_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '封面图地址',
   `score` int(11) NULL DEFAULT 0 COMMENT '评分',
+  `score_count` int(11) NULL DEFAULT 0 COMMENT '评分次数',
   `group` tinyint(4) NULL DEFAULT 0,
+  `status` tinyint(4) NULL DEFAULT 1 COMMENT '1审核通过 2待审核 3审核不通过',
   `password` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `salt` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `last_login_time` datetime(0) NULL DEFAULT NULL,
@@ -362,13 +364,9 @@ CREATE TABLE `website_company`  (
 -- ----------------------------
 -- Records of website_company
 -- ----------------------------
-INSERT INTO `website_company` VALUES (1, 0, '13656480135', 'CPY0000001', 'supercompany', '2', '3', '4', '5', '6', '7', NULL, 0, 0, 'cc554b52696c1cab6dde8fd8c034ea226e4e0a01', 'eY0ue2D5vV', '2017-11-18 14:34:18', 1, '2017-04-28 16:01:32');
-INSERT INTO `website_company` VALUES (2, 1, '13333333332', 'CPY0000002', 'company', '2', '3', '4', '5', '6', '7', NULL, 0, 0, 'cc554b52696c1cab6dde8fd8c034ea226e4e0a01', 'eY0ue2D5vV', '2017-11-18 11:10:32', 1, '2017-04-28 16:04:36');
-INSERT INTO `website_company` VALUES (3, 0, '13333333333', 'CPY0000003', 'test', '2', '3', '4', '5', '6', '7', NULL, 0, 0, 'cc554b52696c1cab6dde8fd8c034ea226e4e0a01', 'eY0ue2D5vV', '2017-11-18 11:11:46', 1, '2017-04-28 16:04:36');
-INSERT INTO `website_company` VALUES (4, 1, '13333333334', 'CPY0000004', 't1', '1', '1', '1', '1', '1', '1', NULL, 0, 0, 'cc554b52696c1cab6dde8fd8c034ea226e4e0a01', 'eY0ue2D5vV', '2017-11-18 11:10:49', 1, '2017-11-18 17:34:59');
-INSERT INTO `website_company` VALUES (5, 3, '13333333335', 'CPY0000005', '22', '33', '44', '55', '66', '77', '88', NULL, 0, 0, 'cc554b52696c1cab6dde8fd8c034ea226e4e0a01', 'eY0ue2D5vV', '2017-11-18 11:11:31', 1, '2017-11-18 17:47:56');
-INSERT INTO `website_company` VALUES (9, 0, '13666666666', 'CPY0000006', '1', '1', '1', '1', '1', '1', '1', NULL, 0, 0, '27bee50dc789a0389277ee95fa868a0ed36f2ab8', 'WqW44osPcs', '2017-11-18 14:29:06', 1, '2017-11-18 21:29:01');
-INSERT INTO `website_company` VALUES (11, 9, '13666666667', 'CPY0000007', '3', '1', '1', '1', '1', '1', '1', NULL, 0, 0, '36e603bb502f59bf09a4f2d18017b64b09a34eee', 'mvvzoZa2Xt', '2017-11-18 14:34:07', 1, '2017-11-18 21:30:42');
+INSERT INTO `website_company` VALUES (1, 0, '13656480135', 'CPY0000001', 'supercompany', '2', '3', '4', '5', '6', '7', NULL, 5, 2, 0, 1, 'cc554b52696c1cab6dde8fd8c034ea226e4e0a01', 'eY0ue2D5vV', '2017-11-19 13:52:51', 1, '2017-04-28 16:01:32');
+INSERT INTO `website_company` VALUES (3, 0, '13333333333', 'CPY0000003', 'test', '2', '3', '4', '5', '6', '7', NULL, 0, NULL, 0, 1, 'cc554b52696c1cab6dde8fd8c034ea226e4e0a01', 'eY0ue2D5vV', '2017-11-18 11:11:46', 1, '2017-04-28 16:04:36');
+INSERT INTO `website_company` VALUES (9, 0, '13666666666', 'CPY0000006', '1', '1', '1', '1', '1', '1', '1', NULL, 0, NULL, 0, 1, '27bee50dc789a0389277ee95fa868a0ed36f2ab8', 'WqW44osPcs', '2017-11-18 14:29:06', 1, '2017-11-18 21:29:01');
 
 -- ----------------------------
 -- Table structure for website_company_score
@@ -437,6 +435,31 @@ INSERT INTO `website_record` VALUES (3, 73, 1000.22, '测试的测试的测试�
 INSERT INTO `website_record` VALUES (4, 73, 324234.00, '', 1, '2017-04-25 10:30:35', '2017-04-25 10:30:35');
 INSERT INTO `website_record` VALUES (5, 73, 0.00, '', 1, '2017-04-25 10:30:42', '2017-04-25 10:30:42');
 INSERT INTO `website_record` VALUES (6, 73, 1.00, '', 1, '2017-04-25 10:31:28', '2017-04-25 10:31:28');
+
+-- ----------------------------
+-- Table structure for website_reservation
+-- ----------------------------
+DROP TABLE IF EXISTS `website_reservation`;
+CREATE TABLE `website_reservation`  (
+  `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
+  `company_id` int(11) NOT NULL COMMENT '被预约企业标识',
+  `user_id` int(11) NOT NULL DEFAULT 0 COMMENT '预约人标识',
+  `car_id` int(11) NOT NULL COMMENT '预约人车辆标识',
+  `reservation_time` datetime(0) NULL DEFAULT NULL COMMENT '预约时间',
+  `status` tinyint(4) NULL DEFAULT 1 COMMENT '1用户预约 2企业接待 3企业结算 4用户支付 5用户评价 6企业或用户取消当前预约',
+  `deleted` tinyint(4) NULL DEFAULT 1 COMMENT '是否删除 1未删除 2已删除',
+  `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`reservation_id`) USING BTREE,
+  UNIQUE INDEX `RESERVATION_ID`(`reservation_id`) USING BTREE,
+  INDEX `COMPANY_ID`(`company_id`) USING BTREE,
+  INDEX `USER_ID`(`user_id`) USING BTREE,
+  INDEX `CAR_ID`(`car_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_reservation
+-- ----------------------------
+INSERT INTO `website_reservation` VALUES (1, 1, 5, 4, '2017-12-12 10:11:00', 1, 1, '2017-11-19 22:01:35');
 
 -- ----------------------------
 -- Table structure for website_session_info
@@ -641,7 +664,47 @@ CREATE TABLE `website_user`  (
   `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`user_id`) USING BTREE,
   UNIQUE INDEX `USER_ID`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_user
+-- ----------------------------
+INSERT INTO `website_user` VALUES (5, '13666666666', 'USER0000001', '2e0c91d6ba239fb2150f53ef45d74b4c5122a09a', '0sIuh3GnA5', 1, '2017-11-19 15:45:59', '2017-11-19 13:29:16');
+INSERT INTO `website_user` VALUES (6, '13677777777', 'USER0000002', '0df29bc0cfc580a7f185e0569a1a4ade4d1dee7d', 'ij73dANNDb', 1, NULL, '2017-11-19 13:29:48');
+
+-- ----------------------------
+-- Table structure for website_user_car
+-- ----------------------------
+DROP TABLE IF EXISTS `website_user_car`;
+CREATE TABLE `website_user_car`  (
+  `car_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '用户标识',
+  `plate_number` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '号牌号码',
+  `car_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车辆类型',
+  `owner` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '所有人',
+  `address` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '住址',
+  `use_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '使用性质',
+  `brand_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '品牌型号',
+  `identification_number` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车辆识别代号',
+  `engine_number` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发动机号码',
+  `registration_date` datetime(0) NULL DEFAULT NULL COMMENT '注册日期',
+  `accepted_date` datetime(0) NULL DEFAULT NULL COMMENT '受理日期',
+  `file_number` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '档案编号',
+  `people_number` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '核定人数',
+  `total_mass` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '总质量',
+  `dimension` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '外观尺寸',
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
+  `deleted` tinyint(4) NULL DEFAULT 1 COMMENT '是否删除 1未删除 2已删除',
+  `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`car_id`) USING BTREE,
+  UNIQUE INDEX `CAR_ID`(`car_id`) USING BTREE,
+  INDEX `USER_ID`(`user_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_user_car
+-- ----------------------------
+INSERT INTO `website_user_car` VALUES (4, 5, '1', '1', '1', '1', '1', '2', '1', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', '1', '1', '1', '1', 1, '2017-11-19 13:29:16');
 
 -- ----------------------------
 -- Table structure for website_user_card
@@ -675,35 +738,6 @@ CREATE TABLE `website_user_card`  (
 -- ----------------------------
 INSERT INTO `website_user_card` VALUES (8, 13, 1, '201705080001', 56, 2999.00, 192, 2, '2017-05-08', '2019-05-08', 1, '2017-11-14 17:07:27', '2017-05-08 16:42:55');
 INSERT INTO `website_user_card` VALUES (9, 14, 2, '201705080002', 67, 9999.00, 197, 0, '2017-05-08', '2019-05-08', 1, '2017-05-09 16:08:45', '2017-05-08 16:43:06');
-
--- ----------------------------
--- Table structure for website_user_cars
--- ----------------------------
-DROP TABLE IF EXISTS `website_user_cars`;
-CREATE TABLE `website_user_cars`  (
-  `car_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL COMMENT '用户标识',
-  `plate_number` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '号牌号码',
-  `car_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车辆类型',
-  `owner` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '所有人',
-  `address` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '住址',
-  `use_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '使用性质',
-  `brand_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '品牌型号',
-  `identification_number` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车辆识别代号',
-  `engine_number` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发动机号码',
-  `registration_date` datetime(0) NULL DEFAULT NULL COMMENT '注册日期',
-  `accepted_date` datetime(0) NULL DEFAULT NULL COMMENT '受理日期',
-  `file_number` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '档案编号',
-  `people_number` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '核定人数',
-  `total_mass` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '总质量',
-  `dimension` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '外观尺寸',
-  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
-  `deleted` tinyint(4) NULL DEFAULT 1 COMMENT '是否删除 1未删除 2已删除',
-  `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  PRIMARY KEY (`car_id`) USING BTREE,
-  UNIQUE INDEX `CAR_ID`(`car_id`) USING BTREE,
-  INDEX `USER_ID`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for website_user_continued_card

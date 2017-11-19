@@ -1,5 +1,5 @@
 <?php
-namespace Vender\Model\Common;
+namespace Front\Model\Common;
 
 use Libs\Core\DbFactory AS DbFactory;
 use Libs\ExtendsClass\Common AS ExtendsCommon;

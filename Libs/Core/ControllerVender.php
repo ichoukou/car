@@ -51,7 +51,15 @@ class ControllerVender
             [
                 1 => '超级管理员',
                 2 => '管理员'
-            ]
+            ],
+        'reservation_status' => [
+            1 => '已预约',
+            2 => '已接待',
+            3 => '已结算',
+            4 => '已支付',
+            5 => '已评价',
+            6 => '已取消'
+        ]
     ];
 
     public function __construct($config)

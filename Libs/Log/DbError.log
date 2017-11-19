@@ -34,3 +34,111 @@
 [2017-11-18 15:04:49] ERROR Func:get_all
 [2017-11-18 15:04:49] ERROR Sql :SELECT t.*,u.parent_name,u.tel,uc.card_number,b.name,s.value,s.times FROM website_teaching AS t   LEFT JOIN website_user AS u ON t.user_id = u.user_id  LEFT JOIN website_user_baby AS b ON t.baby_id = b.baby_id  LEFT JOIN website_user_card AS uc ON t.user_card_id = uc.user_card_id  LEFT JOIN website_setting AS s ON t.setting_id = s.setting_id  WHERE t.`deleted` = 1  ORDER BY t.teaching_id DESC LIMIT :start,:limit 
 [2017-11-18 15:04:49] ERROR Mess:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_user_baby' doesn't exist
+
+[2017-11-19 06:13:41] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Account\Account.php
+[2017-11-19 06:13:41] ERROR Line:69
+[2017-11-19 06:13:41] ERROR Func:insert
+[2017-11-19 06:13:41] ERROR Sql :INSERT INTO website_user  (`password`,`salt`,`tel`,`numbering`,`plate_number`,`car_type`,`owner`,`address`,  `use_type`,`brand_type`,`identification_number`,`engine_number,`  `registration_date`,`accepted_date`,`file_number`,`people_number,`  `total_mass`,`dimension`,`description`  ) VALUES 
+[2017-11-19 06:13:41] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`registration_date`,`accepted_date`,`file_number`,`people_number,`  `total_mass`' at line 1
+
+[2017-11-19 06:14:48] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Account\Account.php
+[2017-11-19 06:14:48] ERROR Line:69
+[2017-11-19 06:14:48] ERROR Func:insert
+[2017-11-19 06:14:48] ERROR Sql :INSERT INTO website_user  (`password`,`salt`,`tel`,`numbering`,`plate_number`,`car_type`,`owner`,`address`,  `use_type`,`brand_type`,`identification_number`,`engine_number,`  `registration_date`,`accepted_date`,`file_number`,`people_number`,  `total_mass`,`dimension`,`description`)  VALUES 
+[2017-11-19 06:14:48] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`registration_date`,`accepted_date`,`file_number`,`people_number`,  `total_mass`' at line 1
+
+[2017-11-19 06:20:37] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Account\Account.php
+[2017-11-19 06:20:37] ERROR Line:77
+[2017-11-19 06:20:37] ERROR Func:insert
+[2017-11-19 06:20:37] ERROR Sql :INSERT INTO website_user_cars  (`user_id`,`plate_number`,`car_type`,`owner`,`address`,  `use_type`,`brand_type`,`identification_number`,`engine_number,`  `registration_date`,`accepted_date`,`file_number`,`people_number`,  `total_mass`,`dimension`,`description`)  VALUES 
+[2017-11-19 06:20:37] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`registration_date`,`accepted_date`,`file_number`,`people_number`,  `total_mass`' at line 1
+
+[2017-11-19 09:29:00] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\User\User.php
+[2017-11-19 09:29:00] ERROR Line:33
+[2017-11-19 09:29:00] ERROR Func:update
+[2017-11-19 09:29:00] ERROR Sql : UPDATE website_user SET  ,`salt` = :salt  ,`password` = :password  WHERE `user_id` = :user_id
+[2017-11-19 09:29:00] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`salt` = 'g7tbsY9V6M'  ,`password` = '57a98f89ecba49db85d3d68ee7041bda222585e8' ' at line 1
+
+[2017-11-19 10:08:28] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\User\Car.php
+[2017-11-19 10:08:28] ERROR Line:101
+[2017-11-19 10:08:28] ERROR Func:update
+[2017-11-19 10:08:28] ERROR Sql :UPDATE website_user_car SET `email` = :email,  `parent_name` = :parent_name, `tel` = :tel, `job` = :job  WHERE `car_id` = :car_id
+[2017-11-19 10:08:28] ERROR Mess:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email' in 'field list'
+
+[2017-11-19 13:51:43] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-11-19 13:51:43] ERROR Line:40
+[2017-11-19 13:51:43] ERROR Func:get_all
+[2017-11-19 13:51:43] ERROR Sql :SELECT * FROM website_reservation WHERE `deleted` = 1 AND `user_id` = :user_id  ORDER BY reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 13:51:43] ERROR Mess:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_reservation' doesn't exist
+
+[2017-11-19 14:07:19] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-11-19 14:07:19] ERROR Line:39
+[2017-11-19 14:07:19] ERROR Func:get_all
+[2017-11-19 14:07:19] ERROR Sql :SELECT * FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user AS u ON r.user_id=u.user_id  LEFT JOIN website_car AS c ON r.car_id=c.car_id  WHERE `deleted` = 1 AND r.`user_id` = :user_id  ORDER BY reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 14:07:19] ERROR Mess:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_car' doesn't exist
+
+[2017-11-19 14:07:19] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-11-19 14:07:19] ERROR Line:39
+[2017-11-19 14:07:19] ERROR Func:get_all
+[2017-11-19 14:07:19] ERROR Sql :SELECT * FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user AS u ON r.user_id=u.user_id  LEFT JOIN website_car AS c ON r.car_id=c.car_id  WHERE `deleted` = 1 AND r.`user_id` = :user_id  ORDER BY reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 14:07:19] ERROR Mess:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_car' doesn't exist
+
+[2017-11-19 14:07:19] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-11-19 14:07:19] ERROR Line:39
+[2017-11-19 14:07:19] ERROR Func:get_all
+[2017-11-19 14:07:19] ERROR Sql :SELECT * FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user AS u ON r.user_id=u.user_id  LEFT JOIN website_car AS c ON r.car_id=c.car_id  WHERE `deleted` = 1 AND r.`user_id` = :user_id  ORDER BY reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 14:07:19] ERROR Mess:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_car' doesn't exist
+
+[2017-11-19 14:07:24] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-11-19 14:07:24] ERROR Line:39
+[2017-11-19 14:07:24] ERROR Func:get_all
+[2017-11-19 14:07:24] ERROR Sql :SELECT * FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user AS u ON r.user_id=u.user_id  LEFT JOIN website_cars AS c ON r.car_id=c.car_id  WHERE `deleted` = 1 AND r.`user_id` = :user_id  ORDER BY reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 14:07:24] ERROR Mess:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_cars' doesn't exist
+
+[2017-11-19 14:07:25] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-11-19 14:07:25] ERROR Line:39
+[2017-11-19 14:07:25] ERROR Func:get_all
+[2017-11-19 14:07:25] ERROR Sql :SELECT * FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user AS u ON r.user_id=u.user_id  LEFT JOIN website_cars AS c ON r.car_id=c.car_id  WHERE `deleted` = 1 AND r.`user_id` = :user_id  ORDER BY reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 14:07:25] ERROR Mess:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_cars' doesn't exist
+
+[2017-11-19 14:07:40] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-11-19 14:07:40] ERROR Line:39
+[2017-11-19 14:07:40] ERROR Func:get_all
+[2017-11-19 14:07:40] ERROR Sql :SELECT * FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user AS u ON r.user_id=u.user_id  LEFT JOIN website_user_car AS uc ON r.car_id=uc.car_id  WHERE `deleted` = 1 AND r.`user_id` = :user_id  ORDER BY reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 14:07:40] ERROR Mess:SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'deleted' in where clause is ambiguous
+
+[2017-11-19 14:07:41] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-11-19 14:07:41] ERROR Line:39
+[2017-11-19 14:07:41] ERROR Func:get_all
+[2017-11-19 14:07:41] ERROR Sql :SELECT * FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user AS u ON r.user_id=u.user_id  LEFT JOIN website_user_car AS uc ON r.car_id=uc.car_id  WHERE `deleted` = 1 AND r.`user_id` = :user_id  ORDER BY reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 14:07:41] ERROR Mess:SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'deleted' in where clause is ambiguous
+
+[2017-11-19 14:07:41] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-11-19 14:07:41] ERROR Line:39
+[2017-11-19 14:07:41] ERROR Func:get_all
+[2017-11-19 14:07:41] ERROR Sql :SELECT * FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user AS u ON r.user_id=u.user_id  LEFT JOIN website_user_car AS uc ON r.car_id=uc.car_id  WHERE `deleted` = 1 AND r.`user_id` = :user_id  ORDER BY reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 14:07:41] ERROR Mess:SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'deleted' in where clause is ambiguous
+
+[2017-11-19 14:58:49] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-11-19 14:58:49] ERROR Line:59
+[2017-11-19 14:58:49] ERROR Func:get_one
+[2017-11-19 14:58:49] ERROR Sql :SELECT u.user_id,uc.cat_id FROM website_user AS u LEFT JOIN website_user_car AS uc ON u.user_id = uc.user_id WHERE u.`user_id` = :user_id
+[2017-11-19 14:58:49] ERROR Mess:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'uc.cat_id' in 'field list'
+
+[2017-11-19 15:11:36] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\User\Reservation.php
+[2017-11-19 15:11:36] ERROR Line:39
+[2017-11-19 15:11:36] ERROR Func:get_all
+[2017-11-19 15:11:36] ERROR Sql :SELECT r.*,cpy.name,uc. FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user_car AS uc ON r.car_id=uc.car_id  WHERE r.`deleted` = 1 AND r.`user_id` = :user_id  ORDER BY r.reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 15:11:36] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_i' at line 1
+
+[2017-11-19 15:11:37] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\User\Reservation.php
+[2017-11-19 15:11:37] ERROR Line:39
+[2017-11-19 15:11:37] ERROR Func:get_all
+[2017-11-19 15:11:37] ERROR Sql :SELECT r.*,cpy.name,uc. FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user_car AS uc ON r.car_id=uc.car_id  WHERE r.`deleted` = 1 AND r.`user_id` = :user_id  ORDER BY r.reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 15:11:37] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_i' at line 1
+
+[2017-11-19 15:11:37] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\User\Reservation.php
+[2017-11-19 15:11:37] ERROR Line:39
+[2017-11-19 15:11:37] ERROR Func:get_all
+[2017-11-19 15:11:37] ERROR Sql :SELECT r.*,cpy.name,uc. FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user_car AS uc ON r.car_id=uc.car_id  WHERE r.`deleted` = 1 AND r.`user_id` = :user_id  ORDER BY r.reservation_id DESC LIMIT :start,:limit 
+[2017-11-19 15:11:37] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_i' at line 1

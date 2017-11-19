@@ -6,6 +6,13 @@ use Libs\ExtendsClass\Common as C;
 
 class Account extends DbFactory
 {
+    public function findAccountByTel($data)
+    {
+        $sql = "SELECT * FROM ".self::$dp."user WHERE `tel` = :tel";
+
+        return self::$db->get_one($sql, ['tel'=>$data['tel']]);
+    }
+
     public function getInfo($data)
     {
         return self::$db->get_all("SELECT * FROM ".self::$dp."user");
@@ -25,28 +32,48 @@ class Account extends DbFactory
         $find_last_number_sql = "SELECT numbering FROM ".self::$dp."user ORDER BY user_id DESC LIMIT 1";
         $last_return = self::$db->get_one($find_last_number_sql);
         if (empty($last_return)) {
-            $numbering = "CPY0000001";
+            $numbering = "USER0000001";
         } else {
-            $num = (int)substr($last_return['numbering'], 3) + 1;
-            $numbering = "CPY" . sprintf("%07d", $num);
+            $num = (int)substr($last_return['numbering'], 4) + 1;
+            $numbering = "USER" . sprintf("%07d", $num);
         }
 
-        $sql = "INSERT INTO ".self::$dp."user (`password`,`salt`,`pid`,`tel`,`name`,`numbering`,`type`,`address`,`legal_person`,`registered_capital`,`date_time`,`operating_period`) VALUES ";
+        $sql = "INSERT INTO ".self::$dp."user (`password`,`salt`,`tel`,`numbering`) VALUES ";
         $user_id = self::$db->insert(
             $sql,
             [
                 $password,
                 $salt,
-                0,
                 $data['post']['tel'],
-                $data['post']['name'],
-                $numbering,
-                $data['post']['type'],
+                $numbering
+            ]
+        );
+
+        $sql = "INSERT INTO ".self::$dp."user_car " .
+            " (`user_id`,`plate_number`,`car_type`,`owner`,`address`, " .
+            " `use_type`,`brand_type`,`identification_number`,`engine_number`, " .
+            " `registration_date`,`accepted_date`,`file_number`,`people_number`, " .
+            " `total_mass`,`dimension`,`description`) " .
+            " VALUES ";
+        $car_id = self::$db->insert(
+            $sql,
+            [
+                $user_id,
+                $data['post']['plate_number'],
+                $data['post']['car_type'],
+                $data['post']['owner'],
                 $data['post']['address'],
-                $data['post']['legal_person'],
-                $data['post']['registered_capital'],
-                $data['post']['date_time'],
-                $data['post']['operating_period']
+                $data['post']['use_type'],
+                $data['post']['brand_type'],
+                $data['post']['identification_number'],
+                $data['post']['engine_number'],
+                $data['post']['registration_date'],
+                $data['post']['accepted_date'],
+                $data['post']['file_number'],
+                $data['post']['people_number'],
+                $data['post']['total_mass'],
+                $data['post']['dimension'],
+                $data['post']['description']
             ]
         );
 

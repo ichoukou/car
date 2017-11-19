@@ -3,3 +3,7 @@ https://login.bce.baidu.com/
 13361076388 / jinanchina5200
 
 
+
+支付宝网关：https://openapi.alipay.com/gateway.do
+APPID：2017111800028220
+AES密钥：zAJrVygp2Zi0uJiwNIR6zA==

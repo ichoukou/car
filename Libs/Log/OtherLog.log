@@ -142,3 +142,179 @@
 [2017-11-18 15:57:57] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
 
 [2017-11-18 15:58:01] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 04:51:57] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 04:56:15] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 05:41:46] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\Company\Company' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-19 05:41:50] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\Company\Company' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-19 05:44:31] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\Company\Company' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-19 05:47:39] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 05:47:41] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 05:47:41] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 05:47:42] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:13:41] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`registration_date`,`accepted_date`,`file_number`,`people_number,`  `total_mass`' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>130</b>
+
+[2017-11-19 06:14:48] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`registration_date`,`accepted_date`,`file_number`,`people_number`,  `total_mass`' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>130</b>
+
+[2017-11-19 06:20:37] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`registration_date`,`accepted_date`,`file_number`,`people_number`,  `total_mass`' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>130</b>
+
+[2017-11-19 06:22:01] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:22:01] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:22:36] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:22:36] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:22:36] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:22:40] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:22:40] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:26:42] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:27:00] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:27:00] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:27:52] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:28:00] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:28:10] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:28:53] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:28:53] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:28:57] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:29:06] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:29:16] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:29:29] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:29:38] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 06:29:48] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Common\Left.html</b> on line <b>9</b>
+
+[2017-11-19 09:11:59] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\User\User' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-19 09:11:59] ERROR Mess:<b>Warning</b>: Error: The 'index' Method Under Class 'Front\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-19 09:13:00] ERROR Mess:<b>Warning</b>: Error: The 'index' Method Under Class 'Front\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-19 09:13:00] ERROR Mess:<b>Warning</b>: Error: The 'index' Method Under Class 'Front\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-19 09:13:01] ERROR Mess:<b>Warning</b>: Error: The 'index' Method Under Class 'Front\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-19 09:13:01] ERROR Mess:<b>Warning</b>: Error: The 'index' Method Under Class 'Front\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-19 09:13:12] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\User\User' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-19 09:13:39] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\User\User' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-19 09:14:17] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\Common\Common' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-19 09:14:17] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\User\UserIndex.html</b> on line <b>72</b>
+
+[2017-11-19 09:14:17] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\User\UserIndex.html</b> on line <b>126</b>
+
+[2017-11-19 09:14:18] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\Common\Common' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-19 09:14:18] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\User\UserIndex.html</b> on line <b>72</b>
+
+[2017-11-19 09:14:18] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\User\UserIndex.html</b> on line <b>126</b>
+
+[2017-11-19 09:14:19] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\Common\Common' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-19 09:14:19] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\User\UserIndex.html</b> on line <b>72</b>
+
+[2017-11-19 09:14:19] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\User\UserIndex.html</b> on line <b>126</b>
+
+[2017-11-19 09:29:00] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`salt` = 'g7tbsY9V6M'  ,`password` = '57a98f89ecba49db85d3d68ee7041bda222585e8' ' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>169</b>
+
+[2017-11-19 09:49:24] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/Core/Front.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-19 09:50:13] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/Core/Front.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-19 09:50:14] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/Core/Front.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-19 09:50:14] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/Core/Front.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-19 09:50:14] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/Core/Front.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-19 09:50:14] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/Core/Front.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-19 09:50:15] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/Core/Front.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-19 09:50:15] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/Core/Front.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-19 09:50:15] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/Core/Front.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-19 09:50:15] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs/Core/Front.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
+
+[2017-11-19 10:08:28] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email' in 'field list' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>169</b>
+
+[2017-11-19 13:51:43] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_reservation' doesn't exist in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 14:07:19] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_car' doesn't exist in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 14:07:19] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_car' doesn't exist in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 14:07:19] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_car' doesn't exist in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 14:07:24] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_cars' doesn't exist in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 14:07:25] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car.website_cars' doesn't exist in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 14:07:40] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'deleted' in where clause is ambiguous in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 14:07:41] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'deleted' in where clause is ambiguous in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 14:07:41] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'deleted' in where clause is ambiguous in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 14:27:00] ERROR Mess:<b>Warning</b>: Division by zero in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Reservation\ReservationIndex.html</b> on line <b>111</b>
+
+[2017-11-19 14:27:00] ERROR Mess:<b>Warning</b>: Division by zero in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Reservation\ReservationIndex.html</b> on line <b>111</b>
+
+[2017-11-19 14:27:00] ERROR Mess:<b>Warning</b>: Division by zero in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Reservation\ReservationIndex.html</b> on line <b>111</b>
+
+[2017-11-19 14:27:01] ERROR Mess:<b>Warning</b>: Division by zero in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Reservation\ReservationIndex.html</b> on line <b>111</b>
+
+[2017-11-19 14:27:01] ERROR Mess:<b>Warning</b>: Division by zero in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Reservation\ReservationIndex.html</b> on line <b>111</b>
+
+[2017-11-19 14:27:01] ERROR Mess:<b>Warning</b>: Division by zero in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Reservation\ReservationIndex.html</b> on line <b>111</b>
+
+[2017-11-19 14:27:01] ERROR Mess:<b>Warning</b>: Division by zero in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Reservation\ReservationIndex.html</b> on line <b>111</b>
+
+[2017-11-19 14:27:01] ERROR Mess:<b>Warning</b>: Division by zero in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Reservation\ReservationIndex.html</b> on line <b>111</b>
+
+[2017-11-19 14:27:01] ERROR Mess:<b>Warning</b>: Division by zero in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Reservation\ReservationIndex.html</b> on line <b>111</b>
+
+[2017-11-19 14:58:49] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'uc.cat_id' in 'field list' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-19 15:11:36] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_i' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 15:11:37] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_i' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 15:11:37] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_i' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-19 15:46:16] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\User\ReservationIndex.html</b> on line <b>106</b>
+
+[2017-11-19 15:47:51] ERROR Mess:<b>Warning</b>: Error: The 'edit_reservation' Method Under Class 'Front\Controller\Reservation\Reservation' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-19 15:53:28] ERROR Mess:<b>Warning</b>: Error: The 'edit_reservation' Method Under Class 'Front\Controller\Reservation\Reservation' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-19 15:53:45] ERROR Mess:<b>Warning</b>: Error: The 'edit_reservation' Method Under Class 'Front\Controller\Reservation\Reservation' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>

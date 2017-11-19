@@ -90,10 +90,6 @@ class Account extends Controller
     public function do_add_register_step2()
     {
         if ($post = $this->validate_step2()) {
-            $register_vender_info = json_decode($_SESSION['register_vender_info'], TURE);
-            $post['tel'] = $register_vender_info['tel'];
-            $post['password'] = $register_vender_info['password'];
-
             $company_id = M::Vender('Account\\Account', 'register', ['post'=>$post]);
 
             if ($company_id > 0) {
@@ -200,6 +196,9 @@ class Account extends Controller
             }
 
             if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
+
+            $post['tel'] = $register_vender_info['tel'];
+            $post['password'] = $register_vender_info['password'];
 
             return $post;
         } else {

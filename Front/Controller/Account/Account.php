@@ -36,10 +36,8 @@ class Account extends Controller
         $result = M::Front('Account\\Account', 'login', ['tel'=>$tel, 'password'=>$password]);
 
         if (!empty($result)) {
-            $_SESSION['company_id'] = $result['company_id'];
-            $_SESSION['name'] = $result['name'];
+            $_SESSION['user_id'] = $result['user_id'];
             $_SESSION['tel'] = $result['tel'];
-            $_SESSION['group'] = $result['group'];
 
             exit(json_encode(['status'=>1, 'result'=>'登陆成功'], JSON_UNESCAPED_UNICODE));
         } else {
@@ -108,13 +106,9 @@ class Account extends Controller
     public function do_add_register_step2()
     {
         if ($post = $this->validate_step2()) {
-            $register_user_info = json_decode($_SESSION['register_user_info'], TURE);
-            $post['tel'] = $register_user_info['tel'];
-            $post['password'] = $register_user_info['password'];
+            $user_id = M::Front('Account\\Account', 'register', ['post'=>$post]);
 
-            $company_id = M::Front('Account\\Account', 'register', ['post'=>$post]);
-
-            if ($company_id > 0) {
+            if ($user_id > 0) {
                 setcookie('success_info', '注册成功', time() + 60);
                 $_SESSION['register_user_info'] = '';
 
@@ -133,11 +127,10 @@ class Account extends Controller
 
             if (empty($post['tel']) or !C::is_tel($post['tel'])) {
                 $errors ['tel'] = '请填写正确的11位手机号码';
-            } elseif (M::Front('Company\\Company', 'findCompanyByTel', ['tel'=>$post['tel']]) != '') {
+            } elseif (M::Front('Account\\Account', 'findAccountByTel', ['tel'=>$post['tel']]) != '') {
                 $errors ['tel'] = '此手机号码已经被使用';
             }
 
-            $_SESSION['register_code'] = 123;
             if (empty($post['code']) or $post['code'] != $_SESSION['register_code']) {
                 $errors ['code'] = '验证码错误';
             }
@@ -234,36 +227,12 @@ class Account extends Controller
 
             if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
 
+            $post['tel'] = $register_user_info['tel'];
+            $post['password'] = $register_user_info['password'];
+
             return $post;
         } else {
             exit(json_encode(['status'=>-1, 'result'=>'注册失败'], JSON_UNESCAPED_UNICODE));
-        }
-    }
-
-    public function do_register()
-    {
-        $tel = htmlspecialchars($_GET['tel']);
-        $password = htmlspecialchars($_GET['password']);
-        $confirm_password = htmlspecialchars($_GET['confirm_password']);
-
-        if (empty($tel) or !C::is_tel($tel))
-            exit(json_encode(['status'=>-1, 'result'=>'请填写正确的11位手机号码'], JSON_UNESCAPED_UNICODE));
-
-        if (empty($password) or mb_strlen($password) < 6)
-            exit(json_encode(['status'=>-1, 'result'=>'密码长度最少10位'], JSON_UNESCAPED_UNICODE));
-
-        if (empty($confirm_password) or mb_strlen($confirm_password) < 6)
-            exit(json_encode(['status'=>-1, 'result'=>'确认密码最少10位'], JSON_UNESCAPED_UNICODE));
-
-        if ($password != $confirm_password)
-            exit(json_encode(['status'=>-1, 'result'=>'两次密码输入不相同'], JSON_UNESCAPED_UNICODE));
-
-        $result = M::Front('Account\\Account', 'register', ['tel'=>$tel, 'password'=>$password]);
-
-        if ($result != -1) {
-            exit(json_encode(['status'=>1, 'result'=>'注册成功'], JSON_UNESCAPED_UNICODE));
-        } else {
-            exit(json_encode(['status'=>-1, 'result'=>'账号已经被使用'], JSON_UNESCAPED_UNICODE));
         }
     }
 
