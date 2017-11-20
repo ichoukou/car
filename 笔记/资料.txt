@@ -7,3 +7,9 @@ https://login.bce.baidu.com/
 支付宝网关：https://openapi.alipay.com/gateway.do
 APPID：2017111800028220
 AES密钥：zAJrVygp2Zi0uJiwNIR6zA==
+
+
+FTP:
+IP地址：118.190.150.33
+名称：root
+密码：Jinanchina5200(第一个字母大写
