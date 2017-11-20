@@ -37,29 +37,28 @@ class ControllerFront
         'session_info'=> '',
         'setting_modules'=>
             [
-                'website'               => '网站设置选项设置',
-                'article'               => '文章模块选项设置',
-                'user'                  => '会员栏目选项设置',
-                'baby'                  => '宝宝栏目选项设置',
-                'card_type'             => '卡种栏目选项设置',
+                'website'                => '网站设置选项设置',
+                'article'                => '文章模块选项设置',
+                'user'                    => '会员栏目选项设置',
+                'baby'                    => '宝宝栏目选项设置',
+                'card_type'              => '卡种栏目选项设置',
                 'baby_sensitive_period' => '宝宝敏感期设置',
-                'teaching_aids'         => '教具设置',
-                'teaching_times'        => '上课时间设置',
-                'record'                => '信息记录'
+                'teaching_aids'          => '教具设置',
+                'teaching_times'         => '上课时间设置',
+                'record'                  => '信息记录'
             ],
-        'reservation_status' => [
-            1 => '已预约',
-            2 => '已接待',
-            3 => '已结算',
-            4 => '已支付',
-            5 => '已评价',
-            6 => '已取消'
-        ]
+        'reservation_status' =>
+            [
+                1 => '已预约，未接待', #接待预约列表
+                2 => '已接待，维修中，未结算', #另一个页面
+                3 => '已结算，未支付', #用户可以支付
+                4 => '已支付，未评价',
+                5 => '已评价'
+            ]
     ];
 
     public function __construct($config)
     {
-
         $this->config = $config;
         $this->data['entrance'] = $this->config['DEFAULT_ROUTE']['entrance'];
         $this->data['session_info'] = $_SESSION;
