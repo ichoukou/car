@@ -142,3 +142,15 @@
 [2017-11-19 15:11:37] ERROR Func:get_all
 [2017-11-19 15:11:37] ERROR Sql :SELECT r.*,cpy.name,uc. FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_id=r.company_id  LEFT JOIN website_user_car AS uc ON r.car_id=uc.car_id  WHERE r.`deleted` = 1 AND r.`user_id` = :user_id  ORDER BY r.reservation_id DESC LIMIT :start,:limit 
 [2017-11-19 15:11:37] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM website_reservation AS r  LEFT JOIN website_company AS cpy ON cpy.company_i' at line 1
+
+[2017-11-20 06:18:21] ERROR File:/var/www/car/Vender/Model/Reservation/Reservation.php
+[2017-11-20 06:18:21] ERROR Line:35
+[2017-11-20 06:18:21] ERROR Func:get_all
+[2017-11-20 06:18:21] ERROR Sql :SELECT * FROM website_reservation WHERE `deleted` = 1  ORDER BY reservation_id DESC LIMIT :start,:limit 
+[2017-11-20 06:18:21] ERROR Mess:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+
+[2017-11-20 06:31:05] ERROR File:/var/www/car/Vender/Model/Reservation/Reservation.php
+[2017-11-20 06:31:05] ERROR Line:12
+[2017-11-20 06:31:05] ERROR Func:get_one
+[2017-11-20 06:31:05] ERROR Sql :SELECT * FROM website_user WHERE `reservation_id` = :reservation_id
+[2017-11-20 06:31:05] ERROR Mess:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'reservation_id' in 'where clause'

@@ -318,3 +318,61 @@
 [2017-11-19 15:53:28] ERROR Mess:<b>Warning</b>: Error: The 'edit_reservation' Method Under Class 'Front\Controller\Reservation\Reservation' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
 
 [2017-11-19 15:53:45] ERROR Mess:<b>Warning</b>: Error: The 'edit_reservation' Method Under Class 'Front\Controller\Reservation\Reservation' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-20 06:17:39] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\Reservation\Reservation' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-20 06:17:39] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\Reservation\Reservation' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-20 06:17:39] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:17:40] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\Reservation\Reservation' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-20 06:17:40] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\Reservation\Reservation' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-20 06:17:40] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:17:40] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\Reservation\Reservation' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-20 06:17:40] ERROR Mess:<b>Warning</b>: Error: Model 'Vender\Model\Reservation\Reservation' Not Found!! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>36</b>
+
+[2017-11-20 06:17:40] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:18:01] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:18:01] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:18:01] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:18:21] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>209</b>
+
+[2017-11-20 06:18:36] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:18:55] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:18:55] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:18:55] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:18:55] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:18:56] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:19:32] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:19:33] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:19:44] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:19:54] ERROR Mess:<b>Warning</b>: Invalid argument supplied for foreach() in <b>/var/www/car/Vender/View/Reservation/ReservationIndex.html</b> on line <b>72</b>
+
+[2017-11-20 06:28:53] ERROR Mess:<b>Warning</b>: Error: The 'edit_reservation' Method Under Class 'Vender\Controller\Reservation\Reservation' Not Found! in <b>/var/www/car/Libs/Core/Route.php</b> on line <b>66</b>
+
+[2017-11-20 06:30:20] ERROR Mess:<b>Warning</b>: Error: The 'findReservationByReservationId' Method Under Class 'Vender\Model\Reservation\Reservation' Not Found! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>32</b>
+
+[2017-11-20 06:30:21] ERROR Mess:<b>Warning</b>: Error: The 'findReservationByReservationId' Method Under Class 'Vender\Model\Reservation\Reservation' Not Found! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>32</b>
+
+[2017-11-20 06:30:22] ERROR Mess:<b>Warning</b>: Error: The 'findReservationByReservationId' Method Under Class 'Vender\Model\Reservation\Reservation' Not Found! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>32</b>
+
+[2017-11-20 06:30:26] ERROR Mess:<b>Warning</b>: Error: The 'findReservationByReservationId' Method Under Class 'Vender\Model\Reservation\Reservation' Not Found! in <b>/var/www/car/Libs/Core/Model.php</b> on line <b>32</b>
+
+[2017-11-20 06:31:05] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'reservation_id' in 'where clause' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
