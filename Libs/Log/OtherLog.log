@@ -390,3 +390,5 @@
 [2017-11-21 03:16:02] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('0','0','0','0','0','0','0','1')' at line 1 in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>130</b>
 
 [2017-11-21 03:17:08] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'material_costs' at row 1 in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>130</b>
+
+[2017-11-21 16:46:02] ERROR Mess:<b>Warning</b>: Error: The 'register.php' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>

@@ -1,0 +1,147 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    //    margin-bottom: 115px;
+    background: #f8f8f8;
+    //    font-size: 1rem;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    display: none;
+}
+
+::-webkit-scrollbar-button:vertical {
+    display: none
+}
+
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background-color: transparent
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: transparent
+}
+
+::-webkit-scrollbar-thumb:vertical:active {
+    background-color: transparent
+}
+
+.nav-tabs {
+    > li {
+        > a {
+            margin: 0 !important;
+        }
+    }
+}
+
+.list-group-item {
+    padding: 1rem;
+}
+
+.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+}
+
+.panel {
+    margin-bottom: 15px;
+    //    .box-shadow(none)
+}
+
+.well {
+    padding: 15px;
+    .box-shadow(none);
+}
+
+.well-lg {
+    padding: 20px;
+}
+
+.well-sm {
+    padding: 10px;
+}
+
+.pagination > li > a {
+    margin: 2px;
+}
+
+.table {
+    > thead,
+    > tbody,
+    > tfoot {
+        > tr {
+            > th,
+            > td {
+                vertical-align: middle;
+            }
+        }
+    }
+    > thead > tr > th {
+        vertical-align: middle;
+        border-bottom: 1px solid @table-border-color;
+    }
+}
+
+.table-striped {
+    > tbody > tr:nth-of-type(odd) {
+        background-color: inherit;
+    }
+    > tbody > tr:nth-of-type(even) {
+        background-color: @table-bg-accent;
+    }
+}
+
+.table-hover {
+    > tbody > tr:hover {
+        background-color: @table-bg-hover;
+    }
+}
+
+label {
+    margin-bottom: 0;
+}
+
+.form-horizontal {
+    .form-group {
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+    .input-group {
+        .input-group-addon {
+            text-align: left;
+            label {
+                display: block;
+                width: 100px;
+                word-wrap: break-word;
+                word-break: break-all;
+            }
+        }
+    }
+    .input-group:before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        top: 0;
+        right: 0;
+        height: 1px;
+        /*            width: 100%;*/
+        border-bottom: 1px solid #eee;
+        z-index: 5;
+    }
+    .input-group:first-child:before {
+        content: none;
+    }
+}

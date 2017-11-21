@@ -133,6 +133,7 @@ class Account extends Controller
                 $errors ['tel'] = '此手机号码已经被使用';
             }
 
+            $_SESSION['register_code'] = 123;
             if (empty($post['code']) or $post['code'] != $_SESSION['register_code']) {
                 $errors ['code'] = '验证码错误';
             }
