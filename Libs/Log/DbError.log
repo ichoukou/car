@@ -154,3 +154,45 @@
 [2017-11-20 06:31:05] ERROR Func:get_one
 [2017-11-20 06:31:05] ERROR Sql :SELECT * FROM website_user WHERE `reservation_id` = :reservation_id
 [2017-11-20 06:31:05] ERROR Mess:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'reservation_id' in 'where clause'
+
+[2017-11-21 03:10:45] ERROR File:/var/www/car/Vender/Model/Reservation/Settlement.php
+[2017-11-21 03:10:45] ERROR Line:99
+[2017-11-21 03:10:45] ERROR Func:insert
+[2017-11-21 03:10:45] ERROR Sql :INSERT INTO website_maintenance_costs SET  `material_costs` = :material_costs, `working_hours_costs` = :working_hours_costs `outside_costs` = :outside_costs, `other_costs` = :other_costs  `total_receivables` = :total_receivables, `discount_costs` = :discount_costs `total_revenue` = :total_revenue, `reservation_id` = :reservation_id 
+[2017-11-21 03:10:45] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':material_costs, `working_hours_costs` = :working_hours_costs `outside_costs` = ' at line 1
+
+[2017-11-21 03:11:14] ERROR File:/var/www/car/Vender/Model/Reservation/Settlement.php
+[2017-11-21 03:11:14] ERROR Line:99
+[2017-11-21 03:11:14] ERROR Func:insert
+[2017-11-21 03:11:14] ERROR Sql :INSERT INTO website_maintenance_costs SET  `material_costs` = :material_costs, `working_hours_costs` = :working_hours_costs,  `outside_costs` = :outside_costs, `other_costs` = :other_costs,  `total_receivables` = :total_receivables, `discount_costs` = :discount_costs,  `total_revenue` = :total_revenue, `reservation_id` = :reservation_id 
+[2017-11-21 03:11:14] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':material_costs, `working_hours_costs` = :working_hours_costs,  `outside_costs` ' at line 1
+
+[2017-11-21 03:11:41] ERROR File:/var/www/car/Vender/Model/Reservation/Settlement.php
+[2017-11-21 03:11:41] ERROR Line:99
+[2017-11-21 03:11:41] ERROR Func:insert
+[2017-11-21 03:11:41] ERROR Sql :INSERT INTO website_maintenance_costs SET  `material_costs` = :material_costs, `working_hours_costs` = :working_hours_costs,  `outside_costs` = :outside_costs, `other_costs` = :other_costs,  `total_receivables` = :total_receivables, `discount_costs` = :discount_costs,  `total_revenue` = :total_revenue, `reservation_id` = :reservation_id 
+[2017-11-21 03:11:41] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':material_costs, `working_hours_costs` = :working_hours_costs,  `outside_costs` ' at line 1
+
+[2017-11-21 03:14:47] ERROR File:/var/www/car/Vender/Model/Reservation/Settlement.php
+[2017-11-21 03:14:47] ERROR Line:99
+[2017-11-21 03:14:47] ERROR Func:insert
+[2017-11-21 03:14:47] ERROR Sql :INSERT INTO website_maintenance_costs SET  (`material_costs`, `working_hours_costs`,  `outside_costs`, `other_costs`,  `total_receivables`, `discount_costs`,  `total_revenue`, `reservation_id`) 
+[2017-11-21 03:14:47] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(`material_costs`, `working_hours_costs`,  `outside_costs`, `other_costs`,  `tot' at line 1
+
+[2017-11-21 03:15:16] ERROR File:/var/www/car/Vender/Model/Reservation/Settlement.php
+[2017-11-21 03:15:16] ERROR Line:99
+[2017-11-21 03:15:16] ERROR Func:insert
+[2017-11-21 03:15:16] ERROR Sql :INSERT INTO website_maintenance_costs VALUES  (`material_costs`, `working_hours_costs`,  `outside_costs`, `other_costs`,  `total_receivables`, `discount_costs`,  `total_revenue`, `reservation_id`) 
+[2017-11-21 03:15:16] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('','','','','','0','','1')' at line 1
+
+[2017-11-21 03:16:02] ERROR File:/var/www/car/Vender/Model/Reservation/Settlement.php
+[2017-11-21 03:16:02] ERROR Line:99
+[2017-11-21 03:16:02] ERROR Func:insert
+[2017-11-21 03:16:02] ERROR Sql :INSERT INTO website_maintenance_costs VALUES  (`material_costs`, `working_hours_costs`,  `outside_costs`, `other_costs`,  `total_receivables`, `discount_costs`,  `total_revenue`, `reservation_id`) 
+[2017-11-21 03:16:02] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('0','0','0','0','0','0','0','1')' at line 1
+
+[2017-11-21 03:17:08] ERROR File:/var/www/car/Vender/Model/Reservation/Settlement.php
+[2017-11-21 03:17:08] ERROR Line:96
+[2017-11-21 03:17:08] ERROR Func:insert
+[2017-11-21 03:17:08] ERROR Sql :INSERT INTO website_maintenance_costs  (`material_costs`, `working_hours_costs`, `outside_costs`, `other_costs`,  `total_receivables`, `discount_costs`,  `total_revenue`, `reservation_id`) VALUES 
+[2017-11-21 03:17:08] ERROR Mess:SQLSTATE[01000]: Warning: 1265 Data truncated for column 'material_costs' at row 1

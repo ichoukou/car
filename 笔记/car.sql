@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-11-20 17:17:05
+Date: 2017-11-21 17:16:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -357,12 +357,12 @@ CREATE TABLE `website_company` (
   PRIMARY KEY (`company_id`) USING BTREE,
   UNIQUE KEY `COMPANY_ID` (`company_id`) USING BTREE,
   KEY `DELETED` (`deleted`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of website_company
 -- ----------------------------
-INSERT INTO `website_company` VALUES ('1', '0', '13656480135', 'CPY0000001', 'supercompany', '2', '3', '4', '5', '6', '7', null, '5', '2', '0', '1', 'cc554b52696c1cab6dde8fd8c034ea226e4e0a01', 'eY0ue2D5vV', '2017-11-20 06:19:51', '1', '2017-04-28 16:01:32');
+INSERT INTO `website_company` VALUES ('1', '0', '13656480135', 'CPY0000001', 'supercompany', '2', '3', '4', '5', '6', '7', null, '5', '2', '0', '1', 'cc554b52696c1cab6dde8fd8c034ea226e4e0a01', 'eY0ue2D5vV', '2017-11-21 01:34:49', '1', '2017-04-28 16:01:32');
 INSERT INTO `website_company` VALUES ('3', '0', '13333333333', 'CPY0000003', 'test', '2', '3', '4', '5', '6', '7', null, '0', null, '0', '1', 'cc554b52696c1cab6dde8fd8c034ea226e4e0a01', 'eY0ue2D5vV', '2017-11-18 11:11:46', '1', '2017-04-28 16:04:36');
 INSERT INTO `website_company` VALUES ('9', '0', '13666666666', 'CPY0000006', '1', '1', '1', '1', '1', '1', '1', null, '0', null, '0', '1', '27bee50dc789a0389277ee95fa868a0ed36f2ab8', 'WqW44osPcs', '2017-11-20 06:19:41', '1', '2017-11-18 21:29:01');
 
@@ -411,6 +411,33 @@ INSERT INTO `website_config` VALUES ('5', '其他', 'page', '网站后台每页�
 INSERT INTO `website_config` VALUES ('6', '其他', 'page', '分页规则', 'paging_rules', '显示 %d 到 %d / %d (总 %d 页)', '0');
 
 -- ----------------------------
+-- Table structure for website_maintenance_costs
+-- ----------------------------
+DROP TABLE IF EXISTS `website_maintenance_costs`;
+CREATE TABLE `website_maintenance_costs` (
+  `costs_id` int(11) NOT NULL AUTO_INCREMENT,
+  `reservation_id` int(11) NOT NULL,
+  `material_costs` float(10,2) DEFAULT '0.00' COMMENT '材料费合计',
+  `working_hours_costs` float(10,2) DEFAULT '0.00' COMMENT '工时费合计',
+  `outside_costs` float(10,2) DEFAULT '0.00' COMMENT '外加工费',
+  `other_costs` float(10,2) DEFAULT '0.00' COMMENT '其他费用',
+  `total_receivables` float(10,2) DEFAULT '0.00' COMMENT '应收合计',
+  `discount_costs` float(10,2) DEFAULT '0.00' COMMENT '优惠金额',
+  `total_revenue` float(10,2) DEFAULT '0.00' COMMENT '实收合计',
+  `deleted` tinyint(4) DEFAULT '1' COMMENT '是否删除 1未删除 2已删除',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`costs_id`),
+  UNIQUE KEY `COSTS_ID` (`costs_id`) USING BTREE,
+  KEY `RESERVATION_ID` (`reservation_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of website_maintenance_costs
+-- ----------------------------
+INSERT INTO `website_maintenance_costs` VALUES ('2', '1', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '1', '2017-11-21 11:19:12');
+INSERT INTO `website_maintenance_costs` VALUES ('3', '2', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '1', '2017-11-21 11:20:06');
+
+-- ----------------------------
 -- Table structure for website_record
 -- ----------------------------
 DROP TABLE IF EXISTS `website_record`;
@@ -447,6 +474,7 @@ CREATE TABLE `website_reservation` (
   `company_id` int(11) NOT NULL COMMENT '被预约企业标识',
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '预约人标识',
   `car_id` int(11) NOT NULL COMMENT '预约人车辆标识',
+  `image_path` varchar(150) DEFAULT NULL COMMENT '接车问诊单图片地址',
   `reservation_time` datetime DEFAULT NULL COMMENT '预约时间',
   `status` tinyint(4) DEFAULT '1' COMMENT '1用户预约 2企业接待 3企业结算 4用户支付 5用户评价 6企业或用户取消当前预约',
   `deleted` tinyint(4) DEFAULT '1' COMMENT '是否删除 1未删除 2已删除',
@@ -456,12 +484,13 @@ CREATE TABLE `website_reservation` (
   KEY `COMPANY_ID` (`company_id`) USING BTREE,
   KEY `USER_ID` (`user_id`) USING BTREE,
   KEY `CAR_ID` (`car_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of website_reservation
 -- ----------------------------
-INSERT INTO `website_reservation` VALUES ('1', '1', '5', '4', '2017-12-12 10:11:00', '1', '1', '2017-11-19 22:01:35');
+INSERT INTO `website_reservation` VALUES ('1', '1', '5', '4', null, '2017-12-12 10:11:00', '3', '1', '2017-11-19 22:01:35');
+INSERT INTO `website_reservation` VALUES ('2', '1', '5', '4', 'http://www.baidu.com/', '2017-12-20 10:30:00', '3', '1', '2017-11-21 10:19:45');
 
 -- ----------------------------
 -- Table structure for website_session_info
@@ -731,7 +760,7 @@ CREATE TABLE `website_user` (
 -- ----------------------------
 -- Records of website_user
 -- ----------------------------
-INSERT INTO `website_user` VALUES ('5', '13666666666', 'USER0000001', '2e0c91d6ba239fb2150f53ef45d74b4c5122a09a', '0sIuh3GnA5', '1', '2017-11-20 03:59:15', '2017-11-19 13:29:16');
+INSERT INTO `website_user` VALUES ('5', '13666666666', 'USER0000001', '2e0c91d6ba239fb2150f53ef45d74b4c5122a09a', '0sIuh3GnA5', '1', '2017-11-21 02:19:24', '2017-11-19 13:29:16');
 INSERT INTO `website_user` VALUES ('6', '13677777777', 'USER0000002', '0df29bc0cfc580a7f185e0569a1a4ade4d1dee7d', 'ij73dANNDb', '1', null, '2017-11-19 13:29:48');
 
 -- ----------------------------
@@ -790,7 +819,7 @@ CREATE TABLE `website_user_car` (
   PRIMARY KEY (`car_id`) USING BTREE,
   UNIQUE KEY `CAR_ID` (`car_id`) USING BTREE,
   KEY `USER_ID` (`user_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of website_user_car
