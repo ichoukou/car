@@ -672,3 +672,23 @@
 [2017-11-22 08:42:48] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>169</b>
 
 [2017-11-22 08:42:48] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>169</b>
+
+[2017-11-22 09:00:20] ERROR Mess:<b>Warning</b>: Error: Template '/var/www/car/Front/View/Home/Order.html' Not Found in <b>/var/www/car/Libs/Core/Loader.php</b> on line <b>40</b>
+
+[2017-11-22 09:00:20] ERROR Mess:<b>Warning</b>: Error: Template '/var/www/car/Front/View/Home/Sale.html' Not Found in <b>/var/www/car/Libs/Core/Loader.php</b> on line <b>40</b>
+
+[2017-11-22 09:00:20] ERROR Mess:<b>Warning</b>: Error: Template '/var/www/car/Front/View/Home/User.html' Not Found in <b>/var/www/car/Libs/Core/Loader.php</b> on line <b>40</b>
+
+[2017-11-22 09:00:20] ERROR Mess:<b>Warning</b>: Error: Template '/var/www/car/Front/View/Home/Online.html' Not Found in <b>/var/www/car/Libs/Core/Loader.php</b> on line <b>40</b>
+
+[2017-11-22 09:00:20] ERROR Mess:<b>Warning</b>: Error: Template '/var/www/car/Front/View/Home/Activity.html' Not Found in <b>/var/www/car/Libs/Core/Loader.php</b> on line <b>40</b>
+
+[2017-11-22 09:00:20] ERROR Mess:<b>Warning</b>: Error: Template '/var/www/car/Front/View/Home/Online.html' Not Found in <b>/var/www/car/Libs/Core/Loader.php</b> on line <b>40</b>
+
+[2017-11-22 09:00:20] ERROR Mess:<b>Warning</b>: Error: Template '/var/www/car/Front/View/Home/NewOrder.html' Not Found in <b>/var/www/car/Libs/Core/Loader.php</b> on line <b>40</b>
+
+[2017-11-22 09:05:32] ERROR Mess:<b>Warning</b>: Error: The 'login.php' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>/var/www/car/Libs/Core/Route.php</b> on line <b>66</b>
+
+[2017-11-22 09:06:02] ERROR Mess:<b>Warning</b>: Error: The 'login.php' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>/var/www/car/Libs/Core/Route.php</b> on line <b>66</b>
+
+[2017-11-22 09:06:02] ERROR Mess:<b>Warning</b>: Error: The 'login.php' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>/var/www/car/Libs/Core/Route.php</b> on line <b>66</b>

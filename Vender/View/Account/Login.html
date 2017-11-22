@@ -1,96 +1,187 @@
 <?php echo $header_page; ?>
+<body class="bg-primary">
+<style>
+	#js-particles {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+	}
+</style>
 
-<div id="content">
-	<div class="container-fluid"><br />
-		<br />
-		<div class="row">
-			<div class="col-sm-offset-4 col-sm-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h1 class="panel-title"><i class="fa fa-lock"></i> 请输入登录信息。</h1>
-					</div>
-					<div class="panel-body">
-                        <div class="alert alert-danger" style="display: none;">
-                            <i class="fa fa-exclamation-circle"></i>
-                            <span id="error_info"></span>
-                            <button type="button" class="close" data-dismiss="alert">
-                                &times;
-                            </button>
-                        </div>
+<div id="js-particles"></div>
+<header class="navbar navbar-fixed-top">
+	<a href="<?php echo $entrance; ?>route=Vender/Account/Account/register" class="btn btn-link navbar-btn pull-right">新用户注册</a>
+</header>
 
-                        <div class="alert alert-success" style="display: none;">
-                            <i class="fa fa-check-circle"></i>
-                            <span id="success_info"></span>
-                            <button type="button" class="close" data-dismiss="alert">
-                                &times;
-                            </button>
-                        </div>
-
-						<form action="" method="post" enctype="multipart/form-data" id="form_info">
-							<div class="form-group">
-								<label for="input-tel">手机号</label>
-								<div class="input-group"><span class="input-group-addon"><i class="fa fa-user"></i></span>
-									<input type="text" name="tel" value="" placeholder="手机号" id="input-tel" class="form-control" maxlength="15"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="input-password">密码</label>
-								<div class="input-group"><span class="input-group-addon"><i class="fa fa-lock"></i></span>
-									<input type="password" name="password" value="" placeholder="密码" id="input-password" class="form-control" maxlength="15"/>
-								</div>
-
-								<span class="help-block" style="display: none;"><a href="">忘记密码?</a></span>
-							</div>
-							<div class="text-right">
-								<button type="button" class="btn btn-primary" onclick="submit_info()"><i class="fa fa-key"></i></button>
-							</div>
-						</form>
-					</div>
-				</div>
+<main class="main">
+	<hgroup class="text-center">
+		<h5><img class="img-circle" src="<?php echo $assets_server; ?>Vender/Themes/<?php echo $themes_default; ?>/Img/lotus.png" width="120" height="120"></h5>
+		<h3 class="m-0"><strong>请登录</strong></h3>
+		<!--<small>Mobile law enforcement client</small>-->
+		<br>
+		<br>
+	</hgroup>
+	<div class="container-fluid">
+		<form>
+			<div class="form-group" style="margin-bottom:0;border-bottom:1px solid #eee;">
+				<input type="text" class="form-control" name="tel" placeholder="手机号" maxlength="15">
 			</div>
-		</div>
+			<div class="form-group">
+				<input type="password" class="form-control" name="password" placeholder="密码" maxlength="15">
+			</div>
+			<button type="button" class="btn btn-primary btn-lg btn-block" style="border:2px solid #fff;"  onclick="submit_info()">用户登录</button>
+
+		</form>
 	</div>
-</div>
+</main>
+<footer class="navbar navbar-fixed-bottom text-center" style="opacity:.65">
+	<small>© 2004-2017 All Rights Reserved. xxxxxx 版权所有</small>
+</footer>
+<script src="https://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
 <script>
-	$(document).ready(function(){
-		document.onkeydown = function(e){
-			var ev = document.all ? window.event : e;
-			if(ev.keyCode==13) {
-				$('.btn-primary').trigger('click');
-			}
-		}
-
-        var success_info = '<?php echo $success_info; ?>';
-        var error_info = '<?php echo $error_info; ?>';
-
-        if (!!success_info) {
-            show_success_dom(success_info);
-        }
-
-        if (!!error_info) {
-            show_error_dom(error_info);
-        }
-	});
-
 	var is_click = false;
 	function submit_info () {
 		if (is_click) return false;
 		is_click = true;
 
-        var password = st.sha1($("input[name=password]").val());
+		var password = st.sha1($("input[name=password]").val());
 
-        st.get('<?php echo $entrance; ?>route=Vender/Account/Account/do_login', {tel:$("input[name=tel]").val(),password:password}, function(data){
-            if (data.status == -1) {
-				$('.alert-danger').fadeIn();
-				$('.alert-success').fadeOut();
-				$('.help-block').fadeIn();
-				$('#error_info').html(data.result);
+		st.get('<?php echo $entrance; ?>route=Vender/Account/Account/do_login', {tel:$("input[name=tel]").val(),password:password}, function(data){
+			if (data.status == -1) {
+				alert(data.result);
 				is_click = false;
 			} else {
 				window.location.href = "<?php echo $entrance; ?>route=Vender/Company/Company";
 			}
 		});
 	}
+</script>
+<script>
+	$(function () {
+		particlesJS('js-particles',
+
+				{
+					"particles": {
+						"number": {
+							"value": 50,
+							"density": {
+								"enable": true,
+								"value_area": 800
+							}
+						},
+						"color": {
+							"value": "#ffffff"
+						},
+						"shape": {
+							"type": "triangle",
+							"stroke": {
+								"width": 0,
+								"color": "#000000"
+							},
+							"polygon": {
+								"nb_sides": 5
+							},
+							"image": {
+								"src": "img/github.svg",
+								"width": 100,
+								"height": 100
+							}
+						},
+						"opacity": {
+							"value": 0.5,
+							"random": false,
+							"anim": {
+								"enable": false,
+								"speed": 1,
+								"opacity_min": 0.1,
+								"sync": false
+							}
+						},
+						"size": {
+							"value": 5,
+							"random": true,
+							"anim": {
+								"enable": false,
+								"speed": 40,
+								"size_min": 0.1,
+								"sync": false
+							}
+						},
+						"line_linked": {
+							"enable": true,
+							"distance": 100,
+							"color": "#ffffff",
+							"opacity": 0.4,
+							"width": 1
+						},
+						"move": {
+							"enable": true,
+							"speed": 2,
+							"direction": "none",
+							"random": false,
+							"straight": false,
+							"out_mode": "out",
+							"attract": {
+								"enable": false,
+								"rotateX": 600,
+								"rotateY": 1200
+							}
+						}
+					},
+					"interactivity": {
+						"detect_on": "canvas",
+						"events": {
+							"onhover": {
+								"enable": true,
+								"mode": "repulse"
+							},
+							"onclick": {
+								"enable": true,
+								"mode": "push"
+							},
+							"resize": true
+						},
+						"modes": {
+							"grab": {
+								"distance": 400,
+								"line_linked": {
+									"opacity": 1
+								}
+							},
+							"bubble": {
+								"distance": 400,
+								"size": 40,
+								"duration": 2,
+								"opacity": 8,
+								"speed": 3
+							},
+							"repulse": {
+								"distance": 200
+							},
+							"push": {
+								"particles_nb": 4
+							},
+							"remove": {
+								"particles_nb": 2
+							}
+						}
+					},
+					"retina_detect": true,
+					"config_demo": {
+						"hide_card": false,
+						"background_color": "#b61924",
+						"background_image": "",
+						"background_position": "50% 50%",
+						"background_repeat": "no-repeat",
+						"background_size": "cover"
+					}
+				}
+
+		);
+	});
 </script>
 </body>
 </html>
