@@ -101,4 +101,69 @@ class Account extends DbFactory
 
         return $user_info;
     }
+
+    public function getSmsInfo($data)
+    {
+        $sql = "SELECT * FROM ".self::$dp."sms WHERE `obj_type` = 2 AND `sms_type` = 1 AND `tel` = :tel";
+        return self::$db->get_one(
+            $sql,
+            [
+                'tel' => $data['tel']
+            ]
+        );
+    }
+
+    public function addSms($data)
+    {
+        $sql = "INSERT INTO ".self::$dp."sms (`tel`,`rand_number`,`sms_type`,`obj_type`,`send_time`) VALUES ";
+
+        return self::$db->insert(
+            $sql,
+            [
+                $data['tel'],
+                $data['rand_number'],
+                1,
+                2,
+                time()
+            ]
+        );
+    }
+
+    public function editSms($data)
+    {
+        $update_sql = "UPDATE " . self::$dp . "sms SET `return_time` = :return_time, `return_type` = :return_type WHERE `sms_id` = :sms_id ";
+
+        self::$db->update(
+            $update_sql,
+            [
+                'sms_id'        => $data['sms_id'],
+                'return_time'   => time(),
+                'return_type'   => $data['return_type']
+            ]
+        );
+    }
+
+    public function validateSms($data)
+    {
+        $sql = "SELECT * FROM ".self::$dp."sms WHERE `obj_type` = 2 AND `sms_type` = 1 AND `tel` = :tel AND `rand_number` = :code ";
+        return self::$db->get_one(
+            $sql,
+            [
+                'tel'   => $data['tel'],
+                'code'  => $data['code']
+            ]
+        );
+    }
+
+    public function delSms($data)
+    {
+        $update_sql = "DELETE FROM " . self::$dp . "sms WHERE `tel` = :tel AND `obj_type` = 2 AND `sms_type` = 1";
+
+        self::$db->update(
+            $update_sql,
+            [
+                'tel'        => $data['tel']
+            ]
+        );
+    }
 }

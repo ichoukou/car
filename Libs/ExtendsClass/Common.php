@@ -450,4 +450,88 @@ class Common
 
         return $token;
     }
+
+    /**
+     * 发短信第一步
+     * @param $mobile
+     * @param $mobile_code
+     * @param string $content_type
+     * @return bool
+     */
+    public static function sendSMS ($mobile, $mobile_code, $text)
+    {
+        $content = iconv("UTF-8","GBK", $text);	//发送内容
+        $uid = 'plt01';	//用户账号
+        $pwd = '123456';	//用户密码
+        $http = 'http://61.156.38.47:8080/CPDXT/SendSms';		//发送地址
+
+        $data = array(
+            'commandID'=>3,					//发送命令
+            'username'=>$uid,				//用户账号
+            'password'=>$pwd,				//密码
+            'mobile'=>$mobile,				//被叫号码
+            'content'=>sprintf($content, $mobile_code),				//内容
+        );
+        $re = self::postSMS($http, $data); // POST方式提交
+
+        if(strpos ($re, "return=0") == 0 )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
+     * 发短信第二步
+     * @param $url
+     * @param string $data
+     * @return string
+     */
+    public static function postSMS($url, $data = '')
+    {
+        $row = parse_url($url);
+        $host = $row['host'];
+        $port = $row['port'] ? $row['port']:8080;
+        $file = $row['path'];
+
+        $post = '';
+//        foreach ($data as $k => $v) {
+//
+//        }
+        while(list($k, $v) = each($data))
+        {
+            $post .= rawurlencode($k) . "=" . rawurlencode($v) . "&"; // 转URL标准码
+        }
+
+        $post = substr($post, 0, - 1);
+        $len = strlen($post);
+        $fp = @fsockopen($host, $port, $errno, $errstr, 10);
+
+        if(! $fp)
+        {
+            return "$errstr ($errno)\n";
+        }
+        else
+        {
+            $receive = '';
+            $out = "POST $file HTTP/1.1\r\n";
+            $out .= "Host: $host\r\n";
+            $out .= "Content-type: application/x-www-form-urlencoded\r\n";
+            $out .= "Connection: Close\r\n";
+            $out .= "Content-Length: $len\r\n\r\n";
+            $out .= $post;
+            fwrite($fp, $out);
+            while(! feof($fp))
+            {
+                $receive .= fgets($fp, 128);
+            }
+            fclose($fp);
+            $receive = explode("\r\n\r\n", $receive);
+            unset($receive[0]);
+            return implode("", $receive);
+        }
+    }
 }

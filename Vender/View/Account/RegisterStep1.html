@@ -18,7 +18,7 @@
 					<span class="input-group-addon"><label>验证码</label></span>
 					<input type="text" name="code" class="form-control" placeholder="请输入验证码" maxlength="10">
 					<span class="input-group-btn">
-						<button class="btn btn-link text-link" type="button">获取验证码</button>
+						<button class="btn btn-link text-link" type="button" onclick="get_code()">获取验证码</button>
 					</span>
 				</div>
 				<div class="input-group">
@@ -36,10 +36,16 @@
 </main>
 
 <script>
+	function get_code() {
+        st.post('<?php echo $entrance; ?>route=Vender/Account/Account/get_code', {tel:$("input[name=tel]").val()}, function(data){
+            alert(data.result);
+        });
+	}
+
     var is_click = false;
     function submit_info()
     {
-        if (is_click) return false;
+        //if (is_click) return false;
         is_click = true;
 
         var param = {

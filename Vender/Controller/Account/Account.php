@@ -93,7 +93,7 @@ class Account extends Controller
             $company_id = M::Vender('Account\\Account', 'register', ['post'=>$post]);
 
             if ($company_id > 0) {
-                setcookie('success_info', '注册成功', time() + 60);
+                M::Vender('Account\\Account', 'delSms', ['tel'=>$post['tel']]);
                 $_SESSION['register_vender_info'] = '';
 
                 exit(json_encode(['status'=>1, 'result'=>'注册失败'], JSON_UNESCAPED_UNICODE));
@@ -108,7 +108,35 @@ class Account extends Controller
      */
     public function get_code()
     {
-        $_SESSION['register_code'] = 123;
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $post = C::hsc($_POST);
+
+            if (empty($post['tel']) or !C::is_tel($post['tel'])) {
+                exit(json_encode(['status'=>-1, 'result'=>'请填写正确的11位手机号码'], JSON_UNESCAPED_UNICODE));
+            } elseif (M::Vender('Company\\Company', 'findCompanyByTel', ['tel'=>$post['tel']]) != '') {
+                exit(json_encode(['status'=>-1, 'result'=>'此手机号码已经被使用'], JSON_UNESCAPED_UNICODE));
+            }
+
+            $sms_info = M::Vender('Account\\Account', 'getSmsInfo', ['tel'=>$post['tel']]);
+            if (!empty($sms_info) and $sms_info['send_time'] + 60 >= time()) {
+                exit(json_encode(['status'=>-1, 'result'=>'1分钟内只能发送一次'], JSON_UNESCAPED_UNICODE));
+            }
+
+            $rand_number = mt_rand(100000, 999999);
+            $content = "尊敬的企业用户，您的注册验证码是{$rand_number}，10分钟内有效。如非本人操作请忽略！【汽修网】";
+
+            $sms_id = M::Vender('Account\\Account', 'addSms', ['tel'=>$post['tel'],'rand_number'=>$rand_number]);
+
+            $return = C::sendSMS($post['tel'], $rand_number, $content);
+
+            if ($return) {
+                M::Vender('Account\\Account', 'editSms', ['sms_id' => $sms_id, 'return_type' => 1]);
+                exit(json_encode(['status'=>1, 'result'=>'短信发送成功请查收'], JSON_UNESCAPED_UNICODE));
+            } else {
+                M::Vender('Account\\Account', 'editSms', ['sms_id' => $sms_id, 'return_type' => 2]);
+                exit(json_encode(['status'=>-1, 'result'=>'短信发送失败'], JSON_UNESCAPED_UNICODE));
+            }
+        }
     }
 
     /**
@@ -133,9 +161,15 @@ class Account extends Controller
                 $errors ['tel'] = '此手机号码已经被使用';
             }
 
-            $_SESSION['register_code'] = 123;
-            if (empty($post['code']) or $post['code'] != $_SESSION['register_code']) {
+            if (empty($post['code'])) {
                 $errors ['code'] = '验证码错误';
+            } else {
+                $sms_info = M::Vender('Account\\Account', 'validateSms', ['tel'=>$post['tel'], 'code'=>$post['code']]);
+                if (empty($sms_info)) {
+                    $errors ['tel'] = '验证码错误';
+                } elseif ($sms_info['send_time'] + 600 < time()) {
+                    $errors ['tel'] = '验证码已过期，请获取新的验证码';
+                }
             }
 
             if (empty($post['password']) or mb_strlen($post['real_password']) < 6) {
