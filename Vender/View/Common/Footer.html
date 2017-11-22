@@ -1,25 +1,64 @@
+<footer class="tabbar">
+    <ul class="nav nav-justified">
+        <li>
+            <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/Company/Company'" data-toggle="tab">
+                <i class="nc-icon-outline shopping_delivery"></i>
+                <small>企业</small>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/Reservation/Reservation'" data-toggle="tab">
+                <i class="nc-icon-outline ui-2_time nc-icon-glyph"></i>
+                <small>维修列表</small>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/Reservation/Settlement'" data-toggle="tab">
+                <i class="nc-icon-outline business_round-yen"></i>
+                <small>维修结算</small>
+            </a>
+        </li>
+    </ul>
+</footer>
+
+<script src="<?php echo $assets_server; ?>Vender/Themes/<?php echo $themes_default; ?>/Js/bootstrap.min.js"></script>
+
+<script>
+    $(function () {
+
+        $('.tabbar a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+            $(this).children('i').addClass('nc-icon-glyph')
+        });
+        $('.tabbar a[data-toggle="tab"]').on('hidden.bs.tab', function (e) {
+
+            $(this).children('i').removeClass('nc-icon-glyph')
+        })
+    });
+</script>
+
 <script type="text/javascript">
     $(document).ready(function(){
-        <!--document.onkeydown = function(e) {
-            var ev = document.all ? window.event : e;
-            if(ev.keyCode == 13) {
-                $('#button-filter').trigger('click');
-            }
-        }
-
-        $('#button-filter').on('click', function() {
-            event.preventDefault();
-            var search_param = $("#search_info").serializeArray();
-            var search_url = '<?php echo $search_url; ?>';
-
-            if (!!search_param) {
-                $.each(search_param, function(i, v){
-                    if (!!v.value) search_url += '&' + v.name + '=' + v.value;
-                });
-            }
-
-            window.location.href = search_url;
-        });-->
+//        document.onkeydown = function(e) {
+//            var ev = document.all ? window.event : e;
+//            if(ev.keyCode == 13) {
+//                $('#button-filter').trigger('click');
+//            }
+//        }
+//
+//        $('#button-filter').on('click', function() {
+//            event.preventDefault();
+//            var search_param = $("#search_info").serializeArray();
+//            var search_url = '<?php echo $search_url; ?>';
+//
+//            if (!!search_param) {
+//                $.each(search_param, function(i, v){
+//                    if (!!v.value) search_url += '&' + v.name + '=' + v.value;
+//                });
+//            }
+//
+//            window.location.href = search_url;
+//        });
     });
 </script>
 </body>

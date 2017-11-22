@@ -21,7 +21,7 @@ define('NO_IMAGE', HTTP_SERVER . 'image/cache/no_image-100x100.png');
 $_config = [];
 
 $_config['DEFAULT_ROUTE'] = [
-    'path'   => 'Vender\Home\Home',
+    'path'   => 'Vender\Company\Company',
     'method' => 'index',
     'entrance' => 'vender.php?'
 ];

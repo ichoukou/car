@@ -392,3 +392,13 @@
 [2017-11-21 03:17:08] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'material_costs' at row 1 in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>130</b>
 
 [2017-11-21 16:46:02] ERROR Mess:<b>Warning</b>: Error: The 'register.php' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-22 01:46:05] ERROR Mess:<b>Warning</b>: Error: The 'login.php' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>/var/www/car/Libs/Core/Route.php</b> on line <b>66</b>
+
+[2017-11-22 01:46:08] ERROR Mess:<b>Warning</b>: Error: The 'login.php' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>/var/www/car/Libs/Core/Route.php</b> on line <b>66</b>
+
+[2017-11-22 01:46:08] ERROR Mess:<b>Warning</b>: Error: The 'login.php' Method Under Class 'Vender\Controller\Account\Account' Not Found! in <b>/var/www/car/Libs/Core/Route.php</b> on line <b>66</b>
+
+[2017-11-22 01:59:33] ERROR Mess:<b>Warning</b>: Division by zero in <b>/var/www/car/Vender/View/Company/CompanyIndex.html</b> on line <b>38</b>
+
+[2017-11-22 01:59:34] ERROR Mess:<b>Warning</b>: Division by zero in <b>/var/www/car/Vender/View/Company/CompanyIndex.html</b> on line <b>38</b>
