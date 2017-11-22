@@ -8,7 +8,7 @@ class Reservation extends DbFactory
 {
     public function findReservationByReservationId($data)
     {
-        $sql = "SELECT r.*,cpy.name,cpy.score,cpy.score_count,cpy.address,uc.plate_number,uc.brand_type FROM ".self::$dp."reservation AS r " .
+        $sql = "SELECT r.*,cpy.name,cpy.score,cpy.score_count,cpy.address,uc.plate_number,uc.brand_type,cpy.views FROM ".self::$dp."reservation AS r " .
             " LEFT JOIN ".self::$dp."company AS cpy ON cpy.company_id=r.company_id ".
             #" LEFT JOIN ".self::$dp."user AS u ON r.user_id=u.user_id ".
             " LEFT JOIN ".self::$dp."user_car AS uc ON r.car_id=uc.car_id ".
@@ -27,7 +27,7 @@ class Reservation extends DbFactory
             'user_id'       => $_SESSION['user_id']
         ];
 
-        $sql = "SELECT r.*,cpy.name,uc.plate_number,uc.brand_type FROM ".self::$dp."reservation AS r " .
+        $sql = "SELECT r.*,cpy.name,uc.plate_number,uc.car_type,uc.brand_type,cpy.score,cpy.views,cpy.score_count,cpy.address FROM ".self::$dp."reservation AS r " .
                " LEFT JOIN ".self::$dp."company AS cpy ON cpy.company_id=r.company_id ".
                #" LEFT JOIN ".self::$dp."user AS u ON r.user_id=u.user_id ".
                " LEFT JOIN ".self::$dp."user_car AS uc ON r.car_id=uc.car_id ".

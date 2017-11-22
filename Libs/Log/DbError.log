@@ -196,3 +196,27 @@
 [2017-11-21 03:17:08] ERROR Func:insert
 [2017-11-21 03:17:08] ERROR Sql :INSERT INTO website_maintenance_costs  (`material_costs`, `working_hours_costs`, `outside_costs`, `other_costs`,  `total_receivables`, `discount_costs`,  `total_revenue`, `reservation_id`) VALUES 
 [2017-11-21 03:17:08] ERROR Mess:SQLSTATE[01000]: Warning: 1265 Data truncated for column 'material_costs' at row 1
+
+[2017-11-22 08:41:35] ERROR File:/var/www/car/Front/Model/Reservation/Reservation.php
+[2017-11-22 08:41:35] ERROR Line:18
+[2017-11-22 08:41:35] ERROR Func:update
+[2017-11-22 08:41:35] ERROR Sql :SELECT * FROM website_company SET `views` = views + 1 WHERE `company_id` = :company_id
+[2017-11-22 08:41:35] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `views` = views + 1 WHERE `company_id` = 9' at line 1
+
+[2017-11-22 08:42:48] ERROR File:/var/www/car/Front/Model/Reservation/Reservation.php
+[2017-11-22 08:42:48] ERROR Line:20
+[2017-11-22 08:42:48] ERROR Func:update
+[2017-11-22 08:42:48] ERROR Sql :SELECT * FROM website_company SET `views` = :views WHERE `company_id` = :company_id
+[2017-11-22 08:42:48] ERROR Mess:SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+
+[2017-11-22 08:42:48] ERROR File:/var/www/car/Front/Model/Reservation/Reservation.php
+[2017-11-22 08:42:48] ERROR Line:20
+[2017-11-22 08:42:48] ERROR Func:update
+[2017-11-22 08:42:48] ERROR Sql :SELECT * FROM website_company SET `views` = :views WHERE `company_id` = :company_id
+[2017-11-22 08:42:48] ERROR Mess:SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+
+[2017-11-22 08:42:48] ERROR File:/var/www/car/Front/Model/Reservation/Reservation.php
+[2017-11-22 08:42:48] ERROR Line:20
+[2017-11-22 08:42:48] ERROR Func:update
+[2017-11-22 08:42:48] ERROR Sql :SELECT * FROM website_company SET `views` = :views WHERE `company_id` = :company_id
+[2017-11-22 08:42:48] ERROR Mess:SQLSTATE[HY093]: Invalid parameter number: parameter was not defined

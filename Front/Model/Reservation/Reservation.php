@@ -9,8 +9,15 @@ class Reservation extends DbFactory
     public function findReservationByCompanyId($data)
     {
         $sql = "SELECT * FROM ".self::$dp."company WHERE `company_id` = :company_id";
+        $info = self::$db->get_one($sql, ['company_id'=>$data['company_id']]);
 
-        return self::$db->get_one($sql, ['company_id'=>$data['company_id']]);
+        if(empty($info))
+            return '';
+
+        $update_sql = "UPDATE ".self::$dp."company SET `views` = views + 1 WHERE `company_id` = :company_id";
+        self::$db->update($update_sql, ['company_id'=>$data['company_id']]);
+
+        return $info;
     }
 
     public function findReservations($data)

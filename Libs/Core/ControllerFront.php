@@ -96,7 +96,7 @@ class ControllerFront
         if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) and strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
             $this->data['header_page'] = L::view('Common\\Header', 'Front', $this->data);
 
-            $this->data['left_page'] = L::view('Common\\Left', 'Front', $this->data);
+            #$this->data['left_page'] = L::view('Common\\Left', 'Front', $this->data);
 
             $this->data['footer_page'] = L::view('Common\\Footer', 'Front', $this->data);
         }

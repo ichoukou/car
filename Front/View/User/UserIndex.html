@@ -1,105 +1,37 @@
 <?php echo $header_page; ?>
-<?php echo $left_page; ?>
-<div id="content">
-    <div class="page-header">
-        <div class="container-fluid">
-            <div class="pull-right">
-                <button type="button" data-toggle="tooltip" title="保存" class="btn btn-primary" onclick="submit_info()">
-                    <i class="fa fa-save"></i>
-                </button>
-                <a href="<?php echo $entrance; ?>route=Front/User/User<?php echo $url; ?>" data-toggle="tooltip" title="取消" class="btn btn-default">
-                    <i class="fa fa-reply"></i>
-                </a>
-            </div>
-            <h1>首页</h1>
-            <ul class="breadcrumb">
-                <li><a href="<?php echo $entrance; ?>route=Front/User/User">我的信息</a></li>
-            </ul>
-        </div>
-    </div>
+<header class="navbar navbar-fixed-top">
+    <h4 class="navbar-text">我的信息</h4>
+    <!--<a href="<?php echo $entrance; ?>route=Front/Company/Company<?php echo $url; ?>" class="btn btn-link navbar-btn pull-left">返回</a>-->
+    <!--<a href="#" class="btn btn-link navbar-btn pull-right"><i class="nc-icon-outline media-1_camera-20"></i> 拍照识别</a>-->
+</header>
+<main class="main">
+    <!--<img class="img-responsive" src="<?php echo $assets_server; ?>Vender/Themes/<?php echo $themes_default; ?>/Img/BingWallpaper-2017-03-03.jpg" alt="">-->
     <div class="container-fluid">
-        <div class="alert alert-success" style="display: none;">
-            <i class="fa fa-check-circle"></i>
-            <span id="alert-success"></span>
-            <button type="button" class="close" data-dismiss="alert">
-                &times;
-            </button>
-        </div>
-
-        <div class="alert alert-danger" style="display: none;">
-            <i class="fa fa-exclamation-circle"></i>
-            <span id="alert-danger"></span>
-            <button type="button" class="close" data-dismiss="alert">
-                &times;
-            </button>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    <i class="fa fa-pencil"></i>
-                    编辑
-                </h3>
+        <form class="form-horizontal" id="form_info">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><label>会员编号</label></span>
+                    <input type="text" class="form-control" value="<?php echo $user_info['numbering']; ?>" placeholder="会员编号" readonly>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><label>手机号</label></span>
+                    <input type="text" class="form-control" value="<?php echo $user_info['tel']; ?>" placeholder="手机号" readonly>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><label>密码</label></span>
+                    <input type="password" class="form-control" name="password" value="<?php echo $password; ?>" placeholder="密码" maxlength="15">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><label>确认密码</label></span>
+                    <input type="password" class="form-control" name="c_password" value="<?php echo $c_password; ?>" placeholder="确认密码" maxlength="15">
+                </div>
             </div>
-            <div class="panel-body">
-                <form enctype="multipart/form-data" id="form_info" class="form-horizontal">
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#tab-general" data-toggle="tab">常规</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab-general">
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <ul class="nav nav-pills nav-stacked" id="default">
-                                        <li class="active">
-                                            <a href="#tab-customer" data-toggle="tab">常规</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="tab-customer">
-                                            <div class="form-group required">
-                                                <label class="col-sm-2 control-label" for="input-numbering">会员编号</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="numbering" value="<?php echo $user_info['numbering']; ?>" placeholder="会员编号" id="input-numbering" class="form-control" maxlength="30" readonly>
-                                                    <div class="text-danger"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="col-sm-2 control-label" for="input-tel">手机号</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="tel" value="<?php echo $user_info['tel']; ?>" placeholder="手机号" id="input-tel" class="form-control" maxlength="20" readonly>
-                                                    <div class="text-danger"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="col-sm-2 control-label" for="input-password">密码</label>
-                                                <div class="col-sm-10">
-                                                    <input type="password" name="password" value="<?php echo $password; ?>" placeholder="密码" id="input-password" class="form-control" maxlength="15">
-                                                    <div class="text-danger"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="col-sm-2 control-label" for="input-c_password">确认密码</label>
-                                                <div class="col-sm-10">
-                                                    <input type="password" name="c_password" value="<?php echo $c_password; ?>" placeholder="确认密码" id="input-c_password" class="form-control" maxlength="15">
-                                                    <div class="text-danger"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        </form>
+        <button type="button" class="btn btn-primary btn-block" onclick="window.location.href='<?php echo $entrance; ?>route=Front/User/Car'">我的车辆</button>
+        <button type="button" class="btn btn-primary btn-block" onclick="submit_info()">保存</button>
     </div>
-</div>
+
+</main>
 <script>
     function submit_info()
     {
@@ -115,24 +47,14 @@
         }
 
         st.post('<?php echo $entrance; ?>route=Front/User/User/do_edit_User', param, function(data){
-            $('.text-danger').html('');
-            $('.text-danger').fadeOut();
-            $('#tab-customer').find('div').removeClass('has-error');
-
             if (data.status == -1) {
-                var other_error = '';
-                $.each(data.result, function(i, e){
-                    if (i == 'other_error') {
-                        other_error = ',' + e;
-                    } else {
-                        $('[name='+i+']').next().html(e);
-                        $('[name='+i+']').next().fadeIn();
-                        $('[name='+i+']').parent().parent().addClass('has-error');
-                    }
+                var return_error = '';
+                $.each(data.result, function(i, e) {
+                    return_error = e;
+                    return false;
                 });
-
-                $("#alert-danger").html('编辑失败,请查看错误信息'+other_error);
-                $("#alert-danger").parent().fadeIn();
+                alert(return_error);
+                is_click = false;
             } else {
                 window.location.href = "<?php echo $entrance; ?>route=Front/User/User";
             }

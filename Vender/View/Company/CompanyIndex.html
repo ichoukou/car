@@ -35,20 +35,28 @@
                         <div class="col-xs-9 pl-0">
                             <h4 class="list-group-item-heading"><?php echo $company['name']; ?></h4>
                             <h6>
-                                <?php $score = round($company['score'] / $company['score_count']); ?>
                                 <small class="evaluation">
-                                    <?php for($i = 1; $i <= 5; $i++): ?>
-                                        <?php if(!empty($score)): ?>
-                                            <i class="nc-icon-glyph ui-2_favourite-31 text-warning"></i>
-                                            <?php $score--; ?>
-                                        <?php else: ?>
-                                            <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
-                                        <?php endif; ?>
-                                    <?php endfor; ?>
+                                    <?php if(!empty($company['score']) and !empty($company['score_count'])): ?>
+                                        <?php $score = round($company['score'] / $company['score_count']); ?>
+                                        <?php for($i = 1; $i <= 5; $i++): ?>
+                                            <?php if(!empty($score)): ?>
+                                                <i class="nc-icon-glyph ui-2_favourite-31 text-warning"></i>
+                                                <?php $score--; ?>
+                                            <?php else: ?>
+                                                <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
+                                    <?php else: ?>
+                                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                    <?php endif; ?>
                                 </small>
-                                <span class="text-muted"><?php echo $company['views']; ?></span>
+                                <span class="text-muted">有<?php echo $company['views']; ?>人访问</span>
                             </h6>
-                            <p>保定市新市区东风西路石油新社区内门脸</p>
+                            <p><?php echo $company['address']; ?></p>
                             <a href="<?php echo $entrance; ?>route=Vender/Company/Company/edit_company&company_id=<?php echo $company['company_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><i class="nc-icon-outline ui-2_time"></i> 查看详情</a>
                         </div>
                     </div>

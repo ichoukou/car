@@ -71,6 +71,25 @@ class Reservation extends Controller
 
         $this->data['company_info'] = $info;
 
+        if (empty($info['score']) and empty($info['score_count'])) {
+            $evaluation = '暂无评价';
+        } else {
+            $this->data['score'] = round($info['score'] / $info['score_count']);
+            if ($this->data['score'] > 5) {
+                $evaluation = '非常好';
+            } elseif($this->data['score'] >= 4 and $this->data['score'] < 5) {
+                $evaluation = '很好';
+            } elseif($this->data['score'] >= 3 and $this->data['score'] < 4) {
+                $evaluation = '良好';
+            } elseif($this->data['score'] >= 2 and $this->data['score'] < 3) {
+                $evaluation = '一般';
+            } else {
+                $evaluation = '不好';
+            }
+        }
+
+        $this->data['evaluation'] = $evaluation;
+
         $this->create_page();
 
         L::output(L::view('Reservation\\ReservationAdd', 'Front', $this->data));

@@ -1,140 +1,70 @@
 <?php echo $header_page; ?>
-<?php echo $left_page; ?>
-<div id="content">
-	<div class="page-header">
-		<div class="container-fluid">
-			<h1>首页</h1>
-			<ul class="breadcrumb">
-				<li><a href="<?php echo $entrance; ?>route=Front/Reservation/Reservation">在线预约</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="container-fluid">
-		<div class="alert alert-danger" style="display: none;">
-			<i class="fa fa-exclamation-circle"></i>
-			<span id="error_info"></span>
-			<button type="button" class="close" data-dismiss="alert">
-				&times;
-			</button>
-		</div>
-
-        <div class="alert alert-success" style="display: none;">
-            <i class="fa fa-check-circle"></i>
-            <span id="success_info"></span>
-            <button type="button" class="close" data-dismiss="alert">
-                &times;
-            </button>
+<header class="navbar navbar-fixed-top">
+    <h4 class="navbar-text">预约维修</h4>
+    <!--<a href="#" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>-->
+</header>
+<main class="main">
+    <div class="list-group">
+        <div class="list-group-item border-horizontal-0">
+            <?php if ($reservations) : ?>
+            <?php foreach ($reservations as $reservation) : ?>
+            <div class="row">
+                <div class="col-xs-3">
+                    <img class="img-responsive" src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/lactus.png" alt="">
+                </div>
+                <div class="col-xs-9 pl-0">
+                    <h4 class="list-group-item-heading"><?php echo $reservation['name']; ?></h4>
+                    <h6>
+                        <small class="evaluation">
+                            <?php if(!empty($reservation['score']) and !empty($reservation['score_count'])): ?>
+                                <?php $score = round($reservation['score'] / $reservation['score_count']); ?>
+                                <?php for($i = 1; $i <= 5; $i++): ?>
+                                    <?php if(!empty($score)): ?>
+                                        <i class="nc-icon-glyph ui-2_favourite-31 text-warning"></i>
+                                        <?php $score--; ?>
+                                    <?php else: ?>
+                                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
+                            <?php else: ?>
+                                <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                                <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                            <?php endif; ?>
+                        </small>
+                        <span class="text-muted">有<?php echo $reservation['views']; ?>人访问 | 距离0.46km</span>
+                    </h6>
+                    <p><?php echo $reservation['address']; ?></p>
+                    <a href="<?php echo $entrance; ?>route=Front/Reservation/Reservation/add_reservation&company_id=<?php echo $reservation['company_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><i class="nc-icon-outline ui-2_time"></i> 预约维修</a>
+                </div>
+            </div>
+            <?php endforeach; ?>
+            <?php else: ?>
+            <div class="row">
+                <div class="col-xs-9 pl-0">
+                    <h4 class="list-group-item-heading">没有符合条件的结果！</h4>
+                </div>
+            </div>
+            <?php endif; ?>
         </div>
-
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					<i class="fa fa-list"></i>
-					在线预约
-				</h3>
-			</div>
-			<div class="panel-body">
-				<div class="well">
-					<div class="row">
-                        <form id="search_info">
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label class="control-label" for="input-parent_name">父&母姓名</label>
-                                    <input type="text" name="filter_parent_name" value="<?php echo $filter_parent_name; ?>" placeholder="父、母姓名" id="input-parent_name" class="form-control" />
-                                </div>
-                            </div>
-                            <!--<div class="col-sm-3">-->
-                                <!--<div class="form-group">-->
-                                    <!--<label class="control-label" for="input-date-added">添加日期</label>-->
-                                    <!--<div class="input-group date">-->
-                                        <!--<input type="text" name="filter_create_time" value="<?php echo $filter_create_time; ?>" placeholder="添加日期" data-date-format="YYYY-MM-DD" id="input-date-added" class="form-control" />-->
-                                        <!--<span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> 筛选 </button>-->
-                            <!--</div>-->
-                        </form>
-					</div>
-				</div>
-				<form method="post" enctype="multipart/form-data" id="form_info">
-					<div class="table-responsive">
-						<table class="table table-bordered table-hover">
-							<thead>
-                                <tr>
-                                    <td style="width: 1px;" class="text-center">
-                                        <input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" />
-                                    </td>
-                                    <td class="text-left">
-                                        <a href="javascript:void(0)">名称</a>
-                                    </td>
-                                    <td class="text-left">
-                                        <a href="javascript:void(0)">评级</a>
-                                    </td>
-                                    <td class="text-left">
-                                        <a href="javascript:void(0)">地址</a>
-                                    </td>
-                                    <td class="text-left">
-                                        <a href="javascript:void(0)">创建时间</a>
-                                    </td>
-                                    <td class="text-right">操作</td>
-                                </tr>
-							</thead>
-							<tbody>
-							<?php if ($reservations) : ?>
-                                <?php foreach ($reservations as $reservation) : ?>
-                                    <tr>
-                                        <td class="text-center">
-                                            <input type="checkbox" name="selected" value="<?php echo $reservation['reservation_id']; ?>"/>
-                                        </td>
-                                        <td class="text-left"><?php echo $reservation['name']; ?></td>
-                                        <td class="text-left">
-                                            <?php if($reservation['score_count'] > 0 and $reservation['score'] > 0): ?>
-                                                <?php echo round($reservation['score'] / $reservation['score_count'], 2); ?>
-                                            <?php else: ?>
-                                                0
-                                            <?php endif; ?>
-                                        </td>
-                                        <td class="text-left"><?php echo mb_substr($reservation['address'], 0, 10); ?></td>
-                                        <td class="text-left"><?php echo $reservation['create_time']; ?></td>
-                                        <td class="text-right">
-                                            <a href="<?php echo $entrance; ?>route=Front/Reservation/Reservation/add_reservation&company_id=<?php echo $reservation['company_id']; ?><?php echo $url; ?>" data-toggle="tooltip" title="预约" class="btn btn-primary">
-                                                <i class="fa fa-plus"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-							<?php else: ?>
-                                <tr>
-                                    <td class="text-center" colspan="8">没有符合条件的结果！</td>
-                                </tr>
-							<?php endif; ?>
-							</tbody>
-						</table>
-					</div>
-				</form>
-				<div class="row">
-					<div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
-					<div class="col-sm-6 text-right"><?php echo $results; ?></div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
+    </div>
+</main>
 <script>
     $(document).ready(function(data)
-        {
-            var success_info = '<?php echo $success_info; ?>';
-            var error_info = '<?php echo $error_info; ?>';
+            {
+                var success_info = '<?php echo $success_info; ?>';
+                var error_info = '<?php echo $error_info; ?>';
 
-            if (!!success_info) {
-                show_success_dom(success_info);
-            }
+                if (!!success_info) {
+                    show_success_dom(success_info);
+                }
 
-            if (!!error_info) {
-                show_error_dom(error_info);
+                if (!!error_info) {
+                    show_error_dom(error_info);
+                }
             }
-        }
     );
 
     var remove_one_click = true;
@@ -187,11 +117,6 @@
             }
         });
     }
-</script>
-<script type="text/javascript">
-    $('.date').datetimepicker({
-        pickTime: false
-    });
 </script>
 
 <?php echo $footer_page; ?>

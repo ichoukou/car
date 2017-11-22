@@ -1,109 +1,76 @@
 <?php echo $header_page; ?>
-<?php echo $left_page; ?>
-<div id="content">
-    <div class="page-header">
-        <div class="container-fluid">
-            <div class="pull-right">
-                <button type="button" data-toggle="tooltip" title="保存" class="btn btn-primary" onclick="submit_info()">
-                    <i class="fa fa-save"></i>
-                </button>
-                <a href="<?php echo $entrance; ?>route=Front/User/Reservation<?php echo $url; ?>" data-toggle="tooltip" title="取消" class="btn btn-default">
-                    <i class="fa fa-reply"></i>
-                </a>
-            </div>
-            <h1>首页</h1>
-            <ul class="breadcrumb">
-                <li><a href="<?php echo $entrance; ?>route=Front/User/Reservation">我的预约</a></li>
-                <li><a href="<?php echo $entrance; ?>route=Front/User/Reservation/edit_reservation&reservation_id=<?php echo $reservation_info['reservation_id']; ?><?php echo $url; ?>">编辑</a></li>
-            </ul>
+<!-- Mobiscroll JS and CSS Includes -->
+<link href="<?php echo $assets_server; ?>Common/Js/mobisscroll3.0/css/mobiscroll.custom-3.0.0-beta2.min.css" rel="stylesheet" type="text/css" />
+<script src="<?php echo $assets_server; ?>Common/Js/mobisscroll3.0/js/mobiscroll.custom-3.0.0-beta2.min.js" type="text/javascript"></script>
+
+<header class="navbar navbar-fixed-top">
+    <h4 class="navbar-text">我的预约详情</h4>
+    <a href="<?php echo $entrance; ?>route=Front/User/Reservation" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+</header>
+<main class="main">
+    <section class="panel">
+        <div class="panel-body">
+            <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly/>
+            <h4 class="mt-0"><?php echo $reservation_info['name']; ?></h4>
+            <p class="text-muted"><i class="nc-icon-glyph location_pin text-primary"></i> 距离0.46km | <?php echo $reservation_info['address']; ?></p>
+            <hr class="my-1l">
+            <p>
+                <span class="evaluation">
+                    <?php if(!empty($reservation_info['score']) and !empty($reservation_info['score_count'])): ?>
+                        <?php $show_score = $score; ?>
+                        <?php for($i = 1; $i <= 5; $i++): ?>
+                            <?php if(!empty($score)): ?>
+                                <i class="nc-icon-glyph ui-2_favourite-31 text-warning"></i>
+                                <?php $score--; ?>
+                            <?php else: ?>
+                                <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                    <?php else: ?>
+                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                        <i class="nc-icon-glyph ui-2_favourite-31 text-muted"></i>
+                    <?php endif; ?>
+                </span>
+                <span class="text-muted"> <?php echo $show_score; ?>分 <?php echo $evaluation; ?> | 有<?php echo $reservation_info['views']; ?>人访问</span>
+            </p>
+            <!--<hr class="my-1l">-->
+            <!--<p class="text-muted"><?php echo $reservation_info['description']; ?></p>-->
         </div>
-    </div>
+    </section>
     <div class="container-fluid">
-        <div class="alert alert-success" style="display: none;">
-            <i class="fa fa-check-circle"></i>
-            <span id="alert-success"></span>
-            <button type="button" class="close" data-dismiss="alert">
-                &times;
-            </button>
-        </div>
-
-        <div class="alert alert-danger" style="display: none;">
-            <i class="fa fa-exclamation-circle"></i>
-            <span id="alert-danger"></span>
-            <button type="button" class="close" data-dismiss="alert">
-                &times;
-            </button>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    <i class="fa fa-pencil"></i>
-                    编辑
-                </h3>
-            </div>
-            <div class="panel-body">
-                <form enctype="multipart/form-data" id="form_info" class="form-horizontal">
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#tab-general" data-toggle="tab">常规</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab-general">
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <ul class="nav nav-pills nav-stacked" id="default">
-                                        <li class="active">
-                                            <a href="#tab-customer" data-toggle="tab">常规</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="tab-customer">
-                                            <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly>
-                                            <div class="form-group required">
-                                                <label class="col-sm-2 control-label" >名称</label>
-                                                <div class="col-sm-10">
-                                                    <?php echo $reservation_info['name']; ?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="col-sm-2 control-label">评分</label>
-                                                <div class="col-sm-10">
-                                                    <?php if($reservation_info['score_count'] > 0 and $reservation_info['score'] > 0): ?>
-                                                    <?php echo round($reservation_info['score'] / $reservation_info['score_count'], 2); ?>
-                                                    <?php else: ?>
-                                                    0
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="col-sm-2 control-label">地址</label>
-                                                <div class="col-sm-10">
-                                                    <?php echo $reservation_info['address']; ?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="col-sm-2 control-label">预约时间</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="reservation_time" value="2017-12-12 10:30" placeholder="预约时间" id="input-reservation_time" class="form-control">
-                                                    <div class="text-danger"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <!--<button type="button" href="#" class="btn btn-default btn-block"><i class="nc-icon-outline ui-2_time"></i> 请选择预约时间</button>-->
+        <?php if($reservation_info['status'] == 1): ?>
+            <input id="reservation_time" name="reservation_time" value="<?php echo $reservation_info['reservation_time']; ?>" placeholder="请选择预约时间" class="form-control" readonly/>
+            <button type="button" onclick="submit_info()" class="btn btn-primary btn-block"><i class="nc-icon-outline ui-1_check-circle-08"></i> 保存修改</button>
+        <?php else: ?>
+            <input name="reservation_time" value="<?php echo $reservation_info['reservation_time']; ?>" class="form-control" readonly/>
+        <?php endif; ?>
     </div>
-</div>
+</main>
 <script>
+    $(document).ready(function(){
+        var status = parseInt('<?php echo $reservation_info[status]; ?>');
+        if (status == 1) {
+            // Mobiscroll Date & Time initialization
+            $('#reservation_time').mobiscroll().date({
+                theme: 'ios',      // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: 'zh',    // Specify language like: lang: 'pl' or omit setting to use default
+                display: 'Center', //Bubble // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: 'datetimeInvalid', //datetimeDate,datetimeInvalid,datetimeTime        // More info about mode: https://docs.mobiscroll.com/3-0-0_beta2/datetime#!opt-mode
+                dateFormat: 'yy-mm-dd H:i',
+                onSet: function (event, inst) {
+                    var selectedDate = inst.getVal(); // Call the getVal method
+                    //alert(selectedDate);
+                    //mobiscroll.util.datetime.formatDate('yy-mm-dd', new Date(2015, 1, 19));
+                    //mobiscroll.util.datetime.parseDate('yy-mm-dd', '2015-02-19');
+                }
+            });
+        }
+    });
+
     function submit_info()
     {
         var param = {
@@ -112,33 +79,19 @@
         }
 
         st.post('<?php echo $entrance; ?>route=Front/User/Reservation/do_edit_reservation', param, function(data){
-            $('.text-danger').html('');
-            $('.text-danger').fadeOut();
-            $('#tab-customer').find('div').removeClass('has-error');
-
             if (data.status == -1) {
-                var other_error = '';
-                $.each(data.result, function(i, e){
-                    if (i == 'other_error') {
-                        other_error = ',' + e;
-                    } else {
-                        $('[name='+i+']').next().html(e);
-                        $('[name='+i+']').next().fadeIn();
-                        $('[name='+i+']').parent().parent().addClass('has-error');
-                    }
+                var return_error = '';
+                $.each(data.result, function(i, e) {
+                    return_error = e;
+                    return false;
                 });
-
-                $("#alert-danger").html('编辑失败,请查看错误信息'+other_error);
-                $("#alert-danger").parent().fadeIn();
+                alert(return_error);
+                is_click = false;
             } else {
                 window.location.href = "<?php echo $entrance; ?>route=Front/User/Reservation<?php echo $url; ?>";
             }
         });
     }
 </script>
-<style>
-    .text-danger {
-        display: none;
-    }
-</style>
+
 <?php echo $footer_page; ?>

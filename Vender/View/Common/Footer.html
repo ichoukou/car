@@ -1,18 +1,18 @@
 <footer class="tabbar">
     <ul class="nav nav-justified">
-        <li>
+        <li id="company">
             <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/Company/Company'" data-toggle="tab">
                 <i class="nc-icon-outline shopping_delivery"></i>
                 <small>企业</small>
             </a>
         </li>
-        <li class="active">
+        <li id="reservation">
             <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/Reservation/Reservation'" data-toggle="tab">
                 <i class="nc-icon-outline ui-2_time nc-icon-glyph"></i>
                 <small>维修列表</small>
             </a>
         </li>
-        <li>
+        <li id="settlement">
             <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/Reservation/Settlement'" data-toggle="tab">
                 <i class="nc-icon-outline business_round-yen"></i>
                 <small>维修结算</small>
@@ -25,15 +25,26 @@
 
 <script>
     $(function () {
-
-        $('.tabbar a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-
-            $(this).children('i').addClass('nc-icon-glyph')
-        });
-        $('.tabbar a[data-toggle="tab"]').on('hidden.bs.tab', function (e) {
-
-            $(this).children('i').removeClass('nc-icon-glyph')
-        })
+        var request_get = st.request_get();
+        var arr = request_get['route'].split('/');
+        if (arr[2] == 'Reservation') {
+            $("#reservation").addClass('nc-icon-glyph');
+            $("#reservation").addClass('active');
+        } else if(arr[2] == 'Settlement') {
+            $("#settlement").addClass('nc-icon-glyph');
+            $("#settlement").addClass('active');
+        } else {
+            $("#company").addClass('nc-icon-glyph');
+            $("#company").addClass('active');
+        }
+//        $('.tabbar a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+//
+//            $(this).children('i').addClass('nc-icon-glyph')
+//        });
+//        $('.tabbar a[data-toggle="tab"]').on('hidden.bs.tab', function (e) {
+//
+//            $(this).children('i').removeClass('nc-icon-glyph')
+//        })
     });
 </script>
 
