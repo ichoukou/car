@@ -128,7 +128,7 @@ class Account extends Controller
             }
 
             $rand_number = mt_rand(100000, 999999);
-            $content = "尊敬的企业用户，您的注册验证码是{$rand_number}，10分钟内有效。如非本人操作请忽略！【汽修网】";
+            $content = "尊敬的企业用户，您的注册验证码是{$rand_number}，10分钟内有效。如非本人操作请忽略！【派乐宝】";
 
             $sms_id = M::Vender('Account\\Account', 'addSms', ['tel'=>$post['tel'],'rand_number'=>$rand_number]);
 

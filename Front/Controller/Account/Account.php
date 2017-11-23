@@ -125,7 +125,7 @@ class Account extends Controller
             }
 
             $rand_number = mt_rand(100000, 999999);
-            $content = "尊敬的用户，您的注册验证码是{$rand_number}，10分钟内有效。如非本人操作请忽略！【汽修网】";
+            $content = "尊敬的用户，您的注册验证码是{$rand_number}，10分钟内有效。如非本人操作请忽略！【派乐宝】";
 
             $sms_id = M::Front('Account\\Account', 'addSms', ['tel'=>$post['tel'],'rand_number'=>$rand_number]);
 
@@ -154,7 +154,6 @@ class Account extends Controller
                 exit(json_encode(['status'=>-1, 'result'=>'请上传图片'], JSON_UNESCAPED_UNICODE));
 
             $base64_file = explode(',', $_POST['base64_file']);
-
             if (empty($base64_file[1]))
                 exit(json_encode(['status'=>-1, 'result'=>'请上传图片'], JSON_UNESCAPED_UNICODE));
 
@@ -170,7 +169,7 @@ class Account extends Controller
             $file_path = ROOT_PATH.'Image'.DS.'upload'.DS;
 
             file_put_contents($file_path.$file_name, $file);
-
+            var_dump(HTTP_SERVER.'Image/upload/'.$file_name);
             #http://hd.wechatdpr.com/jd/2017/1111/aaa.jpg
             $ocr = new Ocr('10376062', 'aKPVvLlnx1uiPtGQ4oUd7RV3', 'jVscvETAswCo7KSoUiaiPHMS6Bz0PKFZ');
             $result = $ocr->analyze(HTTP_SERVER.'Image/upload/'.$file_name);

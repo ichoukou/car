@@ -16,15 +16,16 @@
 					})
 
 					.then(function (rst) {
+					    console.log(rst.base64);
 						$.ajax({
 							async:true,
 							url: "<?php echo $entrance; ?>route=Front/Account/Account/get_ocr",
 							type: "POST",
 							data:{base64_file:rst.base64},
-							dataType: "HTML", // json
-							timeout: 1000,
+							dataType: "json", // json
+							//timeout: 1000,
 							error: function(){
-								alert("Error loading PHP document");
+								console.log("Error loading PHP document");
 							},
 							success: function(result){
 								//alert(result);
@@ -40,7 +41,7 @@
 						// 万一出错了，这里可以捕捉到错误信息
 						// 而且以上的then都不会执行
 
-						alert(err);
+						console.log(err);
 					})
 
 					.always(function () {

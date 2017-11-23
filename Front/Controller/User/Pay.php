@@ -38,8 +38,6 @@ class Pay extends Controller
                 exit("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}");
 
             $config = [];
-            var_dump($info);
-            exit;
             require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
             require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'buildermodel/AlipayTradeWapPayContentBuilder.php';
             require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'/config.php';
