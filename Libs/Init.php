@@ -15,10 +15,10 @@ final class init
     public function __construct($_config, $entrance)
     {
         #错误处理
-        set_error_handler(array($this,'_error_handler'));
+        set_error_handler([$this, '_error_handler']);
 
         #自动加载
-        spl_autoload_register(array($this,'_autoload'));
+        spl_autoload_register([$this, '_autoload']);
         spl_autoload_extensions('.php');
 
         #log类配置文件
@@ -44,12 +44,16 @@ final class init
     #自动加载
     public function _autoload($class)
     {
+        $arr = explode('\\', $class);
+
         $file = ROOT_PATH . str_replace('\\','/',$class) . '.php';
 
         if (is_file($file)) {
             require_once($file);
         } else {
-            trigger_error("Error: Class '{$file}' Not Found! " ,E_USER_WARNING);
+            if (count($arr) > 1) {
+                trigger_error("Error: Class '{$file}' Not Found! " ,E_USER_WARNING);
+            }
         }
     }
 

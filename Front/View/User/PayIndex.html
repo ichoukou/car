@@ -7,6 +7,7 @@
 </header>
 <main class="main">
     <!--<img class="img-responsive" src="assets/img/BingWallpaper-2017-03-03.jpg" alt="">-->
+    <form action="<?php echo $entrance; ?>route=Front/User/Pay/pay" method="post" enctype="multipart/form-data" id="form_info">
     <section class="panel">
         <div class="list-group small py-1">
             <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly/>
@@ -35,9 +36,9 @@
             </div>
         </div>
     </section>
-
+    </form>
     <div class="container-fluid">
-        <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="submit_info()">结算支付 <i class="nc-icon-outline arrows-3_circle-simple-right"></i></a>
+        <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="$('#form_info').submit();">结算支付 <i class="nc-icon-outline arrows-3_circle-simple-right"></i></a>
     </div>
 </main>
 <script>

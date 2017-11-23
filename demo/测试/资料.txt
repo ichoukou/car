@@ -22,5 +22,5 @@ https://jingyan.baidu.com/article/9c69d48fb9fd7b13c8024e6b.html 安装
 http://blog.csdn.net/luobin1984/article/details/8252350 使用
 
 
-服务器apache2重启命令
-service sshd restart
+服务器命令
+shutdown -r now 服务器重启

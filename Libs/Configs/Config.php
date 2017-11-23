@@ -17,6 +17,7 @@ define('URL_IMAGE_CACHE', HTTP_SERVER . 'Image' . DIRECTORY_SEPARATOR . 'cache' 
 define('URL_IMAGE_CACHE_WITH', 100);
 define('URL_IMAGE_CACHE_HEIGHT', 100);
 define('NO_IMAGE', HTTP_SERVER . 'image/cache/no_image-100x100.png');
+define('DS', DIRECTORY_SEPARATOR);
 
 $_config = [];
 

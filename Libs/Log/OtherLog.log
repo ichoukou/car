@@ -864,3 +864,151 @@
 [2017-11-23 01:48:30] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
 
 [2017-11-23 01:48:31] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 05:56:38] ERROR Mess:<b>Warning</b>: require_once(/var/www/car/Alipay/wappay/service/AlipayTradeService.php): failed to open stream: No such file or directory in <b>/var/www/car/Front/Controller/User/Pay.php</b> on line <b>40</b>
+
+[2017-11-23 05:58:17] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 05:58:17] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 05:58:18] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 05:58:18] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 05:58:31] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 05:58:31] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:00:04] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:00:04] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:00:27] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:00:27] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:05:35] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:05:35] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:11:53] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:11:53] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:11:56] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:11:56] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:14:48] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:14:48] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:16:02] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:16:02] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:16:10] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:16:10] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:16:46] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:16:46] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:16:47] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:16:47] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:19:36] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:19:36] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:21:15] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:21:15] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:21:22] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:21:22] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:23:20] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:23:20] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:25:00] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:25:00] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:27:43] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:27:43] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:28:04] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:28:04] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:29:43] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:29:43] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:30:05] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>53</b>
+
+[2017-11-23 06:30:05] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>53</b>
+
+[2017-11-23 06:30:32] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>54</b>
+
+[2017-11-23 06:36:14] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>55</b>
+
+[2017-11-23 06:36:14] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>55</b>
+
+[2017-11-23 06:36:45] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>55</b>
+
+[2017-11-23 06:36:45] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>55</b>
+
+[2017-11-23 06:37:33] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>55</b>
+
+[2017-11-23 06:37:33] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>55</b>
+
+[2017-11-23 06:37:52] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>55</b>
+
+[2017-11-23 06:37:52] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>55</b>
+
+[2017-11-23 06:38:12] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:38:12] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:38:28] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:38:28] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:38:37] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:38:37] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:38:46] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:38:46] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:39:23] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>53</b>
+
+[2017-11-23 06:39:23] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>53</b>
+
+[2017-11-23 06:39:31] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:39:31] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:39:49] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:39:49] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:40:57] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:40:57] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:41:07] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:41:07] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:41:31] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 06:41:31] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>

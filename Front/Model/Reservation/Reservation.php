@@ -62,16 +62,22 @@ class Reservation extends DbFactory
 
     public function addReservation($data)
     {
-        $find_sql = "SELECT u.user_id,uc.car_id FROM ".self::$dp."user AS u LEFT JOIN ".self::$dp."user_car AS uc ON u.user_id = uc.user_id WHERE u.`user_id` = :user_id";
+        $find_sql = "SELECT u.user_id,u.tel,uc.car_id FROM ".self::$dp."user AS u LEFT JOIN ".self::$dp."user_car AS uc ON u.user_id = uc.user_id WHERE u.`user_id` = :user_id";
         $user_info = self::$db->get_one($find_sql, ['user_id'=>$_SESSION['user_id']]);
 
-        $sql = "INSERT INTO ".self::$dp."reservation (`company_id`,`user_id`,`car_id`,`reservation_time`) VALUES ";
+        $yCode = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+        $orderSn = $yCode[intval(date('Y')) - 2011] . strtoupper(dechex(date('m'))) . date('d') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));
+
+        $bill = date('YmdHis', time()).$orderSn.$_SESSION['user_id'];
+
+        $sql = "INSERT INTO ".self::$dp."reservation (`company_id`,`user_id`,`car_id`,`bill`,`reservation_time`) VALUES ";
         $reservation = self::$db->insert(
             $sql,
             [
                 $data['post']['company_id'],
                 $user_info['user_id'],
                 $user_info['car_id'],
+                $bill,
                 $data['post']['reservation_time']
             ]
         );

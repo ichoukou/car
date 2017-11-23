@@ -33,13 +33,57 @@ class Pay extends Controller
 
     public function pay()
     {
-        if ($post = $this->validate_pay()) {
-            M::Front('User\\Reservation', 'editReservation', ['post'=>$post]);
+        if ($info = $this->validate_pay()) {
+            if (empty($info))
+                exit("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}");
 
-            setcookie('success_info', '修改预约信息成功', time() + 60);
+            $config = [];
 
-            exit(json_encode(['status'=>1, 'result'=>'修改预约信息成功'], JSON_UNESCAPED_UNICODE));
+            require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
+            require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'buildermodel/AlipayTradeWapPayContentBuilder.php';
+            require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'/config.php';
+
+            #商户订单号，商户网站订单系统中唯一订单号，必填
+            $out_trade_no = $info['bill'];
+            #订单名称，必填
+            $subject = '用户车辆维修结算支付';
+            #付款金额，必填
+            $total_amount = $info['total_revenue'];
+            #商品描述，可空
+            $body = '用户车辆维修结算支付';
+            #超时时间
+            $timeout_express="1m";
+
+            $payRequestBuilder = new \AlipayTradeWapPayContentBuilder();
+            $payRequestBuilder->setBody($body);
+            $payRequestBuilder->setSubject($subject);
+            $payRequestBuilder->setOutTradeNo($out_trade_no);
+            $payRequestBuilder->setTotalAmount($total_amount);
+            $payRequestBuilder->setTimeExpress($timeout_express);
+
+            $payResponse = new \AlipayTradeService($config);
+            $result=$payResponse->wapPay($payRequestBuilder, $config['return_url'], $config['notify_url']);
+            var_Dump($result);
+            #M::Front('User\\Reservation', 'editReservation', ['post'=>$post]);
+
+            #exit(json_encode(['status'=>1, 'result'=>'修改预约信息成功'], JSON_UNESCAPED_UNICODE));
         }
+    }
+
+    /**
+     * 支付异步回调消息
+     */
+    public function pay_notify()
+    {
+        var_dump('aaaaa');
+    }
+
+    /**
+     * 支付返回结果
+     */
+    public function pay_return()
+    {
+        var_dump('bbbbb');
     }
 
     public function validate_pay()
@@ -48,23 +92,17 @@ class Pay extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $post = C::hsc($_POST);
-            $errors = [];
 
             if (empty($post['reservation_id'])) {
-                $errors ['other_error'] = '缺少支付信息标识';
+                $info = '';
             } else {
                 $info = M::Front('User\\Pay', 'findReservationByReservationId', ['reservation_id'=>$post['reservation_id']]);
                 if (empty($info)) {
-                    $errors ['other_error'] = '没有找到支付信息';
+                    $info = '';
                 }
             }
 
-            var_dump($info);
-            exit;
-
-            if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
-
-            return $post;
+            return $info;
         } else {
             return false;
         }

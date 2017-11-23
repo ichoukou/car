@@ -11,7 +11,7 @@ class Account extends Controller
 {
     public function index() {
 
-        exit(header("location:{$this->data['entrance']}route=Front/Account/Account/login"));
+        exit(header("location:{$this->data['entrance']}route=Vender/Account/Account/login"));
     }
 
     public function login()
