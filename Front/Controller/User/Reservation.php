@@ -67,7 +67,7 @@ class Reservation extends Controller
         if (empty($info))
             exit(header("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}"));
 
-        $this->data['settings'] = M::Front('Common\\Common', 'getSettings', ['module'=>'user']);
+        #$this->data['settings'] = M::Front('Common\\Common', 'getSettings', ['module'=>'user']);
 
         $this->data['reservation_info'] = $info;
 

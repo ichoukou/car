@@ -1,0 +1,66 @@
+<?php echo $header_page; ?>
+<body>
+<header class="navbar navbar-fixed-top">
+    <h4 class="navbar-text">结算支付</h4>
+    <a href="<?php echo $entrance; ?>route=Front/User/Reservation" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+
+</header>
+<main class="main">
+    <!--<img class="img-responsive" src="assets/img/BingWallpaper-2017-03-03.jpg" alt="">-->
+    <section class="panel">
+        <div class="list-group small py-1">
+            <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly/>
+            <div class="list-group-item py-1 border-0">
+                <span class="pull-right text-muted">-<?php echo $reservation_info['material_costs']; ?></span><span class="text-muted">●</span> 材料费合计
+            </div>
+            <div class="list-group-item py-1 border-0">
+                <span class="pull-right text-muted">-<?php echo $reservation_info['working_hours_costs']; ?></span><span class="text-muted">●</span> 工时费合计
+            </div>
+            <div class="list-group-item py-1 border-0">
+                <span class="pull-right text-muted">-<?php echo $reservation_info['outside_costs']; ?></span><span class="text-muted">●</span> 外加工费
+            </div>
+            <div class="list-group-item py-1 border-0">
+                <span class="pull-right text-muted">-<?php echo $reservation_info['other_costs']; ?></span><span class="text-muted">●</span> 其他费用
+            </div>
+        </div>
+        <div class="list-group">
+            <div class="list-group-item">
+                <span class="pull-right text-primary">-<?php echo $reservation_info['total_receivables']; ?></span> 应收合计
+            </div>
+            <div class="list-group-item">
+                <span class="pull-right text-primary">-<?php echo $reservation_info['discount_costs']; ?></span> 优惠金额
+            </div>
+            <div class="list-group-item">
+                <span class="pull-right text-primary">-<?php echo $reservation_info['total_revenue']; ?></span> 实收合计
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="submit_info()">结算支付 <i class="nc-icon-outline arrows-3_circle-simple-right"></i></a>
+    </div>
+</main>
+<script>
+    function submit_info()
+    {
+        var param = {
+            reservation_id : $("input[name=reservation_id]").val()
+        }
+
+        st.post('<?php echo $entrance; ?>route=Front/User/Pay/pay', param, function(data){
+            if (data.status == -1) {
+                var return_error = '';
+                $.each(data.result, function(i, e) {
+                    return_error = e;
+                    return false;
+                });
+                alert(return_error);
+                is_click = false;
+            } else {
+                window.location.href = "<?php echo $entrance; ?>route=Front/User/Reservation<?php echo $url; ?>";
+            }
+        });
+    }
+</script>
+
+<?php echo $footer_page; ?>

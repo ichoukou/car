@@ -9,6 +9,11 @@ use Libs\ExtendsClass\BaiduOcr\OcrInit as Ocr;
 
 class Account extends Controller
 {
+    public function index() {
+
+        exit(header("location:{$this->data['entrance']}route=Front/Account/Account/login"));
+    }
+
     public function login()
     {
         $this->data['success_info'] = $_COOKIE['success_info'];

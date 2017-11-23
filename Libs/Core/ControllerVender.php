@@ -35,18 +35,6 @@ class ControllerVender
         'themes_default' => 'Default',
         'entrance' => 'vender.php?',
         'session_info'=> '',
-        'setting_modules'=>
-            [
-                'website'               => '网站设置选项设置',
-                'article'               => '文章模块选项设置',
-                'user'                  => '会员栏目选项设置',
-                'baby'                  => '宝宝栏目选项设置',
-                'card_type'             => '卡种栏目选项设置',
-                'baby_sensitive_period' => '宝宝敏感期设置',
-                'teaching_aids'         => '教具设置',
-                'teaching_times'        => '上课时间设置',
-                'record'                => '信息记录'
-            ],
         'vender_group'=>
             [
                 1 => '超级管理员',

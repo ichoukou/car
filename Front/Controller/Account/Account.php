@@ -9,6 +9,10 @@ use Libs\ExtendsClass\BaiduOcr\OcrInit as Ocr;
 
 class Account extends Controller
 {
+    public function index() {
+        exit(header("location:{$this->data['entrance']}route=Front/Account/Account/login"));
+    }
+
     public function login()
     {
         $this->data['success_info'] = $_COOKIE['success_info'];
@@ -77,6 +81,30 @@ class Account extends Controller
         L::output(L::view('Account\\RegisterStep2', 'Front', $this->data));
     }
 
+    public function do_add_register_step1()
+    {
+        if ($post = $this->validate_default()) {
+            $_SESSION['register_user_info'] = json_encode($post, JSON_UNESCAPED_UNICODE);
+            exit(json_encode(['status'=>1, 'result'=>'next'], JSON_UNESCAPED_UNICODE));
+        }
+    }
+
+    public function do_add_register_step2()
+    {
+        if ($post = $this->validate_step2()) {
+            $user_id = M::Front('Account\\Account', 'register', ['post'=>$post]);
+
+            if ($user_id > 0) {
+                M::Front('Account\\Account', 'delSms', ['tel'=>$post['tel']]);
+                $_SESSION['register_user_info'] = '';
+
+                exit(json_encode(['status'=>1, 'result'=>'注册失败'], JSON_UNESCAPED_UNICODE));
+            } else {
+                exit(json_encode(['status'=>-1, 'result'=>'电话号码被使用'], JSON_UNESCAPED_UNICODE));
+            }
+        }
+    }
+
     /**
      * 手机验证码
      */
@@ -121,30 +149,6 @@ class Account extends Controller
         $ocr = new Ocr('10376062', 'aKPVvLlnx1uiPtGQ4oUd7RV3', 'jVscvETAswCo7KSoUiaiPHMS6Bz0PKFZ');
         $result = $ocr->analyze('http://hd.wechatdpr.com/jd/2017/1111/aaa.jpg');
         var_dump($result);
-    }
-
-    public function do_add_register_step1()
-    {
-        if ($post = $this->validate_default()) {
-            $_SESSION['register_user_info'] = json_encode($post, JSON_UNESCAPED_UNICODE);
-            exit(json_encode(['status'=>1, 'result'=>'next'], JSON_UNESCAPED_UNICODE));
-        }
-    }
-
-    public function do_add_register_step2()
-    {
-        if ($post = $this->validate_step2()) {
-            $user_id = M::Front('Account\\Account', 'register', ['post'=>$post]);
-
-            if ($user_id > 0) {
-                M::Front('Account\\Account', 'delSms', ['tel'=>$post['tel']]);
-                $_SESSION['register_user_info'] = '';
-
-                exit(json_encode(['status'=>1, 'result'=>'注册失败'], JSON_UNESCAPED_UNICODE));
-            } else {
-                exit(json_encode(['status'=>-1, 'result'=>'电话号码被使用'], JSON_UNESCAPED_UNICODE));
-            }
-        }
     }
 
     public function validate_default()

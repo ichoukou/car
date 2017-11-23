@@ -814,3 +814,53 @@
 [2017-11-23 00:21:57] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front/Model/Company/Company.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>52</b>
 
 [2017-11-23 00:21:57] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\Company\Company' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-23 01:21:54] ERROR Mess:<b>Warning</b>: Error: The 'login' Method Under Class 'Front\Controller\User\User' Not Found! in <b>/var/www/car/Libs/Core/Route.php</b> on line <b>66</b>
+
+[2017-11-23 01:43:55] ERROR Mess:<b>Warning</b>: Error: The 'pay' Method Under Class 'Front\Controller\User\Reservation' Not Found! in <b>/var/www/car/Libs/Core/Route.php</b> on line <b>66</b>
+
+[2017-11-23 01:46:48] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:46:48] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:46:49] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:14] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:14] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:14] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:15] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:15] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:15] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:15] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:15] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:15] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:27] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:28] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:28] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:28] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:28] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:47:28] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:48:30] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:48:30] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:48:30] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:48:30] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
+
+[2017-11-23 01:48:31] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mcdiscount_costs' in 'field list' in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>249</b>
