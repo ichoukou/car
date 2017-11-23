@@ -1,4 +1,54 @@
 <?php echo $header_page; ?>
+<script src="<?php echo $assets_server; ?>Common/Js/localResizeIMG-4.9.35/dist/lrz.bundle.js"></script>
+<script>
+	$(document).ready(function(){
+		document.getElementById('camera_file').addEventListener('change', function () {
+			// this.files[0] 是用户选择的文件
+			lrz(this.files[0], {width: 1024})
+					.then(function (rst) {
+						// 把处理的好的图片给用户看看呗（可选）
+						var img = new Image();
+						img.src = rst.base64; //base64字符串
+						img.onload = function () {
+							//document.body.appendChild(img);
+						};
+						return rst;
+					})
+
+					.then(function (rst) {
+						$.ajax({
+							async:true,
+							url: "<?php echo $entrance; ?>route=Front/Account/Account/get_ocr",
+							type: "POST",
+							data:{base64_file:rst.base64},
+							dataType: "HTML", // json
+							timeout: 1000,
+							error: function(){
+								alert("Error loading PHP document");
+							},
+							success: function(result){
+								//alert(result);
+								//console.log(result);
+								alert("Uploads success~")
+							}
+						});
+
+						return rst;
+					})
+
+					.catch(function (err) {
+						// 万一出错了，这里可以捕捉到错误信息
+						// 而且以上的then都不会执行
+
+						alert(err);
+					})
+
+					.always(function () {
+						// 不管是成功失败，这里都会执行
+					});
+		});
+	});
+</script>
 <body>
 <!-- Mobiscroll JS and CSS Includes -->
 <link href="<?php echo $assets_server; ?>Common/Js/mobisscroll3.0/css/mobiscroll.custom-3.0.0-beta2.min.css" rel="stylesheet" type="text/css" />
@@ -7,7 +57,8 @@
 <header class="navbar navbar-fixed-top">
 	<h4 class="navbar-text">完善信息</h4>
 	<a href="<?php echo $entrance; ?>route=Front/Account/Account/register" class="btn btn-link navbar-btn pull-left">返回</a>
-	<a href="javascript:void(0)" class="btn btn-link navbar-btn pull-right"><i class="nc-icon-outline media-1_camera-20"></i> 拍照识别</a>
+	<!--<a href="javascript:void(0)" class="btn btn-link navbar-btn pull-right"><i class="nc-icon-outline media-1_camera-20"></i> 拍照识别</a>-->
+	<input type="file" capture="camera" accept="image/*" name="logo" id="camera_file" class="btn btn-link navbar-btn pull-right"><i class="nc-icon-outline media-1_camera-20"></i>拍照识别
 </header>
 <main class="main">
 	<div class="container-fluid">

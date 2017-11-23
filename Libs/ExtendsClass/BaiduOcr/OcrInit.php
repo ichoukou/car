@@ -28,6 +28,6 @@ class OcrInit{
         # 调用生僻字识别接口
         #$result = $aipOcr->basicGeneral(file_get_contents('../t2.jpg'), $option);
         #$result = $aipOcr->enhancedGeneral('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510826086272&di=d6ef93ce3afec40798d10b7f828efa9f&imgtype=0&src=http%3A%2F%2Ffile.juzimi.com%2Fshouxiepic%2Fjlzemx2.jpg', $option);
-        return $this->aipOcr->basicGeneral('http://hd.wechatdpr.com/jd/2017/1111/aaa.jpg', $option);
+        return $this->aipOcr->basicGeneral($image, $option);
     }
 }

@@ -1012,3 +1012,9 @@
 [2017-11-23 06:41:31] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtObjectUtil.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
 
 [2017-11-23 06:41:31] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/LtConfig.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>52</b>
+
+[2017-11-23 09:30:11] ERROR Mess:<b>Warning</b>: explode() expects parameter 2 to be string, array given in <b>/var/www/car/Front/Controller/Account/Account.php</b> on line <b>159</b>
+
+[2017-11-23 09:31:29] ERROR Mess:<b>Warning</b>: explode() expects parameter 2 to be string, array given in <b>/var/www/car/Front/Controller/Account/Account.php</b> on line <b>160</b>
+
+[2017-11-23 09:32:11] ERROR Mess:<b>Warning</b>: explode() expects parameter 2 to be string, array given in <b>/var/www/car/Front/Controller/Account/Account.php</b> on line <b>160</b>

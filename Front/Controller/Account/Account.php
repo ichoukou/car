@@ -146,9 +146,36 @@ class Account extends Controller
      */
     public function get_ocr()
     {
-        $ocr = new Ocr('10376062', 'aKPVvLlnx1uiPtGQ4oUd7RV3', 'jVscvETAswCo7KSoUiaiPHMS6Bz0PKFZ');
-        $result = $ocr->analyze('http://hd.wechatdpr.com/jd/2017/1111/aaa.jpg');
-        var_dump($result);
+        #http://blog.csdn.net/hu1991die/article/details/40585581
+        #http://blog.csdn.net/hu1991die/article/details/41084153
+        #https://yq.aliyun.com/articles/33569
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (empty($_POST['base64_file']))
+                exit(json_encode(['status'=>-1, 'result'=>'请上传图片'], JSON_UNESCAPED_UNICODE));
+
+            $base64_file = explode(',', $_POST['base64_file']);
+
+            if (empty($base64_file[1]))
+                exit(json_encode(['status'=>-1, 'result'=>'请上传图片'], JSON_UNESCAPED_UNICODE));
+
+            $ext_arr = explode(';', $base64_file[0]);
+            $ext = explode('/', $ext_arr[0]);
+            $ext = !empty($ext[1]) ? $ext[1] : 'jpeg';
+            $file = base64_decode($base64_file[1]);
+
+            $yCode = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+            $orderSn = $yCode[intval(date('Y')) - 2011] . strtoupper(dechex(date('m'))) . date('d') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));
+
+            $file_name = date('YmdHis', time()).$orderSn.mt_rand(100000, 999999).'.'.$ext;
+            $file_path = ROOT_PATH.'Image'.DS.'upload'.DS;
+
+            file_put_contents($file_path.$file_name, $file);
+
+            #http://hd.wechatdpr.com/jd/2017/1111/aaa.jpg
+            $ocr = new Ocr('10376062', 'aKPVvLlnx1uiPtGQ4oUd7RV3', 'jVscvETAswCo7KSoUiaiPHMS6Bz0PKFZ');
+            $result = $ocr->analyze(HTTP_SERVER.'Image/upload/'.$file_name);
+            var_dump($result);
+        }
     }
 
     public function validate_default()
