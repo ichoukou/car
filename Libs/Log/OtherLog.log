@@ -1018,3 +1018,17 @@
 [2017-11-23 09:31:29] ERROR Mess:<b>Warning</b>: explode() expects parameter 2 to be string, array given in <b>/var/www/car/Front/Controller/Account/Account.php</b> on line <b>160</b>
 
 [2017-11-23 09:32:11] ERROR Mess:<b>Warning</b>: explode() expects parameter 2 to be string, array given in <b>/var/www/car/Front/Controller/Account/Account.php</b> on line <b>160</b>
+
+[2017-11-24 01:26:10] ERROR Mess:<b>Warning</b>: openssl_sign(): supplied key param cannot be coerced into a private key in <b>/var/www/car/Libs/ExtendsClass/Alipay/aop/AopClient.php</b> on line <b>104</b>
+
+[2017-11-24 01:26:18] ERROR Mess:<b>Warning</b>: openssl_sign(): supplied key param cannot be coerced into a private key in <b>/var/www/car/Libs/ExtendsClass/Alipay/aop/AopClient.php</b> on line <b>104</b>
+
+[2017-11-24 01:28:34] ERROR Mess:<b>Warning</b>: openssl_sign(): supplied key param cannot be coerced into a private key in <b>/var/www/car/Libs/ExtendsClass/Alipay/aop/AopClient.php</b> on line <b>104</b>
+
+[2017-11-24 01:33:23] ERROR Mess:<b>Warning</b>: openssl_sign(): supplied key param cannot be coerced into a private key in <b>/var/www/car/Libs/ExtendsClass/Alipay/aop/AopClient.php</b> on line <b>104</b>
+
+[2017-11-24 01:36:50] ERROR Mess:<b>Warning</b>: openssl_sign(): supplied key param cannot be coerced into a private key in <b>/var/www/car/Libs/ExtendsClass/Alipay/aop/AopClient.php</b> on line <b>104</b>
+
+[2017-11-24 01:36:55] ERROR Mess:<b>Warning</b>: openssl_sign(): supplied key param cannot be coerced into a private key in <b>/var/www/car/Libs/ExtendsClass/Alipay/aop/AopClient.php</b> on line <b>104</b>
+
+[2017-11-24 01:38:36] ERROR Mess:<b>Warning</b>: openssl_sign(): supplied key param cannot be coerced into a private key in <b>/var/www/car/Libs/ExtendsClass/Alipay/aop/AopClient.php</b> on line <b>104</b>

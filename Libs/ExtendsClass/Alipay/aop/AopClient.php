@@ -317,7 +317,8 @@ class AopClient {
 
 		//签名
 		$totalParams["sign"] = $this->generateSign($totalParams, $this->signType);
-
+		var_dump($httpmethod);
+		exit;
 		if ("GET" == $httpmethod) {
 
 			//拼接GET请求串
