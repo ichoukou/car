@@ -72,17 +72,17 @@ class AlipayTradeService {
 	 * @return $response 支付宝返回的信息
  	*/
 	function wapPay($builder,$return_url,$notify_url) {
-	
+
 		$biz_content=$builder->getBizContent();
 		//打印业务参数
 		$this->writeLog($biz_content);
-	
+
 		$request = new AlipayTradeWapPayRequest();
-	
+
 		$request->setNotifyUrl($notify_url);
 		$request->setReturnUrl($return_url);
 		$request->setBizContent ( $biz_content );
-	
+
 		// 首先调用支付api
 		$response = $this->aopclientRequestExecute ($request,true);
 		// $response = $response->alipay_trade_wap_pay_response;

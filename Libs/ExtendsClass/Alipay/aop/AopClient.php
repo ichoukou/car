@@ -93,12 +93,25 @@ class AopClient {
 			$res = "-----BEGIN RSA PRIVATE KEY-----\n" .
 				wordwrap($priKey, 64, "\n", true) .
 				"\n-----END RSA PRIVATE KEY-----";
+//            $pk = wordwrap($priKey, 64, "\n", true);
+//			$res = <<<EOD
+//                    -----BEGIN RSA PRIVATE KEY-----
+//                    $pk
+//                    -----END RSA PRIVATE KEY-----
+//EOD;
 		}else {
 			$priKey = file_get_contents($this->rsaPrivateKeyFilePath);
 			$res = openssl_get_privatekey($priKey);
 		}
-
-		($res) or die('您使用的私钥格式错误，请检查RSA私钥配置'); 
+//        var_dump('$data：');
+//		var_dump($data);
+//		var_dump('-------------------------');
+//        var_dump('$sign：');
+//        var_dump($sign);
+//        var_dump('-------------------------');
+//        var_dump('$res：');
+//        var_dump($res);
+//        var_dump('-------------------------');
 
 		if ("RSA2" == $signType) {
 			openssl_sign($data, $sign, $res, OPENSSL_ALGO_SHA256);
@@ -110,6 +123,10 @@ class AopClient {
 			openssl_free_key($res);
 		}
 		$sign = base64_encode($sign);
+//        var_dump('$signaaaaaaaaaaaaaa：');
+//        var_dump($sign);
+//        var_dump('-------------------------');
+//        exit;
 		return $sign;
 	}
 
@@ -285,7 +302,6 @@ class AopClient {
 		$apiParams = $request->getApiParas();
 
 		if (method_exists($request,"getNeedEncrypt") &&$request->getNeedEncrypt()){
-
 			$sysParams["encrypt_type"] = $this->encryptType;
 
 			if ($this->checkEmpty($apiParams['biz_content'])) {
@@ -311,14 +327,13 @@ class AopClient {
 
 		//print_r($apiParams);
 		$totalParams = array_merge($apiParams, $sysParams);
-		
+
 		//待签名字符串
 		$preSignStr = $this->getSignContent($totalParams);
 
 		//签名
 		$totalParams["sign"] = $this->generateSign($totalParams, $this->signType);
-		var_dump($httpmethod);
-		exit;
+
 		if ("GET" == $httpmethod) {
 
 			//拼接GET请求串

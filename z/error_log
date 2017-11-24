@@ -1,0 +1,9 @@
+[Fri Nov 24 14:30:25.568779 2017] [mpm_prefork:notice] [pid 763] AH00169: caught SIGTERM, shutting down
+[Fri Nov 24 14:30:34.286739 2017] [ssl:warn] [pid 770] AH01916: Init: (0.0.0.0:443) You configured HTTP(80) on the standard HTTPS(443) port!
+[Fri Nov 24 14:30:34.286999 2017] [suexec:notice] [pid 770] AH01232: suEXEC mechanism enabled (wrapper: /usr/local/apache/bin/suexec)
+[Fri Nov 24 14:30:34.302985 2017] [ssl:warn] [pid 771] AH01873: Init: Session Cache is not configured [hint: SSLSessionCache]
+[Fri Nov 24 14:30:34.303274 2017] [ssl:warn] [pid 771] AH01916: Init: (0.0.0.0:443) You configured HTTP(80) on the standard HTTPS(443) port!
+[Fri Nov 24 14:30:34.303301 2017] [http2:warn] [pid 771] AH10034: The mpm module (prefork.c) is not supported by mod_http2. The mpm determines how things are processed in your server. HTTP/2 has more demands in this regard and the currently selected mpm will just not do. This is an advisory warning. Your server will continue to work, but the HTTP/2 protocol will be inactive.
+PHP Warning:  Module 'openssl' already loaded in Unknown on line 0
+[Fri Nov 24 14:30:34.911305 2017] [mpm_prefork:notice] [pid 771] AH00163: Apache/2.4.27 (Unix) OpenSSL/1.0.2l configured -- resuming normal operations
+[Fri Nov 24 14:30:34.911336 2017] [core:notice] [pid 771] AH00094: Command line: '/usr/local/apache/bin/httpd'

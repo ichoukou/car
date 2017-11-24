@@ -33,7 +33,11 @@ class Pay extends Controller
 
     public function pay()
     {
+        #https://www.cnblogs.com/phpxuetang/p/5656266.html 缺少php_openssl.so的安装方法
+        #https://openclub.alipay.com/read.php?tid=2684&fid=40 私钥错误
         if ($info = $this->validate_pay()) {
+            header("Content-type: text/html; charset=utf-8");
+
             if (empty($info))
                 exit("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}");
 
@@ -59,7 +63,6 @@ class Pay extends Controller
             $payRequestBuilder->setOutTradeNo($out_trade_no);
             $payRequestBuilder->setTotalAmount($total_amount);
             $payRequestBuilder->setTimeExpress($timeout_express);
-
             $payResponse = new \AlipayTradeService($config);
             $result=$payResponse->wapPay($payRequestBuilder, $config['return_url'], $config['notify_url']);
             var_Dump($result);
