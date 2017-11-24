@@ -53,7 +53,7 @@ class Route
             $method = lcfirst($method) ?: $config['DEFAULT_ROUTE']['method'];
 
             if ($directory != $entrance) {
-                print('URL地址错误，正在处理，请稍等...<br>');
+                var_dump('URL地址错误，正在处理，请稍等...<br>');
                 exit(header("refresh:3;url={$entrance}.php"));
             }
 
@@ -69,8 +69,11 @@ class Route
 
                 $cls->$method();
             } else {
-                trigger_error("Error: Class '{$path}' Not Found",E_USER_WARNING);
-                return false;
+                var_dump('URL地址错误，正在处理，请稍等...<br>');
+                exit(header("refresh:3;url={$config['DEFAULT_ROUTE']['entrance']}.php"));
+
+                #trigger_error("Error: Class '{$path}' Not Found",E_USER_WARNING);
+                #return false;
             }
         }
     }
