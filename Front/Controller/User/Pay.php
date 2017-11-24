@@ -35,6 +35,9 @@ class Pay extends Controller
     {
         #https://www.cnblogs.com/phpxuetang/p/5656266.html 缺少php_openssl.so的安装方法
         #https://openclub.alipay.com/read.php?tid=2684&fid=40 私钥错误
+
+        #https://open.alipay.com/search/searchDetail.htm?tabType=support&keyword=missing-signature-config 官方错误解答集合
+        #https://tech.open.alipay.com/support/knowledge/index.htm?knowledgeId=201602068952&categoryId=20057#/?_k=n1ntam  商户config配置错误
         if ($info = $this->validate_pay()) {
             header("Content-type: text/html; charset=utf-8");
 

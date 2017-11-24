@@ -130,7 +130,6 @@ class AopClient {
 		return $sign;
 	}
 
-
 	protected function curl($url, $postFields = null) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
