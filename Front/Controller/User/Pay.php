@@ -38,6 +38,7 @@ class Pay extends Controller
 
         #https://open.alipay.com/search/searchDetail.htm?tabType=support&keyword=missing-signature-config 官方错误解答集合
         #https://tech.open.alipay.com/support/knowledge/index.htm?knowledgeId=201602068952&categoryId=20057#/?_k=n1ntam  商户config配置错误
+        #https://openclub.alipay.com/read.php?tid=362&fid=2 别人的DEMO
         if ($info = $this->validate_pay()) {
             header("Content-type: text/html; charset=utf-8");
 
@@ -67,12 +68,83 @@ class Pay extends Controller
             $payRequestBuilder->setTotalAmount($total_amount);
             $payRequestBuilder->setTimeExpress($timeout_express);
             $payResponse = new \AlipayTradeService($config);
-            $result=$payResponse->wapPay($payRequestBuilder, $config['return_url'], $config['notify_url']);
-            var_Dump($result);
-            #M::Front('User\\Reservation', 'editReservation', ['post'=>$post]);
-
-            #exit(json_encode(['status'=>1, 'result'=>'修改预约信息成功'], JSON_UNESCAPED_UNICODE));
+            $payResponse->wapPay($payRequestBuilder, $config['return_url'], $config['notify_url']);
         }
+    }
+
+    /**
+     * 功能：支付宝页面跳转同步通知页面
+     * 版本：2.0
+     * 修改日期：2016-11-01
+     * 说明：
+     * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
+
+     *************************页面功能说明*************************
+     * 该页面可在本机电脑测试
+     * 可放入HTML等美化页面的代码、商户业务逻辑程序代码
+     */
+    public function pay_return()
+    {
+        $config = [];
+        require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'/config.php';
+        require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
+
+        $arr = $_GET;
+        $alipaySevice = new \AlipayTradeService($config);
+        $result = $alipaySevice->check($arr);
+
+        /* 实际验证过程建议商户添加以下校验。
+        1、商户需要验证该通知数据中的out_trade_no是否为商户系统中创建的订单号，
+        2、判断total_amount是否确实为该订单的实际金额（即商户订单创建时的金额），
+        3、校验通知中的seller_id（或者seller_email) 是否为out_trade_no这笔单据的对应的操作方（有的时候，一个商户可能有多个seller_id/seller_email）
+        4、验证app_id是否为该商户本身。
+        */
+
+        $return = [];
+        $return['trade_no'] = htmlspecialchars($_GET['trade_no']); #支付宝交易凭证号
+        $return['bill'] = htmlspecialchars($_GET['out_trade_no']); #商户订单号
+        $return['total_amount'] = (float)htmlspecialchars($_GET['total_amount']); #订单金额
+        $return['app_id'] = htmlspecialchars($_GET['auth_app_id']); #商户APPID
+        $return['seller_id'] = htmlspecialchars($_GET['seller_id']); #商户支付宝用户号
+        $return['notify_time'] = htmlspecialchars($_GET['timestamp']); #消息返回时间
+        $return['notify_type'] = 1; #同步通知
+
+        $bill_info = M::Front('User\\Pay', 'findBillInfo', $return);
+        if ($bill_info['status'] == 4 or $bill_info['status'] == 5) {
+            exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_success&reservation_id={$bill_info['reservation_id']}"));
+        } elseif($bill_info['status'] == 6) {
+            exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_error&reservation_id={$bill_info['reservation_id']}"));
+        }
+
+        $return['reservation_id'] = $bill_info['reservation_id'];
+        $return['reservation_status'] = 6; #对应 $reservation_status  支付状态
+
+        if (empty($return['trade_no']) or empty($return['bill']) or empty($return['app_id']) or empty($return['seller_id'])) {
+            $return['notify_message'] = '参数缺少';
+        } elseif (empty($bill_info)) {
+            $return['notify_message'] = '未匹配到订单信息';
+        } elseif($return['app_id'] != $config['app_id']) {
+            $return['notify_message'] = '开发者的应用Id匹配错误';
+        } else {
+            $return['notify_message'] = '交易成功';
+            $return['reservation_status'] = 4;
+
+        }
+
+        M::Front('User\\Pay', 'addPaylog', $return);
+        M::Front('User\\Pay', 'editReservation', $return);
+
+        if ($return['reservation_status'] == 4) {
+            exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_success&reservation_id={$bill_info['reservation_id']}"));
+        } else {
+            exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_error&reservation_id={$bill_info['reservation_id']}"));
+        }
+
+//        if (!$result) { #验证成功
+//        } else {
+//            //验证失败
+//            echo "验证失败";
+//        }
     }
 
     /**
@@ -94,7 +166,7 @@ class Pay extends Controller
         require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
 
         $arr=$_POST;
-        $alipaySevice = new AlipayTradeService($config);
+        $alipaySevice = new \AlipayTradeService($config);
         $alipaySevice->writeLog(var_export($_POST,true));
         $result = $alipaySevice->check($arr);
 
@@ -155,58 +227,36 @@ class Pay extends Controller
         }
     }
 
-    /**
-     * 功能：支付宝页面跳转同步通知页面
-     * 版本：2.0
-     * 修改日期：2016-11-01
-     * 说明：
-     * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
-
-     *************************页面功能说明*************************
-     * 该页面可在本机电脑测试
-     * 可放入HTML等美化页面的代码、商户业务逻辑程序代码
-     */
-    public function pay_return()
+    public function pay_success()
     {
-        $config = [];
-        require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'/config.php';
-        require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
+        $this->create_page();
 
-        $arr=$_GET;
-        $alipaySevice = new AlipayTradeService($config);
-        $result = $alipaySevice->check($arr);
+        $reservation_id = (int)$_GET['reservation_id'];
+        $bill_info = M::Front('User\\Pay', 'findBillStatus', ['reservation_id'=>$reservation_id]);
 
-        /* 实际验证过程建议商户添加以下校验。
-        1、商户需要验证该通知数据中的out_trade_no是否为商户系统中创建的订单号，
-        2、判断total_amount是否确实为该订单的实际金额（即商户订单创建时的金额），
-        3、校验通知中的seller_id（或者seller_email) 是否为out_trade_no这笔单据的对应的操作方（有的时候，一个商户可能有多个seller_id/seller_email）
-        4、验证app_id是否为该商户本身。
-        */
-        if($result) {//验证成功
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //请在这里加上商户的业务逻辑程序代码
-
-            //——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
-            //获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表
-
-            //商户订单号
-
-            $out_trade_no = htmlspecialchars($_GET['out_trade_no']);
-
-            //支付宝交易号
-
-            $trade_no = htmlspecialchars($_GET['trade_no']);
-
-            echo "验证成功<br />外部订单号：".$out_trade_no;
-
-            //——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
-
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        if (empty($bill_info) or $bill_info['status'] != 4) {
+            $this->data['notify_message'] = '您已评价';
+        } else {
+            $this->data['notify_message'] = '恭喜您本次支付成功';
         }
-        else {
-            //验证失败
-            echo "验证失败";
+
+        if ($bill_info['status'] == 6) {
+            exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_error&reservation_id={$bill_info['reservation_id']}"));
         }
+
+        $this->data['bill_info'] = $bill_info;
+        $this->data['reservation_id'] = $reservation_id;
+
+        L::output(L::view('User\\PaySuccess', 'Front', $this->data));
+    }
+
+    public function pay_error()
+    {
+        $this->create_page();
+
+        $this->data['notify_message'] = '支付异常，请联系管理员';
+
+        L::output(L::view('User\\PayError', 'Front', $this->data));
     }
 
     public function validate_pay()

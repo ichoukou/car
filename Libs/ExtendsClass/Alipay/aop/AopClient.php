@@ -44,7 +44,7 @@ class AopClient {
 
 
 	//签名类型
-	public $signType = "RSA";
+	public $signType = "RSA2";
 
 
 	//加密密钥和类型
@@ -93,12 +93,6 @@ class AopClient {
 			$res = "-----BEGIN RSA PRIVATE KEY-----\n" .
 				wordwrap($priKey, 64, "\n", true) .
 				"\n-----END RSA PRIVATE KEY-----";
-//            $pk = wordwrap($priKey, 64, "\n", true);
-//			$res = <<<EOD
-//                    -----BEGIN RSA PRIVATE KEY-----
-//                    $pk
-//                    -----END RSA PRIVATE KEY-----
-//EOD;
 		}else {
 			$priKey = file_get_contents($this->rsaPrivateKeyFilePath);
 			$res = openssl_get_privatekey($priKey);
@@ -123,7 +117,7 @@ class AopClient {
 			openssl_free_key($res);
 		}
 		$sign = base64_encode($sign);
-//        var_dump('$signaaaaaaaaaaaaaa：');
+
 //        var_dump($sign);
 //        var_dump('-------------------------');
 //        exit;
@@ -616,7 +610,7 @@ class AopClient {
 			$res = openssl_get_publickey($pubKey);
 		}
 
-		($res) or die('支付宝RSA公钥错误。请检查公钥文件格式是否正确');  
+		($res) or die('支付宝RSA公钥错误。请检查公钥文件格式是否正确');
 
 		//调用openssl内置方法验签，返回bool值
 

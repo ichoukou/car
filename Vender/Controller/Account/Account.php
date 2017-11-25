@@ -128,7 +128,7 @@ class Account extends Controller
             }
 
             $rand_number = mt_rand(100000, 999999);
-            $content = "尊敬的企业用户，您的注册验证码是{$rand_number}，10分钟内有效。如非本人操作请忽略！【派乐宝】";
+            $content = "尊敬的企业用户，您的注册验证码是{$rand_number}，10分钟内有效。如非本人操作请忽略！【买着网】";
 
             $sms_id = M::Vender('Account\\Account', 'addSms', ['tel'=>$post['tel'],'rand_number'=>$rand_number]);
 
@@ -227,8 +227,8 @@ class Account extends Controller
                 $errors ['registered_capital'] = '请填写注册资本';
             }
 
-            if (empty($post['date_time'])) {
-                $errors ['date_time'] = '请填写成立日期';
+            if (!C::check_date_format($post['date_time'])) {
+                $errors ['date_time'] = '请选择成立日期';
             }
 
             if (empty($post['operating_period'])) {

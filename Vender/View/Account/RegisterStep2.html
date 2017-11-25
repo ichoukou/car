@@ -41,7 +41,7 @@
 				</div>
 				<div class="input-group">
 					<span class="input-group-addon"><label>成立日期</label></span>
-					<input id="datetimeDate-demo" name="date_time" placeholder="请选择成立日期" class="form-control"/>
+					<input type="text" id="datetimeDate-demo" name="date_time" placeholder="请选择成立日期" class="form-control"/>
 				</div>
 				<div class="input-group">
 					<span class="input-group-addon"><label>营业期限</label></span>
@@ -61,7 +61,7 @@
         $('#datetimeDate-demo').mobiscroll().date({
             theme: 'ios',      // Specify theme like: theme: 'ios' or omit setting to use default
             lang: 'zh',    // Specify language like: lang: 'pl' or omit setting to use default
-            display: 'Center', //Bubble // Specify display mode like: display: 'bottom' or omit setting to use default
+            display: 'bottom', //Bubble // Specify display mode like: display: 'bottom' or omit setting to use default
             mode: 'datetimeDate', //datetimeInvalid        // More info about mode: https://docs.mobiscroll.com/3-0-0_beta2/datetime#!opt-mode
             dateFormat: 'yy-mm-dd',
             onSet: function (event, inst) {

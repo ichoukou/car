@@ -33,7 +33,7 @@ class AlipayTradeService {
 	public $format = "json";
 
 	//签名方式
-	public $signtype = "RSA";
+	public $signtype = "RSA2";
 
 	function __construct($alipay_config){
 		$this->gateway_url = $alipay_config['gatewayUrl'];

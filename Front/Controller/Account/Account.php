@@ -125,7 +125,7 @@ class Account extends Controller
             }
 
             $rand_number = mt_rand(100000, 999999);
-            $content = "尊敬的用户，您的注册验证码是{$rand_number}，10分钟内有效。如非本人操作请忽略！【派乐宝】";
+            $content = "尊敬的用户，您的注册验证码是{$rand_number}，10分钟内有效。如非本人操作请忽略！【买着网】";
 
             $sms_id = M::Front('Account\\Account', 'addSms', ['tel'=>$post['tel'],'rand_number'=>$rand_number]);
 
@@ -262,12 +262,12 @@ class Account extends Controller
                 $errors ['engine_number'] = '请填写发动机号码';
             }
 
-            if (empty($post['registration_date'])) {
-                $errors ['registration_date'] = '请填写注册日期';
+            if (!C::check_date_format($post['registration_date'])) {
+                $errors ['registration_date'] = '请选择注册日期';
             }
 
-            if (empty($post['accepted_date'])) {
-                $errors ['accepted_date'] = '请填写受理日期';
+            if (!C::check_date_format($post['accepted_date'])) {
+                $errors ['accepted_date'] = '请选择受理日期';
             }
 
             if (empty($post['file_number'])) {

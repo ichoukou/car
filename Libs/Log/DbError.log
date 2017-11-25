@@ -1,0 +1,12 @@
+
+[2017-11-25 15:36:20] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\User\Evaluation.php
+[2017-11-25 15:36:20] ERROR Line:20
+[2017-11-25 15:36:20] ERROR Func:insert
+[2017-11-25 15:36:20] ERROR Sql :INSERT INTO website_evaluation (`company_id`,`user_id`,`car_id`,`bill`,`reservation_time`) VALUES 
+[2017-11-25 15:36:20] ERROR Mess:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'car_id' in 'field list'
+
+[2017-11-25 15:38:00] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\User\Evaluation.php
+[2017-11-25 15:38:00] ERROR Line:20
+[2017-11-25 15:38:00] ERROR Func:insert
+[2017-11-25 15:38:00] ERROR Sql :INSERT INTO website_evaluation (`company_id`,`user_id`,`car_id`,`bill`,`reservation_time`) VALUES 
+[2017-11-25 15:38:00] ERROR Mess:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'car_id' in 'field list'

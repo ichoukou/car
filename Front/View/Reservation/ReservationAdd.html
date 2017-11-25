@@ -46,7 +46,7 @@
     </section>
     <div class="container-fluid">
         <!--<button type="button" href="#" class="btn btn-default btn-block"><i class="nc-icon-outline ui-2_time"></i> 请选择预约时间</button>-->
-        <input id="reservation_time" name="reservation_time" value="<?php echo $company_info['reservation_time']; ?>" placeholder="请选择预约时间" class="btn btn-default btn-block" readonly/>
+        <input type="text" id="reservation_time" name="reservation_time" placeholder="请选择预约时间" class="btn btn-default btn-block" readonly/>
         <button type="button" onclick="submit_info()" class="btn btn-primary btn-block"><i class="nc-icon-outline ui-1_check-circle-08"></i> 保存修改</button>
     </div>
 </main>
@@ -57,7 +57,7 @@
         $('#reservation_time').mobiscroll().datetime({
             theme: 'ios',      // Specify theme like: theme: 'ios' or omit setting to use default
             lang: 'zh',    // Specify language like: lang: 'pl' or omit setting to use default
-            display: 'Center', //Bubble // Specify display mode like: display: 'bottom' or omit setting to use default
+            display: 'bottom', //Bubble // Specify display mode like: display: 'bottom' or omit setting to use default
             mode: 'datetimeInvalid', //datetimeDate,datetimeInvalid,datetimeTime        // More info about mode: https://docs.mobiscroll.com/3-0-0_beta2/datetime#!opt-mode
             dateFormat: 'yy-mm-dd',
             min: new Date(now.getFullYear(), now.getMonth(), now.getDate()),

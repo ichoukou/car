@@ -127,7 +127,8 @@ class Reservation extends Controller
                 }
             }
 
-            if (empty($post['reservation_time'])) {
+            $reservation_time = explode(' ', $post['reservation_time']);
+            if (!C::check_date_format($reservation_time[0])) {
                 $errors ['reservation_time'] = '请选择预约时间';
             }
 

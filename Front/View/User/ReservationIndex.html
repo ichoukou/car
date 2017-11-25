@@ -26,9 +26,11 @@
                     <?php elseif($reservation['status'] == 3): ?>
                         <a href="<?php echo $entrance; ?>route=Front/User/Pay/index&reservation_id=<?php echo $reservation['reservation_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><i class="nc-icon-outline ui-2_time"></i> 支付</a>
                     <?php elseif($reservation['status'] == 4): ?>
-                        <a href="<?php echo $entrance; ?>route=Front/User/Reservation/evaluation&reservation_id=<?php echo $reservation['reservation_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><i class="nc-icon-outline ui-2_time"></i> 待评价</a>
+                        <a href="<?php echo $entrance; ?>route=Front/User/Evaluation&reservation_id=<?php echo $reservation['reservation_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><i class="nc-icon-outline ui-2_time"></i> 待评价</a>
+                    <?php elseif($reservation['status'] == 5): ?>
+                        <a href="<?php echo $entrance; ?>route=Front/User/Evaluation/evaluation_success&id=<?php echo $reservation['reservation_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><i class="nc-icon-outline ui-2_time"></i> 已评价</a>
                     <?php else: ?>
-                        <a href="<?php echo $entrance; ?>route=Front/User/Reservation/evaluation&reservation_id=<?php echo $reservation['reservation_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><i class="nc-icon-outline ui-2_time"></i> 已评价</a>
+                        订单异常
                     <?php endif; ?>
                 </div>
             </div>

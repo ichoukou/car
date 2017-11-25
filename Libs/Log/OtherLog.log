@@ -26,3 +26,27 @@
 [2017-11-24 14:42:46] ERROR Mess:<b>Warning</b>: openssl_sign(): supplied key param cannot be coerced into a private key in <b>/data/wwwroot/qx.maizhao.net/Libs/ExtendsClass/Alipay/aop/AopClient.php</b> on line <b>110</b>
 
 [2017-11-24 14:42:51] ERROR Mess:<b>Warning</b>: openssl_sign(): supplied key param cannot be coerced into a private key in <b>/data/wwwroot/qx.maizhao.net/Libs/ExtendsClass/Alipay/aop/AopClient.php</b> on line <b>110</b>
+
+[2017-11-25 14:22:00] ERROR Mess:<b>Warning</b>: Error: The 'BillInfo' Method Under Class 'Front\Model\User\Pay' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>32</b>
+
+[2017-11-25 14:43:16] ERROR Mess:<b>Warning</b>: Error: The 'paySuccess' Method Under Class 'Front\Controller\User\Pay' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-25 15:06:46] ERROR Mess:<b>Warning</b>: Error: Template 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\User\EvaluationAdd.html' Not Found in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Loader.php</b> on line <b>40</b>
+
+[2017-11-25 15:18:57] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front/Model/User/Evaluation.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>55</b>
+
+[2017-11-25 15:18:57] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\User\Evaluation' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-25 15:29:27] ERROR Mess:<b>Warning</b>: Error: Class 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front/Model/User/Evaluation.php' Not Found!  in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Init.php</b> on line <b>55</b>
+
+[2017-11-25 15:29:27] ERROR Mess:<b>Warning</b>: Error: Model 'Front\Model\User\Evaluation' Not Found!! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Model.php</b> on line <b>36</b>
+
+[2017-11-25 15:36:20] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'car_id' in 'field list' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>130</b>
+
+[2017-11-25 15:38:00] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'car_id' in 'field list' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>130</b>
+
+[2017-11-25 15:58:26] ERROR Mess:<b>Warning</b>: Error: The 'evaluation' Method Under Class 'Front\Controller\User\Evaluation' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-25 16:10:08] ERROR Mess:<b>Warning</b>: Error: The 'evaluation' Method Under Class 'Front\Controller\User\Evaluation' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-11-25 16:12:35] ERROR Mess:<b>Warning</b>: Error: The 'evaluation' Method Under Class 'Front\Controller\User\Reservation' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
