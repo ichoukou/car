@@ -13,13 +13,18 @@ class OcrInit{
         $this->aipOcr = new \AipOcr($APP_ID, $API_KEY, $SECRET_KEY);
     }
 
-    public function analyze($image)
+    /**
+     * @param $image 本地图片地址
+     * @param $obj 要调用的接口方法名
+     * @return array
+     */
+    public function analyze($image, $obj)
     {
         if (empty($image))
             return [];
 
         # 定义参数变量
-        $option = ['detect_direction' => 'false', 'language_type' => "CHN_ENG"];
+        #$option = ['detect_direction' => 'false', 'language_type' => "CHN_ENG"];
 
         #传入图片
         #$result = $aipOcr->enhancedGeneral(file_get_contents('enhanced_general.jpg'));
@@ -28,6 +33,8 @@ class OcrInit{
         # 调用生僻字识别接口
         #$result = $aipOcr->basicGeneral(file_get_contents('../t2.jpg'), $option);
         #$result = $aipOcr->enhancedGeneral('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510826086272&di=d6ef93ce3afec40798d10b7f828efa9f&imgtype=0&src=http%3A%2F%2Ffile.juzimi.com%2Fshouxiepic%2Fjlzemx2.jpg', $option);
-        return $this->aipOcr->basicGeneral($image, $option);
+        #return $this->aipOcr->$obj($image, $option);
+
+        return $this->aipOcr->$obj($image);
     }
 }

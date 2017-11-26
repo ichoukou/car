@@ -8,7 +8,10 @@
     <div class="list-group">
         <div class="list-group-item border-horizontal-0">
             <?php if ($reservations) : ?>
+            <?php $i = 0; ?>
             <?php foreach ($reservations as $reservation) : ?>
+            <?php if($i != 0): ?><hr style="height:5px;background-color:#EAEAEA;"/><?php endif; ?>
+            <?php $i++; ?>
             <div class="row">
                 <div class="col-xs-3">
                     <img class="img-responsive" src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/lactus.png" alt="">
@@ -38,7 +41,7 @@
                         <span class="text-muted">有<?php echo $reservation['views']; ?>人访问 | 距离0.46km</span>
                     </h6>
                     <p><?php echo $reservation['address']; ?></p>
-                    <a href="<?php echo $entrance; ?>route=Front/Reservation/Reservation/add_reservation&company_id=<?php echo $reservation['company_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><i class="nc-icon-outline ui-2_time"></i> 预约维修</a>
+                    <a href="<?php echo $entrance; ?>route=Front/Reservation/Reservation/add_reservation&company_id=<?php echo $reservation['company_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l pull-right"><!--<i class="nc-icon-outline ui-2_time"></i>--> 商家预约</a>
                 </div>
             </div>
             <?php endforeach; ?>

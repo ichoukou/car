@@ -1,0 +1,40 @@
+<nav id="column-left">
+    <div id="profile">
+        <div>
+            <i class="fa fa-opencart"></i>
+        </div>
+        <div>
+            <h4><?php echo $session_info['tel']; ?></h4>
+            <small>
+
+            </small>
+        </div>
+    </div>
+    <ul id="menu">
+        <li id="menu-dashboard">
+            <a href="<?php echo $entrance; ?>route=Front/Home/Home"><i class="fa fa-dashboard fw"></i> <span>首页</span></a>
+        </li>
+        <li id="menu-customer">
+            <a class="parent"><i class="fa fa-user fw"></i> <span>我的信息</span></a>
+            <ul class="">
+                <li>
+                    <a href="<?php echo $entrance; ?>route=Front/User/User">我的信息</a>
+                </li>
+                <li>
+                    <a href="<?php echo $entrance; ?>route=Front/User/Car">车辆信息</a>
+                </li>
+                <li>
+                    <a href="<?php echo $entrance; ?>route=Front/User/Reservation">我的预约</a>
+                </li>
+            </ul>
+        </li>
+        <li id="menu-company">
+            <a class="parent"><i class="fa fa-user fw"></i> <span>在线预约</span></a>
+            <ul class="">
+                <li>
+                    <a href="<?php echo $entrance; ?>route=Front/Reservation/Reservation">在线预约</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>

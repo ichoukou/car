@@ -84,6 +84,13 @@ class Account extends Controller
         L::output(L::view('Account\\RegisterStep2', 'Vender', $this->data));
     }
 
+    public function register_success()
+    {
+        $this->create_page();
+
+        L::output(L::view('Account\\RegisterSuccess', 'Vender', $this->data));
+    }
+
     public function do_add_register_step1()
     {
         if ($post = $this->validate_default()) {
@@ -149,9 +156,147 @@ class Account extends Controller
      */
     public function get_ocr()
     {
-        $ocr = new Ocr('10376062', 'aKPVvLlnx1uiPtGQ4oUd7RV3', 'jVscvETAswCo7KSoUiaiPHMS6Bz0PKFZ');
-        $result = $ocr->analyze('http://hd.wechatdpr.com/jd/2017/1111/aaa.jpg');
-        var_dump($result);
+        #https://cloud.baidu.com/doc/OCR/OCR-PHP-SDK.html#.E8.A1.8C.E9.A9.B6.E8.AF.81.E8.AF.86.E5.88.AB 接口地址
+        #http://blog.csdn.net/hu1991die/article/details/40585581
+        #http://blog.csdn.net/hu1991die/article/details/41084153
+        #https://yq.aliyun.com/articles/33569
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (empty($_POST['base64_file']))
+                exit(json_encode(['status'=>-1, 'result'=>'请上传图片'], JSON_UNESCAPED_UNICODE));
+
+            $base64_file = explode(',', $_POST['base64_file']);
+            if (empty($base64_file[1]))
+                exit(json_encode(['status'=>-1, 'result'=>'请上传图片'], JSON_UNESCAPED_UNICODE));
+
+            $ext_arr = explode(';', $base64_file[0]);
+            $ext = explode('/', $ext_arr[0]);
+            $ext = !empty($ext[1]) ? $ext[1] : 'jpeg';
+            $file = base64_decode($base64_file[1]);
+
+            $yCode = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+            $orderSn = $yCode[intval(date('Y')) - 2011] . strtoupper(dechex(date('m'))) . date('d') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));
+            $ext = 'jpg';
+            $file_name = date('YmdHis', time()).$orderSn.mt_rand(100000, 999999).'.'.$ext;
+            $file_path = ROOT_PATH.'Image'.DS.'upload'.DS.'vender'.DS.'register'.DS;
+
+            file_put_contents($file_path.$file_name, $file);
+
+            $scan = getimagesize($file_path.$file_name);
+            $size = $scan[0] > $scan[1] ? $scan[0] : $scan[1];
+
+            if ($size > 1024) {
+                $n = 1;
+                while ($n > 0.1) {
+                    $n = $n - 0.1;
+
+                    if (round($size * $n) < 1000) {
+                        break;
+                    }
+                }
+
+                $ir = new IR($file_path.$file_name);
+                $ir->percent = $n;
+                $ir->openImage();
+                $ir->thumpImage();
+                #$ir->showImage();
+                $ir->saveImage($file_path.$file_name);
+            }
+
+            $ocr = new Ocr('10438599', 'cf4wHlLAC1V8OdkBpwiNYTbC', 'ZR5ImAmHf11bV7tGdz9aDKNvCAHoe3GA');
+            $result = $ocr->analyze(file_get_contents($file_path.$file_name), 'businessLicense');
+
+            $words_result = [];
+            if (!empty($result['words_result'])) {
+                foreach ($result['words_result'] as $key=>$value) {
+                    if ($key == '单位名称')
+                        $words_result['name'] = $value['words'];
+                    if ($key == '法人')
+                        $words_result['legal_person'] = $value['words'];
+                    if ($key == '地址')
+                        $words_result['address'] = $value['words'];
+                    if ($key == '有效期')
+                        $words_result['operating_period'] = $value['words'];
+                }
+            }
+
+            if (empty($words_result)) {
+                exit(json_encode(['status'=>-1, 'result'=>'没有识别出数据，请手动填写或使用更清晰的图片，且大小不超过4MB'], JSON_UNESCAPED_UNICODE));
+            } else {
+                exit(json_encode(['status'=>1, 'result'=>$words_result], JSON_UNESCAPED_UNICODE));
+            }
+        }
+    }
+
+    public function get_ocr_back()
+    {
+        #http://blog.csdn.net/hu1991die/article/details/40585581
+        #http://blog.csdn.net/hu1991die/article/details/41084153
+        #https://yq.aliyun.com/articles/33569
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (empty($_POST['base64_file']))
+                exit(json_encode(['status'=>-1, 'result'=>'请上传图片'], JSON_UNESCAPED_UNICODE));
+
+            $base64_file = explode(',', $_POST['base64_file']);
+            if (empty($base64_file[1]))
+                exit(json_encode(['status'=>-1, 'result'=>'请上传图片'], JSON_UNESCAPED_UNICODE));
+
+            $ext_arr = explode(';', $base64_file[0]);
+            $ext = explode('/', $ext_arr[0]);
+            $ext = !empty($ext[1]) ? $ext[1] : 'jpeg';
+            $file = base64_decode($base64_file[1]);
+
+            $yCode = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+            $orderSn = $yCode[intval(date('Y')) - 2011] . strtoupper(dechex(date('m'))) . date('d') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));
+
+            $file_name = date('YmdHis', time()).$orderSn.mt_rand(100000, 999999).'.'.$ext;
+            $file_path = ROOT_PATH.'Image'.DS.'upload'.DS.'vender'.DS;
+
+            file_put_contents($file_path.$file_name, $file);
+
+            $ocr = new Ocr('10376062', 'aKPVvLlnx1uiPtGQ4oUd7RV3', 'jVscvETAswCo7KSoUiaiPHMS6Bz0PKFZ');
+            $result = $ocr->analyze(HTTP_SERVER.'Image/upload/vender/'.$file_name, 'basicGeneral');
+            #var_dump($result);
+//            $result['words_result'] = [
+//                ['words'=>'名'],
+//                ['words'=>'称天津顺天时科技有限公司'],
+//                ['words'=>'类'],
+//                ['words'=>'型有限责任公司(自然人独资)'],
+//                ['words'=>'住'],
+//                ['words'=>'所天津市东丽区津塘公路-407号2号楼3楼A区20'],
+//                ['words'=>'号'],
+//                ['words'=>'法定代表人徐丽英'],
+//                ['words'=>'注册资本贰佰万元人民币'],
+//                ['words'=>'成立日期二0一五年九月一日'],
+//                ['words'=>'营业期限2015年09月01日至2045年08月31日']
+//            ];
+
+            $words_result = [];
+            if (!empty($result['words_result'])) {
+                foreach ($result['words_result'] as $key=>$value) {
+                    array_push($words_result, $value['words']);
+                }
+            }
+
+            $works_value = [];
+            foreach ($words_result as $i=>$v) {
+                if ($v == '名')
+                    $works_value['name'] = mb_substr($words_result[$i+1], 1, mb_strlen($words_result[$i+1]), 'utf-8');
+                if ($v == '类')
+                    $works_value['type'] = mb_substr($words_result[$i+1], 1, mb_strlen($words_result[$i+1]), 'utf-8');
+                if ($v == '住')
+                    $works_value['address'] = mb_substr($words_result[$i+1], 1, mb_strlen($words_result[$i+1]), 'utf-8');
+                if (stripos($v, '法定代表人') !== false)
+                    $works_value['legal_person'] = mb_substr($v, 5, mb_strlen($v), 'utf-8');
+                if (stripos($v, '注册资本') !== false)
+                    $works_value['registered_capital'] = mb_substr($v, 4, mb_strlen($v), 'utf-8');
+                if (stripos($v, '成立日期') !== false)
+                    $works_value['date_time'] = mb_substr($v, 4, mb_strlen($v), 'utf-8');
+                if (stripos($v, '营业期限') !== false)
+                    $works_value['operating_period'] = mb_substr($v, 4, mb_strlen($v), 'utf-8');
+            }
+
+            exit(json_encode(['status'=>1, 'result'=>$works_value], JSON_UNESCAPED_UNICODE));
+        }
     }
 
     public function validate_default()

@@ -132,6 +132,10 @@ class Reservation extends Controller
                 $errors ['reservation_time'] = '请选择预约时间';
             }
 
+            if (empty($post['description'])) {
+                $errors ['reservation_time'] = '请填写描述';
+            }
+
             if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
 
             return $post;

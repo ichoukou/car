@@ -14,6 +14,7 @@
 * License for the specific language governing permissions and limitations under
 * the License.
 */
+
 require_once 'lib/AipBase.php';
 
 /**
@@ -434,7 +435,7 @@ class AipOcr extends AipBase{
         $data['image'] = $image;
 
         $data = array_merge($data, $options);
-        
+
         return $this->request($this->businessLicenseUrl, $data);
     }
 

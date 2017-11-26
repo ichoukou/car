@@ -73,7 +73,7 @@ class Settlement extends Controller
 
         $this->create_page();
 
-        L::output(L::view('Reservation\\SettlementEdit', 'Vender', $this->data));
+        L::output(L::view('Reservation\\SettlementView', 'Vender', $this->data));
     }
 
     public function do_edit_reservation()

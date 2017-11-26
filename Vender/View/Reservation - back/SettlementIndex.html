@@ -1,0 +1,126 @@
+<?php echo $header_page; ?>
+<body>
+<header class="navbar navbar-fixed-top">
+    <h4 class="navbar-text">维修结算</h4>
+    <!--<a href="#" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>-->
+</header>
+<main class="main">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!--<ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="assets/img/BingWallpaper-2017-03-03.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/img/BingWallpaper-2017-03-23.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/img/BingWallpaper-2017-04-05.jpg" alt="">
+            </div>
+        </div>-->
+    </div>
+    <div class="list-group">
+        <div class="list-group-item border-horizontal-0">
+            <?php if ($reservations) : ?>
+                <?php foreach ($reservations as $reservation) : ?>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img class="img-responsive" src="<?php echo $assets_server; ?>Vender/Themes/<?php echo $themes_default; ?>/Img/leaf.png" alt="">
+                        </div>
+                        <div class="col-xs-9 pl-0">
+                            <h4 class="list-group-item-heading">商家标题</h4>
+                            <h6>
+                                <div class="text-muted"><?php echo $reservation['plate_number']; ?> | <?php echo $reservation['car_type']; ?></div>
+                                <div class="text-muted"><?php echo $reservation_status[$reservation['status']]; ?></div>
+                                <div class="text-muted"><?php echo $reservation['create_time']; ?></div>
+                            </h6>
+                            <p><?php echo $reservation['reservation_time']; ?></p>
+                            <a href="<?php echo $entrance; ?>route=Vender/Reservation/Settlement/edit_reservation&reservation_id=<?php echo $reservation['reservation_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><i class="nc-icon-outline ui-2_time"></i> 结算</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="row">
+                    <div class="col-xs-9 pl-0">
+                        <h4 class="list-group-item-heading">没有符合条件的结果！</h4>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</main>
+
+<script>
+    $(document).ready(function(data)
+        {
+            var success_info = '<?php echo $success_info; ?>';
+            var error_info = '<?php echo $error_info; ?>';
+
+            if (!!success_info) {
+                show_success_dom(success_info);
+            }
+
+            if (!!error_info) {
+                show_error_dom(error_info);
+            }
+        }
+    );
+
+    var remove_one_click = true;
+    function remove_one(reservation_id)
+    {
+        if (!reservation_id) {
+            show_error_dom('请选择要删除的数据！');
+            return false;
+        }
+
+        if (!remove_one_click)
+            return false;
+
+        remove_one_click = false;
+
+        st.post('<?php echo $entrance; ?>route=Vender/Reservation/Settlement/remove_one', {reservation_id:reservation_id}, function(data){
+            if (data.status == -1) {
+                show_error_dom(data.result);
+                remove_one_click = true;
+            } else {
+                window.location.href = '<?php echo $entrance; ?>route=Vender/Reservation/Settlement<?php echo $url; ?>';
+            }
+        });
+    }
+
+    var remove_some_click = true;
+    function remove_some()
+    {
+        var checked = [];
+        $.each($("input:checkbox[name=selected]:checked"), function(i, e){
+            checked.push(parseInt($(e).val()));
+        });
+
+        if (checked.length <= 0) {
+            show_error_dom('请选择要删除的数据！');
+            return false;
+        }
+
+        if (!remove_some_click)
+            return false;
+
+        remove_some_click = false;
+
+        st.post('<?php echo $entrance; ?>route=Vender/Reservation/Settlement/remove_some', {reservation_ids:checked}, function(data){
+            if (data.status == -1) {
+                show_error_dom(data.result);
+                remove_some_click = true;
+            } else {
+                window.location.href = '<?php echo $entrance; ?>route=Vender/Reservation/Settlement<?php echo $url; ?>';
+            }
+        });
+    }
+</script>
+
+<?php echo $footer_page; ?>

@@ -6,6 +6,7 @@ use Libs\Core\Model as M;
 use Libs\Core\Loader as L;
 use Libs\ExtendsClass\Common as C;
 use Libs\ExtendsClass\BaiduOcr\OcrInit as Ocr;
+use Libs\ExtendsClass\ImageResize as IR;
 
 class Account extends Controller
 {
@@ -81,6 +82,13 @@ class Account extends Controller
         L::output(L::view('Account\\RegisterStep2', 'Front', $this->data));
     }
 
+    public function register_success()
+    {
+        $this->create_page();
+
+        L::output(L::view('Account\\RegisterSuccess', 'Front', $this->data));
+    }
+
     public function do_add_register_step1()
     {
         if ($post = $this->validate_default()) {
@@ -146,6 +154,7 @@ class Account extends Controller
      */
     public function get_ocr()
     {
+        #https://cloud.baidu.com/doc/OCR/OCR-PHP-SDK.html#.E8.A1.8C.E9.A9.B6.E8.AF.81.E8.AF.86.E5.88.AB 接口地址
         #http://blog.csdn.net/hu1991die/article/details/40585581
         #http://blog.csdn.net/hu1991die/article/details/41084153
         #https://yq.aliyun.com/articles/33569
@@ -166,15 +175,83 @@ class Account extends Controller
             $orderSn = $yCode[intval(date('Y')) - 2011] . strtoupper(dechex(date('m'))) . date('d') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));
 
             $file_name = date('YmdHis', time()).$orderSn.mt_rand(100000, 999999).'.'.$ext;
-            $file_path = ROOT_PATH.'Image'.DS.'upload'.DS;
+            $file_path = ROOT_PATH.'Image'.DS.'upload'.DS.'front'.DS.'register'.DS;
 
             file_put_contents($file_path.$file_name, $file);
-            var_dump(HTTP_SERVER.'Image/upload/'.$file_name);
-            #http://hd.wechatdpr.com/jd/2017/1111/aaa.jpg
-            $ocr = new Ocr('10376062', 'aKPVvLlnx1uiPtGQ4oUd7RV3', 'jVscvETAswCo7KSoUiaiPHMS6Bz0PKFZ');
-            $result = $ocr->analyze(HTTP_SERVER.'Image/upload/'.$file_name);
-            var_dump($result);
+
+//            $size = file_get_contents($file_path.$file_name);
+//            print_r(strlen($size)/1024/1024);
+//            exit;
+
+            $scan = getimagesize($file_path.$file_name);
+            $size = $scan[0] > $scan[1] ? $scan[0] : $scan[1];
+
+            if ($size > 1024) {
+                $n = 1;
+                while ($n > 0.1) {
+                    $n = $n - 0.1;
+
+                    if (round($size * $n) < 1000) {
+                        break;
+                    }
+                }
+
+                $ir = new IR($file_path.$file_name);
+                $ir->percent = $n;
+                $ir->openImage();
+                $ir->thumpImage();
+                #$ir->showImage();
+                $ir->saveImage($file_path.$file_name);
+            }
+
+            $ocr = new Ocr('10438599', 'cf4wHlLAC1V8OdkBpwiNYTbC', 'ZR5ImAmHf11bV7tGdz9aDKNvCAHoe3GA');
+            $result = $ocr->analyze(file_get_contents($file_path.$file_name), 'vehicleLicense');
+
+            $words_result = [];
+            if (!empty($result['words_result'])) {
+                foreach ($result['words_result'] as $key=>$value) {
+                    if ($key == '品牌型号' and !empty($value['words']))
+                        $words_result['brand_type'] = $value['words'];
+                    if ($key == '发证日期' and !empty($value['words']))
+                        $words_result['accepted_date'] = date('Y-m-d', strtotime($value['words']));
+                    if ($key == '使用性质' and !empty($value['words']))
+                        $words_result['use_type'] = $value['words'];
+                    if ($key == '发动机号码' and !empty($value['words']))
+                        $words_result['engine_number'] = $value['words'];
+                    if ($key == '号牌号码' and !empty($value['words']))
+                        $words_result['plate_number'] = $value['words'];
+                    if ($key == '所有人' and !empty($value['words']))
+                        $words_result['owner'] = $value['words'];
+                    if ($key == '住址' and !empty($value['words']))
+                        $words_result['address'] = $value['words'];
+                    if ($key == '注册日期' and !empty($value['words']))
+                        $words_result['registration_date'] = date('Y-m-d', strtotime($value['words']));
+                    if ($key == '车辆识别代号' and !empty($value['words']))
+                        $words_result['identification_number'] = $value['words'];
+                    if ($key == '车辆类型' and !empty($value['words']))
+                        $words_result['car_type'] = $value['words'];
+                }
+            }
+
+            if (empty($words_result)) {
+                exit(json_encode(['status'=>-1, 'result'=>'没有识别出数据，请手动填写或使用更清晰的图片，且大小不超过4MB'], JSON_UNESCAPED_UNICODE));
+            } else {
+                exit(json_encode(['status'=>1, 'result'=>$words_result], JSON_UNESCAPED_UNICODE));
+            }
         }
+    }
+
+    public function getsize($size, $format = 'kb') {
+        $p = 0;
+        if ($format == 'kb') {
+            $p = 1;
+        } elseif ($format == 'mb') {
+            $p = 2;
+        } elseif ($format == 'gb') {
+            $p = 3;
+        }
+        $size /= pow(1024, $p);
+        return number_format($size, 3);
     }
 
     public function validate_default()

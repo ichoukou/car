@@ -11,7 +11,7 @@
  Target Server Version : 100128
  File Encoding         : 65001
 
- Date: 25/11/2017 18:17:05
+ Date: 26/11/2017 22:29:13
 */
 
 SET NAMES utf8mb4;
@@ -73,7 +73,14 @@ CREATE TABLE `website_company`  (
   PRIMARY KEY (`company_id`) USING BTREE,
   UNIQUE INDEX `COMPANY_ID`(`company_id`) USING BTREE,
   INDEX `DELETED`(`deleted`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_company
+-- ----------------------------
+INSERT INTO `website_company` VALUES (10, 0, '13656480135', 'CPY0000001', '青岛测试公司', '私企', '青岛市', '张三', '100万', '2017-09-25', '无限', NULL, 4, 1, 40, 0, 1, '48df5e738a4994df4191f2bd07c813517dfa49ea', 'A0UXS93kWh', '2017-11-26 20:41:39', 1, '2017-11-25 18:26:12');
+INSERT INTO `website_company` VALUES (11, 0, '13333333333', 'CPY0000002', '车辆维修中心', '民企', '济南', '李斯', '500万', '2017-05-25', '无限', NULL, 0, 0, 6, 0, 1, 'e2f7c6ff922c63c24e25e79355442f7b6ee0dec4', 'OUrUgg9fOF', NULL, 1, '2017-11-25 18:32:52');
+INSERT INTO `website_company` VALUES (12, 0, '13361076388', 'CPY0000003', '女童', '及逻辑', '裤头那具体', '看看', '666', '2017-11-25', '长期', NULL, 0, 0, 5, 0, 1, '5e3784e8bac30813d4638edc3e3e1b42946ddb4f', 'TnMC5kIlGc', '2017-11-25 21:26:51', 1, '2017-11-25 20:19:44');
 
 -- ----------------------------
 -- Table structure for website_company_score
@@ -130,13 +137,44 @@ CREATE TABLE `website_evaluation`  (
   `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`evaluation_id`) USING BTREE,
   UNIQUE INDEX `EAVLUATION_ID`(`evaluation_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_evaluation
+-- ----------------------------
+INSERT INTO `website_evaluation` VALUES (8, 17, 10, 9, 7, '20171125191057GB250825786293039', 4, '2017-11-25 19:16:00');
 
 -- ----------------------------
 -- Table structure for website_maintenance_costs
 -- ----------------------------
 DROP TABLE IF EXISTS `website_maintenance_costs`;
 CREATE TABLE `website_maintenance_costs`  (
+  `costs_id` int(11) NOT NULL AUTO_INCREMENT,
+  `reservation_id` int(11) NOT NULL,
+  `image_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '结算单据图片地址',
+  `total_revenue` float(10, 2) NULL DEFAULT 0.00 COMMENT '实收合计',
+  `deleted` tinyint(4) NULL DEFAULT 1 COMMENT '是否删除 1未删除 2已删除',
+  `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`costs_id`) USING BTREE,
+  UNIQUE INDEX `COSTS_ID`(`costs_id`) USING BTREE,
+  INDEX `RESERVATION_ID`(`reservation_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_maintenance_costs
+-- ----------------------------
+INSERT INTO `website_maintenance_costs` VALUES (7, 17, NULL, 0.10, 1, '2017-11-25 19:15:20');
+INSERT INTO `website_maintenance_costs` VALUES (8, 18, NULL, 22.00, 1, '2017-11-25 19:17:09');
+INSERT INTO `website_maintenance_costs` VALUES (9, 20, NULL, 5000.00, 1, '2017-11-25 20:22:49');
+INSERT INTO `website_maintenance_costs` VALUES (10, 21, NULL, 11.00, 1, '2017-11-25 22:24:46');
+INSERT INTO `website_maintenance_costs` VALUES (12, 22, 'Image\\upload\\vender\\other\\20171126173843GB26891231535516814171.jpg', 0.10, 1, '2017-11-26 17:38:43');
+INSERT INTO `website_maintenance_costs` VALUES (13, 24, 'Image\\upload\\vender\\other\\20171126205806GB26010868569954705972.jpg', 0.10, 1, '2017-11-26 20:58:06');
+
+-- ----------------------------
+-- Table structure for website_maintenance_costs_-back
+-- ----------------------------
+DROP TABLE IF EXISTS `website_maintenance_costs_-back`;
+CREATE TABLE `website_maintenance_costs_-back`  (
   `costs_id` int(11) NOT NULL AUTO_INCREMENT,
   `reservation_id` int(11) NOT NULL,
   `material_costs` float(10, 2) NULL DEFAULT 0.00 COMMENT '材料费合计',
@@ -151,7 +189,15 @@ CREATE TABLE `website_maintenance_costs`  (
   PRIMARY KEY (`costs_id`) USING BTREE,
   UNIQUE INDEX `COSTS_ID`(`costs_id`) USING BTREE,
   INDEX `RESERVATION_ID`(`reservation_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_maintenance_costs_-back
+-- ----------------------------
+INSERT INTO `website_maintenance_costs_-back` VALUES (7, 17, 0.10, 0.00, 0.00, 0.00, 0.10, 0.00, 0.10, 1, '2017-11-25 19:15:20');
+INSERT INTO `website_maintenance_costs_-back` VALUES (8, 18, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 1, '2017-11-25 19:17:09');
+INSERT INTO `website_maintenance_costs_-back` VALUES (9, 20, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 5000.00, 1, '2017-11-25 20:22:49');
+INSERT INTO `website_maintenance_costs_-back` VALUES (10, 21, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 1, '2017-11-25 22:24:46');
 
 -- ----------------------------
 -- Table structure for website_pay_log
@@ -183,7 +229,12 @@ CREATE TABLE `website_pay_log`  (
   PRIMARY KEY (`pay_id`) USING BTREE,
   UNIQUE INDEX `PAY_ID`(`pay_id`) USING BTREE,
   INDEX `RESERVATION_ID`(`reservation_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_pay_log
+-- ----------------------------
+INSERT INTO `website_pay_log` VALUES (9, 17, '20171125191057GB250825786293039', 0.10, 1, NULL, '交易成功', '2017-11-25 19:15:44', '2017111800028220', 0.00, '2088902349621211', NULL, NULL, NULL, '2017112521001004930592403960', NULL, NULL, NULL, NULL, NULL, NULL, '2017-11-25 19:15:44');
 
 -- ----------------------------
 -- Table structure for website_reservation
@@ -197,6 +248,7 @@ CREATE TABLE `website_reservation`  (
   `bill` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '订单号',
   `image_path` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '接车问诊单图片地址',
   `reservation_time` datetime(0) NULL DEFAULT NULL COMMENT '预约时间',
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   `status` tinyint(4) NULL DEFAULT 1 COMMENT '1用户预约 2企业接待 3企业结算 4用户支付 5用户评价 6企业或用户取消当前预约',
   `deleted` tinyint(4) NULL DEFAULT 1 COMMENT '是否删除 1未删除 2已删除',
   `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP,
@@ -205,7 +257,20 @@ CREATE TABLE `website_reservation`  (
   INDEX `COMPANY_ID`(`company_id`) USING BTREE,
   INDEX `USER_ID`(`user_id`) USING BTREE,
   INDEX `CAR_ID`(`car_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_reservation
+-- ----------------------------
+INSERT INTO `website_reservation` VALUES (17, 10, 9, 7, '20171125191057GB250825786293039', 'http://www.baidu.com/', '2017-12-24 18:10:00', NULL, 5, 1, '2017-11-25 19:10:57');
+INSERT INTO `website_reservation` VALUES (18, 10, 9, 7, '20171125191637GB250859769184409', 'http://www.baidu.com/', '2017-11-27 19:16:00', NULL, 3, 1, '2017-11-25 19:16:37');
+INSERT INTO `website_reservation` VALUES (19, 11, 11, 9, '20171125194234GB2510154666388911', NULL, '2017-11-25 19:42:00', NULL, 1, 1, '2017-11-25 19:42:34');
+INSERT INTO `website_reservation` VALUES (20, 12, 11, 9, '20171125202041GB2512441450764911', 'http://www.baidu.com/', '2017-11-25 20:20:00', NULL, 3, 1, '2017-11-25 20:20:41');
+INSERT INTO `website_reservation` VALUES (21, 12, 11, 9, '20171125214058GB2517258489191811', 'http://www.baidu.com/', '2017-11-26 21:40:00', NULL, 3, 1, '2017-11-25 21:40:58');
+INSERT INTO `website_reservation` VALUES (22, 10, 9, 7, '20171125232109GB252326964287589', 'http://www.baidu.com/', '2017-11-25 23:21:00', '1111222', 3, 1, '2017-11-25 23:21:09');
+INSERT INTO `website_reservation` VALUES (23, 10, 9, 7, '20171125232947GB252378707190129', NULL, '2017-11-25 23:29:00', '啊啊啊啊啊啊啊啊啊啊啊', 2, 1, '2017-11-25 23:29:47');
+INSERT INTO `website_reservation` VALUES (24, 10, 9, 7, '20171126150055GB267965577917609', 'Image\\upload\\vender\\other\\20171126174406GB26894468406060795280.jpg', '2017-11-26 15:00:00', 'aaaa', 3, 1, '2017-11-26 15:00:55');
+INSERT INTO `website_reservation` VALUES (25, 10, 9, 7, '20171126174650GB268961035722499', NULL, '2017-11-26 17:46:00', 'rrr', 1, 1, '2017-11-26 17:46:50');
 
 -- ----------------------------
 -- Table structure for website_session_info
@@ -391,7 +456,23 @@ CREATE TABLE `website_sms`  (
   `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`sms_id`) USING BTREE,
   UNIQUE INDEX `SMS_ID`(`sms_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_sms
+-- ----------------------------
+INSERT INTO `website_sms` VALUES (17, '18866830116', 515796, 1, 2, 1511606350, 1511606350, 1, '2017-11-25 18:39:10');
+INSERT INTO `website_sms` VALUES (19, '18866830116', 153172, 1, 2, 1511607034, 1511607034, 1, '2017-11-25 18:50:34');
+INSERT INTO `website_sms` VALUES (21, '13333333332', 626481, 1, 2, 1511607542, 1511607542, 1, '2017-11-25 18:59:02');
+INSERT INTO `website_sms` VALUES (22, '18866830116', 534227, 1, 2, 1511607932, 1511607932, 1, '2017-11-25 19:05:32');
+INSERT INTO `website_sms` VALUES (23, '18866830116', 585080, 1, 1, 1511608915, 1511608915, 1, '2017-11-25 19:21:55');
+INSERT INTO `website_sms` VALUES (24, '18866830116', 821017, 1, 2, 1511608979, 1511608979, 1, '2017-11-25 19:22:59');
+INSERT INTO `website_sms` VALUES (26, '13444444444', 325767, 1, 1, 1511610434, 1511610434, 1, '2017-11-25 19:47:14');
+INSERT INTO `website_sms` VALUES (27, '18615596228', 358489, 1, 2, 1511611108, 1511611108, 1, '2017-11-25 19:58:28');
+INSERT INTO `website_sms` VALUES (28, '18615596228', 461742, 1, 2, 1511611399, 1511611399, 1, '2017-11-25 20:03:19');
+INSERT INTO `website_sms` VALUES (30, '18866830116', 127416, 1, 1, 1511619763, 1511619763, 1, '2017-11-25 22:22:43');
+INSERT INTO `website_sms` VALUES (31, '13566666666', 908594, 1, 2, 1511690304, 1511690304, 1, '2017-11-26 17:58:24');
+INSERT INTO `website_sms` VALUES (32, '13655555554', 189657, 1, 1, 1511690640, 1511690640, 1, '2017-11-26 18:04:00');
 
 -- ----------------------------
 -- Table structure for website_user
@@ -408,7 +489,13 @@ CREATE TABLE `website_user`  (
   `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`user_id`) USING BTREE,
   UNIQUE INDEX `USER_ID`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_user
+-- ----------------------------
+INSERT INTO `website_user` VALUES (9, '13656480135', 'USER0000001', '652db5916678036fab1b22baf3ea0e6241b1dea9', 'xYl2MEb3Su', 1, '2017-11-26 21:09:05', '2017-11-25 18:49:51');
+INSERT INTO `website_user` VALUES (11, '13361076388', 'USER0000002', '52dd19f468de055682e8dabd1ededad726b7f749', 'Ed2SyhVNfo', 1, '2017-11-25 21:33:21', '2017-11-25 19:41:31');
 
 -- ----------------------------
 -- Table structure for website_user_car
@@ -437,7 +524,13 @@ CREATE TABLE `website_user_car`  (
   PRIMARY KEY (`car_id`) USING BTREE,
   UNIQUE INDEX `CAR_ID`(`car_id`) USING BTREE,
   INDEX `USER_ID`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of website_user_car
+-- ----------------------------
+INSERT INTO `website_user_car` VALUES (7, 9, 'BMW001', 'BMW', '啊黑', '山东省', '民用', 'BMW', 'xxxxxxxx', 'xxxxxxxx', '2017-11-25', '2017-12-25', '001', '5', '1吨', '600x500x500', '啊啊啊啊啊啊', 1, '2017-11-25 18:49:51');
+INSERT INTO `website_user_car` VALUES (9, 11, 'vvvh', 'yh', 'ffg', 'dzchh', '人', 'ffh', '看看', '6896525544', '2017-11-25', '2017-11-25', '6886', '66', '55563', '5555', '他现在', 1, '2017-11-25 19:41:31');
 
 -- ----------------------------
 -- Table structure for website_website

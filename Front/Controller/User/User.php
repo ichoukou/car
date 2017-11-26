@@ -46,6 +46,13 @@ class User extends Controller
         }
     }
 
+    public function edit_success()
+    {
+        $this->create_page();
+
+        L::output(L::view('User\\UserEditSuccess', 'Front', $this->data));
+    }
+
     public function validate_edit()
     {
         $this->is_login();

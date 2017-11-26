@@ -8082,12 +8082,14 @@ a.text-danger:focus {
 
 .main,
 .skeleton {
+    /*
     position: absolute;
     overflow-y: auto;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+*/
     padding-top: 48px;
     padding-bottom: 68px;
 }

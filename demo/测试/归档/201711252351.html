@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Untitled Document</title>
+
+    <link href="assets/css/nucleo-outline.css" rel="stylesheet">
+    <link href="assets/css/nucleo-glyph.css" rel="stylesheet">
+    <link href="custom/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="navbar navbar-fixed-top">
+        <h4 class="navbar-text">标题</h4>
+        <a href="#" class="btn btn-link navbar-btn"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+
+    </header>
+    <main class="main">
+        <br>
+        <div class="container-fluid">
+            <section class="panel bg-grey py-3 text-center">
+                <h5>请输入合计金额</h5>
+                <input type="text" class="form-control text-center" style="font-weight:100;font-size:48px;color:#fff;background:none;" value="730.35">
+            </section>
+            <section class="panel py-3 text-center text-muted">
+                <i class="nc-icon-outline ui-1_simple-add x2l"></i>
+                <h5>请上传维修照片</h5>
+            </section>
+        </div>
+        <div class="container-fluid">
+            <a class="btn btn-primary btn-block" href="#">结算支付 <i class="nc-icon-outline arrows-3_circle-simple-right"></i></a>
+        </div>
+    </main>
+
+    <footer class="tabbar">
+        <ul class="nav nav-justified">
+            <li class="active">
+                <a href="#" data-toggle="tab">
+                    <i class="nc-icon-outline ui-2_time nc-icon-glyph"></i>
+                    <small>Home</small>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-toggle="tab">
+                    <i class="nc-icon-outline business_round-yen"></i>
+                    <small>Browsers</small>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-toggle="tab">
+                    <i class="nc-icon-outline shopping_delivery"></i>
+                    <small>Home</small>
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            function getRandomColor() {
+                var c = '#';
+                var cArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+                for (var i = 0; i < 6; i++) {
+                    var cIndex = Math.round(Math.random() * 15);
+                    c += cArray[cIndex];
+                }
+                return c;
+            }
+            $('.links-201709210944 .nc-icon-outline').each(function () {
+                $(this).css('background-color', getRandomColor()).css('color', '#ffffff');
+            });
+
+        });
+
+        $(function () {
+            $('.list-group-201709211109 > .list-group-item').hover(function () {
+                $(this).addClass('open').siblings().removeClass('open');
+            });
+        });
+    </script>
+</body>
+
+</html>

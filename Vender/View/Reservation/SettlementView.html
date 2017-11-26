@@ -1,0 +1,29 @@
+<?php echo $header_page; ?>
+<body>
+
+<header class="navbar navbar-fixed-top">
+    <h4 class="navbar-text">标题</h4>
+    <a href="<?php echo $entrance; ?>route=Vender/Reservation/Settlement" class="btn btn-link navbar-btn"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+
+</header>
+<main class="main">
+    <br>
+    <form class="form-horizontal" id="form_info">
+        <div class="container-fluid">
+            <section class="panel bg-grey py-3 text-center">
+                <h5>请输入合计金额</h5>
+                <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly>
+                <input type="text" class="form-control text-center" style="font-weight:100;font-size:48px;color:#fff;background:none;" value="<?php echo $reservation_info['total_revenue']; ?>" disabled>
+            </section>
+            <section class="panel py-3 text-center text-muted">
+                <!--<i class="nc-icon-outline ui-1_simple-add x2l"></i>-->
+                <!--<h5>请上传维修照片</h5>-->
+                <img class="img-responsive" src="<?php echo $reservation_info['image_path']; ?>"/>
+            </section>
+        </div>
+        <div class="container-fluid">
+            <a class="btn btn-primary btn-block" href="<?php echo $entrance; ?>route=Vender/Reservation/Settlement">返回 <i class="nc-icon-outline arrows-3_circle-simple-right"></i></a>
+        </div>
+    </form>
+</main>
+<?php echo $footer_page; ?>

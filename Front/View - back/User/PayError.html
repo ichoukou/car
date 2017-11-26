@@ -1,0 +1,16 @@
+<?php echo $header_page; ?>
+<header class="navbar navbar-fixed-top">
+    <h4 class="navbar-text">支付异常</h4>
+    <a href="<?php echo $entrance; ?>route=Front/User/Reservation" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+
+</header>
+<main class="main">
+    <section class="panel text-center">
+        <div class="panel-body">
+            <i class="nc-icon-glyph ui-1_check-circle-08 x3 text-success"></i>
+            <h4><?php echo $notify_message; ?></h4>
+            <!--<span class="text-muted">无论何种实现方式，滚动监听都需要被监听的组件</span>-->
+        </div>
+    </section>
+</main>
+<?php echo $footer_page; ?>

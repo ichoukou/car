@@ -1,4 +1,4 @@
-<?php echo $header_page; ?>
+﻿<?php echo $header_page; ?>
 <body>
 <!-- Bootstrap Include -->
 <!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
@@ -40,14 +40,14 @@
                 </span>
                 <span class="text-muted"> <?php echo $show_score; ?>分 <?php echo $evaluation; ?> | 有<?php echo $company_info['views']; ?>人访问</span>
             </p>
-            <!--<hr class="my-1l">-->
-            <!--<p class="text-muted"><?php echo $reservation_info['description']; ?></p>-->
+            <hr class="my-1l">
+            <p class="text-muted"><input name="description" class="form-control" value="" placeholder="请填写描述" maxlength="200"/></p>
         </div>
     </section>
     <div class="container-fluid">
         <!--<button type="button" href="#" class="btn btn-default btn-block"><i class="nc-icon-outline ui-2_time"></i> 请选择预约时间</button>-->
         <input type="text" id="reservation_time" name="reservation_time" placeholder="请选择预约时间" class="btn btn-default btn-block" readonly/>
-        <button type="button" onclick="submit_info()" class="btn btn-primary btn-block"><i class="nc-icon-outline ui-1_check-circle-08"></i> 保存修改</button>
+        <button type="button" onclick="submit_info()" class="btn btn-primary btn-block"><!--<i class="nc-icon-outline ui-1_check-circle-08"></i>--> 保存修改</button>
     </div>
 </main>
 <script>
@@ -78,6 +78,7 @@
         var param = {
             company_id : $("input[name=company_id]").val(),
             reservation_time : $("input[name=reservation_time]").val(),
+            description : $("input[name=description]").val()
         }
 
         st.post('<?php echo $entrance; ?>route=Front/Reservation/Reservation/do_add_reservation', param, function(data){

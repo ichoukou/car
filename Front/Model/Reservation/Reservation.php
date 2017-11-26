@@ -70,7 +70,7 @@ class Reservation extends DbFactory
 
         $bill = date('YmdHis', time()).$orderSn.$_SESSION['user_id'];
 
-        $sql = "INSERT INTO ".self::$dp."reservation (`company_id`,`user_id`,`car_id`,`bill`,`reservation_time`) VALUES ";
+        $sql = "INSERT INTO ".self::$dp."reservation (`company_id`,`user_id`,`car_id`,`bill`,`reservation_time`,`description`) VALUES ";
         $reservation = self::$db->insert(
             $sql,
             [
@@ -78,7 +78,8 @@ class Reservation extends DbFactory
                 $user_info['user_id'],
                 $user_info['car_id'],
                 $bill,
-                $data['post']['reservation_time']
+                $data['post']['reservation_time'],
+                $data['post']['description']
             ]
         );
 

@@ -71,11 +71,13 @@ class Reservation extends DbFactory
     {
         $conditions = [
             'reservation_id' => $data['post']['reservation_id'],
-            'reservation_time' => $data['post']['reservation_time']
+            'reservation_time' => $data['post']['reservation_time'],
+            'description' => $data['post']['description']
         ];
 
         $update_sql = " UPDATE " . self::$dp . "reservation SET " .
-                      " reservation_time = :reservation_time " .
+                      " reservation_time = :reservation_time, " .
+                      " description = :description " .
                       " WHERE `reservation_id` = :reservation_id";
 
         self::$db->update($update_sql, $conditions);

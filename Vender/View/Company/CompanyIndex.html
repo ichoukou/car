@@ -1,4 +1,4 @@
-<?php echo $header_page; ?>
+﻿<?php echo $header_page; ?>
 <body>
 <header class="navbar navbar-fixed-top">
     <h4 class="navbar-text">企业</h4>
@@ -57,7 +57,7 @@
                                 <span class="text-muted">有<?php echo $company['views']; ?>人访问</span>
                             </h6>
                             <p><?php echo $company['address']; ?></p>
-                            <a href="<?php echo $entrance; ?>route=Vender/Company/Company/edit_company&company_id=<?php echo $company['company_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><i class="nc-icon-outline ui-2_time"></i> 查看详情</a>
+                            <a href="<?php echo $entrance; ?>route=Vender/Company/Company/edit_company&company_id=<?php echo $company['company_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l"><!--<i class="nc-icon-outline ui-2_time"></i>--> 查看详情</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
