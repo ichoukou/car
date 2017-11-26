@@ -6,6 +6,7 @@ use Libs\Core\Model as M;
 use Libs\Core\Loader as L;
 use Libs\ExtendsClass\Common as C;
 use Libs\ExtendsClass\BaiduOcr\OcrInit as Ocr;
+use Libs\ExtendsClass\ImageResize as IR;
 
 class Account extends Controller
 {
