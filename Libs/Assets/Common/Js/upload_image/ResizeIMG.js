@@ -11,8 +11,8 @@
  *
  */
 $.fn.ResizeIMG = function (obj) {
-    console.log();
     this.on('change', function () {
+        isUpload = false;
         var file = this.files[0];
         var URL = window.URL || window.webkitURL;
         var blob = URL.createObjectURL(file);

@@ -38,12 +38,14 @@
 <script src="<?php echo $assets_server; ?>Common/Js/upload_image/ResizeIMG.js"></script>
 <script>
     var base64Image = '';
+    var isUpload = false;
     $(document).ready(function(){
         $('#upload_image').ResizeIMG({
             //width: 100,
             quality: 1.0,
             success: function (result) {
                 base64Image = result.base64;
+                isUpload = true;
                 alert('已选择图片');
             }
         });
@@ -51,6 +53,11 @@
 
     function submit_info()
     {
+        if (!isUpload) {
+            alert('请上传图片，并等待完成');
+            return false;
+        }
+
         var param = {
             reservation_id : $("input[name=reservation_id]").val(),
             base64_file : base64Image

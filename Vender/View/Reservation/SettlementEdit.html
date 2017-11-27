@@ -32,6 +32,7 @@
 <script src="<?php echo $assets_server; ?>Common/Js/upload_image/ResizeIMG.js"></script>
 <script>
     var base64Image = '';
+    var isUpload = false;
     $(document).ready(function(){
         $('#upload_image').ResizeIMG({
             //width: 100,
@@ -41,12 +42,18 @@
                 $("#image_click").find('i').fadeOut();
                 $("#image_click").find('img').attr('src', result.base64);
                 $("#image_click").find('img').fadeIn();
+                isUpload = true;
             }
         });
     });
 
     function submit_info()
     {
+        if (!isUpload) {
+            alert('请上传图片，并等待完成');
+            return false;
+        }
+
         var param = {
             reservation_id : $("input[name=reservation_id]").val(),
             total_revenue : $("input[name=total_revenue]").val(),
