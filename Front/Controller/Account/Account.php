@@ -347,6 +347,7 @@ class Account extends Controller
                 $errors ['accepted_date'] = '请选择受理日期';
             }
 
+						/*
             if (empty($post['file_number'])) {
                 $errors ['file_number'] = '请填写档案编号';
             }
@@ -366,6 +367,7 @@ class Account extends Controller
             if (empty($post['description'])) {
                 $errors ['description'] = '请填写备注';
             }
+            */
 
             if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
 

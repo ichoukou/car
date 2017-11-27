@@ -17,7 +17,7 @@
                     <img class="img-responsive" src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/leaf.png" alt="">
                 </div>
                 <div class="col-xs-9 pl-0">
-                    <h4 class="list-group-item-heading">商家标题</h4>
+                    <h4 class="list-group-item-heading"><?php echo $reservation['name']; ?></h4>
                     <h6>
                         <div class="text-muted"><?php echo $reservation['plate_number']; ?> | <?php echo $reservation['car_type']; ?></div>
                         <div class="text-muted"><?php echo $reservation_status[$reservation['status']]; ?></div>

@@ -26,7 +26,7 @@ class Reservation extends DbFactory
             'company_id' => $_SESSION['company_id']
         ];
 
-        $sql = "SELECT r.*,u.tel,uc.plate_number,uc.car_type FROM ".self::$dp."reservation AS r " .
+        $sql = "SELECT r.*,u.tel,uc.plate_number,uc.car_type,uc.owner FROM ".self::$dp."reservation AS r " .
                " LEFT JOIN ".self::$dp."user AS u ON r.user_id = u.user_id ".
                " LEFT JOIN ".self::$dp."user_car AS uc ON r.car_id = uc.car_id ".
                " WHERE r.`deleted` = 1 AND (r.`status` = 1 OR r.`status` = 2) AND r.`company_id` = :company_id ";

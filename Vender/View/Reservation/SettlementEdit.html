@@ -3,7 +3,7 @@
 
 <header class="navbar navbar-fixed-top">
     <h4 class="navbar-text">结算详情</h4>
-    <a href="<?php echo $entrance; ?>route=Vender/Reservation/Reservation" class="btn btn-link navbar-btn"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+    <a href="<?php echo $entrance; ?>route=Vender/Reservation/Reservation" class="btn btn-link navbar-btn"><!--<i class="nc-icon-outline arrows-1_minimal-left"></i>--> 返回</a>
 
 </header>
 <main class="main">
@@ -18,12 +18,12 @@
             <section class="panel py-3 text-center text-muted" onclick="$('#upload_image').trigger('click')" id="image_click">
                 <i class="nc-icon-outline ui-1_simple-add x2l"></i>
                 <img class="img-responsive" src="" style="display: none;"/>
-                <h5>请上传维修照片</h5>
+                <h5>请上传维修结算单</h5>
             </section>
             <span style="display: none;"><input type="file" value="" id="upload_image"/></span>
         </div>
         <div class="container-fluid">
-            <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="submit_info()">结算支付 <i class="nc-icon-outline arrows-3_circle-simple-right"></i></a>
+            <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="submit_info()">发起派乐宝支付 <!--<i class="nc-icon-outline arrows-3_circle-simple-right"></i>--></a>
         </div>
     </form>
 </main>

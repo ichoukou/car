@@ -36,14 +36,14 @@
                             <img class="img-responsive" src="<?php echo $assets_server; ?>Vender/Themes/<?php echo $themes_default; ?>/Img/leaf.png" alt="">
                         </div>
                         <div class="col-xs-9 pl-0">
-                            <h4 class="list-group-item-heading">商家标题</h4>
+                            <h4 class="list-group-item-heading"><?php echo $reservation['owner']; ?></h4>
                             <h6>
                                 <div class="text-muted"><?php echo $reservation['plate_number']; ?> | <?php echo $reservation['car_type']; ?></div>
                                 <div class="text-muted"><?php echo $reservation_status[$reservation['status']]; ?></div>
                                 <div class="text-muted"><?php echo $reservation['create_time']; ?></div>
                             </h6>
                             <p><?php echo $reservation['reservation_time']; ?></p>
-                            <a href="<?php echo $entrance; ?>route=Vender/Reservation/Settlement/edit_reservation&reservation_id=<?php echo $reservation['reservation_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l pull-right"><i class="nc-icon-outline ui-2_time"></i> 详情</a>
+                            <a href="<?php echo $entrance; ?>route=Vender/Reservation/Settlement/edit_reservation&reservation_id=<?php echo $reservation['reservation_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l pull-right"><!--<i class="nc-icon-outline ui-2_time"></i>--> 详情</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
