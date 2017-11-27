@@ -11,7 +11,7 @@
         config.sampleBits = config.sampleBits || 8;      //采样数位 8, 16
         config.sampleRate = config.sampleRate || (44100 / 6);   //采样率(1/6 44100)
 
-        console.log('bbbbbbbbb');
+
         //创建一个音频环境对象
         audioContext = window.AudioContext || window.webkitAudioContext;
         var context = new audioContext();
@@ -173,11 +173,10 @@
             audioData.input(e.inputBuffer.getChannelData(0));
             //record(e.inputBuffer.getChannelData(0));
         };
-
     };
     //抛出异常
     HZRecorder.throwError = function (message) {
-        alert(message);
+        console.log(message);
         throw new function () { this.toString = function () { return message; };};
     };
     //是否支持录音
