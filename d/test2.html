@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span style="white-space:pre">        </span><audio controls autoplay></audio>
+<input type="button" value="开始录音" onclick="startRecording()"/>
+<input type="button" value="获取录音" onclick="obtainRecord()"/>
+<input type="button" value="停止录音" onclick="stopRecord()"/>
+<input type="button" value="播放录音" onclick="playRecord()"/>
+
+<video id="video1" width="320px" height="240px" controls autoplay ></video>
+<video id="video2" width="320px" height="240px" controls autoplay ></video>
+<canvas id="canvas1" width="320" height="240"></canvas>
+<input type="button" value="拍摄" onclick="scamera()"/>
+<input type="button" value="播放视频" onclick="playVideo()"/>
+<script src="js.js"></script>
+<script>
+    /* 音频 */
+    var recorder;
+    var audio = document.querySelector('audio');
+
+    function startRecording() {
+        console.log('aaaaaaaa');
+        HZRecorder.get(function (rec) {
+            recorder = rec;
+            recorder.start();
+        });
+    }
+
+
+    function obtainRecord(){
+        var record = recorder.getBlob();
+        debugger;
+    };
+
+    function stopRecord(){
+        recorder.stop();
+    };
+
+    function playRecord(){
+        recorder.play(audio);
+    };
+
+    /* 视频 */
+    function scamera() {
+        var videoElement = document.getElementById('video1');
+        var canvasObj = document.getElementById('canvas1');
+        var context1 = canvasObj.getContext('2d');
+        context1.fillStyle = "#ffffff";
+        context1.fillRect(0, 0, 320, 240);
+        context1.drawImage(videoElement, 0, 0, 320, 240);
+    };
+
+    function playVideo(){
+        var videoElement1 = document.getElementById('video1');
+        var videoElement2 = document.getElementById('video2');
+        videoElement2.setAttribute("src", videoElement1);
+    };
+</script>
+</body>
+</html>
