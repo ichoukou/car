@@ -20,13 +20,14 @@ class Pay extends DbFactory
     {
         $sql = "SELECT r.reservation_id,r.bill,r.status,mc.total_revenue FROM ".self::$dp."reservation AS r " .
             " LEFT JOIN ".self::$dp."maintenance_costs AS mc ON mc.reservation_id=r.reservation_id ".
-            " WHERE r.`deleted` = 1 AND r.`bill` = :bill AND mc.`total_revenue` = :total_amount";
+            " WHERE r.`deleted` = 1 AND r.`user_id` = :user_id AND r.`bill` = :bill AND mc.`total_revenue` = :total_amount";
 
         return self::$db->get_one(
             $sql,
             [
                 'bill'=>$data['bill'],
-                'total_amount'=>$data['total_amount']
+                'total_amount'=>$data['total_amount'],
+                'user_id'=>$_SESSION['user_id']
             ]
         );
     }

@@ -114,7 +114,7 @@ class Pay extends Controller
         $bill_info = M::Front('User\\Pay', 'findBillInfo', $return);
         if ($bill_info['status'] == 4 or $bill_info['status'] == 5) {
             exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_success&reservation_id={$bill_info['reservation_id']}"));
-        } elseif($bill_info['status'] == 6) {
+        } elseif($bill_info['status'] == 6 or empty($bill_info)) {
             exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_error&reservation_id={$bill_info['reservation_id']}"));
         }
 

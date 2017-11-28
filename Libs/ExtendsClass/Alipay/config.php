@@ -7,7 +7,7 @@ $config = [
     #AES秘钥
     #'aes_private_key' => 'zAJrVygp2Zi0uJiwNIR6zA==',
     #异步通知地址
-	'notify_url' => HTTP_SERVER . $this->data['entrance'] . 'route=Front/User/Pay/pay_notify',
+	'notify_url' => HTTP_SERVER . 'Front/Controller/User/AliPayNotify.php',
 	#同步跳转
 	'return_url' => HTTP_SERVER . $this->data['entrance'] . 'route=Front/User/Pay/pay_return',
 	#编码格式

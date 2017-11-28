@@ -9,13 +9,48 @@ class AliPayNotify
         $config = [];
         require_once '../../../Libs/Configs/Config.php';
         require_once '../../../Libs/Core/Log.php';
-        require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'config.php';
-        require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
+        #require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'config.php';
+        #require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
         $this->data['entrance'] = 'index.php?';
 
         Libs\Core\Log::$conf = $_config['log'];
-        Libs\Core\Log::wirte_other_info('aaaaaaaaaa');
 
+        if (!empty($_POST)) {
+            Libs\Core\Log::wirte_other_info(json_encode($_POST, JSON_UNESCAPED_UNICODE));
+        }
+        
+        $info = [
+            'gmt_create' => '2017-11-28 23:11:48',
+            'charset' => 'UTF-8',
+            'seller_email' => '13361076388',
+            'subject' => '用户车辆维修结算支付',
+            'sign' => '用户车辆维修结算支付',
+            'sign' => 'IMMsQQUPejUxVhi4vSyLFhY4hf\/CCEKoVoKMUPc+bX\/sWIcpYi7BBdU+N07uXef9\/SzvGbzQOaY4gd3Q2R5IqWSWXfa+Y4P+k7VW7Fy5ZD+ujwy9cuTVRzCigGzWptOF6rQx\/C3ZS742Tz+0egpcsbI5umDj7FrQ4QBalHqOzHrRqvQnfF5eCs5naR4+RThPZpvlcMrsGyNXihLYbCWgt0N2pkVOLr9oElv+qrHCaNh0AE\/nX0ranWrRll8uZsDc0y8VSr6IJN34WPiChuvtxIQLbbTgO9U041I75dvHGFpGOkiIGIKfyRMVAHPX6\/J83NJkaMWHTLSqGKU4G3H2gg==',
+            'body' => '用户车辆维修结算支付',
+            'buyer_id' => '2088602220435934',
+            'invoice_amount' => '0.01',
+            'notify_id' => '14c15fc89975dac9094d88179e69061n6h',
+            'fund_bill_list' => [
+                'amount' => 0.01,
+                'fundChannel' => 'ALIPAYACCOUNT'
+            ],
+            'notify_type' => 'trade_status_sync',
+            'trade_status' => 'TRADE_SUCCESS',
+            'receipt_amount' => '0.01',
+            'app_id' => '2017111800028220',
+            'buyer_pay_amount' => '0.01',
+            'sign_type' => 'RSA2',
+            'seller_id' => '2088902349621211',
+            'gmt_payment' => '2017-11-28 23:11:49',
+            'notify_time' => '2017-11-28 23:11:49',
+            'version' => '1.0',
+            'out_trade_no' => '20171127140323GB2762603176989150',
+            'total_amount' => '0.01',
+            'trade_no' => '2017112821001004930597899507',
+            'auth_app_id' => '2017111800028220',
+            'buyer_logon_id' => '136****0135',
+            'point_amount' => '0.00',
+        ];
         $arr=$_POST;
         $alipaySevice = new \AlipayTradeService($config);
         $alipaySevice->writeLog(var_export($_POST,true));
@@ -34,13 +69,7 @@ class AliPayNotify
             'TRADE_SUCCESS'=>'交易支付成功',
             'TRADE_FINISHED'=>'交易结束，不可退款'
         ];
-//        $result = true;
-//        $_POST['out_trade_no'] = '20171123034843GB230892322879313';
-//        $_POST['trade_no'] = '';
-//        $_POST['appid'] = '2017111800028220';
-//        log::wirte_other_info(json_encode("RESULT:$result", JSON_UNESCAPED_UNICODE));
-//        log::wirte_other_info(json_encode("POST:{$_POST}", JSON_UNESCAPED_UNICODE));
-//        log::wirte_other_info(json_encode("----------------------------", JSON_UNESCAPED_UNICODE));
+
         if($result) {//验证成功
             #请在这里加上商户的业务逻辑程序代
             #——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
