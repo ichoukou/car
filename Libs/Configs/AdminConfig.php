@@ -63,6 +63,7 @@ $_config['UPDIR'] = [
 $_config['log'] = [
     'error_db_log_path' => ROOT_PATH.'Libs'.DIRECTORY_SEPARATOR.'Log'.DIRECTORY_SEPARATOR.'DbError.log',
     'error_other_log_path' => ROOT_PATH.'Libs'.DIRECTORY_SEPARATOR.'Log'.DIRECTORY_SEPARATOR.'OtherLog.log',
+    'other_log_path' => ROOT_PATH.'Libs'.DIRECTORY_SEPARATOR.'Log'.DIRECTORY_SEPARATOR.'OtherInfo.log',
 ];
 
 /**
