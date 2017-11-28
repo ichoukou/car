@@ -5,11 +5,16 @@ class AliPayNotify
 
     public function __construct()
     {
+        $_config = [];
+        $config = [];
         require_once '../../../Libs/Configs/Config.php';
-        $this->data['entrance'] = 'index.php?';
-
+        require_once '../../../Libs/Core/Log.php';
         require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'config.php';
         require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
+        $this->data['entrance'] = 'index.php?';
+
+        Libs\Core\Log::$conf = $_config['log'];
+        Libs\Core\Log::wirte_other_info('aaaaaaaaaa');
 
         $arr=$_POST;
         $alipaySevice = new \AlipayTradeService($config);

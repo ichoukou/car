@@ -130,7 +130,6 @@ class Pay extends Controller
         } else {
             $return['notify_message'] = '交易成功';
             $return['reservation_status'] = 4;
-
         }
 
         M::Front('User\\Pay', 'addPaylog', $return);

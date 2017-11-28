@@ -80,3 +80,12 @@ $_config['session'] = [
     'session_name'    => 'MY_VENDER_PHPSESSID',
     'user_type'       => 'vender',
 ];
+
+$_config['reservation_status'] = [
+    1 => '已预约，未接待', #接待预约列表
+    2 => '已接待，维修中，未结算', #另一个页面
+    3 => '已结算，未支付', #用户可以支付
+    4 => '已支付，未评价',
+    5 => '已评价',
+    6 => '订单交易异常'
+];

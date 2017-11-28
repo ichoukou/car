@@ -35,21 +35,14 @@ class ControllerFront
         'themes_default' => 'Default',
         'entrance' => 'index.php?',
         'session_info'=> '',
-        'reservation_status' =>
-            [
-                1 => '已预约，未接待', #接待预约列表
-                2 => '已接待，维修中，未结算', #另一个页面
-                3 => '已结算，未支付', #用户可以支付
-                4 => '已支付，未评价',
-                5 => '已评价',
-                6 => '订单交易异常'
-            ]
+        'reservation_status' => []
     ];
 
     public function __construct($config)
     {
         $this->config = $config;
         $this->data['entrance'] = $this->config['DEFAULT_ROUTE']['entrance'];
+        $this->data['reservation_status'] = $config['reservation_status'];
         $this->data['session_info'] = $_SESSION;
         $website = new WebsiteInfo();
         $this->data['website_info'] = $website->get_vender_website_info();

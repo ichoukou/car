@@ -53,7 +53,7 @@ class Log
             $file = fopen(self::$conf['other_log_path'], "a+");
 
             $date     = "[".date('Y-m-d H:i:s', time())."]";
-            $content  = "\r\n{$date} ERROR Mess:{$message}";
+            $content  = "\r\n{$date} Infos:{$message}";
             $content .= "\r\n";
 
             fwrite($file, $content);
