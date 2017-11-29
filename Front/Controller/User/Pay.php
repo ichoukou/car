@@ -178,6 +178,18 @@ class Pay extends Controller
             if (empty($info))
                 exit("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}");
 
+            $bank_arr = [
+                'BOCW',     #中国银行wap
+                'CCBW',     #建设银行wap信用卡
+                'CCBWZ',    #建设银行wap借记卡
+                'CMBW',     #招商银行wap
+                'ICBCW',    #工商银行wap
+                'COMMW',    #交通银行wap
+                'CEBW',     #光大银行wap
+                'SPDBW',    #浦发银行wap
+                'ABCW',     #农业银行wap
+            ];
+
             $merId      = '699851';
             $dealOrder  = $info['bill'];
             $dealFee    = $info['total_revenue'];
