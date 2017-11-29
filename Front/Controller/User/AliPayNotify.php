@@ -18,7 +18,7 @@ class AliPayNotify
         if (!empty($_POST)) {
             Libs\Core\Log::wirte_other_info(json_encode($_POST, JSON_UNESCAPED_UNICODE));
         }
-        
+
         $info = [
             'gmt_create' => '2017-11-28 23:11:48',
             'charset' => 'UTF-8',
