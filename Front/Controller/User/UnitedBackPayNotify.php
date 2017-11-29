@@ -1,10 +1,10 @@
 ﻿<?php
 
 /**
- * 支付宝异步通知类
- * Class AliPayNotify
+ * 联行支付异步通知类
+ * Class UnitedBackPayNotify
  */
-class AliPayNotify
+class UnitedBackPayNotify
 {
     public $data = [];
     public $_config = [];
@@ -12,11 +12,11 @@ class AliPayNotify
     public function __construct()
     {
         $_config = [];
-        $config = [];
 
         require_once '../../../Libs/Configs/Config.php';
         require_once '../../../Libs/Core/Log.php';
         require_once '../../../Libs/Db/PdoMySQL.php';
+        exit;
         require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'config.php';
         require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
 

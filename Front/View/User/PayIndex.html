@@ -7,7 +7,7 @@
 </header>
 <main class="main">
     <br>
-    <form class="form-horizontal" action="<?php echo $entrance; ?>route=Front/User/Pay/pay"  id="form_info" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" action=""  id="form_info" method="post" enctype="multipart/form-data">
         <div class="container-fluid">
             <section class="panel bg-grey py-3 text-center">
                 <h5>合计金额</h5>
@@ -21,9 +21,21 @@
             </section>
         </div>
         <div class="container-fluid">
-            <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="$('#form_info').submit();">派乐宝支付 <!--<i class="nc-icon-outline arrows-3_circle-simple-right"></i>--></a>
+            <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="submit_pay(1)">派乐宝支付 <!--<i class="nc-icon-outline arrows-3_circle-simple-right"></i>--></a>
+            <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="submit_pay(2)">联行支付 <!--<i class="nc-icon-outline arrows-3_circle-simple-right"></i>--></a>
         </div>
     </form>
 </main>
-
+<script>
+    function submit_pay(type)
+    {
+        if (type == 1) {
+            $("#form_info").attr('action', '<?php echo $entrance; ?>route=Front/User/Pay/ali_pay');
+            $('#form_info').submit();
+        } else {
+            $("#form_info").attr('action', '<?php echo $entrance; ?>route=Front/User/Pay/united_bank_pay');
+            $('#form_info').submit();
+        }
+    }
+</script>
 <?php echo $footer_page; ?>

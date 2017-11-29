@@ -32,7 +32,11 @@ class Pay extends Controller
         L::output(L::view('User\\PayIndex', 'Front', $this->data));
     }
 
-    public function pay()
+
+    /**
+     * 支付宝支付调用
+     */
+    public function ali_pay()
     {
         #https://docs.open.alipay.com/203 官方文档
         #https://www.cnblogs.com/phpxuetang/p/5656266.html 缺少php_openssl.so的安装方法
@@ -55,11 +59,11 @@ class Pay extends Controller
             #商户订单号，商户网站订单系统中唯一订单号，必填
             $out_trade_no = $info['bill'];
             #订单名称，必填
-            $subject = '用户车辆维修结算支付';
+            $subject = '支付宝用户车辆维修结算支付';
             #付款金额，必填
             $total_amount = $info['total_revenue'];
             #商品描述，可空
-            $body = '用户车辆维修结算支付';
+            $body = '支付宝用户车辆维修结算支付';
             #超时时间
             $timeout_express="1m";
 
@@ -162,6 +166,50 @@ class Pay extends Controller
     public function pay_notify()
     {
         #具体业务逻辑在同目录下的 XxxPayNotify.php,Xxx为支付名称
+    }
+
+    /**
+     * 联行支付支付调用
+     */
+    public function united_bank_pay()
+    {
+        if ($info = $this->validate_pay()) {
+            header("Content-type: text/html; charset=utf-8");
+            if (empty($info))
+                exit("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}");
+
+            $merId      = '699851';
+            $dealOrder  = $info['bill'];
+            $dealFee    = $info['total_revenue'];
+            $dealReturn = HTTP_SERVER . $this->data['entrance'] . 'route=Front/User/Pay/united_back_pay_return';
+            $dealNotify = HTTP_SERVER . 'Front/Controller/User/UnitedBackPayNotify.php';
+            $dealName   = '支付宝用户车辆维修结算支付';
+            $dealBank   = '';
+            $dealHeader = 'false';
+            $key        = 'eybEZxPXqp2dae62TYAfFVyB46rtOMBCj1iIlMnzjdTBXPUdYeUsPXvM2N1fibKwU5KstuIUMFw8BgDiOIMYjJxvFauWR3CYvjOD0zGzFKuezVHTmTtHZBORAZjyM3Yg';
+            #2 生成 Data
+            $Data       = $merId . $dealOrder . $dealFee . $dealReturn;
+            #3 生成 dealSignure
+            $dealSignure = sha1($Data.$key);
+
+            //获得表单传过来的数据
+            $def_url  = '<br />';
+            $def_url  = '<form method="post" action="http://user.sdecpay.com/paygate.html"  >';
+            $def_url .= '	<input type = "hidden" name = "merId"	    value = "'.$merId.'">';
+            $def_url .= '	<input type = "hidden" name = "dealName"    value = "'.$dealName.'">';
+            $def_url .= '	<input type = "hidden" name = "dealOrder" 	value = "'.$dealOrder.'">';
+            $def_url .= '	<input type = "hidden" name = "dealFee" 	value = "'.$dealFee.'">';
+            $def_url .= '	<input type = "hidden" name = "dealBank" 	value = "'.$dealBank.'">';
+            $def_url .= '	<input type = "hidden" name = "header" 	    value = "'.$dealHeader.'">';
+            $def_url .= '	<input type = "hidden" name = "dealSignure"	value = "'.$dealSignure.'">';
+            $def_url .= '	<input type = "hidden" name = "dealReturn"	value = "'.$dealReturn.'">';
+            $def_url .= '	<input type = "hidden" name = "dealNotify"	value = "'.$dealNotify.'">';
+            $def_url .= '	<input type=submit value="立即付款">';
+            $def_url .= '</form>';
+
+            var_dump($def_url);
+            exit;
+        }
     }
 
     public function pay_success()
