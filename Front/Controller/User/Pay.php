@@ -91,9 +91,8 @@ class Pay extends Controller
         require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'config.php';
         require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
 
-        $arr = $_GET;
         $alipaySevice = new \AlipayTradeService($config);
-        $result = $alipaySevice->check($arr);
+        $result = $alipaySevice->check($_GET);
 
         /* 实际验证过程建议商户添加以下校验。
         1、商户需要验证该通知数据中的out_trade_no是否为商户系统中创建的订单号，
@@ -114,7 +113,7 @@ class Pay extends Controller
         $bill_info = M::Front('User\\Pay', 'findBillInfo', $return);
         if ($bill_info['status'] == 4 or $bill_info['status'] == 5) {
             exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_success&reservation_id={$bill_info['reservation_id']}"));
-        } elseif($bill_info['status'] == 6 or empty($bill_info)) {
+        } elseif ($bill_info['status'] == 6 or empty($bill_info)) {
             exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_error&reservation_id={$bill_info['reservation_id']}"));
         }
 
@@ -122,13 +121,13 @@ class Pay extends Controller
         $return['reservation_status'] = 6; #对应 $reservation_status  支付状态
 
         if (empty($return['trade_no']) or empty($return['bill']) or empty($return['app_id']) or empty($return['seller_id'])) {
-            $return['notify_message'] = '参数缺少';
+            $return['message'] = '参数缺少';
         } elseif (empty($bill_info)) {
-            $return['notify_message'] = '未匹配到订单信息';
+            $return['message'] = '未匹配到订单信息';
         } elseif($return['app_id'] != $config['app_id']) {
-            $return['notify_message'] = '开发者的应用Id匹配错误';
+            $return['message'] = '开发者的应用Id匹配错误';
         } else {
-            $return['notify_message'] = '交易成功';
+            $return['message'] = '交易成功';
             $return['reservation_status'] = 4;
         }
 

@@ -25,27 +25,5 @@
         </div>
     </form>
 </main>
-<script>
-    function submit_info()
-    {
-        var param = {
-            reservation_id : $("input[name=reservation_id]").val()
-        }
-
-        st.post('<?php echo $entrance; ?>route=Front/User/Pay/pay', param, function(data){
-            if (data.status == -1) {
-                var return_error = '';
-                $.each(data.result, function(i, e) {
-                    return_error = e;
-                    return false;
-                });
-                alert(return_error);
-                is_click = false;
-            } else {
-                window.location.href = "<?php echo $entrance; ?>route=Front/User/Reservation<?php echo $url; ?>";
-            }
-        });
-    }
-</script>
 
 <?php echo $footer_page; ?>

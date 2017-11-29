@@ -34,7 +34,7 @@ class Pay extends DbFactory
 
     public function addPaylog($data)
     {
-        $sql = "INSERT INTO ".self::$dp."pay_log (`reservation_id`,`bill`,`total_amount`,`notify_type`,`notify_message`,`app_id`,`trade_no`,`seller_id`,`notify_time`) VALUES ";
+        $sql = "INSERT INTO ".self::$dp."pay_log (`reservation_id`,`bill`,`total_amount`,`notify_type`,`message`,`app_id`,`trade_no`,`seller_id`,`notify_time`) VALUES ";
 
         return self::$db->insert(
             $sql,
@@ -43,7 +43,7 @@ class Pay extends DbFactory
                 $data['bill'],
                 $data['total_amount'],
                 $data['notify_type'],
-                $data['notify_message'],
+                $data['message'],
                 $data['app_id'],
                 $data['seller_id'],
                 $data['trade_no'],

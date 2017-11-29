@@ -1,60 +1,33 @@
-<?php
+﻿<?php
 class AliPayNotify
 {
     public $data = [];
+    public $_config = [];
 
     public function __construct()
     {
         $_config = [];
         $config = [];
+
         require_once '../../../Libs/Configs/Config.php';
         require_once '../../../Libs/Core/Log.php';
-        #require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'config.php';
-        #require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
-        $this->data['entrance'] = 'index.php?';
+        require_once '../../../Libs/Db/PdoMySQL.php';
+        require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'config.php';
+        require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
 
+        $this->data['entrance'] = 'index.php?';
+        $this->_config = $_config;
+
+        $db = new \Libs\Db\PdoMySQL($_config['DB']['true']);
         Libs\Core\Log::$conf = $_config['log'];
 
         if (!empty($_POST)) {
             Libs\Core\Log::wirte_other_info(json_encode($_POST, JSON_UNESCAPED_UNICODE));
         }
-        
-        $info = [
-            'gmt_create' => '2017-11-28 23:11:48',
-            'charset' => 'UTF-8',
-            'seller_email' => '13361076388',
-            'subject' => '用户车辆维修结算支付',
-            'sign' => '用户车辆维修结算支付',
-            'sign' => 'IMMsQQUPejUxVhi4vSyLFhY4hf\/CCEKoVoKMUPc+bX\/sWIcpYi7BBdU+N07uXef9\/SzvGbzQOaY4gd3Q2R5IqWSWXfa+Y4P+k7VW7Fy5ZD+ujwy9cuTVRzCigGzWptOF6rQx\/C3ZS742Tz+0egpcsbI5umDj7FrQ4QBalHqOzHrRqvQnfF5eCs5naR4+RThPZpvlcMrsGyNXihLYbCWgt0N2pkVOLr9oElv+qrHCaNh0AE\/nX0ranWrRll8uZsDc0y8VSr6IJN34WPiChuvtxIQLbbTgO9U041I75dvHGFpGOkiIGIKfyRMVAHPX6\/J83NJkaMWHTLSqGKU4G3H2gg==',
-            'body' => '用户车辆维修结算支付',
-            'buyer_id' => '2088602220435934',
-            'invoice_amount' => '0.01',
-            'notify_id' => '14c15fc89975dac9094d88179e69061n6h',
-            'fund_bill_list' => [
-                'amount' => 0.01,
-                'fundChannel' => 'ALIPAYACCOUNT'
-            ],
-            'notify_type' => 'trade_status_sync',
-            'trade_status' => 'TRADE_SUCCESS',
-            'receipt_amount' => '0.01',
-            'app_id' => '2017111800028220',
-            'buyer_pay_amount' => '0.01',
-            'sign_type' => 'RSA2',
-            'seller_id' => '2088902349621211',
-            'gmt_payment' => '2017-11-28 23:11:49',
-            'notify_time' => '2017-11-28 23:11:49',
-            'version' => '1.0',
-            'out_trade_no' => '20171127140323GB2762603176989150',
-            'total_amount' => '0.01',
-            'trade_no' => '2017112821001004930597899507',
-            'auth_app_id' => '2017111800028220',
-            'buyer_logon_id' => '136****0135',
-            'point_amount' => '0.00',
-        ];
-        $arr=$_POST;
+
         $alipaySevice = new \AlipayTradeService($config);
         $alipaySevice->writeLog(var_export($_POST,true));
-        $result = $alipaySevice->check($arr);
+        $result = $alipaySevice->check($_POST);
 
         /* 实际验证过程建议商户添加以下校验。
         1、商户需要验证该通知数据中的out_trade_no是否为商户系统中创建的订单号，
@@ -70,44 +43,117 @@ class AliPayNotify
             'TRADE_FINISHED'=>'交易结束，不可退款'
         ];
 
-        if($result) {//验证成功
-            #请在这里加上商户的业务逻辑程序代
-            #——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
-            #获取支付宝的通知返回参数，可参考技术文档中服务器异步通知参数列表
+        $return = [];
+        $return['trade_no'] = htmlspecialchars($_POST['trade_no']);
+        $return['bill'] = htmlspecialchars($_POST['out_trade_no']);
+        $return['notify_id'] = htmlspecialchars($_POST['notify_id']);
+        $return['total_amount'] = (float)htmlspecialchars($_POST['total_amount']);
+        $return['receipt_amount'] = (float)htmlspecialchars($_POST['receipt_amount']);
+        $return['app_id'] = htmlspecialchars($_POST['app_id']);
+        $return['buyer_id'] = htmlspecialchars($_POST['buyer_id']);
+        $return['buyer_logon_id'] = htmlspecialchars($_POST['buyer_logon_id']);
+        $return['seller_id'] = htmlspecialchars($_POST['seller_id']);
+        $return['seller_email'] = htmlspecialchars($_POST['seller_email']);
+        $return['gmt_create'] = htmlspecialchars($_POST['gmt_create']);
+        $return['gmt_payment'] = htmlspecialchars($_POST['gmt_payment']);
+        $return['gmt_refund'] = htmlspecialchars($_POST['gmt_refund']);
+        $return['gmt_close'] = htmlspecialchars($_POST['gmt_close']);
+        $return['notify_time'] = htmlspecialchars($_POST['notify_time']);
+        $return['notify_type'] = 2; #异步通知
+        $return['trade_status'] = $_POST['trade_status'];
+        $return['notify_message'] = $status_config[$_POST['trade_status']];
 
-            #商户订单号
-            $out_trade_no = $_POST['out_trade_no'];
-            #支付宝交易号
-            $trade_no = $_POST['trade_no'];
-            #交易状态
-            $trade_status = $_POST['trade_status'];
+        $bill_info = $this->findBillInfo($return, $db, $_config['DB']['true']);
+        $return['reservation_id'] = $bill_info['reservation_id'];
 
-            if($_POST['trade_status'] == 'TRADE_FINISHED') {
-
-                //判断该笔订单是否在商户网站中已经做过处理
-                //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
-                //请务必判断请求时的total_amount与通知时获取的total_fee为一致的
-                //如果有做过处理，不执行商户的业务程序
-
-                //注意：
-                //退款日期超过可退款期限后（如三个月可退款），支付宝系统发送该交易状态通知
-            } elseif ($_POST['trade_status'] == 'TRADE_SUCCESS') {
-                //判断该笔订单是否在商户网站中已经做过处理
-                //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
-                //请务必判断请求时的total_amount与通知时获取的total_fee为一致的
-                //如果有做过处理，不执行商户的业务程序
-                //注意：
-                //付款完成后，支付宝系统发送该交易状态通知
+        if (empty($bill_info)){
+            $return['message'] = '没有匹配到对应的订单';
+        } elseif ($bill_info['status'] == 3) {
+            if($_POST['trade_status'] == 'TRADE_FINISHED' or $_POST['trade_status'] == 'TRADE_SUCCESS') {
+                #TRADE_FINISHED 退款日期超过可退款期限后（如三个月可退款），支付宝系统发送该交易状态通知
+                #TRADE_SUCCESS 付款完成后，支付宝系统发送该交易状态通知
+                $return['reservation_status'] = 4;
+                $this->editReservation($return, $db, $_config['DB']['true']);
+                $return['message'] = '订单状态为未付款，并且异步通知是交易支付成功或者交易结束 ';
+            } else {
+                $return['message'] = '订单状态为未付款，但是异步通知并非是交易支付成功或者交易结束 ';
             }
-            //——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
+        } else {
+            $return['message'] = '订单状态并非为未支付';
+        }
 
-            echo "success";		//请不要修改或删除
+        $this->addPaylog($return, $db, $_config['DB']['true']);
 
+        if($result) {//验证成功
+            echo "success";		#请不要修改或删除
         }else {
             //验证失败
-            echo "fail";	//请不要修改或删除
-
+            echo "fail";	#请不要修改或删除
         }
+    }
+
+    public function findBillInfo($data, $db, $_config)
+    {
+        $sql = "SELECT r.reservation_id,r.bill,r.status,mc.total_revenue FROM " . $_config['db_prefix'] . "reservation AS r " .
+            " LEFT JOIN " . $_config['db_prefix'] . "maintenance_costs AS mc ON mc.reservation_id=r.reservation_id ".
+            " WHERE r.`deleted` = 1 AND r.`bill` = :bill AND mc.`total_revenue` = :total_amount";
+
+        return $db->get_one(
+            $sql,
+            [
+                'bill'=>$data['bill'],
+                'total_amount'=>$data['total_amount'],
+            ]
+        );
+    }
+
+    public function editReservation($data, $db, $_config)
+    {
+        $conditions = [
+            'status' => $data['reservation_status'],
+            'reservation_id' => $data['reservation_id']
+        ];
+        #如果处于待支付状态 status = 3，则修改状态
+        $update_sql = " UPDATE " . $_config['db_prefix'] . "reservation SET " .
+            " status = :status " .
+            " WHERE `reservation_id` = :reservation_id AND `status` = 3";
+
+        $db->update($update_sql, $conditions);
+    }
+
+    public function addPaylog($data, $db, $_config)
+    {
+        $sql = "INSERT INTO " . $_config['db_prefix'] . "pay_log " .
+            "(`reservation_id`,`bill`,`total_amount`,`receipt_amount`,`notify_type`,`notify_message`,`app_id`, " .
+            "`trade_no`,`seller_id`,`seller_email`,`notify_time`,`notify_id`,`buyer_id`,`buyer_logon_id`, " .
+            "`gmt_create`,`gmt_payment`,`gmt_refund`,`gmt_close`,`trade_status`,`message` ) " .
+            " VALUES ";
+
+        return $db->insert(
+            $sql,
+            [
+                $data['reservation_id'],
+                $data['bill'],
+                $data['total_amount'],
+                $data['receipt_amount'],
+                $data['notify_type'],
+                $data['notify_message'],
+                $data['app_id'],
+                $data['seller_id'],
+                $data['seller_email'],
+                $data['trade_no'],
+                $data['notify_time'],
+                $data['notify_id'],
+                $data['buyer_id'],
+                $data['buyer_logon_id'],
+                $data['gmt_create'],
+                $data['gmt_payment'],
+                $data['gmt_refund'],
+                $data['gmt_close'],
+                $data['trade_status'],
+                $data['message']
+            ]
+        );
     }
 }
 
