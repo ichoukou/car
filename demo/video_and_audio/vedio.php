@@ -26,5 +26,3 @@ if ($ext[1] == 'mp3') {
     exec($command,$error);
 }
 
-
-
