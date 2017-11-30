@@ -206,7 +206,8 @@ class Reservation extends Controller
             if (empty($post['base64_file'])) {
                 $errors ['base64_file'] = '请上传维修结算图片';
             }
-
+            var_Dump('aaaaaaaaaa');
+            exit;
             $base64_file = explode(',', $_POST['base64_file']);
             if (empty($base64_file[1])) {
                 $errors ['base64_file'] = '图片编码错误';

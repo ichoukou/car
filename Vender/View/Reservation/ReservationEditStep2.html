@@ -1,6 +1,5 @@
 <?php echo $header_page; ?>
 <body>
-<body>
 
 <header class="navbar navbar-fixed-top">
     <h4 class="navbar-text">接车详情</h4>
@@ -9,73 +8,99 @@
 </header>
 <main class="main">
     <br>
-    <form class="form-horizontal" id="form_info">
+    <form class="form-horizontal" id="form_info" enctype="multipart/form-data">
     <div class="container-fluid text-center">
         <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly>
-        <section class="panel p-3" onclick="$('#upload_image').trigger('click')">
+        <section class="panel p-3" id="select_image">
             <i class="nc-icon-glyph media-1_lens-31 x3 text-deep-purple mb-1l"></i>
             <h4 class="panel-title text-muted">接车单拍照</h4>
             <div class="text-muted" style="margin-top:-10px;">__</div>
+            <input type="hidden" value="" name="base64_file" readonly/>
         </section>
-        <span style="display: none;"><input type="file" value="" id="upload_image"/></span>
-        <section class="panel p-3" onclick="alert('功能开发中，敬请期待');">
+        <section class="panel p-3" id="select_audio">
             <i class="nc-icon-glyph media-1_volume-97 x3 text-green mb-1l"></i>
             <h4 class="panel-title text-muted">选择语音接车</h4>
             <div class="text-muted" style="margin-top:-10px;">__</div>
         </section>
-
-        <section class="panel p-3" onclick="alert('功能开发中，敬请期待');">
+        <section class="panel p-3" id="select_video">
             <i class="nc-icon-glyph media-1_player x3 text-primary mb-1l"></i>
             <h4 class="panel-title text-muted">选择视频接车</h4>
             <div class="text-muted" style="margin-top:-10px;">__</div>
         </section>
+        <span style="display: none;"><input type="file" value="" id="upload_image"/></span>
+        <span style="display: none;"><input type="file" accept="audio/*" capture="microphone" name="audio" id="upload_audio"/></span>
+        <span style="display: none;"><input type="file" accept="video/*" capture="camcorder" name="video" id="upload_video"/></span>
         <button type="button" class="btn btn-primary btn-block" onclick="submit_info()">保存</button>
     </div>
     </form>
 </main>
-<script src="<?php echo $assets_server; ?>Common/Js/upload_image/localResizeIMG.js"></script>
+<!--<script src="<?php echo $assets_server; ?>Common/Js/upload_image/localResizeIMG.js"></script>-->
 <script src="<?php echo $assets_server; ?>Common/Js/upload_image/mobileBUGFix.mini.js"></script>
 <script src="<?php echo $assets_server; ?>Common/Js/upload_image/ResizeIMG.js"></script>
 <script>
-    var base64Image = '';
     var isUpload = false;
     $(document).ready(function(){
+        $("#select_image").off('click').on('click', function(){
+            $('#upload_image').trigger('click');
+        });
+        $("#select_audio").off('click').on('click', function(){
+            $('#upload_audio').trigger('click');
+        });
+        $("#select_video").off('click').on('click', function(){
+            $('#upload_video').trigger('click');
+        });
+
         $('#upload_image').ResizeIMG({
             //width: 100,
             quality: 1.0,
             success: function (result) {
-                base64Image = result.base64;
+                $("input[name=base64_file]").attr('value', result.base64);
                 isUpload = true;
-                alert('已选择图片');
+
+                $("#select_audio").off('click').on('click', function(){
+                    alert('您已选择拍照接车');
+                });
+
+                $("#select_video").off('click').on('click', function(){
+                    alert('您已选择拍照接车');
+                });
+
+                alert('已选择拍照接车');
             }
+        });
+
+        $("input[name=audio]").off('change').on('change',function(){          //给创建好的input绑定change事件
+            isUpload = true;
+            $("input[name=video]").off('change')
+            $("#select_image").off('click').on('click', function(){
+                alert('您已选择语音接车');
+            });
+            $("#select_video").off('click').on('click', function(){
+                alert('您已选择语音接车');
+            });
+            alert('已选择语音接车');
+        });
+
+        $("input[name=video]").off('change').on('change',function(){          //给创建好的input绑定change事件
+            isUpload = true;
+            $("#select_image").off('click').on('click', function(){
+                alert('您已选择视频接车');
+            });
+            $("#select_audio").off('click').on('click', function(){
+                alert('您已选择视频接车');
+            });
+            alert('已选择视频接车');
         });
     });
 
     function submit_info()
     {
         if (!isUpload) {
-            alert('请上传图片，并等待完成');
+            alert('请在上传图片、音频、视频中选择一项，并等待完成');
             return false;
         }
 
-        var param = {
-            reservation_id : $("input[name=reservation_id]").val(),
-            base64_file : base64Image
-        }
-
-        st.post('<?php echo $entrance; ?>route=Vender/Reservation/Reservation/do_edit_reservation', param, function(data){
-            if (data.status == -1) {
-                var return_error = '';
-                $.each(data.result, function(i, e) {
-                    return_error = e;
-                    return false;
-                });
-                alert(return_error);
-                is_click = false;
-            } else {
-                window.location.href = "<?php echo $entrance; ?>route=Vender/Reservation/Reservation<?php echo $url; ?>";
-            }
-        });
+        $("#form_info").submit();
     }
 </script>
 
