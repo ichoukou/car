@@ -1,0 +1,122 @@
+<?php echo $header_page; ?>
+<body>
+<header class="navbar navbar-fixed-top">
+    <h4 class="navbar-text">结算支付</h4>
+    <a href="<?php echo $entrance; ?>route=Front/User/Reservation" class="btn btn-link navbar-btn pull-left"><i
+            class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+
+</header>
+<header class="navbar navbar-fixed-top">
+    <h4 class="navbar-text">银行选择</h4>
+    <a href="<?php echo $entrance; ?>route=Front/User/Pay/index&reservation_id=<?php echo $reservation_info[reservation_id]; ?>"
+       class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+
+</header>
+<main class="main">
+    <br>
+    <form class="form-horizontal" action="" id="form_info" method="post" enctype="multipart/form-data">
+        <div class="container-fluid text-center">
+            <div data-toggle="buttons" id="select_buttons">
+                <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly>
+                <input type="hidden" name="bank" value="" readonly>
+                <label class="btn btn-default btn-block text-left">
+                    <input type="radio" value="BOCW" id="option4">
+                    <img class="img-circle mr-l"
+                         src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/zgyh.png"
+                         width="36"> 中国银行
+                    <small class="text-muted pull-right mt-l">借记卡</small>
+                </label>
+                <label class="btn btn-default btn-block text-left">
+                    <input type="radio" value="CCBW" id="option2">
+                    <img class="img-circle mr-l"
+                         src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/jsyh.png"
+                         width="36"> 中国建设银行
+                    <small class="text-muted pull-right mt-l">信用卡</small>
+                </label>
+                <label class="btn btn-default btn-block text-left">
+                    <input type="radio" value="CCBWZ" id="option10">
+                    <img class="img-circle mr-l"
+                         src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/jsyh.png"
+                         width="36"> 中国建设银行
+                    <small class="text-muted pull-right mt-l">借记卡</small>
+                </label>
+                <label class="btn btn-default btn-block text-left">
+                    <input type="radio" value="CMBW" id="option5">
+                    <img class="img-circle mr-l"
+                         src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/zsyh.png"
+                         width="36"> 招商银行
+                    <small class="text-muted pull-right mt-l">借记卡</small>
+                </label>
+                <label class="btn btn-default btn-block relative text-left">
+                    <input type="radio" value="ICBCW" id="option1">
+                    <img class="img-circle mr-l"
+                         src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/gsyh.png"
+                         width="36"> 中国工商银行
+                    <small class="text-muted pull-right mt-l">借记卡</small>
+                </label>
+                <label class="btn btn-default btn-block text-left">
+                    <input type="radio" value="CEBW" id="option5">
+                    <img class="img-circle mr-l"
+                         src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/gdyh.png"
+                         width="36"> 中国光大银行
+                    <small class="text-muted pull-right mt-l">借记卡</small>
+                </label>
+                <label class="btn btn-default btn-block text-left">
+                    <input type="radio" value="ABCW" id="option3">
+                    <img class="img-circle mr-l"
+                         src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/nyyh.png"
+                         width="36"> 中国农业银行
+                    <small class="text-muted pull-right mt-l">借记卡</small>
+                </label>
+                <!--<label class="btn btn-default btn-block text-left">
+                    <input type="radio" id="option5">
+                    <img class="img-circle mr-l" src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/yzcxyh.png" width="36"> 中国邮政储蓄银行
+                    <small class="text-muted pull-right mt-l">借记卡</small>
+                </label>-->
+                <!--<label class="btn btn-default btn-block text-left">
+                    <input type="radio" id="option5">
+                    <img class="img-circle mr-l" src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/wxzf.png" width="36"> 微信
+                    <small class="text-muted pull-right mt-l">扫码支付</small>
+                </label>-->
+                <label class="btn btn-default btn-block text-left">
+                    <input type="radio" value="ali" id="option5">
+                    <img class="img-circle mr-l"
+                         src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/zfbzf.png"
+                         width="36"> 支付宝
+                    <small class="text-muted pull-right mt-l">支付宝支付</small>
+                </label>
+
+            </div>
+
+        </div>
+        <br>
+        <div class="container-fluid">
+            <button type="button" class="btn btn-primary btn-block" onclick="submit_pay()">去支付 <i
+                    class="nc-icon-outline arrows-3_circle-simple-right"></i></button>
+        </div>
+        <br>
+        <br>
+    </form>
+</main>
+<script>
+    var onClick = true;
+    function submit_pay() {
+        var value = $("#select_buttons").find('.active').find('input').attr('value');
+
+        if (!value || !onClick)
+            return false;
+
+        $("input[name=bank]").attr('value', value);
+
+        onClick = false;
+
+        if (value == 'ali') {
+            $("#form_info").attr('action', '<?php echo $entrance; ?>route=Front/User/Pay/ali_pay');
+        } else {
+            $("#form_info").attr('action', '<?php echo $entrance; ?>route=Front/User/Pay/united_bank_pay');
+        }
+
+        $('#form_info').submit();
+    }
+</script>
+<?php echo $footer_page; ?>

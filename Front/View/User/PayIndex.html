@@ -2,40 +2,31 @@
 <body>
 <header class="navbar navbar-fixed-top">
     <h4 class="navbar-text">结算支付</h4>
-    <a href="<?php echo $entrance; ?>route=Front/User/Reservation" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+    <a href="<?php echo $entrance; ?>route=Front/User/Reservation" class="btn btn-link navbar-btn pull-left"><i
+            class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
 
 </header>
 <main class="main">
     <br>
-    <form class="form-horizontal" action=""  id="form_info" method="post" enctype="multipart/form-data">
-        <div class="container-fluid">
-            <section class="panel bg-grey py-3 text-center">
-                <h5>合计金额</h5>
-                <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly>
-                <input type="text" class="form-control text-center" style="font-weight:100;font-size:48px; padding:0;color:#fff;background:none;" value="<?php echo $reservation_info['total_revenue']; ?>" disabled>
-            </section>
-            <section class="panel py-3 text-center text-muted">
-                <!--<i class="nc-icon-outline ui-1_simple-add x2l"></i>-->
-                <!--<h5>请上传维修照片</h5>-->
-                <img class="img-responsive" src="<?php echo $reservation_info['image_path']; ?>"/>
-            </section>
-        </div>
-        <div class="container-fluid">
-            <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="submit_pay(1)">派乐宝支付 <!--<i class="nc-icon-outline arrows-3_circle-simple-right"></i>--></a>
-            <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="submit_pay(2)">联行支付 <!--<i class="nc-icon-outline arrows-3_circle-simple-right"></i>--></a>
-        </div>
-    </form>
+    <div class="container-fluid">
+        <section class="panel bg-grey py-3 text-center">
+            <h5>合计金额</h5>
+            <input type="text" class="form-control text-center" style="font-weight:100;font-size:48px; padding:0;color:#fff;background:none;" value="<?php echo $reservation_info['total_revenue']; ?>" disabled>
+        </section>
+        <section class="panel py-3 text-center text-muted">
+            <!--<i class="nc-icon-outline ui-1_simple-add x2l"></i>-->
+            <!--<h5>请上传维修照片</h5>-->
+            <img class="img-responsive" src="<?php echo $reservation_info['image_path']; ?>"/>
+        </section>
+    </div>
+    <div class="container-fluid">
+        <a class="btn btn-primary btn-block" href="javascript:void(0)" onclick="submit_pay()">派乐宝支付
+            <!--<i class="nc-icon-outline arrows-3_circle-simple-right"></i>--></a>
+    </div>
 </main>
 <script>
-    function submit_pay(type)
-    {
-        if (type == 1) {
-            $("#form_info").attr('action', '<?php echo $entrance; ?>route=Front/User/Pay/ali_pay');
-            $('#form_info').submit();
-        } else {
-            $("#form_info").attr('action', '<?php echo $entrance; ?>route=Front/User/Pay/united_bank_pay');
-            $('#form_info').submit();
-        }
+    function submit_pay() {
+        window.location.href = '<?php echo $entrance; ?>route=Front/User/Pay/pay_select&reservation_id=<?php echo $reservation_info[reservation_id]; ?>';
     }
 </script>
 <?php echo $footer_page; ?>

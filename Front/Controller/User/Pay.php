@@ -33,6 +33,30 @@ class Pay extends Controller
         L::output(L::view('User\\PayIndex', 'Front', $this->data));
     }
 
+    /**
+     * 联行支付银行选择页面
+     */
+    public function pay_select()
+    {
+        $this->is_login();
+
+        $param = C::make_filter($_GET);
+        $this->data['url'] = C::create_url($param, ['reservation_id']);
+
+        $reservation_id = (int)$_GET['reservation_id'];
+        if (empty($reservation_id))
+            exit(header("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}"));
+
+        $info = M::Front('User\\Pay', 'findReservationByReservationId', ['reservation_id'=>$reservation_id]);
+        if (empty($info))
+            exit(header("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}"));
+
+        $this->data['reservation_info'] = $info;
+
+        $this->create_page();
+
+        L::output(L::view('User\\PaySelectIndex', 'Front', $this->data));
+    }
 
     /**
      * 支付宝支付调用
@@ -176,8 +200,10 @@ class Pay extends Controller
     {
         if ($info = $this->validate_pay()) {
             header("Content-type: text/html; charset=utf-8");
-            if (empty($info))
-                exit("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}");
+            if (empty($info)) {
+                var_dump('支付信息错误...<br>');
+                exit(header("refresh:3;url={$this->data['entrance']}route=Front/User/Reservation"));
+            }
 
             $bank_arr = [
                 'BOCW',     #中国银行wap
@@ -191,13 +217,18 @@ class Pay extends Controller
                 'ABCW',     #农业银行wap
             ];
 
+            if (!in_array($_POST['bank'], $bank_arr)) {
+                var_dump('银行信息错误...<br>');
+                exit(header("refresh:3;url={$this->data['entrance']}route=Front/User/Pay/pay_select&reservation_id={$_POST['reservation_id']}"));
+            }
+
             $merId      = '699851';
             $dealOrder  = $info['bill'];
             $dealFee    = $info['total_revenue'];
             $dealReturn = HTTP_SERVER . $this->data['entrance'] . 'route=Front/User/Pay/united_back_pay_return';
             $dealNotify = HTTP_SERVER . 'Front/Controller/User/UnitedBackPayNotify.php';
             $dealName   = '支付宝用户车辆维修结算支付';
-            $dealBank   = 'CMBW';
+            $dealBank   = $_POST['bank'];
             $dealHeader = 'false';
             $key        = 'eybEZxPXqp2dae62TYAfFVyB46rtOMBCj1iIlMnzjdTBXPUdYeUsPXvM2N1fibKwU5KstuIUMFw8BgDiOIMYjJxvFauWR3CYvjOD0zGzFKuezVHTmTtHZBORAZjyM3Yg';
             #2 生成 Data
@@ -206,8 +237,8 @@ class Pay extends Controller
             $dealSignure = sha1($Data.$key);
 
             //获得表单传过来的数据
-            $def_url  = '<br />';
-            $def_url  = '<form method="post" action="http://user.sdecpay.com/paygate.html" style="display: none;">';
+                #$def_url  = '<br />';
+            $def_url  = '<form method="post" action="http://user.sdecpay.com/paygate.html" ';   #style="display: none;"
             $def_url .= '	<input type = "hidden" name = "merId"	    value = "'.$merId.'">';
             $def_url .= '	<input type = "hidden" name = "dealName"    value = "'.$dealName.'">';
             $def_url .= '	<input type = "hidden" name = "dealOrder" 	value = "'.$dealOrder.'">';
@@ -220,10 +251,12 @@ class Pay extends Controller
             $def_url .= '	<input type=submit value="立即付款">';
             $def_url .= '</form>';
 
-            var_dump($def_url);
 
+            $this->data['form'] = $def_url;
 
-            exit;
+            #$this->create_page();
+
+            L::output(L::view('User\\UnitedBankPayForm', 'Front', $this->data));
         }
     }
 

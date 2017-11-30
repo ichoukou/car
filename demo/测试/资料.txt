@@ -41,3 +41,4 @@ http://blog.csdn.net/xingjiarong/article/details/49534553 不带任何参数的�
 http://blog.csdn.net/liangxanhai/article/details/8521937 nasm
 http://blog.chinaunix.net/uid-20104447-id-3761897.html 如果在编译ffmpeg时出现libx264 is gpl and --enable-gpl is not specified. 错误
 http://blog.csdn.net/lifreshman/article/details/18737793 xxx.so错误解决方法
+https://www.cnblogs.com/luojianqun/p/6291939.html 使用方法
