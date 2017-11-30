@@ -1,0 +1,6 @@
+
+[2017-11-29 11:41:17] ERROR File:E:\xampp\htdocs\workspace\car\Front\Controller\User\AliPayNotify.php
+[2017-11-29 11:41:17] ERROR Line:186
+[2017-11-29 11:41:17] ERROR Func:insert
+[2017-11-29 11:41:17] ERROR Sql :INSERT INTO website_pay_log (`reservation_id`,`bill`,`total_amount`,`receipt_amount`,`notify_type`,`notify_message`,`app_id`, `trade_no`,`seller_id`,`seller_email`,`notify_time`,`notify_id`,`buyer_id`,`buyer_logon_id`, `gmt_create`,`gmt_payment`,`gmt_refund`,`gmt_close`,`trade_status`,`message` )  VALUES 
+[2017-11-29 11:41:17] ERROR Mess:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'message' in 'field list'

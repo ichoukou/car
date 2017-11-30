@@ -26,3 +26,19 @@ http://blog.csdn.net/luobin1984/article/details/8252350 使用
 
 服务器命令
 shutdown -r now 服务器重启
+
+转码：
+首先检查 disable_functions 有没有屏蔽掉 exec或者system命令，如果有就放开限制
+1、扩展下载
+http://ffmpeg.org/releases/ ffmpeg
+http://www.tortall.net/projects/yasm/releases/  yasm
+http://www.videolan.org/developers/x264.html    x264
+http://www.nasm.us/pub/nasm/releasebuilds/  nasm
+
+2、教程
+http://blog.csdn.net/zenail501129/article/details/23453631 ffmpeg安装，需要先安装yasm、x264、nasm
+http://blog.csdn.net/xingjiarong/article/details/49534553 不带任何参数的安装ffmpeg,能安装,但是少扩展。
+http://blog.csdn.net/liangxanhai/article/details/8521937 nasm
+http://blog.chinaunix.net/uid-20104447-id-3761897.html 如果在编译ffmpeg时出现libx264 is gpl and --enable-gpl is not specified. 错误
+http://blog.csdn.net/lifreshman/article/details/18737793 xxx.so错误解决方法
+https://www.cnblogs.com/luojianqun/p/6291939.html 使用方法

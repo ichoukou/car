@@ -6,6 +6,7 @@ use Libs\Core\Model as M;
 use Libs\Core\Loader as L;
 use Libs\ExtendsClass\Pagination;
 use Libs\ExtendsClass\Common as C;
+use Libs\ExtendsClass\WxCommon as WC;
 use Libs\Core\Log as Log;
 
 class Pay extends Controller
@@ -32,7 +33,35 @@ class Pay extends Controller
         L::output(L::view('User\\PayIndex', 'Front', $this->data));
     }
 
-    public function pay()
+    /**
+     * 联行支付银行选择页面
+     */
+    public function pay_select()
+    {
+        $this->is_login();
+
+        $param = C::make_filter($_GET);
+        $this->data['url'] = C::create_url($param, ['reservation_id']);
+
+        $reservation_id = (int)$_GET['reservation_id'];
+        if (empty($reservation_id))
+            exit(header("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}"));
+
+        $info = M::Front('User\\Pay', 'findReservationByReservationId', ['reservation_id'=>$reservation_id]);
+        if (empty($info))
+            exit(header("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}"));
+
+        $this->data['reservation_info'] = $info;
+
+        $this->create_page();
+
+        L::output(L::view('User\\PaySelectIndex', 'Front', $this->data));
+    }
+
+    /**
+     * 支付宝支付调用
+     */
+    public function ali_pay()
     {
         #https://docs.open.alipay.com/203 官方文档
         #https://www.cnblogs.com/phpxuetang/p/5656266.html 缺少php_openssl.so的安装方法
@@ -55,11 +84,11 @@ class Pay extends Controller
             #商户订单号，商户网站订单系统中唯一订单号，必填
             $out_trade_no = $info['bill'];
             #订单名称，必填
-            $subject = '用户车辆维修结算支付';
+            $subject = '支付宝用户车辆维修结算支付';
             #付款金额，必填
             $total_amount = $info['total_revenue'];
             #商品描述，可空
-            $body = '用户车辆维修结算支付';
+            $body = '支付宝用户车辆维修结算支付';
             #超时时间
             $timeout_express="1m";
 
@@ -91,9 +120,8 @@ class Pay extends Controller
         require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'config.php';
         require_once ROOT_PATH.'Libs'.DS.'ExtendsClass'.DS.'Alipay'.DS.'wappay'.DS.'service'.DS.'AlipayTradeService.php';
 
-        $arr = $_GET;
         $alipaySevice = new \AlipayTradeService($config);
-        $result = $alipaySevice->check($arr);
+        $result = $alipaySevice->check($_GET);
 
         /* 实际验证过程建议商户添加以下校验。
         1、商户需要验证该通知数据中的out_trade_no是否为商户系统中创建的订单号，
@@ -114,7 +142,7 @@ class Pay extends Controller
         $bill_info = M::Front('User\\Pay', 'findBillInfo', $return);
         if ($bill_info['status'] == 4 or $bill_info['status'] == 5) {
             exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_success&reservation_id={$bill_info['reservation_id']}"));
-        } elseif($bill_info['status'] == 6 or empty($bill_info)) {
+        } elseif ($bill_info['status'] == 6 or empty($bill_info)) {
             exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_error&reservation_id={$bill_info['reservation_id']}"));
         }
 
@@ -122,13 +150,13 @@ class Pay extends Controller
         $return['reservation_status'] = 6; #对应 $reservation_status  支付状态
 
         if (empty($return['trade_no']) or empty($return['bill']) or empty($return['app_id']) or empty($return['seller_id'])) {
-            $return['notify_message'] = '参数缺少';
+            $return['message'] = '参数缺少';
         } elseif (empty($bill_info)) {
-            $return['notify_message'] = '未匹配到订单信息';
+            $return['message'] = '未匹配到订单信息';
         } elseif($return['app_id'] != $config['app_id']) {
-            $return['notify_message'] = '开发者的应用Id匹配错误';
+            $return['message'] = '开发者的应用Id匹配错误';
         } else {
-            $return['notify_message'] = '交易成功';
+            $return['message'] = '交易成功';
             $return['reservation_status'] = 4;
         }
 
@@ -163,6 +191,73 @@ class Pay extends Controller
     public function pay_notify()
     {
         #具体业务逻辑在同目录下的 XxxPayNotify.php,Xxx为支付名称
+    }
+
+    /**
+     * 联行支付支付调用
+     */
+    public function united_bank_pay()
+    {
+        if ($info = $this->validate_pay()) {
+            header("Content-type: text/html; charset=utf-8");
+            if (empty($info)) {
+                var_dump('支付信息错误...<br>');
+                exit(header("refresh:3;url={$this->data['entrance']}route=Front/User/Reservation"));
+            }
+
+            $bank_arr = [
+                'BOCW',     #中国银行wap
+                'CCBW',     #建设银行wap信用卡
+                'CCBWZ',    #建设银行wap借记卡
+                'CMBW',     #招商银行wap
+                'ICBCW',    #工商银行wap
+                'COMMW',    #交通银行wap
+                'CEBW',     #光大银行wap
+                'SPDBW',    #浦发银行wap
+                'ABCW',     #农业银行wap
+            ];
+
+            if (!in_array($_POST['bank'], $bank_arr)) {
+                var_dump('银行信息错误...<br>');
+                exit(header("refresh:3;url={$this->data['entrance']}route=Front/User/Pay/pay_select&reservation_id={$_POST['reservation_id']}"));
+            }
+
+            $merId      = '699851';
+            $dealOrder  = $info['bill'];
+            $dealFee    = $info['total_revenue'];
+            $dealReturn = HTTP_SERVER . $this->data['entrance'] . 'route=Front/User/Pay/united_back_pay_return';
+            $dealNotify = HTTP_SERVER . 'Front/Controller/User/UnitedBackPayNotify.php';
+            $dealName   = '支付宝用户车辆维修结算支付';
+            $dealBank   = $_POST['bank'];
+            $dealHeader = 'false';
+            $key        = 'eybEZxPXqp2dae62TYAfFVyB46rtOMBCj1iIlMnzjdTBXPUdYeUsPXvM2N1fibKwU5KstuIUMFw8BgDiOIMYjJxvFauWR3CYvjOD0zGzFKuezVHTmTtHZBORAZjyM3Yg';
+            #2 生成 Data
+            $Data       = $merId . $dealOrder . $dealFee . $dealReturn;
+            #3 生成 dealSignure
+            $dealSignure = sha1($Data.$key);
+
+            //获得表单传过来的数据
+                #$def_url  = '<br />';
+            $def_url  = '<form method="post" action="http://user.sdecpay.com/paygate.html" ';   #style="display: none;"
+            $def_url .= '	<input type = "hidden" name = "merId"	    value = "'.$merId.'">';
+            $def_url .= '	<input type = "hidden" name = "dealName"    value = "'.$dealName.'">';
+            $def_url .= '	<input type = "hidden" name = "dealOrder" 	value = "'.$dealOrder.'">';
+            $def_url .= '	<input type = "hidden" name = "dealFee" 	value = "'.$dealFee.'">';
+            $def_url .= '	<input type = "hidden" name = "dealBank" 	value = "'.$dealBank.'">';
+            $def_url .= '	<input type = "hidden" name = "header" 	    value = "'.$dealHeader.'">';
+            $def_url .= '	<input type = "hidden" name = "dealSignure"	value = "'.$dealSignure.'">';
+            $def_url .= '	<input type = "hidden" name = "dealReturn"	value = "'.$dealReturn.'">';
+            $def_url .= '	<input type = "hidden" name = "dealNotify"	value = "'.$dealNotify.'">';
+            $def_url .= '	<input type=submit value="立即付款">';
+            $def_url .= '</form>';
+
+
+            $this->data['form'] = $def_url;
+
+            #$this->create_page();
+
+            L::output(L::view('User\\UnitedBankPayForm', 'Front', $this->data));
+        }
     }
 
     public function pay_success()

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,user-scalable=0">
+<title>报修</title>
+
+</head>
+
+<body>
+<form action="vedio.php" method="post" enctype="multipart/form-data">
+    <input type="file" accept="image/*" multiple/>
+    <br/>
+    <input type="file" accept="image/*" capture="camera"/>
+    <br/>
+    <input type="file" accept="video/*" capture="camcorder" name="video"/>
+    <br/>
+    <input type="file" accept="audio/*" capture="microphone" name="audio"/>
+
+    <input type="submit" value="提交"/>
+</form>
+<div>
+<audio src="http://qx.maizhao.net/record20171129225733.amr" controls="controls">
+    音频播放
+</audio>
+    <audio src="http://qx.maizhao.net/Crush.mp3" controls="controls">
+        音频播放
+    </audio>
+</div>
+<div>
+<video src="http://qx.maizhao.net/VID_20171130_003637.3gp" controls="controls">
+    <!--视频播放-->
+</video>-
+</div>
+</body>
+</html>
