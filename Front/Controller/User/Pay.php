@@ -228,7 +228,8 @@ class Pay extends Controller
             $dealReturn = HTTP_SERVER . $this->data['entrance'] . 'route=Front/User/Pay/united_back_pay_return';
             $dealNotify = HTTP_SERVER . 'Front/Controller/User/UnitedBackPayNotify.php';
             $dealName   = '支付宝用户车辆维修结算支付';
-            $dealBank   = $_POST['bank'];
+            #$dealBank   = $_POST['bank'];
+            $dealBank   = 'TEST';
             $dealHeader = 'false';
             $key        = 'eybEZxPXqp2dae62TYAfFVyB46rtOMBCj1iIlMnzjdTBXPUdYeUsPXvM2N1fibKwU5KstuIUMFw8BgDiOIMYjJxvFauWR3CYvjOD0zGzFKuezVHTmTtHZBORAZjyM3Yg';
             #2 生成 Data
@@ -237,17 +238,16 @@ class Pay extends Controller
             $dealSignure = sha1($Data.$key);
 
             //获得表单传过来的数据
-                #$def_url  = '<br />';
-            $def_url  = '<form method="post" action="http://user.sdecpay.com/paygate.html" ';   #style="display: none;"
-            $def_url .= '	<input type = "hidden" name = "merId"	    value = "'.$merId.'">';
-            $def_url .= '	<input type = "hidden" name = "dealName"    value = "'.$dealName.'">';
-            $def_url .= '	<input type = "hidden" name = "dealOrder" 	value = "'.$dealOrder.'">';
-            $def_url .= '	<input type = "hidden" name = "dealFee" 	value = "'.$dealFee.'">';
-            $def_url .= '	<input type = "hidden" name = "dealBank" 	value = "'.$dealBank.'">';
-            $def_url .= '	<input type = "hidden" name = "header" 	    value = "'.$dealHeader.'">';
-            $def_url .= '	<input type = "hidden" name = "dealSignure"	value = "'.$dealSignure.'">';
-            $def_url .= '	<input type = "hidden" name = "dealReturn"	value = "'.$dealReturn.'">';
-            $def_url .= '	<input type = "hidden" name = "dealNotify"	value = "'.$dealNotify.'">';
+            $def_url  = '<form method="post" action="http://user.sdecpay.com/m/paygate.html"> ';
+            $def_url .= '	<input type = "hidden" id="merId"       name="merId"	    value="'.$merId.'">';
+            $def_url .= '	<input type = "hidden" id="dealName"    name="dealName"     value="'.$dealName.'">';
+            $def_url .= '	<input type = "hidden" id="dealOrder"   name="dealOrder" 	value="'.$dealOrder.'">';
+            $def_url .= '	<input type = "hidden" id="dealFee"     name="dealFee" 	    value="'.$dealFee.'">';
+            $def_url .= '	<input type = "hidden" id="dealBank"    name="dealBank" 	value="'.$dealBank.'">';
+            $def_url .= '	<input type = "hidden" id="header"      name="header" 	    value="'.$dealHeader.'">';
+            $def_url .= '	<input type = "hidden" id="dealSignure" name="dealSignure"	value="'.$dealSignure.'">';
+            $def_url .= '	<input type = "hidden" id="dealReturn"  name="dealReturn"	value="'.$dealReturn.'">';
+            $def_url .= '	<input type = "hidden" id="dealNotify"  name="dealNotify"	value="'.$dealNotify.'">';
             $def_url .= '	<input type=submit value="立即付款">';
             $def_url .= '</form>';
 
