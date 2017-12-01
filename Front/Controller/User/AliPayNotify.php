@@ -49,6 +49,7 @@ class AliPayNotify
         ];
 
         $return = [];
+        $return['pay_type'] = '支付宝'; #支付类型
         $return['trade_no'] = htmlspecialchars($_POST['trade_no']);
         $return['bill'] = htmlspecialchars($_POST['out_trade_no']);
         $return['notify_id'] = htmlspecialchars($_POST['notify_id']);
@@ -79,9 +80,9 @@ class AliPayNotify
                 #TRADE_SUCCESS 付款完成后，支付宝系统发送该交易状态通知
                 $return['reservation_status'] = 4;
                 $this->editReservation($return, $db, $_config['DB']['true']);
-                $return['message'] = '订单状态为未付款，并且异步通知是交易支付成功或者交易结束 ';
+                $return['message'] = '订单状态修改为已付款，异步通知状态是交易支付成功或者交易结束';
             } else {
-                $return['message'] = '订单状态为未付款，但是异步通知并非是交易支付成功或者交易结束 ';
+                $return['message'] = '订单状态为未付款，但是异步通知并非是交易支付成功或者交易结束';
             }
         } else {
             $return['message'] = '订单状态并非为未支付';
@@ -116,11 +117,12 @@ class AliPayNotify
     {
         $conditions = [
             'status' => $data['reservation_status'],
+            'pay_type' => $data['pay_type'],
             'reservation_id' => $data['reservation_id']
         ];
         #如果处于待支付状态 status = 3，则修改状态
         $update_sql = " UPDATE " . $_config['db_prefix'] . "reservation SET " .
-            " status = :status " .
+            " status = :status, pay_type = :pay_type " .
             " WHERE `reservation_id` = :reservation_id AND `status` = 3";
 
         $db->update($update_sql, $conditions);
@@ -129,7 +131,7 @@ class AliPayNotify
     public function addPaylog($data, $db, $_config)
     {
         $sql = "INSERT INTO " . $_config['db_prefix'] . "pay_log " .
-            "(`reservation_id`,`bill`,`total_amount`,`receipt_amount`,`notify_type`,`notify_message`,`app_id`, " .
+            "(`reservation_id`,`pay_type`,`bill`,`total_amount`,`receipt_amount`,`notify_type`,`notify_message`,`app_id`, " .
             "`trade_no`,`seller_id`,`seller_email`,`notify_time`,`notify_id`,`buyer_id`,`buyer_logon_id`, " .
             "`gmt_create`,`gmt_payment`,`gmt_refund`,`gmt_close`,`trade_status`,`message` ) " .
             " VALUES ";
@@ -138,6 +140,7 @@ class AliPayNotify
             $sql,
             [
                 $data['reservation_id'],
+                $data['pay_type'],
                 $data['bill'],
                 $data['total_amount'],
                 $data['receipt_amount'],

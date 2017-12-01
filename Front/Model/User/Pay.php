@@ -34,19 +34,20 @@ class Pay extends DbFactory
 
     public function addPaylog($data)
     {
-        $sql = "INSERT INTO ".self::$dp."pay_log (`reservation_id`,`bill`,`total_amount`,`notify_type`,`message`,`app_id`,`trade_no`,`seller_id`,`notify_time`) VALUES ";
+        $sql = "INSERT INTO ".self::$dp."pay_log (`reservation_id`,`pay_type`,`bill`,`total_amount`,`notify_type`,`message`,`app_id`,`trade_no`,`seller_id`,`notify_time`) VALUES ";
 
         return self::$db->insert(
             $sql,
             [
                 $data['reservation_id'],
+                $data['pay_type'],
                 $data['bill'],
                 $data['total_amount'],
                 $data['notify_type'],
                 $data['message'],
                 $data['app_id'],
-                $data['seller_id'],
                 $data['trade_no'],
+                $data['seller_id'],
                 $data['notify_time']
             ]
         );
@@ -56,11 +57,12 @@ class Pay extends DbFactory
     {
         $conditions = [
             'status' => $data['reservation_status'],
-            'reservation_id' => $data['reservation_id']
+            'reservation_id' => $data['reservation_id'],
+            'pay_type' => $data['pay_type'],
         ];
         #如果处于待支付状态 status = 3，则修改状态
         $update_sql = " UPDATE " . self::$dp . "reservation SET " .
-            " status = :status " .
+            " status = :status, pay_type = :pay_type " .
             " WHERE `reservation_id` = :reservation_id AND `status` = 3";
 
         self::$db->update($update_sql, $conditions);

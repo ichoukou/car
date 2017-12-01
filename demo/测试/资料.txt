@@ -44,4 +44,3 @@ http://blog.csdn.net/lifreshman/article/details/18737793 xxx.so错误解决方�
 https://www.cnblogs.com/luojianqun/p/6291939.html 使用方法
 
 
-http://qx.maizhao.net/index.php?route=Front/User/Pay/united_back_pay_return&dealOrder=20171127140323GB2762603176989157&dealFee=0.01&dealState=SUCCESS&dealSignure=46f76980dadaa6cadaf3ecd7d3ef981fb4ce144d

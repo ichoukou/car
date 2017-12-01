@@ -131,6 +131,7 @@ class Pay extends Controller
         */
 
         $return = [];
+        $return['pay_type'] = '支付宝'; #支付类型
         $return['trade_no'] = htmlspecialchars($_GET['trade_no']); #支付宝交易凭证号
         $return['bill'] = htmlspecialchars($_GET['out_trade_no']); #商户订单号
         $return['total_amount'] = (float)htmlspecialchars($_GET['total_amount']); #订单金额
@@ -262,21 +263,19 @@ class Pay extends Controller
 
     public function united_back_pay_return()
     {
-        $config = [];
-        var_Dump('aaaaaaaaaa');
-        exit;
-
-
         $return = [];
-        $return['trade_no'] = htmlspecialchars($_GET['trade_no']); #支付宝交易凭证号
-        $return['bill'] = htmlspecialchars($_GET['out_trade_no']); #商户订单号
-        $return['total_amount'] = (float)htmlspecialchars($_GET['total_amount']); #订单金额
-        $return['app_id'] = htmlspecialchars($_GET['auth_app_id']); #商户APPID
-        $return['seller_id'] = htmlspecialchars($_GET['seller_id']); #商户支付宝用户号
-        $return['notify_time'] = htmlspecialchars($_GET['timestamp']); #消息返回时间
+        $key = 'eybEZxPXqp2dae62TYAfFVyB46rtOMBCj1iIlMnzjdTBXPUdYeUsPXvM2N1fibKwU5KstuIUMFw8BgDiOIMYjJxvFauWR3CYvjOD0zGzFKuezVHTmTtHZBORAZjyM3Yg';
+        $return['pay_type'] = '联行支付'; #支付类型
+        $return['bill'] = htmlspecialchars($_GET['dealOrder']); #商户订单号
+        $return['total_amount'] = (float)htmlspecialchars($_GET['dealFee']); #订单金额
+        $return['trade_status'] = $_GET['dealState']; #订单支付状态
+        $return['notify_time'] = date('Y-m-d H:i:s', time()); #消息返回时间
         $return['notify_type'] = 1; #同步通知
 
+        #$sign = sha1($return['bill'].$return['trade_status'].$key);
+
         $bill_info = M::Front('User\\Pay', 'findBillInfo', $return);
+
         if ($bill_info['status'] == 4 or $bill_info['status'] == 5) {
             exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_success&reservation_id={$bill_info['reservation_id']}"));
         } elseif ($bill_info['status'] == 6 or empty($bill_info)) {
@@ -286,12 +285,10 @@ class Pay extends Controller
         $return['reservation_id'] = $bill_info['reservation_id'];
         $return['reservation_status'] = 6; #对应 $reservation_status  支付状态
 
-        if (empty($return['trade_no']) or empty($return['bill']) or empty($return['app_id']) or empty($return['seller_id'])) {
+        if (empty($return['bill'])) {
             $return['message'] = '参数缺少';
         } elseif (empty($bill_info)) {
             $return['message'] = '未匹配到订单信息';
-        } elseif($return['app_id'] != $config['app_id']) {
-            $return['message'] = '开发者的应用Id匹配错误';
         } else {
             $return['message'] = '交易成功';
             $return['reservation_status'] = 4;
