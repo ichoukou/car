@@ -260,6 +260,59 @@ class Pay extends Controller
         }
     }
 
+    public function united_back_pay_return()
+    {
+        $config = [];
+        var_Dump('aaaaaaaaaa');
+        exit;
+
+
+        $return = [];
+        $return['trade_no'] = htmlspecialchars($_GET['trade_no']); #支付宝交易凭证号
+        $return['bill'] = htmlspecialchars($_GET['out_trade_no']); #商户订单号
+        $return['total_amount'] = (float)htmlspecialchars($_GET['total_amount']); #订单金额
+        $return['app_id'] = htmlspecialchars($_GET['auth_app_id']); #商户APPID
+        $return['seller_id'] = htmlspecialchars($_GET['seller_id']); #商户支付宝用户号
+        $return['notify_time'] = htmlspecialchars($_GET['timestamp']); #消息返回时间
+        $return['notify_type'] = 1; #同步通知
+
+        $bill_info = M::Front('User\\Pay', 'findBillInfo', $return);
+        if ($bill_info['status'] == 4 or $bill_info['status'] == 5) {
+            exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_success&reservation_id={$bill_info['reservation_id']}"));
+        } elseif ($bill_info['status'] == 6 or empty($bill_info)) {
+            exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_error&reservation_id={$bill_info['reservation_id']}"));
+        }
+
+        $return['reservation_id'] = $bill_info['reservation_id'];
+        $return['reservation_status'] = 6; #对应 $reservation_status  支付状态
+
+        if (empty($return['trade_no']) or empty($return['bill']) or empty($return['app_id']) or empty($return['seller_id'])) {
+            $return['message'] = '参数缺少';
+        } elseif (empty($bill_info)) {
+            $return['message'] = '未匹配到订单信息';
+        } elseif($return['app_id'] != $config['app_id']) {
+            $return['message'] = '开发者的应用Id匹配错误';
+        } else {
+            $return['message'] = '交易成功';
+            $return['reservation_status'] = 4;
+        }
+
+        M::Front('User\\Pay', 'addPaylog', $return);
+        M::Front('User\\Pay', 'editReservation', $return);
+
+        if ($return['reservation_status'] == 4) {
+            exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_success&reservation_id={$bill_info['reservation_id']}"));
+        } else {
+            exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_error&reservation_id={$bill_info['reservation_id']}"));
+        }
+
+//        if (!$result) { #验证成功
+//        } else {
+//            //验证失败
+//            echo "验证失败";
+//        }
+    }
+
     public function pay_success()
     {
         $this->create_page();
