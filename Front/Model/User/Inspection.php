@@ -4,7 +4,7 @@ namespace Front\Model\User;
 use Libs\Core\DbFactory AS DbFactory;
 use Libs\ExtendsClass\Common as C;
 
-class Evaluation extends DbFactory
+class Inspection extends DbFactory
 {
     public function addEvaluation($data)
     {

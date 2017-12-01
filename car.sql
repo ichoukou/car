@@ -56,10 +56,10 @@ CREATE TABLE `website_company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 INSERT INTO `website_company` (`company_id`, `pid`, `tel`, `numbering`, `name`, `type`, `address`, `legal_person`, `registered_capital`, `date_time`, `operating_period`, `image_path`, `score`, `score_count`, `views`, `group`, `status`, `password`, `salt`, `last_login_time`, `deleted`, `create_time`) VALUES
-(10,	0,	'13656480135',	'CPY0000001',	'青岛测试公司',	'私企',	'青岛市',	'张三',	'100万',	'2017-09-25',	'无限',	NULL,	4,	1,	13,	0,	1,	'44d98cf3d486009c070cba02564d00a6c74355f7',	'aUTPcYpTZs',	'2017-11-28 15:36:30',	1,	'2017-11-25 10:26:12'),
+(10,	0,	'13656480135',	'CPY0000001',	'青岛测试公司',	'私企',	'青岛市',	'张三',	'100万',	'2017-09-25',	'无限',	NULL,	7,	2,	13,	0,	1,	'44d98cf3d486009c070cba02564d00a6c74355f7',	'aUTPcYpTZs',	'2017-11-30 23:12:15',	1,	'2017-11-25 10:26:12'),
 (11,	0,	'13333333333',	'CPY0000002',	'车辆维修中心',	'民企',	'济南',	'李斯',	'500万',	'2017-05-25',	'无限',	NULL,	0,	0,	6,	0,	1,	'e2f7c6ff922c63c24e25e79355442f7b6ee0dec4',	'OUrUgg9fOF',	NULL,	1,	'2017-11-25 10:32:52'),
-(12,	0,	'13361076388',	'CPY0000003',	'老王汽修',	'三类',	'山东省济南市天桥区北园大街888号',	'王林',	'666',	'2017-11-25',	'长期',	NULL,	0,	0,	23,	0,	1,	'd8eae8690d5fbe94fd5412ed960e343e1034ac9d',	'GxIlTv4Nks',	'2017-11-29 06:49:16',	1,	'2017-11-25 12:19:44'),
-(14,	0,	'18866830116',	'CPY0000004',	'山东派乐特网络科技有限公司',	'自然人',	'山东省济南市槐荫区经七路69号新世界附光花',	'无',	'1000',	'2015-09-28',	'无',	NULL,	5,	1,	18,	0,	1,	'9bbc5d5ea833188c71c408d85a3ac8f3deff08fb',	'6FhTW6DPjv',	'2017-11-27 23:51:04',	1,	'2017-11-27 06:45:20');
+(12,	0,	'13361076388',	'CPY0000003',	'老王汽修',	'三类',	'山东省济南市天桥区北园大街888号',	'王林',	'666',	'2017-11-25',	'长期',	NULL,	0,	0,	29,	0,	1,	'd8eae8690d5fbe94fd5412ed960e343e1034ac9d',	'GxIlTv4Nks',	'2017-12-01 23:29:25',	1,	'2017-11-25 12:19:44'),
+(14,	0,	'18866830116',	'CPY0000004',	'山东派乐特网络科技有限公司',	'自然人',	'山东省济南市槐荫区经七路69号新世界附光花',	'无',	'1000',	'2015-09-28',	'无',	NULL,	5,	1,	24,	0,	1,	'9bbc5d5ea833188c71c408d85a3ac8f3deff08fb',	'6FhTW6DPjv',	'2017-11-30 14:55:15',	1,	'2017-11-27 06:45:20');
 
 DROP TABLE IF EXISTS `website_company_score`;
 CREATE TABLE `website_company_score` (
@@ -111,7 +111,8 @@ CREATE TABLE `website_evaluation` (
 INSERT INTO `website_evaluation` (`evaluation_id`, `reservation_id`, `company_id`, `user_id`, `car_id`, `bill`, `score`, `create_time`) VALUES
 (8,	17,	10,	9,	7,	'20171125191057GB250825786293039',	4,	'2017-11-25 11:16:00'),
 (9,	22,	13,	12,	10,	'20171126001048GB2626248852140012',	5,	'2017-11-25 16:33:37'),
-(10,	28,	14,	14,	12,	'20171127145358GB2765638634260714',	5,	'2017-11-27 07:03:27');
+(10,	28,	14,	14,	12,	'20171127145358GB2765638634260714',	5,	'2017-11-27 07:03:27'),
+(11,	26,	10,	9,	7,	'20171127140323GB2762603176989164',	3,	'2017-12-01 15:49:33');
 
 DROP TABLE IF EXISTS `website_maintenance_costs`;
 CREATE TABLE `website_maintenance_costs` (
@@ -127,12 +128,14 @@ CREATE TABLE `website_maintenance_costs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 INSERT INTO `website_maintenance_costs` (`costs_id`, `reservation_id`, `image_path`, `total_revenue`, `deleted`, `create_time`) VALUES
-(17,	26,	'Image/upload/vender/other/20171128153824GB28547049066910995727.jpg',	0.01,	1,	'2017-11-28 07:38:24');
+(17,	26,	'Image/upload/vender/other/20171128153824GB28547049066910995727.jpg',	0.01,	1,	'2017-11-28 07:38:24'),
+(18,	35,	'Image/upload/vender/other/20171130072615GB30979758443024973827.jpg',	0.01,	1,	'2017-11-29 23:26:15');
 
 DROP TABLE IF EXISTS `website_pay_log`;
 CREATE TABLE `website_pay_log` (
   `pay_id` int(11) NOT NULL AUTO_INCREMENT,
   `reservation_id` int(11) NOT NULL,
+  `pay_type` varchar(10) DEFAULT NULL COMMENT '支付方式',
   `bill` varchar(100) DEFAULT NULL COMMENT '订单号',
   `total_amount` float(10,2) DEFAULT '0.00' COMMENT '本次交易支付的订单金额，单位为人民币（元）',
   `trade_status` varchar(50) DEFAULT NULL COMMENT '交易目前所处的状态',
@@ -158,8 +161,6 @@ CREATE TABLE `website_pay_log` (
   KEY `RESERVATION_ID` (`reservation_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
-INSERT INTO `website_pay_log` (`pay_id`, `reservation_id`, `bill`, `total_amount`, `trade_status`, `message`, `notify_type`, `notify_id`, `notify_message`, `notify_time`, `app_id`, `receipt_amount`, `trade_no`, `buyer_id`, `buyer_logon_id`, `seller_id`, `seller_email`, `gmt_create`, `gmt_payment`, `gmt_refund`, `gmt_close`, `create_time`) VALUES
-(58,	26,	'20171127140323GB2762603176989151',	0.01,	'TRADE_SUCCESS',	'订单状态为未付款，并且异步通知是交易支付成功或者交易结束 ',	2,	'f18eab159a79efb20b26fd1e517c509n6h',	'交易支付成功',	'2017-11-29 11:57:05',	'2017111800028220',	0.01,	'2088902349621211',	'2088602220435934',	'136****0135',	'13361076388',	'2017112921001004930597569584',	'2017-11-29 11:57:04',	'2017-11-29 11:57:05',	'0000-00-00 00:00:00',	'0000-00-00 00:00:00',	'2017-11-29 03:57:05');
 
 DROP TABLE IF EXISTS `website_reservation`;
 CREATE TABLE `website_reservation` (
@@ -167,6 +168,7 @@ CREATE TABLE `website_reservation` (
   `company_id` int(11) NOT NULL COMMENT '被预约企业标识',
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '预约人标识',
   `car_id` int(11) NOT NULL COMMENT '预约人车辆标识',
+  `pay_type` varchar(10) DEFAULT '0' COMMENT '支付类型',
   `bill` varchar(100) DEFAULT '0' COMMENT '订单号',
   `image_path` varchar(150) DEFAULT NULL COMMENT '接车问诊单图片地址',
   `reservation_time` datetime DEFAULT NULL COMMENT '预约时间',
@@ -181,11 +183,15 @@ CREATE TABLE `website_reservation` (
   KEY `CAR_ID` (`car_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
-INSERT INTO `website_reservation` (`reservation_id`, `company_id`, `user_id`, `car_id`, `bill`, `image_path`, `reservation_time`, `description`, `status`, `deleted`, `create_time`) VALUES
-(17,	10,	9,	7,	'20171125191057GB250825786293039',	'',	'2017-12-24 18:10:00',	NULL,	1,	1,	'2017-11-25 11:10:57'),
-(18,	10,	9,	7,	'20171125191637GB250859769184410',	'',	'2017-11-27 19:16:00',	NULL,	1,	1,	'2017-11-25 11:16:37'),
-(26,	10,	9,	7,	'20171127140323GB2762603176989151',	'Image/upload/vender/other/20171128153803GB28546837317879127079.jpg',	'2017-11-27 14:03:00',	'的多',	4,	1,	'2017-11-27 06:03:23'),
-(33,	12,	11,	9,	'20171129064846GB2909326289130911',	'Image/upload/vender/other/20171129065027GB29094273975368658742.jpg',	'2017-11-29 11:48:00',	'换机油',	2,	1,	'2017-11-28 22:48:46');
+INSERT INTO `website_reservation` (`reservation_id`, `company_id`, `user_id`, `car_id`, `pay_type`, `bill`, `image_path`, `reservation_time`, `description`, `status`, `deleted`, `create_time`) VALUES
+(17,	10,	9,	7,	'0',	'20171125191057GB250825786293039',	'',	'2017-12-24 18:10:00',	NULL,	1,	1,	'2017-11-25 11:10:57'),
+(18,	10,	9,	7,	'0',	'20171125191637GB250859769184410',	'',	'2017-11-27 19:16:00',	NULL,	1,	1,	'2017-11-25 11:16:37'),
+(26,	10,	9,	7,	'',	'20171127140323GB2762603176989165',	'Image/upload/vender/other/20171128153803GB28546837317879127079.jpg',	'2017-11-27 14:03:00',	'的多',	3,	1,	'2017-11-27 06:03:23'),
+(33,	12,	11,	9,	'0',	'20171129064846GB2909326289130911',	'Image/upload/vender/other/20171129065027GB29094273975368658742.jpg',	'2017-11-29 11:48:00',	'换机油',	2,	1,	'2017-11-28 22:48:46'),
+(34,	14,	11,	9,	'0',	'20171129152239GB2940159359028411',	NULL,	'2017-11-29 15:24:00',	'保弟保养',	1,	1,	'2017-11-29 07:22:39'),
+(35,	12,	11,	9,	'0',	'20171129173230GB2947950566764011',	'Image/upload/vender/other/20171129173354GB29480342516316728324.jpg',	'2017-11-29 02:00:00',	'充气',	3,	1,	'2017-11-29 09:32:30'),
+(36,	14,	11,	9,	'0',	'20171201002632GC0159192706974911',	NULL,	'2017-12-01 00:27:00',	'换机油',	1,	1,	'2017-11-30 16:26:32'),
+(37,	12,	11,	9,	'0',	'20171201002852GC0159332297615211',	NULL,	'2017-12-01 00:29:00',	'保养',	1,	1,	'2017-11-30 16:28:52');
 
 DROP TABLE IF EXISTS `website_session_info`;
 CREATE TABLE `website_session_info` (
@@ -358,7 +364,8 @@ CREATE TABLE `website_sms` (
 INSERT INTO `website_sms` (`sms_id`, `tel`, `rand_number`, `sms_type`, `obj_type`, `send_time`, `return_time`, `return_type`, `create_time`) VALUES
 (38,	'13655552222',	184136,	1,	1,	1511691099,	1511691099,	1,	'2017-11-26 10:11:39'),
 (39,	'13322222222',	294128,	1,	2,	1512891234,	1511691234,	1,	'2017-11-26 10:13:54'),
-(42,	'13333333338',	783189,	1,	1,	1511797954,	1511797954,	1,	'2017-11-27 15:52:34');
+(42,	'13333333338',	783189,	1,	1,	1511797954,	1511797954,	1,	'2017-11-27 15:52:34'),
+(43,	'17600103602',	144932,	1,	2,	1512003850,	1512003850,	1,	'2017-11-30 01:04:10');
 
 DROP TABLE IF EXISTS `website_user`;
 CREATE TABLE `website_user` (
@@ -375,8 +382,8 @@ CREATE TABLE `website_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 INSERT INTO `website_user` (`user_id`, `tel`, `numbering`, `password`, `salt`, `deleted`, `last_login_time`, `create_time`) VALUES
-(9,	'13656480135',	'USER0000001',	'7bbc02ffe287faa492ddd4d14147a1a152e81ff1',	'tRCLMgLrU2',	1,	'2017-11-29 11:56:37',	'2017-11-25 10:49:51'),
-(11,	'13361076388',	'USER0000002',	'52dd19f468de055682e8dabd1ededad726b7f749',	'Ed2SyhVNfo',	1,	'2017-11-29 06:51:00',	'2017-11-25 11:41:31'),
+(9,	'13656480135',	'USER0000001',	'7bbc02ffe287faa492ddd4d14147a1a152e81ff1',	'tRCLMgLrU2',	1,	'2017-12-01 23:11:27',	'2017-11-25 10:49:51'),
+(11,	'13361076388',	'USER0000002',	'52dd19f468de055682e8dabd1ededad726b7f749',	'Ed2SyhVNfo',	1,	'2017-12-01 23:26:00',	'2017-11-25 11:41:31'),
 (13,	'18953138487',	'USER0000004',	'793d3d94f9fc5c516e47b7b8d3aa277a73173db2',	'Wg9cdlsBwg',	1,	'2017-11-27 14:25:04',	'2017-11-26 08:41:26'),
 (15,	'18866830116',	'USER0000005',	'9d1332b6ab4845c4e1de0975850f5635158f4000',	'maIIWSM84a',	1,	'2017-11-27 23:51:34',	'2017-11-27 15:27:36');
 
@@ -436,4 +443,4 @@ CREATE TABLE `website_website` (
 INSERT INTO `website_website` (`website_id`, `title`, `url`, `meta_title`, `meta_description`, `meta_keyword`, `website_logo`, `website_icon`, `status`, `deleted`, `update_time`, `create_time`) VALUES
 (2,	'文章社区',	'local.bb.com',	'文章社区',	'文章社区',	'文章社区',	'catalog/tuzi.jpg',	'',	1,	1,	'2017-06-06 06:58:11',	'2017-04-24 08:11:49');
 
--- 2017-11-29 04:00:02
+-- 2017-12-01 15:53:20
