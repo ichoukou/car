@@ -1,0 +1,94 @@
+
+[2017-12-02 17:59:25] ERROR Mess:<b>Warning</b>: Error: The 'company_details' Method Under Class 'Front\Controller\Reservation\Reservation' Not Found! in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Route.php</b> on line <b>66</b>
+
+[2017-12-02 18:50:34] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  )' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>130</b>
+
+[2017-12-02 18:52:52] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  )' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>130</b>
+
+[2017-12-02 19:03:51] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  )' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>130</b>
+
+[2017-12-02 19:03:58] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  )' at line 1 in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>130</b>
+
+[2017-12-02 19:24:10] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'key_no' in 'field list' in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Db\PdoMySQL.php</b> on line <b>130</b>
+
+[2017-12-02 20:41:27] ERROR Mess:<b>Warning</b>: Error: Template 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\View\Reservation\TrafficIndex.html' Not Found in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Loader.php</b> on line <b>40</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:27] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>91</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>
+
+[2017-12-02 23:40:52] ERROR Mess:<b>Warning</b>: Illegal offset type in isset or empty in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Controller\Inquire\Inquire.php</b> on line <b>92</b>

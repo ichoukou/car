@@ -24,6 +24,15 @@ https://jingyan.baidu.com/article/9c69d48fb9fd7b13c8024e6b.html 安装
 http://blog.csdn.net/luobin1984/article/details/8252350 使用
 
 
+下面3个账号密码：13361076388 aa666666
+查违章：https://www.jisuapi.com/api/illegal/
+加油：https://www.juhe.cn/docs/api/id/7/aid/18
+事故高发：https://www.juhe.cn/docs/api/id/91
+
+查企业信息：
+www.yjapi.cn
+帐号：13345100816 密码：aa666666
+
 服务器命令
 shutdown -r now 服务器重启
 

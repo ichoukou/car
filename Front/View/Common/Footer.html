@@ -18,6 +18,12 @@
                 <small>预约维修</small>
             </a>
         </li>
+        <li id="inquire">
+            <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Front/Inquire/Inquire'" data-toggle="tab">
+                <i class="nc-icon-outline shopping_delivery"></i>
+                <small>交通出行</small>
+            </a>
+        </li>
     </ul>
 </footer>
 
@@ -33,6 +39,9 @@
         } else if(arr[2] == 'Reservation'  && arr[1] == 'User') {
             $("#user_reservation").addClass('nc-icon-glyph');
             $("#user_reservation").addClass('active');
+        }  else if(arr[2] == 'Inquire') {
+            $("#inquire").addClass('nc-icon-glyph');
+            $("#inquire").addClass('active');
         } else {
             $("#user").addClass('nc-icon-glyph');
             $("#user").addClass('active');

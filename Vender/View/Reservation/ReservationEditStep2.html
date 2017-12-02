@@ -8,7 +8,7 @@
 </header>
 <main class="main">
     <br>
-    <form class="form-horizontal" id="form_info" enctype="multipart/form-data">
+    <form class="form-horizontal" action="<?php echo $entrance; ?>route=Vender/Reservation/Reservation/do_edit_reservation" id="form_info" enctype="multipart/form-data" method="post">
     <div class="container-fluid text-center">
         <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly>
         <section class="panel p-3" id="select_image">
@@ -40,6 +40,11 @@
 <script>
     var isUpload = false;
     $(document).ready(function(){
+        var info_error = '<?php echo $info_error; ?>';
+        if (!!info_error) {
+            alert(info_error);
+        }
+
         $("#select_image").off('click').on('click', function(){
             $('#upload_image').trigger('click');
         });

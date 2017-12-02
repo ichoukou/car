@@ -48,14 +48,18 @@
             <button type="button" onclick="submit_info()" class="btn btn-primary btn-block"><i class="nc-icon-outline ui-1_check-circle-08"></i> 保存修改</button>
         <?php else: ?>
             <input name="reservation_time" value="<?php echo $reservation_info['reservation_time']; ?>" class="btn btn-default btn-block" readonly/>
-            <?php if(!empty($reservation_info['image_path'])): ?>
-                <br/>
-                <section class="panel py-3 text-center text-muted">
-                    <!--<i class="nc-icon-outline ui-1_simple-add x2l"></i>-->
-                    <!--<h5>请上传维修照片</h5>-->
-                    <img class="img-responsive" src="<?php echo $reservation_info['image_path']; ?>"/>
-                </section>
-            <?php endif; ?>
+            <br/>
+            <section class="panel py-3 text-center text-muted">
+                <!--<i class="nc-icon-outline ui-1_simple-add x2l"></i>-->
+                <!--<h5>请上传维修照片</h5>-->
+                <?php if(!empty($reservation_info['image_path'])): ?>
+                <img class="img-responsive" src="<?php echo $reservation_info['image_path']; ?>"/>
+                <?php elseif(!empty($reservation_info['audio_path'])): ?>
+                <audio src="<?php echo $reservation_info['audio_path']; ?>" controls="controls"></audio>
+                <?php else: ?>
+                <video src="<?php echo $reservation_info['video_path']; ?>" controls="controls"></video>
+                <?php endif; ?>
+            </section>
         <?php endif; ?>
     </div>
 </main>

@@ -1,0 +1,127 @@
+<?php echo $header_page; ?>
+<body>
+<header class="navbar navbar-fixed-top">
+	<h4 class="navbar-text">企业详情</h4>
+	<a href="<?php echo $entrance; ?>route=Front/Reservation/Reservation" class="btn btn-link navbar-btn pull-left">返回</a>
+	<!--<a href="javascript:void(0)" class="btn btn-link navbar-btn pull-right"><i class="nc-icon-outline media-1_camera-20"></i> 拍照识别</a>-->
+	<!--<input type="button" class="btn btn-link navbar-btn pull-right" value="拍照">-->
+</header>
+<main class="main">
+	<div class="container-fluid">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<!--<div class="input-group">
+					<span class="input-group-addon"><label>内部KeyNo</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['key_no']; ?>" readonly>
+				</div>-->
+				<div class="input-group">
+					<span class="input-group-addon"><label>公司名称</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['name']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>注册号</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['no']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>登记机关</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['belong_org']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>法人名</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['oper_name']; ?>" readonly>
+				</div>
+				<!--<div class="input-group">
+					<span class="input-group-addon"><label>成立日期</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['start_date']; ?>" readonly>
+				</div>-->
+				<div class="input-group">
+					<span class="input-group-addon"><label>吊销日期</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['end_date']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>企业状态</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['status']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>省份</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['province']; ?>" readonly>
+				</div>
+				<!--<div class="input-group">
+					<span class="input-group-addon"><label>更新日期</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['updated_date']; ?>" readonly>
+				</div>-->
+				<div class="input-group">
+					<span class="input-group-addon"><label>社会统一信用代码</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['credit_code']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>注册资本</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['regist_capi']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>企业类型</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['econ_kind']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>地址</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['address']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>经营范围</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['scope']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>营业开始日期</label></span>
+					<input type="text" class="form-control" value="<?php if(!empty($info['term_start'])): ?><?php echo date('Y-m-d', strtotime($info['term_start'])); ?><?php endif; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>营业结束日期</label></span>
+					<input type="text" class="form-control" value="<?php if(!empty($info['team_end'])): ?><?php echo date('Y-m-d', strtotime($info['team_end'])); ?><?php endif; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>发照日期</label></span>
+					<input type="text" class="form-control" value="<?php if(!empty($info['check_date'])): ?><?php echo date('Y-m-d', strtotime($info['check_date'])); ?><?php endif; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>是否上市</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['is_on_stock']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>上市公司代码</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['stock_number']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>上市类型</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['stock_type']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>网站名称</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['website_name']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>网站地址</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['website_url']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>联系电话</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['phone_number']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>联系邮箱</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['email']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>经济大类</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['industry']; ?>" readonly>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>经济小类</label></span>
+					<input type="text" class="form-control" value="<?php echo $info['sub_industry']; ?>" readonly>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</main>
+<script src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Js/bootstrap.min.js"></script>
+<?php echo $footer_page; ?>

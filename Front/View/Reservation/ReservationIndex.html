@@ -17,7 +17,9 @@
                     <img class="img-responsive" src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/lactus.png" alt="">
                 </div>
                 <div class="col-xs-9 pl-0">
-                    <h4 class="list-group-item-heading"><?php echo $reservation['name']; ?></h4>
+                    <h4 class="list-group-item-heading">
+                        <a href="<?php echo $entrance; ?>route=Front/Reservation/Reservation/company_details&company_id=<?php echo $reservation['company_id']; ?><?php echo $url; ?>"><?php echo $reservation['name']; ?></a>
+                    </h4>
                     <h6>
                         <small class="evaluation">
                             <?php if(!empty($reservation['score']) and !empty($reservation['score_count'])): ?>

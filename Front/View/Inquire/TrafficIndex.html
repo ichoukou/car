@@ -1,0 +1,40 @@
+<?php echo $header_page; ?>
+<body>
+<header class="navbar navbar-fixed-top">
+    <h4 class="navbar-text">违章查询</h4>
+    <a href="<?php echo $entrance; ?>route=Front/Inquire/Inquire" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+</header>
+<main class="main">
+    <?php if(!empty($error_info)): ?>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon" style="color:red;"><label><?php echo $error_info; ?></label></span>
+        </div>
+    </div>
+    <?php else: ?>
+    <section class="panel panel-default border-horizontal-0">
+        <header class="panel-heading bg-transparent">
+            <h4 class="panel-title">标题</h4>
+        </header>
+        <div class="list-group small py-1">
+            <div class="list-group-item py-1 border-0">
+                油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称
+            </div>
+            <div class="list-group-item py-1 border-0">
+                <span class="pull-right text-muted">-38.40</span><span class="text-primary">●</span> 标题
+            </div>
+            <div class="list-group-item py-1 border-0">
+                <span class="pull-right text-muted">-822.05</span><span class="text-primary">●</span> 标题
+            </div>
+            <div class="list-group-item py-1 border-0">
+                <span class="pull-right text-muted">-948.00</span><span class="text-primary">●</span> 标题
+            </div>
+            <div class="list-group-item py-1 border-0">
+                <span class="pull-right text-muted">-12.00</span><span class="text-primary">●</span> 标题
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
+</main>
+
+<?php echo $footer_page; ?>

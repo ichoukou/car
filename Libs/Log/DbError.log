@@ -1,0 +1,30 @@
+
+[2017-12-02 18:50:34] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-12-02 18:50:34] ERROR Line:72
+[2017-12-02 18:50:34] ERROR Func:insert
+[2017-12-02 18:50:34] ERROR Sql :INSERT INTO website_reservation (  `company_id`,`key_no`,`name`,`no`,`belong_org`,`oper_name`,`start_date`,`end_date`,`status`,`province`,`updated_date`,`credit_code`,  `regist_capi`,`econ_kind`,`address`,`scope`,`term_start`,`team_end`,`check_date`,`org_no`,`is_on_stock`,`stock_number`,`stock_type`  `website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  ) VALUES 
+[2017-12-02 18:50:34] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  )' at line 1
+
+[2017-12-02 18:52:52] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-12-02 18:52:52] ERROR Line:72
+[2017-12-02 18:52:52] ERROR Func:insert
+[2017-12-02 18:52:52] ERROR Sql :INSERT INTO website_reservation (  `company_id`,`key_no`,`name`,`no`,`belong_org`,`oper_name`,`start_date`,`end_date`,`status`,`province`,`updated_date`,`credit_code`,  `regist_capi`,`econ_kind`,`address`,`scope`,`term_start`,`team_end`,`check_date`,`org_no`,`is_on_stock`,`stock_number`,`stock_type`  `website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  ) VALUES 
+[2017-12-02 18:52:52] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  )' at line 1
+
+[2017-12-02 19:03:51] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-12-02 19:03:51] ERROR Line:76
+[2017-12-02 19:03:51] ERROR Func:insert
+[2017-12-02 19:03:51] ERROR Sql :INSERT INTO website_reservation (  `company_id`,`key_no`,`name`,`no`,`belong_org`,`oper_name`,`start_date`,`end_date`,`status`,`province`,`updated_date`,`credit_code`,  `regist_capi`,`econ_kind`,`address`,`scope`,`term_start`,`team_end`,`check_date`,`org_no`,`is_on_stock`,`stock_number`,`stock_type`  `website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  ) VALUES 
+[2017-12-02 19:03:51] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  )' at line 1
+
+[2017-12-02 19:03:58] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-12-02 19:03:58] ERROR Line:76
+[2017-12-02 19:03:58] ERROR Func:insert
+[2017-12-02 19:03:58] ERROR Sql :INSERT INTO website_reservation (  `company_id`,`key_no`,`name`,`no`,`belong_org`,`oper_name`,`start_date`,`end_date`,`status`,`province`,`updated_date`,`credit_code`,  `regist_capi`,`econ_kind`,`address`,`scope`,`term_start`,`team_end`,`check_date`,`org_no`,`is_on_stock`,`stock_number`,`stock_type`  `website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  ) VALUES 
+[2017-12-02 19:03:58] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  )' at line 1
+
+[2017-12-02 19:24:10] ERROR File:F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Front\Model\Reservation\Reservation.php
+[2017-12-02 19:24:10] ERROR Line:72
+[2017-12-02 19:24:10] ERROR Func:insert
+[2017-12-02 19:24:10] ERROR Sql :INSERT INTO website_reservation (  `company_id`,`key_no`,`name`,`no`,`belong_org`,`oper_name`,`start_date`,`end_date`,`status`,`province`,`updated_date`,`credit_code`,  `regist_capi`,`econ_kind`,`address`,`scope`,`term_start`,`team_end`,`check_date`,`org_no`,`is_on_stock`,`stock_number`,`stock_type`,  `website_name`,`website_url`,`phone_number`,`email`,`industry`,`sub_industry`  ) VALUES 
+[2017-12-02 19:24:10] ERROR Mess:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'key_no' in 'field list'

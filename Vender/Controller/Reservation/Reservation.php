@@ -90,6 +90,11 @@ class Reservation extends Controller
 
         $this->data['reservation_info'] = $reservation_info;
 
+        if (!empty($_COOKIE['info_error'])) {
+            $this->data['info_error'] = $_COOKIE['info_error'];
+            setcookie('info_error', '', time()+60);
+        }
+
         $this->create_page();
 
         L::output(L::view('Reservation\\ReservationEditStep2', 'Vender', $this->data));
@@ -122,9 +127,7 @@ class Reservation extends Controller
         if ($post = $this->validate_edit()) {
             M::Vender('Reservation\\Reservation', 'editReservation', ['post'=>$post]);
 
-            setcookie('success_info', '修改预约信息成功', time() + 60);
-
-            exit(json_encode(['status'=>1, 'result'=>'修改预约信息成功'], JSON_UNESCAPED_UNICODE));
+            exit(header("location:{$this->data['entrance']}route=Vender/Reservation/Reservation"));
         }
     }
 
@@ -148,40 +151,65 @@ class Reservation extends Controller
             $post = C::hsc($_POST);
             $errors = [];
 
+            $header = "location:{$this->data['entrance']}route=Vender/Reservation/Reservation/edit_reservation_step2&reservation_id={$_POST['reservation_id']}";
             if (empty($post['reservation_id'])) {
-                $errors ['other_error'] = '缺少预约标识';
+                setcookie('info_error', '缺少结算标识', time()+60);
+                exit(header($header));
             }
 
-            if (empty($post['base64_file'])) {
-                $errors ['base64_file'] = '请上传维修结算图片';
+            if (empty($post['base64_file']) and empty($_FILES['audio']['name']) and empty($_FILES['video']['name'])) {
+                setcookie('info_error', '图片，视频，音频必须选择一项', time()+60);
+                exit(header($header));
             }
 
-            $base64_file = explode(',', $_POST['base64_file']);
-            if (empty($base64_file[1])) {
-                $errors ['base64_file'] = '图片编码错误';
-            }
+            $yCode = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+            $orderSn = $yCode[intval(date('Y')) - 2011] . strtoupper(dechex(date('m'))) . date('d') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));
 
-            if (empty($errors)) {
-                $ext_arr = explode(';', $base64_file[0]);
-                $ext = explode('/', $ext_arr[0]);
-                $ext = !empty($ext[1]) ? $ext[1] : 'jpeg';
-                $file = base64_decode($base64_file[1]);
+            if (!empty($_POST['base64_file'])) {
+                $base64_file = explode(',', $_POST['base64_file']);
 
-                $yCode = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-                $orderSn = $yCode[intval(date('Y')) - 2011] . strtoupper(dechex(date('m'))) . date('d') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));
-                $ext = 'jpg';
-                $file_name = date('YmdHis', time()) . $orderSn . mt_rand(100000, 999999) . '.' . $ext;
-                $file_path = 'Image' . DS . 'upload' . DS . 'vender' . DS. 'other' . DS;
-                $return = file_put_contents(ROOT_PATH . $file_path . $file_name, $file);
+                if (empty($base64_file[1])) {
+                    setcookie('info_error', '图片编码错误', time()+60);
+                    exit(header($header));
+                } else {
+                    $ext_arr = explode(';', $base64_file[0]);
+                    $ext = explode('/', $ext_arr[0]);
+                    $ext = !empty($ext[1]) ? $ext[1] : 'jpg';
+                    $file = base64_decode($base64_file[1]);
 
-                if (!$return) {
-                    $errors ['base64_file'] = '上传图片失败';
+                    $ext = 'jpg';
+                    $file_name = date('YmdHis', time()) . $orderSn . mt_rand(100000, 999999) . '.' . $ext;
+                    $file_path = 'Image' . DS . 'upload' . DS . 'vender' . DS. 'other' . DS;
+                    $return = file_put_contents(ROOT_PATH . $file_path . $file_name, $file);
+                    $_POST['base64_file'] = '';
+                    if (!$return) {
+                        setcookie('info_error', '上传图片失败', time()+60);
+                        exit(header($header));
+                    }
+                    $post['image_path'] = $file_path . $file_name;
                 }
+            } elseif (!empty($_FILES['audio']['name'])) {
+                $ext = explode('/' ,$_FILES['audio']['type']);
+
+                $file_name = date('YmdHis', time()) . $orderSn . mt_rand(100000, 999999) . '.mp3';
+                $file_path = 'Image' . DS . 'upload' . DS . 'vender' . DS. 'audio' . DS;
+                move_uploaded_file($_FILES['audio']['tmp_name'], ROOT_PATH . $file_path . $file_name);
+                $post['audio_path'] = $file_path . $file_name;
+                if ($ext[1] != 'mp3') {
+                    $amr = ROOT_PATH . $file_path . $file_name;
+                    $mp3 = ROOT_PATH . $file_path . 'new' . $file_name;
+
+                    $command = "/usr/local/bin/ffmpeg -i $amr $mp3";
+                    exec($command, $error);
+                    $post['audio_path'] = $file_path . 'new' . $file_name;
+                }
+            } else {
+                $ext = explode('.' ,$_FILES['video']['name']);
+                $file_name = date('YmdHis', time()) . $orderSn . mt_rand(100000, 999999) . '.' . $ext[1];
+                $file_path = 'Image' . DS . 'upload' . DS . 'vender' . DS. 'video' . DS;
+                move_uploaded_file($_FILES['video']['tmp_name'], ROOT_PATH . $file_path . $file_name);
+                $post['video_path'] = $file_path . $file_name;
             }
-
-            if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
-
-            $post['image_path'] = $file_path . $file_name;
 
             return $post;
         } else {
@@ -200,34 +228,34 @@ class Reservation extends Controller
             }
 
             if (empty($post['total_revenue'])) {
-                $errors ['total_revenue'] = '合计金额必须大于0';
+                $errors ['other_error'] = '合计金额必须大于0';
             }
 
-            if (empty($post['base64_file'])) {
-                $errors ['base64_file'] = '请上传维修结算图片';
-            }
-            var_Dump('aaaaaaaaaa');
-            exit;
-            $base64_file = explode(',', $_POST['base64_file']);
-            if (empty($base64_file[1])) {
-                $errors ['base64_file'] = '图片编码错误';
+            if (empty($post['base64_file']) and empty($_FILES['audio']['name']) and empty($_FILES['video']['name'])) {
+                $errors ['other_error'] = '图片，视频，音频必须选择一项';
             }
 
-            if (empty($errors)) {
-                $ext_arr = explode(';', $base64_file[0]);
-                $ext = explode('/', $ext_arr[0]);
-                $ext = !empty($ext[1]) ? $ext[1] : 'jpeg';
-                $file = base64_decode($base64_file[1]);
+            if (!empty($_POST['base64_file'])) {
+                $base64_file = explode(',', $_POST['base64_file']);
 
-                $yCode = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-                $orderSn = $yCode[intval(date('Y')) - 2011] . strtoupper(dechex(date('m'))) . date('d') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));
-                $ext = 'jpg';
-                $file_name = date('YmdHis', time()) . $orderSn . mt_rand(100000, 999999) . '.' . $ext;
-                $file_path = 'Image' . DS . 'upload' . DS . 'vender' . DS. 'other' . DS;
-                $return = file_put_contents(ROOT_PATH . $file_path . $file_name, $file);
+                if (empty($base64_file[1])) {
+                    $errors ['other_error'] = '图片编码错误';
+                } else {
+                    $ext_arr = explode(';', $base64_file[0]);
+                    $ext = explode('/', $ext_arr[0]);
+                    $ext = !empty($ext[1]) ? $ext[1] : 'jpeg';
+                    $file = base64_decode($base64_file[1]);
 
-                if (!$return) {
-                    $errors ['base64_file'] = '上传图片失败';
+                    $yCode = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+                    $orderSn = $yCode[intval(date('Y')) - 2011] . strtoupper(dechex(date('m'))) . date('d') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf('%02d', rand(0, 99));
+                    $ext = 'jpg';
+                    $file_name = date('YmdHis', time()) . $orderSn . mt_rand(100000, 999999) . '.' . $ext;
+                    $file_path = 'Image' . DS . 'upload' . DS . 'vender' . DS. 'other' . DS;
+                    $return = file_put_contents(ROOT_PATH . $file_path . $file_name, $file);
+
+                    if (!$return) {
+                        $errors ['other_error'] = '上传图片失败';
+                    }
                 }
             }
 

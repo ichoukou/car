@@ -52,6 +52,30 @@ class Reservation extends Controller
         L::output(L::view('Reservation\\ReservationIndex', 'Front', $this->data));
     }
 
+    public function company_details()
+    {
+        $this->is_login();
+
+        $param = C::make_filter($_GET);
+        $this->data['url'] = C::create_url($param, ['company_id']);
+
+        $company_id = (int)$_GET['company_id'];
+        if (empty($company_id))
+            exit(header("location:{$this->data['entrance']}route=Front/Reservation/Reservation{$this->data['url']}"));
+
+        $info = M::Front('Reservation\\Reservation', 'findReservationByCompanyId', ['company_id'=>$company_id]);
+        if (empty($info))
+            exit(header("location:{$this->data['entrance']}route=Front/Reservation/Reservation{$this->data['url']}"));
+
+        $detail_info = M::Front('Reservation\\Reservation', 'findCompanyDetailsByCompanyId', ['company_id'=>$company_id, 'name'=>$info['name']]);
+
+        $this->data['info'] = $detail_info;
+
+        $this->create_page();
+
+        L::output(L::view('Reservation\\CompanyDetail', 'Front', $this->data));
+    }
+
     public function add_reservation()
     {
         $this->is_login();

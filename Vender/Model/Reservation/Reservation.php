@@ -69,12 +69,14 @@ class Reservation extends DbFactory
     public function editReservation($data)
     {
         $update_sql = "UPDATE " . self::$dp . "reservation SET"
-            ." `image_path` = :image_path, `status` = :status WHERE `reservation_id` = :reservation_id AND `company_id` = :company_id ";
+            ." `image_path` = :image_path, `audio_path` = :audio_path, `video_path` = :video_path, `status` = :status WHERE `reservation_id` = :reservation_id AND `company_id` = :company_id ";
 
         self::$db->update(
             $update_sql,
             [
                 'image_path'     => $data['post']['image_path'],
+                'audio_path'     => $data['post']['audio_path'],
+                'video_path'     => $data['post']['video_path'],
                 'status'         => 2,
                 'reservation_id' => $data['post']['reservation_id'],
                 'company_id'     => $_SESSION['company_id']
