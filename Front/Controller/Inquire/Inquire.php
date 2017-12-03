@@ -116,10 +116,10 @@ class Inquire extends Controller
     public function ajax_get_accident()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $info =  WC::http_request("http://v.juhe.cn/wzpoints/query?key=75f3c3f91774a7ad6da7fb60be4f30ed&lat={$_POST['y']}&lon={$_POST['x']}&r=2000");
+            $info =  WC::http_request("http://v.juhe.cn/wzpoints/query?key=75f3c3f91774a7ad6da7fb60be4f30ed&lat={$_POST['y']}&lon={$_POST['x']}&pagesize=50&r=2000");
 
             if ($info['reason'] == '成功') {
-                exit(json_encode(['status'=>1, 'result'=>$info], JSON_UNESCAPED_UNICODE));
+                exit(json_encode(['status'=>1, 'result'=>$info['result']['list']], JSON_UNESCAPED_UNICODE));
             } else {
                 exit(json_encode(['status'=>-1, 'result'=>'没有找到相关数据'], JSON_UNESCAPED_UNICODE));
             }
