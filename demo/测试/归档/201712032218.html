@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Untitled Document</title>
+
+    <link href="assets/css/nucleo-outline.css" rel="stylesheet">
+    <link href="assets/css/nucleo-glyph.css" rel="stylesheet">
+    <link href="custom/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="navbar navbar-fixed-top">
+        <h4 class="navbar-text">标题</h4>
+        <a href="#" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+
+    </header>
+    <main class="main">
+        <br>
+        <div class="container-fluid text-center">
+
+            <section class="panel p-3">
+                <i class="nc-icon-glyph transportation_light-traffic x3 text-amber mb-1l"></i>
+                <h4 class="panel-title text-muted">查违章</h4>
+                <div class="text-muted" style="margin-top:-10px;">__</div>
+            </section>
+
+            <section class="panel p-3">
+                <i class="nc-icon-glyph envir_fuel x3 text-green mb-1l"></i>
+                <h4 class="panel-title text-muted">查油站</h4>
+                <div class="text-muted" style="margin-top:-10px;">__</div>
+            </section>
+
+            <section class="panel p-3">
+                <i class="nc-icon-glyph objects_cone x3 text-indigo mb-1l"></i>
+                <h4 class="panel-title text-muted">查事故高发地段</h4>
+                <div class="text-muted" style="margin-top:-10px;">__</div>
+            </section>
+
+        </div>
+    </main>
+    <footer class="tabbar">
+        <ul class="nav nav-justified">
+            <li>
+                <a href="#" data-toggle="tab">
+                    <i class="nc-icon-outline transportation_helmet"></i>
+                    <small>Home</small>
+                </a>
+            </li>
+            <li class="active">
+                <a href="#" data-toggle="tab">
+                    <i class="nc-icon-outline ui-2_time nc-icon-glyph"></i>
+                    <small>Home</small>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-toggle="tab">
+                    <i class="nc-icon-outline business_round-yen"></i>
+                    <small>Browsers</small>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" data-toggle="tab">
+                    <i class="nc-icon-outline transportation_car-front"></i>
+                    <small>Home</small>
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+
+            $('.tabbar a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+                $(this).children('i').addClass('nc-icon-glyph')
+            });
+            $('.tabbar a[data-toggle="tab"]').on('hidden.bs.tab', function (e) {
+
+                $(this).children('i').removeClass('nc-icon-glyph')
+            })
+        });
+    </script>
+</body>
+
+</html>

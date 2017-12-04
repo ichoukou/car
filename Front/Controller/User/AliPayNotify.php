@@ -11,6 +11,8 @@ class AliPayNotify
 
     public function __construct()
     {
+        header("Content-type: text/html; charset=utf-8");
+
         $_config = [];
         $config = [];
 

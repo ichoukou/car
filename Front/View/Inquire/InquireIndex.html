@@ -6,25 +6,26 @@
 </header>
 <main class="main">
     <br>
-        <div class="container-fluid text-center">
-            <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly>
-            <section class="panel p-3" onclick="window.location.href='<?php echo $entrance; ?>route=Front/Inquire/Inquire/traffic'">
-                <!--<i class="nc-icon-glyph media-1_lens-31 x3 text-deep-purple mb-1l"></i>-->
-                <h4 class="panel-title text-muted">查违章</h4>
-                <!--<div class="text-muted" style="margin-top:-10px;">__</div>-->
-                <input type="hidden" value="" name="base64_file" readonly/>
-            </section>
-            <section class="panel p-3" onclick="window.location.href='<?php echo $entrance; ?>route=Front/Inquire/Inquire/petrol_station'">
-                <!--<i class="nc-icon-glyph media-1_volume-97 x3 text-green mb-1l"></i>-->
-                <h4 class="panel-title text-muted">查油站</h4>
-                <!--<div class="text-muted" style="margin-top:-10px;">__</div>-->
-            </section>
-            <section class="panel p-3" onclick="window.location.href='<?php echo $entrance; ?>route=Front/Inquire/Inquire/accident'">
-                <!--<i class="nc-icon-glyph media-1_player x3 text-primary mb-1l"></i>-->
-                <h4 class="panel-title text-muted">查事故高发地段</h4>
-                <!--<div class="text-muted" style="margin-top:-10px;">__</div>-->
-            </section>
-        </div>
+    <div class="container-fluid text-center">
+        <input type="hidden" name="reservation_id" value="<?php echo $reservation_info['reservation_id']; ?>" readonly>
+        <section class="panel p-3" onclick="window.location.href='<?php echo $entrance; ?>route=Front/Inquire/Inquire/traffic'">
+            <i class="nc-icon-glyph transportation_light-traffic x3 text-amber mb-1l"></i>
+            <h4 class="panel-title text-muted">查违章</h4>
+            <div class="text-muted" style="margin-top:-10px;">__</div>
+        </section>
+
+        <section class="panel p-3" onclick="window.location.href='<?php echo $entrance; ?>route=Front/Inquire/Inquire/petrol_station'">
+            <i class="nc-icon-glyph envir_fuel x3 text-green mb-1l"></i>
+            <h4 class="panel-title text-muted">查油站</h4>
+            <div class="text-muted" style="margin-top:-10px;">__</div>
+        </section>
+
+        <section class="panel p-3" onclick="window.location.href='<?php echo $entrance; ?>route=Front/Inquire/Inquire/accident'">
+            <i class="nc-icon-glyph objects_cone x3 text-indigo mb-1l"></i>
+            <h4 class="panel-title text-muted">查事故高发地段</h4>
+            <div class="text-muted" style="margin-top:-10px;">__</div>
+        </section>
+    </div>
 </main>
 
 <?php echo $footer_page; ?>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * 支付宝异步通知类
@@ -11,6 +11,8 @@ class UnitedBackPayNotify
 
     public function __construct()
     {
+        header("Content-type: text/html; charset=utf-8");
+
         $_config = [];
 
         require_once '../../../Libs/Configs/Config.php';
@@ -36,26 +38,37 @@ class UnitedBackPayNotify
         $return['notify_time'] = date('Y-m-d H:i:s', time()); #消息返回时间
         $return['notify_type'] = 2; #异步通知
 
-        $bill_info = $this->findBillInfo($return, $db, $_config['DB']['true']);
-        $return['reservation_id'] = $bill_info['reservation_id'];
+        $sign = sha1($return['bill'].$return['trade_status'].$key);
 
-        if (empty($bill_info)){
-            $return['message'] = '没有匹配到对应的订单';
-        } elseif ($bill_info['status'] == 3) {
-            if($_GET['dealState'] == 'SUCCESS') {
-                $return['reservation_status'] = 4;
-                $this->editReservation($return, $db, $_config['DB']['true']);
-                $return['message'] = '订单状态修改为已付款，异步通知状态是交易支付成功';
+//        if ($sign != $_GET['dealSignure']) {
+            $bill_info = $this->findBillInfo($return, $db, $_config['DB']['true']);
+            $return['reservation_id'] = $bill_info['reservation_id'];
+
+            if (empty($bill_info)){
+                $return['message'] = '没有匹配到对应的订单';
+            } elseif ($bill_info['status'] == 3) {
+                if($_GET['dealState'] == 'SUCCESS') {
+                    $return['reservation_status'] = 4;
+                    $this->editReservation($return, $db, $_config['DB']['true']);
+                    $return['message'] = '订单状态修改为已付款，异步通知状态是交易支付成功';
+                } else {
+                    $return['message'] = '订单状态为未付款，但是异步通知并非是交易支付成功';
+                }
             } else {
-                $return['message'] = '订单状态为未付款，但是异步通知并非是交易支付成功';
+                $return['message'] = '订单状态并非为未支付';
             }
-        } else {
-            $return['message'] = '订单状态并非为未支付';
-        }
 
-        $this->addPaylog($return, $db, $_config['DB']['true']);
+            $this->addPaylog($return, $db, $_config['DB']['true']);
 
-        echo 'notify_success';
+            ob_clean();
+            echo 'notify_success';
+//        } else {
+//            ob_clean();
+//            echo 'error';
+//        }
+
+//        ob_clean();
+//        echo 'notify_success';
     }
 
     public function findBillInfo($data, $db, $_config)
