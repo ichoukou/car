@@ -30,7 +30,7 @@ class UnitedBackPayNotify
         }
 
         $return = [];
-        $key = 'eybEZxPXqp2dae62TYAfFVyB46rtOMBCj1iIlMnzjdTBXPUdYeUsPXvM2N1fibKwU5KstuIUMFw8BgDiOIMYjJxvFauWR3CYvjOD0zGzFKuezVHTmTtHZBORAZjyM3Yg';
+        $key = 'pLnxGN7NU0jdv0MaigQBWqeL0ARzjNYjG6gFj0SV45SXNcWCfn4JN1Fyemyq3bstXDDEnq2g5NMPR39A6C8uY25daU9z8FE0PMehCUboKQLC3iXIBzlhcyy6rUVUS8zH';
         $return['pay_type'] = '联行支付'; #支付类型
         $return['bill'] = htmlspecialchars($_GET['dealOrder']); #商户订单号
         $return['total_amount'] = (float)htmlspecialchars($_GET['dealFee']); #订单金额

@@ -1,0 +1,34 @@
+<?php echo $header_page; ?>
+<body>
+
+    <header class="navbar navbar-fixed-top">
+        <h4 class="navbar-text">经营分析</h4>
+        <a href="<?php echo $entrance; ?>route=Vender/Company/Company" class="btn btn-link navbar-btn pull-left">返回</a>
+    </header>
+    <main class="main">
+        <div class="list-group mt-1l">
+            <a class="list-group-item my-1 border-horizontal-0" href="#">
+                <small class="pull-right text-muted" style="margin-top:2px;">统计今日经营情况 <i class="nc-icon-outline arrows-1_minimal-right"></i></small>
+                <i class="nc-icon-outline files_paper mr-l text-primary"></i> 经营日报
+            </a>
+            <a class="list-group-item my-1 border-horizontal-0">
+                <small class="pull-right text-muted" style="margin-top:2px;">整体分析企业经营状况 <i class="nc-icon-outline arrows-1_minimal-right"></i></small>
+                <i class="nc-icon-outline business_chart-bar-33 mr-l text-primary"></i> 经营分析
+            </a>
+            <a class="list-group-item my-1 border-horizontal-0" href="#">
+                <small class="pull-right text-muted" style="margin-top:2px;">进场车辆维修明细 <i class="nc-icon-outline arrows-1_minimal-right"></i></small>
+                <i class="nc-icon-outline transportation_car-front mr-l text-primary"></i> 进场车辆
+            </a>
+            <a class="list-group-item my-1 border-horizontal-0" href="#">
+                <small class="pull-right text-muted" style="margin-top:2px;">查询当前在修工单情况 <i class="nc-icon-outline arrows-1_minimal-right"></i></small>
+                <i class="nc-icon-outline transportation_car mr-l text-primary"></i> 透明车间
+            </a>
+            <a class="list-group-item my-1 border-horizontal-0" href="#">
+                <small class="pull-right text-muted" style="margin-top:2px;">已经结算工单明细 <i class="nc-icon-outline arrows-1_minimal-right"></i></small>
+                <i class="nc-icon-outline shopping_receipt-list-43 mr-l text-primary"></i> 结算工单
+            </a>
+        </div>
+    </main>
+
+    <script src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Js/bootstrap.min.js"></script>
+<?php echo $footer_page; ?>

@@ -223,23 +223,23 @@ class Pay extends Controller
                 exit(header("refresh:3;url={$this->data['entrance']}route=Front/User/Pay/pay_select&reservation_id={$_POST['reservation_id']}"));
             }
 
-            $merId      = '699851';
+            $merId      = '562357';
             $dealOrder  = $info['bill'];
             $dealFee    = $info['total_revenue'];
             $dealReturn = HTTP_SERVER . $this->data['entrance'] . 'route=Front/User/Pay/united_back_pay_return';
             $dealNotify = HTTP_SERVER . 'Front/Controller/User/UnitedBackPayNotify.php';
             $dealName   = '支付宝用户车辆维修结算支付';
-            #$dealBank   = $_POST['bank'];
-            $dealBank   = 'TEST';
+            $dealBank   = $_POST['bank'];
+            #$dealBank   = 'TEST';
             $dealHeader = 'false';
-            $key        = 'eybEZxPXqp2dae62TYAfFVyB46rtOMBCj1iIlMnzjdTBXPUdYeUsPXvM2N1fibKwU5KstuIUMFw8BgDiOIMYjJxvFauWR3CYvjOD0zGzFKuezVHTmTtHZBORAZjyM3Yg';
+            $key        = 'pLnxGN7NU0jdv0MaigQBWqeL0ARzjNYjG6gFj0SV45SXNcWCfn4JN1Fyemyq3bstXDDEnq2g5NMPR39A6C8uY25daU9z8FE0PMehCUboKQLC3iXIBzlhcyy6rUVUS8zH';
             #2 生成 Data
             $Data       = $merId . $dealOrder . $dealFee . $dealReturn;
             #3 生成 dealSignure
             $dealSignure = sha1($Data.$key);
 
             //获得表单传过来的数据
-            $def_url  = '<form method="post" action="http://user.sdecpay.com/m/paygate.html"> ';
+            $def_url  = '<form method="post" action="https://user.ecpay.cn/m/paygate.html"> ';
             $def_url .= '	<input type = "hidden" id="merId"       name="merId"	    value="'.$merId.'">';
             $def_url .= '	<input type = "hidden" id="dealName"    name="dealName"     value="'.$dealName.'">';
             $def_url .= '	<input type = "hidden" id="dealOrder"   name="dealOrder" 	value="'.$dealOrder.'">';
@@ -252,7 +252,6 @@ class Pay extends Controller
             $def_url .= '	<input type=submit value="立即付款">';
             $def_url .= '</form>';
 
-
             $this->data['form'] = $def_url;
 
             #$this->create_page();
@@ -264,7 +263,7 @@ class Pay extends Controller
     public function united_back_pay_return()
     {
         $return = [];
-        $key = 'eybEZxPXqp2dae62TYAfFVyB46rtOMBCj1iIlMnzjdTBXPUdYeUsPXvM2N1fibKwU5KstuIUMFw8BgDiOIMYjJxvFauWR3CYvjOD0zGzFKuezVHTmTtHZBORAZjyM3Yg';
+        $key = 'pLnxGN7NU0jdv0MaigQBWqeL0ARzjNYjG6gFj0SV45SXNcWCfn4JN1Fyemyq3bstXDDEnq2g5NMPR39A6C8uY25daU9z8FE0PMehCUboKQLC3iXIBzlhcyy6rUVUS8zH';
         $return['pay_type'] = '联行支付'; #支付类型
         $return['bill'] = htmlspecialchars($_GET['dealOrder']); #商户订单号
         $return['total_amount'] = (float)htmlspecialchars($_GET['dealFee']); #订单金额

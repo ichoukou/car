@@ -1,0 +1,19 @@
+授权码：
+pLnxGN7NU0jdv0MaigQBWqeL0ARzjNYjG6gFj0SV45SXNcWCfn4JN1Fyemyq3bstXDDEnq2g5NMPR39A6C8uY25daU9z8FE0PMehCUboKQLC3iXIBzlhcyy6rUVUS8zH
+
+商户号：
+562357
+
+接入域名：
+https://user.ecpay.cn
+
+技术支持：蔡方
+电话：0531-86516110-8066
+QQ:892301659
+
+
+注意：
+正式对接只需要把授权码、商户号和域名改过来就可以了。
+修改域名：比如测试的支付域名为：http://user.sdecpay.com/paygate.html  需要改为：https://user.ecpay.cn/paygate.html  就是说后面调用的方法不变，只需要把http://user.sdecpay.com这部分修改成正式的（https://user.ecpay.cn）就可以。
+
+

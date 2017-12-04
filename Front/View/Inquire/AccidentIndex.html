@@ -24,18 +24,25 @@
                         titles['level'] = '事故频率';
                         titles['num'] = '事故次数';
 
-                        $.each(data.result, function(k, v){
+                        var petro_num = 1;
+                        $.each(data.result, function(k, v) {
                             var d = '';
-                            $.each(v, function(k1, v1){
+
+                            $.each(v, function(k1, v1) {
                                 if (!!titles[k1]) {
-                                    d += '<div class="list-group-item py-1 border-0">';
-                                    d += '<span class="pull-right text-muted">'+v1+'</span><span class="text-primary">●</span> '+titles[k1];
-                                    d += '</div>';
+                                    d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> '+v1+'</td>';
+                                    d += '<td class="text-right text-muted">'+titles[k1]+'</td></tr>';
                                 }
                             });
-                            var div_dom = '<div class="list-group small py-1"><header class="panel-heading bg-transparent"><h4 class="panel-title">事故</h4></header>' + d + '</div>';
 
+                            var div_dom = '<section class="panel panel-default border-0"><header class="panel-heading bg-transparent" data-toggle="collapse" data-target="#collapseExample"><small class="pull-right text-muted"><i class="nc-icon-outline arrows-1_minimal-down"></i></small><h4 class="panel-title">油站'+petro_num+'</h4></header><tbody>';
+                                div_dom += d;
+                                div_dom += '</tbody><div class="collapse" id="collapseExample"><div class="panel-body"><table class="table table-grid small mb-0"><tbody></tbody></table></div></div></section>';
+
+
+                            console.log(div_dom);
                             $("#content").append(div_dom);
+                            petro_num++;
                         });
                     }
                 });
@@ -61,37 +68,7 @@
     <h4 class="navbar-text">事故查询</h4>
     <a href="<?php echo $entrance; ?>route=Front/Inquire/Inquire" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
 </header>
-<main class="main">
-    <?php if(!empty($error_info)): ?>
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-addon" style="color:red;"><label><?php echo $error_info; ?></label></span>
-        </div>
-    </div>
-    <?php else: ?>
-    <section class="panel panel-default border-horizontal-0"  id="content">
-        <!--<header class="panel-heading bg-transparent">
-            <h4 class="panel-title">标题</h4>
-        </header>
-        <div class="list-group small py-1">
-            <div class="list-group-item py-1 border-0">
-                油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称
-            </div>
-            <div class="list-group-item py-1 border-0">
-                <span class="pull-right text-muted">-38.40</span><span class="text-primary">●</span> 标题
-            </div>
-            <div class="list-group-item py-1 border-0">
-                <span class="pull-right text-muted">-822.05</span><span class="text-primary">●</span> 标题
-            </div>
-            <div class="list-group-item py-1 border-0">
-                <span class="pull-right text-muted">-948.00</span><span class="text-primary">●</span> 标题
-            </div>
-            <div class="list-group-item py-1 border-0">
-                <span class="pull-right text-muted">-12.00</span><span class="text-primary">●</span> 标题
-            </div>
-        </div>-->
-    </section>
-    <?php endif; ?>
-</main>
+<main class="main" id="content">
 
+</main>
 <?php echo $footer_page; ?>
