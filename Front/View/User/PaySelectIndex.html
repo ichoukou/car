@@ -55,10 +55,24 @@
                     <small class="text-muted pull-right mt-l">借记卡</small>
                 </label>
                 <label class="btn btn-default btn-block text-left">
+                    <input type="radio" value="COMMW" id="option3">
+                    <img class="img-circle mr-l"
+                         src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/jtyh.png"
+                         width="36"> 中国交通银行
+                    <small class="text-muted pull-right mt-l">借记卡</small>
+                </label>
+                <label class="btn btn-default btn-block text-left">
                     <input type="radio" value="CEBW" id="option5">
                     <img class="img-circle mr-l"
                          src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/gdyh.png"
                          width="36"> 中国光大银行
+                    <small class="text-muted pull-right mt-l">借记卡</small>
+                </label>
+                <label class="btn btn-default btn-block text-left">
+                    <input type="radio" value="SPDBW" id="option3">
+                    <img class="img-circle mr-l"
+                         src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/pfyh.png"
+                         width="36"> 中国浦发银行
                     <small class="text-muted pull-right mt-l">借记卡</small>
                 </label>
                 <label class="btn btn-default btn-block text-left">
@@ -73,11 +87,12 @@
                     <img class="img-circle mr-l" src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/yzcxyh.png" width="36"> 中国邮政储蓄银行
                     <small class="text-muted pull-right mt-l">借记卡</small>
                 </label>-->
-                <!--<label class="btn btn-default btn-block text-left">
+                <label class="btn btn-default btn-block text-left">
+                    <input type="radio" value="WX" id="option1">
                     <input type="radio" id="option5">
                     <img class="img-circle mr-l" src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/wxzf.png" width="36"> 微信
                     <small class="text-muted pull-right mt-l">扫码支付</small>
-                </label>-->
+                </label>
                 <label class="btn btn-default btn-block text-left">
                     <input type="radio" value="ali" id="option5">
                     <img class="img-circle mr-l"
@@ -105,6 +120,12 @@
 
         if (!value || !onClick)
             return false;
+
+        if (value == 'WX') {
+            alert('暂不支持此支付方式。');
+            return false;
+        }
+
 
         $("input[name=bank]").attr('value', value);
 
