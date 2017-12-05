@@ -55,7 +55,7 @@ class Inquire extends Controller
 
         $car_info = M::Front('Inquire\\Inquire', 'findCarByUserId');
 
-        $this->data['info'] = WC::http_request("http://v.juhe.cn/wzpoints/query?key=75f3c3f91774a7ad6da7fb60be4f30ed&lat=31.335005&lon=120.617183&r=2000");
+        $this->data['info'] = WC::http_request("http://v.juhe.cn/wzpoints/query?key=8a61b60ac68ad4d3a3cad50272033d83&lat=31.335005&lon=120.617183&r=2000");
 
         if ($this->data['info']['reason'] != '成功') {
             $this->data['error_info'] = $this->data['info']['msg'];
@@ -74,39 +74,16 @@ class Inquire extends Controller
             $info = WC::http_request("http://apis.juhe.cn/oil/local?key=a871392258943f1a51239b8b9f5b556d&lon={$_POST['x']}&lat={$_POST['y']}&format=2&r=10000");
 
             if ($info['resultcode'] == 200) {
-//                $titles = [
-//                    'name' => '加油站名称',
-//                    'type' => '加油站类型',
-//                    'address' => '加油站地址',
-//                    'area' => '城市邮编',
-//                    'brandname' => '运营商类型',
-//                    'discount' => '是否打折加油站',
-//                    'distance' => '与当前位置的距离（米）',
-//                    'exhaust' => '尾气排放标准',
-//                    'fwlsmc' => '加油卡信息',
-//                    'price' => '省控基准油价',
-//                ];
+                $result = [];
+                foreach ($info['result']['data'] as $k=>$v) {
+                    foreach ($v as $k1=>$v1) {
+                        if ($k1 == 'name') $result[$k]['title'] = $v1;
+                        if ($k1 == 'price') $result[$k]['price'] = $v1;
+                        if ($k1 == 'address') $result[$k]['address'] = $v1;
+                    }
+                }
 
-//                $result = [];
-//                foreach ($info['result']['data'] as $k=>$v) {
-//                    foreach ($v as $k1=>$v1) {
-//                        if (!empty($titles[$k1])) {
-//                            if ($k1 == 'price') {
-//                                $petrol = [];
-//                                foreach ($v1 as $k2=>$v2) {
-//                                    #$petrol[$k2]['类型'] = $v2['type'];
-//                                    #$petrol[$k2]['价格'] = $v2['price'];
-//                                    $petrol[$k2][$v2['type']] = $v2['price'];
-//                                }
-//                                $result[$k][$titles[$k1]] = $petrol;
-//                            } else {
-//                                $result[$k][$titles[$k1]] = $v1;
-//                            }
-//                        }
-//                    }
-//                }
-
-                exit(json_encode(['status'=>1, 'result'=>$info['result']['data']], JSON_UNESCAPED_UNICODE));
+                exit(json_encode(['status'=>1, 'result'=>$result], JSON_UNESCAPED_UNICODE));
             } else {
                 exit(json_encode(['status'=>-1, 'result'=>'没有找到相关数据'], JSON_UNESCAPED_UNICODE));
             }
@@ -116,10 +93,33 @@ class Inquire extends Controller
     public function ajax_get_accident()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $info =  WC::http_request("http://v.juhe.cn/wzpoints/query?key=75f3c3f91774a7ad6da7fb60be4f30ed&lat={$_POST['y']}&lon={$_POST['x']}&pagesize=50&r=2000");
+            $info =  WC::http_request("http://v.juhe.cn/wzpoints/query?key=8a61b60ac68ad4d3a3cad50272033d83&lat={$_POST['y']}&lon={$_POST['x']}&pagesize=50&r=2000");
 
             if ($info['reason'] == '成功') {
-                exit(json_encode(['status'=>1, 'result'=>$info['result']['list']], JSON_UNESCAPED_UNICODE));
+                $result = [];
+                foreach ($info['result']['list'] as $k=>$v) {
+                    $titles = [
+                        'province' => '',
+                        'city' => '',
+                        'district' => '',
+                        'address' => '',
+                        'level' => '',
+                        'num' => '',
+                        'detail' => ''
+                    ];
+                    foreach ($v as $k1=>$v1) {
+                        if ($k1 == 'province') $titles['province'] = $v1;
+                        if ($k1 == 'city') $titles['city'] = $v1;
+                        if ($k1 == 'district') $titles['district'] = $v1;
+                        if ($k1 == 'address') $titles['address'] = $v1;
+                        if ($k1 == 'level') $titles['level'] = $v1;
+                        if ($k1 == 'num') $titles['num'] = $v1;
+                        if ($k1 == 'detail') $titles['detail'] = $v1;
+                    }
+                    $result[$k] = $titles;
+                }
+
+                exit(json_encode(['status'=>1, 'result'=>$result], JSON_UNESCAPED_UNICODE));
             } else {
                 exit(json_encode(['status'=>-1, 'result'=>'没有找到相关数据'], JSON_UNESCAPED_UNICODE));
             }

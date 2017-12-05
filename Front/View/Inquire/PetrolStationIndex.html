@@ -17,39 +17,25 @@
                 //alert('您的位置：'+r.point.lng+','+r.point.lat);
                 st.post('<?php echo $entrance; ?>route=Front/Inquire/Inquire/ajax_get_petrol_station', {x:r.point.lng,y:r.point.lat}, function(data){
                     if (data.result.length > 0) {
-                        var titles = [];
-                        titles['name'] = '加油站名称';
-                        titles['type'] = '加油站类型';
-                        titles['address'] = '加油站地址';
-                        titles['area'] = '城市邮编';
-                        titles['brandname'] = '运营商类型';
-                        titles['discount'] = '是否打折加油站';
-                        titles['distance'] = '与当前位置的距离（米）';
-                        titles['exhaust'] = '尾气排放标准';
-                        titles['fwlsmc'] = '加油卡信息';
-                        titles['price'] = '省控基准油价';
-
                         $.each(data.result, function(k, v){
                             var d = '';
-                            $.each(v, function(k1, v1){
-                                if (!!titles[k1]) {
-                                    if (k1 == 'price') {
-                                        d += '<div class="list-group-item py-1 border-0">';
-                                        d += '<span class="text-primary">●</span> '+titles[k1];
-                                        d += '</div>';
-                                        $.each(v1, function(k2 ,v2){
-                                            d += '<div class="list-group-item py-1 border-0">';
-                                            d += '<span class="pull-right text-muted">'+v2['price']+' 元</span> <span style="margin-left:30px;"></span>'+v2['type'];
-                                            d += '</div>';
-                                        });
+                            d += '<div class="col-xs-9 pl-0"><h4 class="list-group-item-heading">'+v.title+'</h4>';
+                            if (v.price.length > 0) {
+                                var p = '';
+                                $.each(v.price, function(i1, v1){
+                                    if (p == '') {
+                                        p += v1.type + ' : ' + v1.price;
                                     } else {
-                                        d += '<div class="list-group-item py-1 border-0">';
-                                        d += '<span class="pull-right text-muted">'+v1+'</span><span class="text-primary">●</span> '+titles[k1];
-                                        d += '</div>';
+                                        p += ' | ' + v1.type + ' : ' + v1.price;
+                                        d += '<h6><span class="text-muted"> '+p+' </span></h6>';
+                                        p = '';
                                     }
-                                }
-                            });
-                            var div_dom = '<div class="list-group small py-1"><header class="panel-heading bg-transparent"><h4 class="panel-title">油站</h4></header>' + d + '</div>';
+                                });
+                            }
+                            d += '<p>'+v.address+'</p>';
+                            d += '</div>';
+
+                            var div_dom = '<div class="row"><div class="col-xs-3"><img class="img-responsive" src="<?php echo $assets_server; ?>Front/Themes/<?php echo $themes_default; ?>/Img/petro.jpg" alt=""> </div>' + d + '</div><hr style="height:5px;background-color:#EAEAEA;">';
 
                             $("#content").append(div_dom);
                         });
@@ -78,28 +64,11 @@
     <a href="<?php echo $entrance; ?>route=Front/Inquire/Inquire" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
 </header>
 <main class="main">
-    <section class="panel panel-default border-horizontal-0" id="content">
-        <!--<header class="panel-heading bg-transparent">
-            <h4 class="panel-title">标题</h4>
-        </header>
-        <div class="list-group small py-1">
-            <div class="list-group-item py-1 border-0">
-                油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称油站名称
-            </div>
-            <div class="list-group-item py-1 border-0">
-                <span class="pull-right text-muted">-38.40</span><span class="text-primary">●</span> 标题
-            </div>
-            <div class="list-group-item py-1 border-0">
-                <span class="pull-right text-muted">-822.05</span><span class="text-primary">●</span> 标题
-            </div>
-            <div class="list-group-item py-1 border-0">
-                <span class="pull-right text-muted">-948.00</span><span class="text-primary">●</span> 标题
-            </div>
-            <div class="list-group-item py-1 border-0">
-                <span class="pull-right text-muted">-12.00</span><span class="text-primary">●</span> 标题
-            </div>
-        </div>-->
-    </section>
+    <div class="list-group">
+        <div class="list-group-item border-horizontal-0" id="content">
+
+        </div>
+    </div>
 </main>
 
 <?php echo $footer_page; ?>
