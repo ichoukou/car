@@ -99,20 +99,20 @@ class Inquire extends Controller
                 $result = [];
                 foreach ($info['result']['list'] as $k=>$v) {
                     $titles = [
-                        'province' => '',
-                        'city' => '',
-                        'district' => '',
+//                        'province' => '',
+//                        'city' => '',
+//                        'district' => '',
                         'address' => '',
-                        'level' => '',
+//                        'level' => '',
                         'num' => '',
                         'detail' => ''
                     ];
                     foreach ($v as $k1=>$v1) {
-                        if ($k1 == 'province') $titles['province'] = $v1;
-                        if ($k1 == 'city') $titles['city'] = $v1;
-                        if ($k1 == 'district') $titles['district'] = $v1;
+//                        if ($k1 == 'province') $titles['province'] = $v1;
+//                        if ($k1 == 'city') $titles['city'] = $v1;
+//                        if ($k1 == 'district') $titles['district'] = $v1;
                         if ($k1 == 'address') $titles['address'] = $v1;
-                        if ($k1 == 'level') $titles['level'] = $v1;
+//                        if ($k1 == 'level') $titles['level'] = $v1;
                         if ($k1 == 'num') $titles['num'] = $v1;
                         if ($k1 == 'detail') $titles['detail'] = $v1;
                     }

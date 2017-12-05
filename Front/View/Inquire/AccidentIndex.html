@@ -17,26 +17,34 @@
                 //alert('您的位置：'+r.point.lng+','+r.point.lat);
                 st.post('<?php echo $entrance; ?>route=Front/Inquire/Inquire/ajax_get_accident', {x:r.point.lng,y:r.point.lat}, function(data){
                     if (data.result.length > 0) {
+                        var i = 1;
                         $.each(data.result, function(k, v) {
                             var d = '';
-                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 省份</td>'
-                            d += '<td class="text-right text-muted">'+v.province+'</td></tr>';
-                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 城市</td>'
-                            d += '<td class="text-right text-muted">'+v.city+'</td></tr>';
-                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 街道</td>'
-                            d += '<td class="text-right text-muted">'+v.district+'</td></tr>';
-                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 地址</td>'
-                            d += '<td class="text-right text-muted">'+v.address+'</td></tr>';
-                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 事发级别</td>'
-                            d += '<td class="text-right text-muted">'+v.level+'</td></tr>';
+//                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 省份</td>'
+//                            d += '<td class="text-right text-muted">'+v.province+'</td></tr>';
+//                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 城市</td>'
+//                            d += '<td class="text-right text-muted">'+v.city+'</td></tr>';
+//                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 街道</td>'
+//                            d += '<td class="text-right text-muted">'+v.district+'</td></tr>';
+//                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 地址</td>'
+//                            d += '<td class="text-right text-muted">'+v.address+'</td></tr>';
+//                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 事发级别</td>'
+//                            d += '<td class="text-right text-muted">'+v.level+'</td></tr>';
+                            d += '<tr style="text-align:left;">'
+                            d += '<td class="text-right text-muted">'+v.detail+'</td></tr>';
                             d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 事发次数</td>'
                             d += '<td class="text-right text-muted">'+v.num+'</td></tr>';
-                            d += '<tr><td class="text-nowrap"><span class="text-primary">●</span> 详情描述</td>'
-                            d += '<td class="text-right text-muted">'+v.detail+'</td></tr>';
 
-                            var div_dom = '<section class="panel panel-default border-0"><header class="panel-heading bg-transparent" data-toggle="collapse" data-target="#collapseExample"><small class="pull-right text-muted"><i class="nc-icon-outline arrows-1_minimal-down"></i></small>';
+                            if (i == 1) {
+                                var cls = 'collapseExample';
+                            } else {
+                                var cls = 'collapseExample'+i;
+                            }
+                            i++;
+
+                            var div_dom = '<section class="panel panel-default border-0"><header class="panel-heading bg-transparent" data-toggle="collapse" data-target="#'+cls+'"><small class="pull-right text-muted"><i class="nc-icon-outline arrows-1_minimal-down"></i></small>';
                                 div_dom += '<h4 class="panel-title">'+v.address+'</h4></header>';
-                                div_dom += '<div class="collapse" id="collapseExample"><div class="panel-body"><table class="table table-grid small mb-0"><tbody>';
+                                div_dom += '<div class="collapse" id="'+cls+'"><div class="panel-body"><table class="table table-grid small mb-0"><tbody>';
                                 div_dom += d;
                                 div_dom += '</tbody> </table> </div> </div> </section>';
 
