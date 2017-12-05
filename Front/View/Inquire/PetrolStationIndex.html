@@ -24,9 +24,9 @@
                                 var p = '';
                                 $.each(v.price, function(i1, v1){
                                     if (p == '') {
-                                        p += v1.type + ' : ' + v1.price;
+                                        p += v1.type + ' : ' + v1.price + ' 元';
                                     } else {
-                                        p += ' | ' + v1.type + ' : ' + v1.price;
+                                        p += ' | ' + v1.type + ' : ' + v1.price + ' 元';
                                         d += '<h6><span class="text-muted"> '+p+' </span></h6>';
                                         p = '';
                                     }
