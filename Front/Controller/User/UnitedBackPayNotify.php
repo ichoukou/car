@@ -33,14 +33,15 @@ class UnitedBackPayNotify
         $key = 'pLnxGN7NU0jdv0MaigQBWqeL0ARzjNYjG6gFj0SV45SXNcWCfn4JN1Fyemyq3bstXDDEnq2g5NMPR39A6C8uY25daU9z8FE0PMehCUboKQLC3iXIBzlhcyy6rUVUS8zH';
         $return['pay_type'] = '联行支付'; #支付类型
         $return['bill'] = htmlspecialchars($_GET['dealOrder']); #商户订单号
-        $return['total_amount'] = (float)htmlspecialchars($_GET['dealFee']); #订单金额
+        $return['total_amount'] = (float)$_GET['dealFee']; #订单金额
         $return['trade_status'] = $_GET['dealState']; #订单支付状态
         $return['notify_time'] = date('Y-m-d H:i:s', time()); #消息返回时间
         $return['notify_type'] = 2; #异步通知
 
         $sign = sha1($return['bill'].$return['trade_status'].$key);
+        Libs\Core\Log::wirte_other_info('加密后的$sign：' . $sign . ' 参数的$sign：' . $_GET['dealSignure']);
 
-//        if ($sign != $_GET['dealSignure']) {
+        if ($sign == $_GET['dealSignure']) {
             $bill_info = $this->findBillInfo($return, $db, $_config['DB']['true']);
             $return['reservation_id'] = $bill_info['reservation_id'];
 
@@ -62,13 +63,11 @@ class UnitedBackPayNotify
 
             ob_clean();
             echo 'notify_success';
-//        } else {
-//            ob_clean();
-//            echo 'error';
-//        }
-
-//        ob_clean();
-//        echo 'notify_success';
+        } else {
+            Libs\Core\Log::wirte_other_info("订单：{$_GET['dealOrder']}的秘钥验证错误");
+            ob_clean();
+            echo 'error';
+        }
     }
 
     public function findBillInfo($data, $db, $_config)
