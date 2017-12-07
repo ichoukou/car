@@ -33,10 +33,13 @@
     $(function () {
         var request_get = st.request_get();
         var arr = request_get['route'].split('/');
+        console.log(arr[0]);
+        console.log(arr[1]);
+        console.log(arr[2]);
         if (arr[2] == 'Reservation' && arr[1] == 'Reservation') {
             $("#reservation").addClass('nc-icon-glyph');
             $("#reservation").addClass('active');
-        } else if(arr[2] == 'Reservation'  && arr[1] == 'User') {
+        } else if(arr[2] == 'Reservation' && arr[1] == 'User') {
             $("#user_reservation").addClass('nc-icon-glyph');
             $("#user_reservation").addClass('active');
         }  else if(arr[2] == 'Inquire') {
