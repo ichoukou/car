@@ -22,7 +22,7 @@ class Account extends DbFactory
 
         $password = sha1($salt . sha1($salt . sha1($data['post']['password'])));
 
-        $find_last_number_sql = "SELECT numbering FROM ".self::$dp."company ORDER BY company_id DESC LIMIT 1";
+        $find_last_number_sql = "SELECT numbering FROM ".self::$dp."company WHERE `numbering` is not null ORDER BY company_id DESC LIMIT 1";
         $last_return = self::$db->get_one($find_last_number_sql);
         if (empty($last_return)) {
             $numbering = "CPY0000001";

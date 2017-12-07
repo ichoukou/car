@@ -106,3 +106,31 @@
 [2017-12-05 00:17:20] ERROR Mess:<b>Warning</b>: Error: Template 'F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Vender\View\Company\AnalyzeIndex.html' Not Found in <b>F:\Workspace\Xampp-7.1.11-0-VC14\htdocs\workspace\car\Libs\Core\Loader.php</b> on line <b>40</b>
 
 [2017-12-07 06:26:48] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationEdit.html</b> on line <b>68</b>
+
+[2017-12-07 09:01:23] ERROR Mess:<b>Warning</b>: Use of undefined constant TURE - assumed 'TURE' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/Controller/ReceivingCar/ReceivingCar.php</b> on line <b>138</b>
+
+[2017-12-07 09:03:49] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:04:02] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:05:02] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:05:03] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:05:31] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:05:58] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:16:56] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:20:37] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:20:37] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:20:39] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:20:40] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:20:40] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-07 09:21:28] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'reservation_time' at row 1 in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>135</b>

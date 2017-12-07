@@ -6,6 +6,12 @@
                 <small>企业</small>
             </a>
         </li>
+        <li id="receiving_car">
+            <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/ReceivingCar/ReceivingCar'" data-toggle="tab">
+                <i class="nc-icon-outline ui-2_time nc-icon-glyph"></i>
+                <small>现场接车</small>
+            </a>
+        </li>
         <li id="reservation">
             <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/Reservation/Reservation'" data-toggle="tab">
                 <i class="nc-icon-outline ui-2_time nc-icon-glyph"></i>
@@ -36,6 +42,9 @@
         if (arr[2] == 'Reservation') {
             $("#reservation").addClass('nc-icon-glyph');
             $("#reservation").addClass('active');
+        } else if(arr[2] == 'ReceivingCar') {
+            $("#receiving_car").addClass('nc-icon-glyph');
+            $("#receiving_car").addClass('active');
         } else if(arr[2] == 'Settlement') {
             $("#settlement").addClass('nc-icon-glyph');
             $("#settlement").addClass('active');
