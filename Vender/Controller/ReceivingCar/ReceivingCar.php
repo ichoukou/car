@@ -1,7 +1,7 @@
 <?php
 namespace Vender\Controller\ReceivingCar;
 
-use Libs\Core\ControllerFront AS Controller;
+use Libs\Core\ControllerVender AS Controller;
 use Libs\Core\Model as M;
 use Libs\Core\Loader as L;
 use Libs\ExtendsClass\Common as C;
