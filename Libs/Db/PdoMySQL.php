@@ -93,27 +93,32 @@ class PdoMySQL
     {
         try{
             $_val = '';
-
-            if (count($data) > 0 and is_array($data) and !empty($sql)) {
+            $d = $data;
+            if (count($d) > 0 and is_array($d) and !empty($sql)) {
                 #多条插入
-                if (is_array(current($data))) {
-                    reset($data);
-                    while (list($key,$value) = each($data)) {
+                if (is_array(current($d))) {
+                    reset($d);
+
+                    foreach ($d as $value) {
                         if (!empty($_val)) $_val .= ',';
                         $_val .= '(';
-                        foreach ($value as $k=>$v) {
-                            if ($k > 0) $_val .= ',';
+                        $i = 0;
+                        foreach ($value as $v) {
+                            if ($i > 0) $_val .= ',';
                             $_val .= "{$this->db->quote(htmlspecialchars($v))}";
+                            $i++;
                         }
                         $_val .= ')';
                     }
                 } else {
-                    reset($data);
+                    reset($d);
 
                     $_val .= '(';
-                    while (list($key,$value) = each($data)) {
-                        if ($key > 0) $_val .= ',';
+                    $i = 0;
+                    foreach ($d as $value) {
+                        if ($i > 0) $_val .= ',';
                         $_val .= "{$this->db->quote(htmlspecialchars($value))}";
+                        $i++;
                     }
                     $_val .= ')';
                 }
