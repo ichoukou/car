@@ -1654,8 +1654,8 @@ table {
 }
 
 caption {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 10px 15px;
+    padding-bottom: 10px 15px;
     color: #777777;
     text-align: left;
 }
@@ -1676,7 +1676,7 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-    padding: 8px;
+    padding: 10px 15px;
     line-height: 1.5;
     vertical-align: top;
     border-top: 1px solid #dddddd;
@@ -7018,6 +7018,12 @@ label {
     content: none;
 }
 
+.table-grid th,
+.table-grid td {
+    border: 0 !important;
+    padding: 10px 0 !important;
+}
+
 .inverse-hover {
     color: #fff;
 }
@@ -8049,7 +8055,7 @@ a.text-danger:focus {
     bottom: 0;
     border-top: 1px solid #ddd;
     background-color: #F7F7FA;
-    z-index: 2014;
+    z-index: 1024;
 }
 
 .tabbar .nav > li > a {
