@@ -12,9 +12,30 @@ class ReceivingCar extends Controller
 {
     public function index()
     {
+        if (empty($_GET['act']) or $_GET['act'] != 'back') {
+            $_SESSION['receiving_car_info'] = '';
+        }
+
+        if (!empty($_SESSION['receiving_car_info'])) {
+            $this->data['car_info'] = json_decode($_SESSION['receiving_car_info'], TRUE);
+        }
+
         $this->create_page();
 
         L::output(L::view('ReceivingCar\\ReceivingCarIndex', 'Vender', $this->data));
+    }
+
+    public function view()
+    {
+        $car_info = json_decode($_SESSION['receiving_car_info'], TRUE);
+        if (empty($car_info))
+            exit(header("location:{$this->data['entrance']}route=Vender/ReceivingCar/ReceivingCar{$this->data['url']}"));
+
+        $this->data['car_info'] = $car_info;
+
+        $this->create_page();
+
+        L::output(L::view('ReceivingCar\\ReceivingCarView', 'Vender', $this->data));
     }
 
     public function register_success()
@@ -24,7 +45,16 @@ class ReceivingCar extends Controller
         L::output(L::view('ReceivingCar\\RegisterSuccess', 'Vender', $this->data));
     }
 
-    public function do_add_receiving_car()
+    public function do_add_receiving_car_step1()
+    {
+        if ($post = $this->validate()) {
+            $_SESSION['receiving_car_info'] = json_encode($post, JSON_UNESCAPED_UNICODE);
+
+            exit(json_encode(['status'=>1, 'result'=>'成功'], JSON_UNESCAPED_UNICODE));
+        }
+    }
+
+    public function do_add_receiving_car_step2()
     {
         if ($post = $this->validate_step2()) {
             $reservation_id = M::Vender('ReceivingCar\\ReceivingCar', 'receiving_car', ['post'=>$post]);
@@ -129,15 +159,11 @@ class ReceivingCar extends Controller
         }
     }
 
-    public function validate_step2()
+    public function validate()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $post = C::hsc($_POST);
             $errors = [];
-
-            if (empty($post['tel'])) {
-                $errors ['tel'] = '请填写手机号码';
-            }
 
             if (empty($post['plate_number'])) {
                 $errors ['plate_number'] = '请填写号牌号码';
@@ -179,27 +205,60 @@ class ReceivingCar extends Controller
                 $errors ['accepted_date'] = '请选择受理日期';
             }
 
-						/*
-            if (empty($post['file_number'])) {
-                $errors ['file_number'] = '请填写档案编号';
+            if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
+
+            return $post;
+        } else {
+            exit(json_encode(['status'=>-1, 'result'=>'注册失败'], JSON_UNESCAPED_UNICODE));
+        }
+    }
+
+    public function validate_step2()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $post = json_decode($_SESSION['receiving_car_info'], TRUE);
+
+            $errors = [];
+
+            if (empty($post['plate_number'])) {
+                $errors ['plate_number'] = '请填写号牌号码';
             }
 
-            if (empty($post['people_number'])) {
-                $errors ['people_number'] = '请填写核定人数';
+            if (empty($post['car_type'])) {
+                $errors ['car_type'] = '请填写车辆类型';
             }
 
-            if (empty($post['total_mass'])) {
-                $errors ['total_mass'] = '请填写总质量';
+            if (empty($post['owner'])) {
+                $errors ['owner'] = '请填写所有人';
             }
 
-            if (empty($post['dimension'])) {
-                $errors ['dimension'] = '请填写外观尺寸';
+            if (empty($post['address'])) {
+                $errors ['address'] = '请填写住址';
             }
 
-            if (empty($post['description'])) {
-                $errors ['description'] = '请填写备注';
+            if (empty($post['use_type'])) {
+                $errors ['use_type'] = '请填写使用性质';
             }
-            */
+
+            if (empty($post['brand_type'])) {
+                $errors ['brand_type'] = '请填写品牌型号';
+            }
+
+            if (empty($post['identification_number'])) {
+                $errors ['identification_number'] = '请填写车辆识别代号';
+            }
+
+            if (empty($post['engine_number'])) {
+                $errors ['engine_number'] = '请填写发动机号码';
+            }
+
+            if (!C::check_date_format($post['registration_date'])) {
+                $errors ['registration_date'] = '请选择注册日期';
+            }
+
+            if (!C::check_date_format($post['accepted_date'])) {
+                $errors ['accepted_date'] = '请选择受理日期';
+            }
 
             if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
 

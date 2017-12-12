@@ -34,3 +34,9 @@
 [2017-12-07 09:21:28] ERROR Func:insert
 [2017-12-07 09:21:28] ERROR Sql :INSERT INTO website_reservation (`company_id`,`user_id`,`car_id`,`bill`,`reservation_time`,`description`) VALUES 
 [2017-12-07 09:21:28] ERROR Mess:SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'reservation_time' at row 1
+
+[2017-12-12 09:25:27] ERROR File:/var/www/car/Vender/Model/ReceivingCar/ReceivingCar.php
+[2017-12-12 09:25:27] ERROR Line:47
+[2017-12-12 09:25:27] ERROR Func:insert
+[2017-12-12 09:25:27] ERROR Sql :INSERT INTO website_user_car  (`plate_number`,`car_type`,`owner`,`address`,  `use_type`,`brand_type`,`identification_number`,`engine_number`,  `registration_date`,`accepted_date`,`file_number`,`people_number`,  `total_mass`,`dimension`,`description`)  VALUES 
+[2017-12-12 09:25:27] ERROR Mess:SQLSTATE[HY000]: General error: 1364 Field 'user_id' doesn't have a default value
