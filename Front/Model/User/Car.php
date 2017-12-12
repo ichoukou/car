@@ -129,6 +129,11 @@ class Car extends DbFactory
             ]
         );
 
+        if (empty($car_info['identification_number'])) {
+            $sql = "SELECT car_id FROM ".self::$dp."user_car WHERE `car_id` = :car_id AND `car_id` = :car_id";
+            $car_info = self::$db->get_one($sql, ['car_id'=>$data['post']['car_id'], 'user_id'=>$_SESSION['user_id']]);
+        }
+
         return 1;
     }
 
