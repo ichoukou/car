@@ -9,7 +9,7 @@ class Settlement extends DbFactory
     {
         $sql = "SELECT mc.* FROM ".self::$dp."reservation AS r " .
             " LEFT JOIN ".self::$dp."maintenance_costs AS mc ON mc.reservation_id=r.reservation_id ".
-            " WHERE r.`deleted` = 1 AND (r.`status` = 3 OR r.`status` = 4) AND r.`company_id` = :company_id AND r.`reservation_id` = :reservation_id";
+            " WHERE r.`deleted` = 1 AND r.`status` >= 3 AND r.`company_id` = :company_id AND r.`reservation_id` = :reservation_id";
 
         return self::$db->get_one($sql, ['reservation_id'=>$data['reservation_id'],'company_id'=>$_SESSION['company_id']]);
     }
@@ -27,7 +27,7 @@ class Settlement extends DbFactory
         $sql = "SELECT r.*,u.tel,uc.plate_number,uc.car_type,uc.owner FROM ".self::$dp."reservation AS r " .
                " LEFT JOIN ".self::$dp."user AS u ON r.user_id = u.user_id ".
                " LEFT JOIN ".self::$dp."user_car AS uc ON r.car_id = uc.car_id ".
-               " WHERE r.`deleted` = 1 AND (r.`status` = 3 OR r.`status` = 4) AND r.`company_id` = :company_id ";
+               " WHERE r.`deleted` = 1 AND r.`status` >= 3 AND r.`company_id` = :company_id ";
 
 
 //        if (!empty($params['filter_create_time'])) {
@@ -53,7 +53,7 @@ class Settlement extends DbFactory
         $sql = "SELECT COUNT(*) AS total FROM ".self::$dp."reservation AS r " .
             " LEFT JOIN ".self::$dp."user AS u ON r.user_id = u.user_id ".
             " LEFT JOIN ".self::$dp."user_car AS uc ON r.car_id = uc.car_id ".
-            " WHERE r.`deleted` = 1 AND (r.`status` = 3 OR r.`status` = 4) AND r.`company_id` = :company_id ";
+            " WHERE r.`deleted` = 1 AND r.`status` >= 3 AND r.`company_id` = :company_id ";
 
 
 //        if (!empty($params['filter_create_time'])) {

@@ -1,17 +1,5 @@
 <footer class="tabbar">
     <ul class="nav nav-justified">
-        <li id="company">
-            <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/Company/Company'" data-toggle="tab">
-                <i class="nc-icon-outline shopping_delivery"></i>
-                <small>企业</small>
-            </a>
-        </li>
-        <li id="receiving_car">
-            <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/ReceivingCar/ReceivingCar'" data-toggle="tab">
-                <i class="nc-icon-outline ui-2_time nc-icon-glyph"></i>
-                <small>现场接车</small>
-            </a>
-        </li>
         <li id="reservation">
             <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/Reservation/Reservation'" data-toggle="tab">
                 <i class="nc-icon-outline ui-2_time nc-icon-glyph"></i>
@@ -24,10 +12,22 @@
                 <small>维修结算</small>
             </a>
         </li>
+        <li id="receiving_car">
+            <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/ReceivingCar/ReceivingCar'" data-toggle="tab">
+                <i class="nc-icon-outline ui-2_time nc-icon-glyph"></i>
+                <small>现场接车</small>
+            </a>
+        </li>
         <li>
             <a href="javascript:void(0)" onclick="window.location.href = 'http://www.maizhao.net/m'" data-toggle="tab">
                 <i class="nc-icon-outline business_round-yen"></i>
                 <small>优惠购物</small>
+            </a>
+        </li>
+        <li id="company">
+            <a href="javascript:void(0)" onclick="window.location.href = '<?php echo $entrance; ?>route=Vender/Company/Company'" data-toggle="tab">
+                <i class="nc-icon-outline shopping_delivery"></i>
+                <small>企业</small>
             </a>
         </li>
     </ul>
