@@ -57,5 +57,13 @@
         </div>
     </div>
 </main>
-
+<script>
+    $(document).ready(function(){
+        var car_type = "<?php echo $car_info['car_type']; ?>";
+        if (!car_type) {
+            alert('请先完善车辆信息。');
+            window.location.href = '<?php echo $entrance; ?>route=Front/User/Car';
+        }
+    });
+</script>
 <?php echo $footer_page; ?>

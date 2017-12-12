@@ -29,9 +29,14 @@
 					<span class="input-group-addon"><label>确认密码</label></span>
 					<input type="password" name="c_password" value="" class="form-control" placeholder="确认密码" maxlength="15">
 				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>号码号牌</label></span>
+					<input type="text" class="form-control" name="plate_number" value="" placeholder="号码号牌" maxlength="50">
+				</div>
 			</div>
 		</form>
-		<button type="button" class="btn btn-primary btn-block" onclick="submit_info()">下一步</button>
+		<!--<button type="button" class="btn btn-primary btn-block" onclick="submit_info()">下一步</button>-->
+		<button type="button" class="btn btn-primary btn-block" onclick="submit_info()">完成注册</button>
 	</div>
 </main>
 
@@ -53,7 +58,8 @@
             c_password : st.sha1($("input[name=c_password]").val()),
             real_password : $("input[name=password]").val(),
             tel : $("input[name=tel]").val(),
-            code : $("input[name=code]").val()
+            code : $("input[name=code]").val(),
+			plate_number : $("input[name=plate_number]").val()
         }
 
         st.post('<?php echo $entrance; ?>route=Front/Account/Account/do_add_register_step1', param, function(data){
@@ -66,7 +72,8 @@
 				alert(return_error);
                 is_click = false;
             } else {
-                window.location.href = "<?php echo $entrance; ?>route=Front/Account/Account/register_step2";
+//                window.location.href = "<?php echo $entrance; ?>route=Front/Account/Account/register_step2";
+                window.location.href = "<?php echo $entrance; ?>route=Front/Account/Account/login";
             }
         });
     }

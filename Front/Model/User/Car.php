@@ -12,6 +12,13 @@ class Car extends DbFactory
         return self::$db->get_one($sql, ['car_id'=>$data['car_id']]);
     }
 
+    public function findCarBUserId($data)
+    {
+        $sql = "SELECT * FROM ".self::$dp."user_car WHERE `user_id` = :user_id";
+
+        return self::$db->get_one($sql, ['user_id'=>$_SESSION['user_id']]);
+    }
+
     public function findCars($data)
     {
         $params = $data['params'];

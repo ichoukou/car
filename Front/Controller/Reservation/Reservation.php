@@ -39,6 +39,8 @@ class Reservation extends Controller
 
         $this->data = array_merge($this->data , $param);
 
+        $this->data['car_info'] = M::Front('User\\Car', 'findCarBUserId');
+
         $this->data['success_info'] = $_COOKIE['success_info'];
         setcookie('success_info', '', -1);
 

@@ -60,7 +60,7 @@ class Account extends Controller
 
         $this->create_page();
 
-        $this->data['register_user_info'] = json_decode($_SESSION['register_user_info'], TURE);
+        $this->data['register_user_info'] = json_decode($_SESSION['register_user_info'], TRUE);
 
         L::output(L::view('Account\\RegisterStep1', 'Front', $this->data));
     }
@@ -89,11 +89,26 @@ class Account extends Controller
         L::output(L::view('Account\\RegisterSuccess', 'Front', $this->data));
     }
 
+//    public function do_add_register_step1()
+//    {
+//        if ($post = $this->validate_default()) {
+//            $_SESSION['register_user_info'] = json_encode($post, JSON_UNESCAPED_UNICODE);
+//            exit(json_encode(['status'=>1, 'result'=>'next'], JSON_UNESCAPED_UNICODE));
+//        }
+//    }
+
     public function do_add_register_step1()
     {
         if ($post = $this->validate_default()) {
-            $_SESSION['register_user_info'] = json_encode($post, JSON_UNESCAPED_UNICODE);
-            exit(json_encode(['status'=>1, 'result'=>'next'], JSON_UNESCAPED_UNICODE));
+            $user_id = M::Front('Account\\Account', 'register', ['post'=>$post]);
+
+            if ($user_id > 0) {
+                M::Front('Account\\Account', 'delSms', ['tel'=>$post['tel']]);
+
+                exit(json_encode(['status'=>1, 'result'=>'注册成功'], JSON_UNESCAPED_UNICODE));
+            } else {
+                exit(json_encode(['status'=>-1, 'result'=>'电话号码被使用'], JSON_UNESCAPED_UNICODE));
+            }
         }
     }
 
@@ -106,7 +121,7 @@ class Account extends Controller
                 M::Front('Account\\Account', 'delSms', ['tel'=>$post['tel']]);
                 $_SESSION['register_user_info'] = '';
 
-                exit(json_encode(['status'=>1, 'result'=>'注册失败'], JSON_UNESCAPED_UNICODE));
+                exit(json_encode(['status'=>1, 'result'=>'注册成功'], JSON_UNESCAPED_UNICODE));
             } else {
                 exit(json_encode(['status'=>-1, 'result'=>'电话号码被使用'], JSON_UNESCAPED_UNICODE));
             }
@@ -287,6 +302,10 @@ class Account extends Controller
 
             if ($post['password'] != $post['c_password']) {
                 $errors ['c_password'] = '两次填写的密码不同';
+            }
+
+            if (empty($post['plate_number'])) {
+                $errors ['plate_number'] = '请填写号码号牌';
             }
 
             if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
