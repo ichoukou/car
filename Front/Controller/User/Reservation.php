@@ -75,7 +75,7 @@ class Reservation extends Controller
             $evaluation = '暂无评价';
         } else {
             $this->data['score'] = round($info['score'] / $info['score_count']);
-            if ($this->data['score'] > 5) {
+            if ($this->data['score'] >= 5) {
                 $evaluation = '非常好';
             } elseif($this->data['score'] >= 4 and $this->data['score'] < 5) {
                 $evaluation = '很好';
@@ -118,7 +118,7 @@ class Reservation extends Controller
             $evaluation = '暂无评价';
         } else {
             $this->data['score'] = round($info['score'] / $info['score_count']);
-            if ($this->data['score'] > 5) {
+            if ($this->data['score'] >= 5) {
                 $evaluation = '非常好';
             } elseif($this->data['score'] >= 4 and $this->data['score'] < 5) {
                 $evaluation = '很好';

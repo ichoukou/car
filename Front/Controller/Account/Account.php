@@ -304,9 +304,9 @@ class Account extends Controller
                 $errors ['c_password'] = '两次填写的密码不同';
             }
 
-            if (empty($post['plate_number'])) {
-                $errors ['plate_number'] = '请填写号码号牌';
-            }
+//            if (empty($post['plate_number'])) {
+//                $errors ['plate_number'] = '请填写号码号牌';
+//            }
 
             if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
 

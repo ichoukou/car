@@ -33,6 +33,10 @@
 					<span class="input-group-addon"><label>号码号牌</label></span>
 					<input type="text" class="form-control" name="plate_number" value="" placeholder="号码号牌" maxlength="50">
 				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><label>识别号码</label></span>
+					<input type="text" class="form-control" name="identification_number" value="" placeholder="识别号码" maxlength="50">
+				</div>
 			</div>
 		</form>
 		<!--<button type="button" class="btn btn-primary btn-block" onclick="submit_info()">下一步</button>-->
@@ -59,7 +63,8 @@
             real_password : $("input[name=password]").val(),
             tel : $("input[name=tel]").val(),
             code : $("input[name=code]").val(),
-			plate_number : $("input[name=plate_number]").val()
+			plate_number : $("input[name=plate_number]").val(),
+            identification_number : $("input[name=identification_number]").val()
         }
 
         st.post('<?php echo $entrance; ?>route=Front/Account/Account/do_add_register_step1', param, function(data){
