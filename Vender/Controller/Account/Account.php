@@ -63,7 +63,7 @@ class Account extends Controller
 
         $this->create_page();
 
-        $this->data['register_vender_info'] = json_decode($_SESSION['register_vender_info'], TURE);
+        $this->data['register_vender_info'] = json_decode($_SESSION['register_vender_info'], TRUE);
 
         L::output(L::view('Account\\RegisterStep1', 'Vender', $this->data));
     }
@@ -78,7 +78,7 @@ class Account extends Controller
 
         $this->create_page();
 
-        $this->data['register_vender_info'] = json_decode($_SESSION['register_vender_info'], TURE);
+        $this->data['register_vender_info'] = json_decode($_SESSION['register_vender_info'], TRUE);
         if (empty($this->data['register_vender_info']))
             exit(header("location:{$this->data['entrance']}route=Vender/Account/Account/register"));
 
@@ -349,7 +349,7 @@ class Account extends Controller
             $post = C::hsc($_POST);
             $errors = [];
 
-            $register_vender_info = json_decode($_SESSION['register_vender_info'], TURE);
+            $register_vender_info = json_decode($_SESSION['register_vender_info'], TRUE);
             if (empty($register_vender_info))
                 $errors ['other_error'] = '注册超时';
 
@@ -363,6 +363,10 @@ class Account extends Controller
 
             if (empty($post['address'])) {
                 $errors ['address'] = '请填写住所';
+            }
+
+            if (empty($post['company_address'])) {
+                $errors ['company_address'] = '请填写维修厂地址';
             }
 
             if (empty($post['legal_person'])) {

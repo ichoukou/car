@@ -305,6 +305,10 @@ class Company extends Controller
                 $errors ['address'] = '请填写住所';
             }
 
+            if (empty($post['company_address'])) {
+                $errors ['company_address'] = '请填写维修厂地址';
+            }
+
             if (empty($post['legal_person'])) {
                 $errors ['legal_person'] = '请填写法定代表人';
             }

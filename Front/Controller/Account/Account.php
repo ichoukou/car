@@ -75,7 +75,7 @@ class Account extends Controller
 
         $this->create_page();
 
-        $this->data['register_user_info'] = json_decode($_SESSION['register_user_info'], TURE);
+        $this->data['register_user_info'] = json_decode($_SESSION['register_user_info'], TRUE);
         if (empty($this->data['register_user_info']))
             exit(header("location:{$this->data['entrance']}route=Front/Account/Account/register"));
 
@@ -322,7 +322,7 @@ class Account extends Controller
             $post = C::hsc($_POST);
             $errors = [];
 
-            $register_user_info = json_decode($_SESSION['register_user_info'], TURE);
+            $register_user_info = json_decode($_SESSION['register_user_info'], TRUE);
             if (empty($register_user_info))
                 $errors ['other_error'] = '注册超时';
 

@@ -232,3 +232,11 @@
 [2017-12-12 05:48:49] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/Front/Controller/User/Pagination.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>55</b>
 
 [2017-12-12 05:48:57] ERROR Mess:<b>Warning</b>: Error: Class '/var/www/car/Front/Controller/User/Pagination.php' Not Found!  in <b>/var/www/car/Libs/Init.php</b> on line <b>55</b>
+
+[2017-12-12 05:58:39] ERROR Mess:<b>Warning</b>: Use of undefined constant TURE - assumed 'TURE' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/Controller/Account/Account.php</b> on line <b>66</b>
+
+[2017-12-12 05:58:41] ERROR Mess:<b>Warning</b>: Use of undefined constant TURE - assumed 'TURE' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/Controller/Account/Account.php</b> on line <b>66</b>
+
+[2017-12-12 05:58:42] ERROR Mess:<b>Warning</b>: Use of undefined constant TURE - assumed 'TURE' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/Controller/Account/Account.php</b> on line <b>66</b>
+
+[2017-12-12 05:59:41] ERROR Mess:<b>Warning</b>: Use of undefined constant TURE - assumed 'TURE' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/Controller/Account/Account.php</b> on line <b>81</b>

@@ -166,6 +166,7 @@ class Company extends DbFactory
             'name' => $data['post']['name'],
             'type' => $data['post']['type'],
             'address' => $data['post']['address'],
+            'company_address' => $data['post']['company_address'],
             'legal_person' => $data['post']['legal_person'],
             'registered_capital' => $data['post']['registered_capital'],
             'date_time' => $data['post']['date_time'],
@@ -184,7 +185,7 @@ class Company extends DbFactory
         }
 
         $update_sql = " UPDATE " . self::$dp . "company SET " .
-                      " name = :name, type = :type, address = :address, " .
+                      " name = :name, type = :type, address = :address, company_address = :company_address, " .
                       " legal_person = :legal_person, registered_capital = :registered_capital, " .
                       " date_time = :date_time, operating_period = :operating_period " .
                       " {$conditions_sql} WHERE `company_id` = :company_id";

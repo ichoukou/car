@@ -31,7 +31,7 @@ class Account extends DbFactory
             $numbering = "CPY" . sprintf("%07d", $num);
         }
 
-        $sql = "INSERT INTO ".self::$dp."company (`password`,`salt`,`pid`,`tel`,`name`,`numbering`,`type`,`address`,`legal_person`,`registered_capital`,`date_time`,`operating_period`) VALUES ";
+        $sql = "INSERT INTO ".self::$dp."company (`password`,`salt`,`pid`,`tel`,`name`,`numbering`,`type`,`address`,`company_address`,`legal_person`,`registered_capital`,`date_time`,`operating_period`) VALUES ";
         $company_id = self::$db->insert(
             $sql,
             [
@@ -43,6 +43,7 @@ class Account extends DbFactory
                 $numbering,
                 $data['post']['type'],
                 $data['post']['address'],
+                $data['post']['company_address'],
                 $data['post']['legal_person'],
                 $data['post']['registered_capital'],
                 $data['post']['date_time'],
