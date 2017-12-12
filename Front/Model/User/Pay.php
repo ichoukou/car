@@ -57,12 +57,13 @@ class Pay extends DbFactory
     {
         $conditions = [
             'status' => $data['reservation_status'],
+            'payment_time' => date('Y-m-d H:i:s', time()),
             'reservation_id' => $data['reservation_id'],
             'pay_type' => $data['pay_type'],
         ];
         #如果处于待支付状态 status = 3，则修改状态
         $update_sql = " UPDATE " . self::$dp . "reservation SET " .
-            " status = :status, pay_type = :pay_type " .
+            " status = :status, pay_type = :pay_type, payment_time = :payment_time " .
             " WHERE `reservation_id` = :reservation_id AND `status` = 3";
 
         self::$db->update($update_sql, $conditions);

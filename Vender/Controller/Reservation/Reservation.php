@@ -158,7 +158,8 @@ class Reservation extends Controller
             }
 
             if (empty($post['base64_file']) and empty($_FILES['audio']['name']) and empty($_FILES['video']['name'])) {
-                setcookie('info_error', '图片，视频，音频必须选择一项', time()+60);
+                #setcookie('info_error', '图片，视频，音频必须选择一项', time()+60);
+                setcookie('info_error', '图片，视频必须选择一项', time()+60);
                 exit(header($header));
             }
 
@@ -232,7 +233,8 @@ class Reservation extends Controller
             }
 
             if (empty($post['base64_file']) and empty($_FILES['audio']['name']) and empty($_FILES['video']['name'])) {
-                $errors ['other_error'] = '图片，视频，音频必须选择一项';
+                #$errors ['other_error'] = '图片，视频，音频必须选择一项';
+                $errors ['other_error'] = '图片，视频必须选择一项';
             }
 
             if (!empty($_POST['base64_file'])) {

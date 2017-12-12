@@ -134,3 +134,87 @@
 [2017-12-07 09:20:40] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
 
 [2017-12-07 09:21:28] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'reservation_time' at row 1 in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>135</b>
+
+[2017-12-12 01:58:25] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-12 01:58:36] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Vender/View/Reservation/ReservationEdit.html</b> on line <b>63</b>
+
+[2017-12-12 02:23:07] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:23:13] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:23:23] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:24:53] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:25:25] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:25:26] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:25:57] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:26:05] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:26:06] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:26:07] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:26:07] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:26:07] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>146</b>
+
+[2017-12-12 02:26:21] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>144</b>
+
+[2017-12-12 02:26:33] ERROR Mess:<b>Warning</b>: Use of undefined constant reservation_id - assumed 'reservation_id' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/EvaluationAdd.html</b> on line <b>144</b>
+
+[2017-12-12 02:27:37] ERROR Mess:<b>Warning</b>: Error: The 'view_reservation' Method Under Class 'Front\Controller\User\Evaluation' Not Found! in <b>/var/www/car/Libs/Core/Route.php</b> on line <b>66</b>
+
+[2017-12-12 02:28:51] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>68</b>
+
+[2017-12-12 02:28:51] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>68</b>
+
+[2017-12-12 02:28:52] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>68</b>
+
+[2017-12-12 02:33:24] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>48</b>
+
+[2017-12-12 02:33:25] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>48</b>
+
+[2017-12-12 02:35:02] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>104</b>
+
+[2017-12-12 02:35:03] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>104</b>
+
+[2017-12-12 02:35:33] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>51</b>
+
+[2017-12-12 02:35:34] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>51</b>
+
+[2017-12-12 02:41:33] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>67</b>
+
+[2017-12-12 02:41:44] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>67</b>
+
+[2017-12-12 02:41:45] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>67</b>
+
+[2017-12-12 02:41:45] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>67</b>
+
+[2017-12-12 02:42:19] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>63</b>
+
+[2017-12-12 02:42:20] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>63</b>
+
+[2017-12-12 02:42:20] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>63</b>
+
+[2017-12-12 02:42:21] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>63</b>
+
+[2017-12-12 02:42:30] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>63</b>
+
+[2017-12-12 02:42:31] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>63</b>
+
+[2017-12-12 02:42:31] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>63</b>
+
+[2017-12-12 02:42:31] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>63</b>
+
+[2017-12-12 02:42:32] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>63</b>
+
+[2017-12-12 02:43:05] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>80</b>
+
+[2017-12-12 02:43:06] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>80</b>
+
+[2017-12-12 02:43:06] ERROR Mess:<b>Warning</b>: Use of undefined constant status - assumed 'status' (this will throw an Error in a future version of PHP) in <b>/var/www/car/Front/View/User/ReservationView.html</b> on line <b>80</b>

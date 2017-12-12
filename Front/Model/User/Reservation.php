@@ -8,8 +8,9 @@ class Reservation extends DbFactory
 {
     public function findReservationByReservationId($data)
     {
-        $sql = "SELECT r.*,cpy.name,cpy.score,cpy.score_count,cpy.address,uc.plate_number,uc.brand_type,cpy.views FROM ".self::$dp."reservation AS r " .
+        $sql = "SELECT r.*,cpy.name,cpy.score,cpy.score_count,cpy.address,uc.plate_number,uc.brand_type,cpy.views,mc.image_path AS cost_image_path,mc.total_revenue FROM ".self::$dp."reservation AS r " .
             " LEFT JOIN ".self::$dp."company AS cpy ON cpy.company_id=r.company_id ".
+            " LEFT JOIN ".self::$dp."maintenance_costs AS mc ON mc.reservation_id=r.reservation_id ".
             #" LEFT JOIN ".self::$dp."user AS u ON r.user_id=u.user_id ".
             " LEFT JOIN ".self::$dp."user_car AS uc ON r.car_id=uc.car_id ".
             " WHERE r.`deleted` = 1 AND r.`user_id` = :user_id AND r.`reservation_id` = :reservation_id";

@@ -43,7 +43,14 @@
                                 <div class="text-muted"><?php echo $reservation['create_time']; ?></div>
                             </h6>
                             <p><?php echo $reservation['reservation_time']; ?></p>
-                            <a href="<?php echo $entrance; ?>route=Vender/Reservation/Settlement/edit_reservation&reservation_id=<?php echo $reservation['reservation_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l pull-right"><!--<i class="nc-icon-outline ui-2_time"></i>--> 详情</a>
+                            <a href="<?php echo $entrance; ?>route=Vender/Reservation/Settlement/edit_reservation&reservation_id=<?php echo $reservation['reservation_id']; ?><?php echo $url; ?>" class="btn btn-primary py-l pull-right">
+                                <!--<i class="nc-icon-outline ui-2_time"></i>-->
+                                <?php if($reservation['status'] == 3): ?>
+                                    未支付
+                                <?php else: ?>
+                                    已支付
+                                <?php endif; ?>
+                            </a>
                         </div>
                     </div>
                 <?php endforeach; ?>

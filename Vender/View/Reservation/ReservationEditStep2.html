@@ -17,11 +17,11 @@
             <div class="text-muted" style="margin-top:-10px;">__</div>
             <input type="hidden" value="" name="base64_file" readonly/>
         </section>
-        <section class="panel p-3" id="select_audio">
+        <!--<section class="panel p-3" id="select_audio">
             <i class="nc-icon-glyph media-1_volume-97 x3 text-green mb-1l"></i>
             <h4 class="panel-title text-muted">选择语音接车</h4>
             <div class="text-muted" style="margin-top:-10px;">__</div>
-        </section>
+        </section>-->
         <section class="panel p-3" id="select_video">
             <i class="nc-icon-glyph media-1_player x3 text-primary mb-1l"></i>
             <h4 class="panel-title text-muted">选择视频接车</h4>
@@ -101,7 +101,8 @@
     function submit_info()
     {
         if (!isUpload) {
-            alert('请在上传图片、音频、视频中选择一项，并等待完成');
+            //alert('请在上传图片、音频、视频中选择一项，并等待完成');
+            alert('请在上传图片、音频中选择一项，并等待完成');
             return false;
         }
 

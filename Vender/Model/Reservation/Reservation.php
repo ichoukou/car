@@ -111,12 +111,13 @@ class Reservation extends DbFactory
         );
 
         $update_sql = "UPDATE " . self::$dp . "reservation SET"
-            ." `status` = :status WHERE `reservation_id` = :reservation_id AND `company_id` = :company_id ";
+            ." `status` = :status,`settlement_time` = :settlement_time WHERE `reservation_id` = :reservation_id AND `company_id` = :company_id ";
 
         self::$db->update(
             $update_sql,
             [
                 'status'            => 3,
+                'settlement_time'   => date('Y-m-d H:i:s', time()),
                 'reservation_id'    => $data['post']['reservation_id'],
                 'company_id'        => $_SESSION['company_id']
             ]

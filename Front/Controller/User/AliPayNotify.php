@@ -119,12 +119,13 @@ class AliPayNotify
     {
         $conditions = [
             'status' => $data['reservation_status'],
+            'payment_time' => date('Y-m-d H:i:s', time()),
             'pay_type' => $data['pay_type'],
             'reservation_id' => $data['reservation_id']
         ];
         #如果处于待支付状态 status = 3，则修改状态
         $update_sql = " UPDATE " . $_config['db_prefix'] . "reservation SET " .
-            " status = :status, pay_type = :pay_type " .
+            " status = :status, pay_type = :pay_type, payment_time = :payment_time " .
             " WHERE `reservation_id` = :reservation_id AND `status` = 3";
 
         $db->update($update_sql, $conditions);

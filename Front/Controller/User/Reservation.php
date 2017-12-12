@@ -95,6 +95,49 @@ class Reservation extends Controller
         L::output(L::view('User\\ReservationEdit', 'Front', $this->data));
     }
 
+    public function view_reservation()
+    {
+        $this->is_login();
+
+        $param = C::make_filter($_GET);
+        $this->data['url'] = C::create_url($param, ['reservation_id']);
+
+        $reservation_id = (int)$_GET['reservation_id'];
+        if (empty($reservation_id))
+            exit(header("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}"));
+
+        $info = M::Front('User\\Reservation', 'findReservationByReservationId', ['reservation_id'=>$reservation_id]);
+        if (empty($info))
+            exit(header("location:{$this->data['entrance']}route=Front/User/Reservation{$this->data['url']}"));
+
+        #$this->data['settings'] = M::Front('Common\\Common', 'getSettings', ['module'=>'user']);
+
+        $this->data['reservation_info'] = $info;
+
+        if (empty($info['score']) and empty($info['score_count'])) {
+            $evaluation = '暂无评价';
+        } else {
+            $this->data['score'] = round($info['score'] / $info['score_count']);
+            if ($this->data['score'] > 5) {
+                $evaluation = '非常好';
+            } elseif($this->data['score'] >= 4 and $this->data['score'] < 5) {
+                $evaluation = '很好';
+            } elseif($this->data['score'] >= 3 and $this->data['score'] < 4) {
+                $evaluation = '良好';
+            } elseif($this->data['score'] >= 2 and $this->data['score'] < 3) {
+                $evaluation = '一般';
+            } else {
+                $evaluation = '不好';
+            }
+        }
+
+        $this->data['evaluation'] = $evaluation;
+
+        $this->create_page();
+
+        L::output(L::view('User\\ReservationView', 'Front', $this->data));
+    }
+
     public function do_edit_reservation()
     {
         if ($post = $this->validate_edit()) {
