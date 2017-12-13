@@ -82,14 +82,16 @@ class Account extends DbFactory
 
     public function register($data)
     {
+        $param = $data['post'];
+
         $find_sql = "SELECT * FROM ".self::$dp."user WHERE `tel`=:tel";
-        $return = self::$db->get_one($find_sql, ['tel'=>$data['post']['tel']]);
+        $return = self::$db->get_one($find_sql, ['tel'=>$param['tel']]);
         if (!empty($return) or $return === true)
             return -1;
 
         $salt = C::get_salt(10);
 
-        $password = sha1($salt . sha1($salt . sha1($data['post']['password'])));
+        $password = sha1($salt . sha1($salt . sha1($param['password'])));
 
         $find_last_number_sql = "SELECT numbering FROM ".self::$dp."user WHERE `numbering` is not null ORDER BY user_id DESC LIMIT 1";
         $last_return = self::$db->get_one($find_last_number_sql);
@@ -106,21 +108,67 @@ class Account extends DbFactory
             [
                 $password,
                 $salt,
-                $data['post']['tel'],
+                $param['tel'],
                 $numbering
             ]
         );
 
-        $sql = "INSERT INTO ".self::$dp."user_car " .
-            " (`user_id`,`plate_number`) " .
-            " VALUES ";
-        $car_id = self::$db->insert(
-            $sql,
-            [
-                $user_id,
-                $data['post']['plate_number']
-            ]
-        );
+        if (empty($param['plate_number']) and empty($param['identification_number'])) {
+            return $user_id;
+        } elseif (!empty($param['plate_number']) and !empty($param['identification_number'])) {
+            $sql = "SELECT * FROM ".self::$dp."user_car WHERE `plate_number` = :plate_number AND `identification_number` = :identification_number AND `user_id` = 0 ";
+            $car_info = self::$db->get_one($sql, ['plate_number'=>$param['plate_number'],'identification_number'=>$param['identification_number']]);
+        } elseif(!empty($param['plate_number'])) {
+            $sql = "SELECT * FROM ".self::$dp."user_car WHERE `plate_number` = :plate_number AND `user_id` = 0 ";
+            $car_info = self::$db->get_one($sql, ['plate_number'=>$param['plate_number']]);
+        } elseif(!empty($param['identification_number'])) {
+            $sql = "SELECT * FROM ".self::$dp."user_car WHERE `identification_number` = :identification_number AND `user_id` = 0 ";
+            $car_info = self::$db->get_one($sql, ['identification_number'=>$param['identification_number']]);
+        }
+
+        if (empty($car_info)) {
+            $sql = "INSERT INTO ".self::$dp."user_car " .
+                " (`user_id`,`plate_number`,`identification_number`) " .
+                " VALUES ";
+
+            $car_id = self::$db->insert(
+                $sql,
+                [
+                    $user_id,
+                    $param['plate_number'],
+                    $param['identification_number']
+                ]
+            );
+        } else {
+            $update_sql = "UPDATE " . self::$dp . "user_car SET " .
+                          " `user_id` = :user_id " .
+                          " WHERE `car_id` = :car_id";
+            self::$db->update(
+                $update_sql,
+                [
+                    'user_id' => $user_id,
+                    'car_id' => $car_info['car_id']
+                ]
+            );
+
+            $sql = "SELECT * FROM ".self::$dp."reservation WHERE `car_id` = :car_id";
+            $reservation_info =  self::$db->get_all($sql, ['car_id'=>$car_info['car_id']]);
+
+            if (!empty($reservation_info)) {
+                foreach ($reservation_info as $r) {
+                    $update_sql1 = "UPDATE " . self::$dp . "reservation SET " .
+                        " `user_id` = :user_id " .
+                        " WHERE `car_id` = :car_id AND `user_id` = 0 ";
+                    self::$db->update(
+                        $update_sql1,
+                        [
+                            'user_id' => $user_id,
+                            'car_id' => $car_info['car_id']
+                        ]
+                    );
+                }
+            }
+        }
 
         return $user_id;
     }

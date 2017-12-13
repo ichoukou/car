@@ -246,3 +246,5 @@
 [2017-12-12 07:19:39] ERROR Mess:<b>Warning</b>: PDO::__construct(): MySQL server has gone away in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>24</b>
 
 [2017-12-12 09:25:27] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[HY000]: General error: 1364 Field 'user_id' doesn't have a default value in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>135</b>
+
+[2017-12-13 02:44:06] ERROR Mess:<b>Fatal Error</b>: Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '== 0' at line 1 in <b>/var/www/car/Libs/Db/PdoMySQL.php</b> on line <b>254</b>
