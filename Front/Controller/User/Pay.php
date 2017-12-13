@@ -206,6 +206,21 @@ class Pay extends Controller
                 exit(header("refresh:3;url={$this->data['entrance']}route=Front/User/Reservation"));
             }
 
+            if ($_POST['bank'] == 'MONEY') {
+                $data['pay_type'] = '现金支付'; #支付类型
+                $data['bill'] = $info['bill']; #商户订单号
+                $data['total_amount'] = $info['total_revenue']; #订单金额
+                $data['trade_status'] = 'SUCCESS'; #订单支付状态
+                $data['notify_time'] = date('Y-m-d H:i:s', time()); #消息返回时间
+                $data['notify_type'] = 1; #同步通知
+                $data['message'] = '交易成功';
+                $data['reservation_status'] = 4;
+                $data['reservation_id'] = $info['reservation_id'];
+                M::Front('User\\Pay', 'addPaylog', $data);
+                M::Front('User\\Pay', 'editReservation', $data);
+                exit(header("location:{$this->data['entrance']}route=Front/User/Pay/pay_success&reservation_id={$info['reservation_id']}"));
+            }
+
             $bank_arr = [
                 'BOCW',     #中国银行wap
                 'CCBW',     #建设银行wap信用卡
@@ -215,7 +230,7 @@ class Pay extends Controller
                 'COMMW',    #交通银行wap
                 'CEBW',     #光大银行wap
                 'SPDBW',    #浦发银行wap
-                'ABCW',     #农业银行wap
+                'ABCW'      #农业银行wap
             ];
 
             if (!in_array($_POST['bank'], $bank_arr)) {

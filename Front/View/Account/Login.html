@@ -9,6 +9,22 @@
 		bottom: 0;
 		z-index: -1;
 	}
+
+	html,
+	body {
+		height: 100%;
+	}
+
+	.main {
+		position: relative;
+		height: 92%;
+		min-height: auto !important;
+	}
+
+	.navbar-fixed-bottom {
+		position: relative;
+		z-index: 99999;
+	}
 </style>
 
 <div id="js-particles"></div>
@@ -37,9 +53,8 @@
 		</form>
 	</div>
 </main>
-<footer class="navbar navbar-fixed-bottom text-center" style="opacity:.65">
+<footer class="navbar navbar-fixed-bottom text-center" style="opacity:.65; ">
 	<small>© 2015-2017 All Rights Reserved.派乐特 版权所有</small>
-	
 </footer>
 <script src="https://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
 <script>

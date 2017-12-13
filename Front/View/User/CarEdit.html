@@ -51,8 +51,8 @@
 <header class="navbar navbar-fixed-top">
     <h4 class="navbar-text">车辆信息</h4>
     <a href="<?php echo $entrance; ?>route=Front/User/Car" class="btn btn-link navbar-btn pull-left">返回</a>
-    <a href="<?php echo $entrance; ?>route=Front/User/Inspection&car_id=<?php echo $car_info['car_id']; ?>" class="btn btn-link navbar-btn"> 车辆安检</a>
-    <input type="button" onclick="$('#upload_image').trigger('click')" capture="camera" accept="image/*" name="logo" id="camera_file" class="btn btn-link navbar-btn pull-right" value="拍照">
+    <input type="button" onclick="$('#upload_image').trigger('click')" capture="camera" accept="image/*" name="logo" id="camera_file" class="btn btn-link navbar-btn pull-right" style="" value="拍照">
+    <a href="<?php echo $entrance; ?>route=Front/User/Inspection&car_id=<?php echo $car_info['car_id']; ?>" class="btn btn-link navbar-btn pull-right"> 车辆安检</a>
 </header>
 <main class="main">
     <div class="container-fluid">

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Untitled Document</title>
+
+    <link href="assets/css/nucleo-outline.css" rel="stylesheet">
+    <link href="assets/css/nucleo-glyph.css" rel="stylesheet">
+    <link href="custom/custom.css" rel="stylesheet">
+    <style>
+        .btn.btn-default {
+            width: 50%;
+            float: left;
+        }
+        
+        .btn.btn-default:hover {
+            background-color: #fff;
+        }
+        
+        .btn.btn-default.active {
+            box-shadow: none;
+            border-color: #ff9800;
+            background-color: #fff;
+            color: #ff9800;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar navbar-fixed-top">
+        <h4 class="navbar-text">标题</h4>
+        <a href="#" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+
+    </header>
+    <main class="main">
+        <br>
+        <div class="container-fluid text-center">
+            <div data-toggle="buttons">
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option1">
+                    <img class="img-circle mr-l" src="assets/img/gsyh.png" width="36">
+                    <h5 class="mb-0">中国工商银行</h5>
+                    <small class="text-muted">贷／借记卡</small>
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option2">
+                    <img class="img-circle mr-l" src="assets/img/jsyh.png" width="36">
+                    <h5 class="mb-0">中国建设银行</h5>
+                    <small class="text-muted">借记卡</small>
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option3">
+                    <img class="img-circle mr-l" src="assets/img/nyyh.png" width="36">
+                    <h5 class="mb-0">中国农业银行</h5>
+                    <small class="text-muted">借记卡</small>
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option4">
+                    <img class="img-circle mr-l" src="assets/img/zgyh.png" width="36">
+                    <h5 class="mb-0">中国银行</h5>
+                    <small class="text-muted">借记卡</small>
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option5">
+                    <img class="img-circle mr-l" src="assets/img/zsyh.png" width="36">
+                    <h5 class="mb-0">招商银行</h5>
+                    <small class="text-muted">借记卡</small>
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option5">
+                    <img class="img-circle mr-l" src="assets/img/yzcxyh.png" width="36">
+                    <h5 class="mb-0">中国邮政储蓄银行</h5>
+                    <small class="text-muted">借记卡</small>
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option5">
+                    <img class="img-circle mr-l" src="assets/img/gdyh.png" width="36">
+                    <h5 class="mb-0">中国光大银行</h5>
+                    <small class="text-muted">借记卡</small>
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option5">
+                    <img class="img-circle mr-l" src="assets/img/wxzf.png" width="36">
+                    <h5 class="mb-0">微信</h5>
+                    <small class="text-muted">扫码支付</small>
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option5">
+                    <img class="img-circle mr-l" src="assets/img/zfbzf.png" width="36">
+                    <h5 class="mb-0">支付宝</h5>
+                    <small class="text-muted">扫码支付</small>
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option5">
+                    <img class="img-circle mr-l" src="assets/img/xjzf.png" width="36">
+                    <h5 class="mb-0">现金支付</h5>
+                    <small class="text-muted">现金</small>
+                </label>
+
+            </div>
+
+        </div>
+        <br>
+        <div class="container-fluid">
+            <button type="submit" class="btn btn-primary btn-block">去支付 <i class="nc-icon-outline arrows-3_circle-simple-right"></i></button>
+        </div>
+        <br>
+        <br>
+    </main>
+    <footer class="tabbar">
+        <ul class="nav nav-justified">
+            <li class="active">
+                <a href="#" data-toggle="tab">
+                    <i class="nc-icon-outline ui-2_time nc-icon-glyph"></i>
+                    <small>在线预约</small>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-toggle="tab">
+                    <i class="nc-icon-outline business_round-yen"></i>
+                    <small>维修结算</small>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-toggle="tab">
+                    <i class="nc-icon-outline shopping_delivery"></i>
+                    <small>我的车辆</small>
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+
+            $('.tabbar a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+                $(this).children('i').addClass('nc-icon-glyph')
+            });
+            $('.tabbar a[data-toggle="tab"]').on('hidden.bs.tab', function (e) {
+
+                $(this).children('i').removeClass('nc-icon-glyph')
+            })
+        });
+    </script>
+</body>
+
+</html>

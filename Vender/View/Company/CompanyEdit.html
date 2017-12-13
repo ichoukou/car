@@ -36,10 +36,12 @@
                     <span class="input-group-addon"><label>住所</label></span>
                     <input type="text" class="form-control" name="address" value="<?php echo $company_info['address']; ?>" placeholder="住所" maxlength="100">
                 </div>
-                <button type="button" class="btn btn-primary btn-block" onclick="get_address()">获取汽修厂地址</button>
                 <div class="input-group">
                     <span class="input-group-addon"><label>维修厂地址</label></span>
-                    <input type="text" class="form-control" name="company_address" value="<?php echo $company_info['company_address']; ?>" placeholder="住所" maxlength="100">
+                    <input type="text" class="form-control" name="company_address" value="<?php echo $company_info['company_address']; ?>" placeholder="点击按钮获取当前位置" maxlength="100">
+                    <span class="input-group-btn">
+						<button class="btn btn-link text-link" type="button" onclick="get_address()">当前的位置</button>
+					</span>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><label>法定代表人</label></span>
