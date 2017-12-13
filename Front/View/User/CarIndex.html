@@ -3,6 +3,9 @@
 <header class="navbar navbar-fixed-top">
     <h4 class="navbar-text">我的车辆</h4>
     <a href="<?php echo $entrance; ?>route=Front/User/User" class="btn btn-link navbar-btn pull-left"><i class="nc-icon-outline arrows-1_minimal-left"></i> 返回</a>
+    <?php if (empty($cars)) : ?>
+        <a href="<?php echo $entrance; ?>route=Front/User/Car/add_car" class="btn btn-link navbar-btn pull-right"> 添加车辆</a>
+    <?php endif; ?>
 </header>
 <main class="main">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

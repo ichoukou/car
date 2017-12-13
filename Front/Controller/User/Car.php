@@ -314,10 +314,10 @@ class Car extends Controller
 //            if (empty($post['dimension'])) {
 //                $errors ['dimension'] = '请填写外观尺寸';
 //            }
-
-            if (empty($post['description'])) {
-                $errors ['description'] = '请填写备注';
-            }
+//
+//            if (empty($post['description'])) {
+//                $errors ['description'] = '请填写备注';
+//            }
 
             if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
 
@@ -394,10 +394,10 @@ class Car extends Controller
 //            if (empty($post['dimension'])) {
 //                $errors ['dimension'] = '请填写外观尺寸';
 //            }
-
-            if (empty($post['description'])) {
-                $errors ['description'] = '请填写备注';
-            }
+//
+//            if (empty($post['description'])) {
+//                $errors ['description'] = '请填写备注';
+//            }
 
             if (!empty($errors)) exit(json_encode(['status'=>-1, 'result'=>$errors], JSON_UNESCAPED_UNICODE));
 

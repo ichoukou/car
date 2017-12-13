@@ -46,3 +46,21 @@
 [2017-12-13 02:44:06] ERROR Func:get_one
 [2017-12-13 02:44:06] ERROR Sql :SELECT * FROM website_user_car WHERE `plate_number` = :plate_number AND `identification_number` = :identification_number AND `user_id` == 0 
 [2017-12-13 02:44:06] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '== 0' at line 1
+
+[2017-12-13 03:13:21] ERROR File:/var/www/car/Front/Model/User/Car.php
+[2017-12-13 03:13:21] ERROR Line:122
+[2017-12-13 03:13:21] ERROR Func:update
+[2017-12-13 03:13:21] ERROR Sql :UPDATE website_user_car SET  `user_id` = :user_id, `plate_number` = :plate_number, `car_type` = :car_type,   `owner` = :owner, `address` = :address, `use_type` = :use_type,   `brand_type` = :brand_type, `identification_number` = :identification_number, `engine_number` = :engine_number,   `registration_date` = :registration_date, `accepted_date` = :accepted_date  WHERE `car_id` = :car_id
+[2017-12-13 03:13:21] ERROR Mess:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+
+[2017-12-13 03:16:27] ERROR File:/var/www/car/Front/Model/User/Car.php
+[2017-12-13 03:16:27] ERROR Line:122
+[2017-12-13 03:16:27] ERROR Func:update
+[2017-12-13 03:16:27] ERROR Sql :UPDATE website_user_car SET  `user_id` = :user_id, `plate_number` = :plate_number, `car_type` = :car_type,   `owner` = :owner, `address` = :address, `use_type` = :use_type,   `brand_type` = :brand_type, `identification_number` = :identification_number, `engine_number` = :engine_number,   `registration_date` = :registration_date, `accepted_date` = :accepted_date  WHERE `car_id` = :car_id
+[2017-12-13 03:16:27] ERROR Mess:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+
+[2017-12-13 03:22:36] ERROR File:/var/www/car/Front/Model/User/Car.php
+[2017-12-13 03:22:36] ERROR Line:112
+[2017-12-13 03:22:36] ERROR Func:update
+[2017-12-13 03:22:36] ERROR Sql :UPDATE website_user_car SET  `user_id` = :user_id, `plate_number` = :plate_number, `car_type` = :car_type,   WHERE `car_id` = :car_id
+[2017-12-13 03:22:36] ERROR Mess:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `car_id` = 22' at line 1

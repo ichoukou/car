@@ -60,6 +60,9 @@ class ReceivingCar extends Controller
             $reservation_id = M::Vender('ReceivingCar\\ReceivingCar', 'receiving_car', ['post'=>$post]);
 
             if ($reservation_id > 0) {
+                M::Vender('ReceivingCar\\ReceivingCar', 'delSms', ['tel'=>$post['tel']]);
+                $_SESSION['receiving_car_info'] = '';
+
                 exit(json_encode(['status'=>1, 'result'=>$reservation_id], JSON_UNESCAPED_UNICODE));
             } else {
                 exit(json_encode(['status'=>-1, 'result'=>'接车失败'], JSON_UNESCAPED_UNICODE));
